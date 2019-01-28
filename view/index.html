@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      :root {
+        --h1-size: 2.5em;
+        --h2-size: 2em;
+      }
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      #page {
+        position: relative;
+        /* border: 1px solid red; */
+      }
+
+      /* HEADER */
+      header {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-between;
+        /* border: 1px solid red; */
+      }
+      .logo h1 {
+        margin-bottom: 0;
+        font-weight: 900;
+        font-size: var(--h1-size);
+      }
+      #line1 {
+        width: 500px;
+        height: 15px;
+        background-color: rgb(33, 144, 255);
+      }
+      #line2 {
+        width: 550px;
+        height: 15px;
+        background-color: rgb(69, 75, 243);
+      }
+      nav {
+        flex-basis: 50%;
+        /* border: 1px solid blue; */
+      }
+      nav ul {
+        text-align: center;
+        padding: 0;
+      }
+      nav ul li {
+        display: inline;
+        margin: 0 25px;
+        list-style: none;
+      }
+      nav ul li a {
+        color: black;
+        font-weight: 700;
+        font-size: 1.2em;
+        text-decoration: none;
+      }
+      nav ul li a:hover {
+        /* color: rgb(69, 75, 243); */
+        text-decoration: underline;
+      }
+      #basketImg {
+        width: 32px;
+        vertical-align: bottom;
+      }
+      #basketItems {
+        display: inline-block;
+        width: 25px;
+        height: 25px;
+        margin: -10px;
+        border-radius: 20px;
+        vertical-align: top;
+        color: white;
+        background-color: rgb(33, 144, 255);
+      }
+      .active {
+        text-decoration: underline;
+      }
+
+      /* MAIN ARTICLE */
+      .main-article {
+        width: 90%;
+        margin: 80px auto;
+      }
+      .book-coach {
+        width: 550px;
+        margin: 20px auto;
+        border: 1px solid rgb(112, 112, 112);
+        border-radius: 25px;
+      }
+      .book-coach-header {
+        width: 400px;
+        margin: 20px auto;
+        text-align: center;
+      }
+      .book-coach-header h2 {
+        margin-bottom: 0;
+        font-size: var(--h2-size);
+        font-weight: 900;
+      }
+      .book-coach:hover #line3 {
+        background-color: rgb(33, 144, 255);
+      }
+      .book-coach:hover #line4 {
+        background-color: rgb(69, 75, 243);
+      }
+      #line3 {
+        width: 250px;
+        height: 10px;
+        margin: 0 auto;
+        background-color: rgb(216, 216, 216);
+        transition: all 0.4s;
+      }
+      #line4 {
+        width: 300px;
+        height: 10px;
+        margin: 0 auto;
+        background-color: rgb(155, 155, 155);
+      }
+      .book-coach {
+        text-align: center;
+      }
+      .book-coach form span {
+        display: inline-block;
+        margin: 0 10px;
+        text-align: center;
+      }
+      .book-coach form span p {
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 1.2em;
+      }
+      input:focus {
+        outline: none;
+      }
+      .book-coach form input {
+        width: 140px;
+        height: 35px;
+        text-align: center;
+        font-size: 1.2em;
+        color: rgb(33, 144, 255);
+        border-radius: 30px;
+        border: 1px solid rgb(112, 112, 112);
+      }
+      .book-coach form input[type="date"] {
+        padding-left: 15px;
+      }
+      .book-coach form input[type="checkbox"] {
+        width: 25px;
+        height: 25px;
+        margin: 30px 5px;
+        vertical-align: middle;
+      }
+      .book-coach form label {
+        font-weight: 500;
+      }
+      .book-coach form input[type="submit"] {
+        margin: 5px auto 25px auto;
+        border: 2px solid rgb(33, 144, 255);
+        background-color: white;
+        color: black;
+        /* padding: 10px 0; */
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .book-coach form input[type="submit"]:hover {
+        background-color: rgb(33, 144, 255);
+        border: 2px solid rgb(112, 112, 112);
+        color: white;
+      }
+
+      /* CONTACT */
+      .contact {
+        display: fixed;
+        width: 180px;
+        height: auto;
+        background-color: white;
+        border: 1px solid rgb(112, 112, 112);
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        cursor: pointer;
+        float: right;
+      }
+      .contact p {
+        display: inline-block;
+        margin: 12px;
+        font-weight: 700;
+      }
+      .contact img {
+        width: 30px;
+        vertical-align: middle;
+      }
+
+      /* FOOTER */
+      footer p {
+        text-align: center;
+      }
+      footer p a {
+        color: rgb(50, 50, 50);
+        font-weight: 700;
+        font-size: 1.1em;
+      }
+    </style>
+    <title>Home Page</title>
+  </head>
+  <body>
+    <div id="page">
+      <header>
+        <div class="logo">
+          <h1>Berwyn Buses Hire</h1>
+          <div id="line1"></div>
+          <div id="line2"></div>
+        </div>
+        <nav>
+          <ul>
+            <li><a class="active" href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Login</a></li>
+            <li>
+              <a href="checkout.html"
+                ><img id="basketImg" src="../images/basket.png" /><span
+                  id="basketItems"
+                  >1</span
+                ></a
+              >
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <article class="main-article">
+        <section class="book-coach">
+          <div class="book-coach-header">
+            <h2>Book Coach</h2>
+            <div id="line3"></div>
+            <div id="line4"></div>
+          </div>
+          <div>
+            <form action="controller.php">
+              <span>
+                <p>Depart</p>
+                <input type="date" name="depart" />
+              </span>
+              <span>
+                <p>Return</p>
+                <input type="date" name="return" />
+              </span>
+              <span>
+                <p>Passengers</p>
+                <input name="passengers" /> </span
+              ><br />
+              <input
+                id="requireDriver"
+                type="checkbox"
+                name="requireDriver"
+              /><label for="requireDriver">Require a driver</label><br />
+              <input type="submit" value="Search" />
+            </form>
+          </div>
+        </section>
+      </article>
+
+      <footer>
+        <p><a href="#">Design and Developed by A14</a></p>
+      </footer>
+      <div class="contact">
+        <p>Contact Us</p>
+        <img src="../images/chat.png" />
+      </div>
+    </div>
+    <!-- PAGE -->
+    <script>
+      var viewport = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+      var page = document.getElementById("page");
+      page.style.height = viewport + "px";
+
+      //CHAT
+      //   $(".contact").on("click", function() {
+      //     $(this).toggleClass("contact-open");
+      //   });
+    </script>
+  </body>
+</html>
