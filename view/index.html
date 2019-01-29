@@ -8,11 +8,9 @@
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="styles.css"/>  
+    <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>
-      
-    </style>
+    <style></style>
     <title>Home Page</title>
   </head>
   <body>
@@ -30,7 +28,7 @@
             <li><a href="#">Login</a></li>
             <li>
               <a href="checkout.html"
-                ><img id="basketImg" src="../images/basket.png" /><span
+                ><img id="basketImg" src="../content/images/basket.png" /><span
                   id="basketItems"
                   >1</span
                 ></a
@@ -77,22 +75,10 @@
       </footer>
       <div class="contact">
         <p>Contact Us</p>
-        <img src="../images/chat.png" />
+        <img src="../content/images/chat.png" />
       </div>
     </div>
     <!-- PAGE -->
-    <script>
-      var viewport = Math.max(
-        document.documentElement.clientHeight,
-        window.innerHeight || 0
-      );
-      var page = document.getElementById("page");
-      page.style.height = viewport + "px";
-
-      //CHAT
-      //   $(".contact").on("click", function() {
-      //     $(this).toggleClass("contact-open");
-      //   });
-    </script>
+    <script src="../scripts/index.js"></script>
   </body>
 </html>
