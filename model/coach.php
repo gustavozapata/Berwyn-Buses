@@ -1,8 +1,10 @@
 <?php
 
-class Coach {
+require_once "vehicleType.php";
+
+class Coach extends VehicleType {
     private $id;
-    // private $vehicleType;
+    private $vehicleType;
     private $registrationNumber;
     private $make;
     private $colour;

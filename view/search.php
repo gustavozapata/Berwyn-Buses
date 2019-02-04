@@ -4,6 +4,7 @@ require_once "../model/database.php";
 require_once "../model/coach.php";
 
 $coaches = getAllCoaches();
+$VehicleTypes = getAllVehicleTypes();
 
 ?>
 <!DOCTYPE html>
@@ -32,11 +33,23 @@ $coaches = getAllCoaches();
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p>Registration Number: <?= $coach->registrationNumber ?></p>
         <p>Vehicle Type: <?= $coach->vehicleType ?></p>
+        <p>Vehicle Testing: <?= print_r(testing($coach->vehicleType)) ?></p>
         <p>Make: <?= $coach->make ?></p>
         <p>Colour: <?= $coach->colour ?></p>
     </div>
     <?php endforeach ?>
     </article>
+
+    <section>
+    <?php foreach($VehicleTypes as $type): ?>
+    <div>
+        <p>VehicleType id: <?= $type->id ?></p>
+        <p>Vehicle Type: <?= $type->type ?></p>
+        <p>Make: <?= $type->maxCapacity ?></p>
+        <p>Colour: <?= $type->hourlyRate ?></p>
+    </div>
+    <?php endforeach ?>
+    </section>
 
     </div><!-- PAGE -->
     
