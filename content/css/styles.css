@@ -209,3 +209,33 @@
     font-weight: 700;
     font-size: 1.1em;
   }
+
+
+
+  /* RESPONSIVE */
+@media only screen and (max-width: 400px){
+   .logo h1 {
+    font-size: var(--h1-mobile-size);
+  }
+  #line1 {
+    width: 340px;
+  }
+  #line2 {
+    width: 360px;
+  }
+   .book-coach {
+      width: 320px;
+   }
+   .book-coach-header {
+    width: 320px;
+  }
+  #line3 {
+    width: 220px;
+  }
+  #line4 {
+    width: 240px;
+  }
+   .book-coach form span {
+    display: block;
+   }
+}

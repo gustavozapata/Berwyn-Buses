@@ -15,28 +15,9 @@
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1>Berwyn Buses Hire</h1>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <nav>
-          <ul>
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="#">Login</a></li>
-            <li>
-              <a href="checkout.html"
-                ><img id="basketImg" src="../content/images/basket.png" /><span
-                  id="basketItems"
-                  >1</span
-                ></a
-              >
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <?php
+      require_once "./header.php";
+      ?>
 
       <article class="main-article">
         <section class="book-coach">
@@ -46,7 +27,7 @@
             <div id="line4"></div>
           </div>
           <div>
-            <form action="controller.php">
+            <form action="./search.php">
               <span>
                 <p>Depart</p>
                 <input type="date" name="depart" />
@@ -79,6 +60,6 @@
       </div>
     </div>
     <!-- PAGE -->
-    <script src="../scripts/index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
