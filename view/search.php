@@ -29,7 +29,7 @@ $coaches = getAllCoaches();
     <article class="main-article">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
-        <img class="coach-img" src="<?= $coach->image ?>" alt="Image Coach"/>
+        <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p>Registration Number: <?= $coach->registrationNumber ?></p>
         <p>Vehicle Type: <?= $coach->vehicleType ?></p>
         <p>Make: <?= $coach->make ?></p>
