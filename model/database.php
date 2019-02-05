@@ -5,6 +5,12 @@
 // $username = "k1715308";
 // $password = "webdevdatabase";
 
+// JAMES DB
+// $database = "db_k1627667";
+// $username = "k1627667";
+// $password = "kudb1234";
+
+
 // LEWIS DB
 $database = "db_k1732912";
 $username = "k1732912";
