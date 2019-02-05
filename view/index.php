@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style></style>
-    <title>Home Page</title>
+    <title>🚎 Home Page</title>
   </head>
   <body>
     <div id="page">
@@ -22,7 +22,7 @@
       <article class="main-article">
         <section class="book-coach">
           <div class="book-coach-header">
-            <h2>Book Coach</h2>
+            <h2>Book🚍Coach</h2>
             <div id="line3"></div>
             <div id="line4"></div>
           </div>
