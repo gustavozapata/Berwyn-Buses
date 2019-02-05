@@ -33,7 +33,6 @@ $VehicleTypes = getAllVehicleTypes();
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p>Registration Number: <?= $coach->registrationNumber ?></p>
         <p>Vehicle Type: <?= $coach->vehicleType ?></p>
-        <p>Vehicle Testing: <?= $coach[0]->vehicleType) ?></p>
         <p>Make: <?= $coach->make ?></p>
         <p>Colour: <?= $coach->colour ?></p>
     </div>
@@ -45,8 +44,8 @@ $VehicleTypes = getAllVehicleTypes();
     <div>
         <p>VehicleType id: <?= $type->id ?></p>
         <p>Vehicle Type: <?= $type->type ?></p>
-        <p>Make: <?= $type->maxCapacity ?></p>
-        <p>Colour: <?= $type->hourlyRate ?></p>
+        <p>Max Capacity: <?= $type->maxCapacity ?></p>
+        <p>Hourly Rate: <?= $type->hourlyRate ?></p>
     </div>
     <?php endforeach ?>
     </section>
