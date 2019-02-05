@@ -1,28 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <header>
-        <div class="logo">
-          <h1>Berwyn Buses Hire</h1>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a class="active"href="aboutUs.php">About Us</a></li>
-            <li><a href="#">Login</a></li>
-            <li>
-              <a href="checkout.html"
-                ><img id="basketImg" src="../content/images/basket.png" /><span
-                  id="basketItems"
-                  >1</span
-                ></a
-              >
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style></style>
         <title>About Us</title>
         </head>
     <style>
