@@ -10,7 +10,7 @@
     />
     <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="../scripts/index.js"></script>
     <title>🚎 Home Page</title>
   </head>
   <body>
