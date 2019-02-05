@@ -15,12 +15,14 @@ function getAllCoaches(){
 
     // go through each coach
     // get its text-based vehicle type
-
-    foreach($results as $result)
-    {
-        // add the text-based result to the object
+    // add the text-based result to the object
+    foreach($results as $result) {
+        $statement = $pdo->prepare("SELECT type FROM VehicleType WHERE id = :id");
+        $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
+        $statement->execute();
+        $queryResult = $statement->fetch(PDO::FETCH_OBJ);
+        $result->vehicleType = $queryResult->type; 
     }
-
     return $results;
 }
 
