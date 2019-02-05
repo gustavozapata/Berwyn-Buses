@@ -19,6 +19,10 @@
     }
     </style>
     <body>
+    <div id="page">
+      <?php
+      require_once "./header.php";
+      ?>
         <h1>About Us</h1>
 
         <p>We are dedicated to providing a premium service to all our customers, </br>
