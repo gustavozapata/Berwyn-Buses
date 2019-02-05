@@ -7,7 +7,7 @@
         <nav>
           <ul>
             <li><a class="active" href="index.php">Home</a></li>
-            <li><a href="#">About Us</a></li>
+            <li><a href="aboutUs.php">About Us</a></li>
             <li><a href="#">Login</a></li>
             <li>
               <a href="checkout.html"
