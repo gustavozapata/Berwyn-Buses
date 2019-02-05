@@ -21,3 +21,4 @@ class Customer{
         $this->$name = $value;
     }
 }
+?>
