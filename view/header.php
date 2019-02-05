@@ -1,6 +1,6 @@
 <header>
         <div class="logo">
-          <h1>Berwyn Buses Hire</h1>
+          <h1><a href="index.php">Berwyn Buses Hire</a></h1>
           <div id="line1"></div>
           <div id="line2"></div>
         </div>

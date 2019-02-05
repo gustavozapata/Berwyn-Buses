@@ -36,6 +36,10 @@ header {
   font-weight: 900;
   font-size: var(--h1-size);
 }
+.logo h1 a {
+  text-decoration: none;
+  color: black;
+}
 #line1 {
   width: 500px;
   height: 15px;
