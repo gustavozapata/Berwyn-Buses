@@ -1,14 +1,8 @@
 <?php
 
-// TAVO DB
-// $database = "db_k1715308";
-// $username = "k1715308";
-// $password = "webdevdatabase";
-
-// LEWIS DB
-$database = "db_k1732912";
-$username = "k1732912";
-$password = "laptop";
+$database = "db_k1715308";
+$username = "k1715308";
+$password = "webdevdatabase";
 
 $pdo = new PDO("mysql:host=kunet;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
@@ -18,6 +12,15 @@ function getAllCoaches(){
     $statement = $pdo->prepare("SELECT * FROM Coach");
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+
+    // go through each coach
+    // get its text-based vehicle type
+
+    foreach($results as $result)
+    {
+        // add the text-based result to the object
+    }
+
     return $results;
 }
 
