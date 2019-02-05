@@ -23,6 +23,7 @@
       <?php
       require_once "./header.php";
       ?>
+
         <h1>About Us</h1>
 
         <p>We are dedicated to providing a premium service to all our customers, </br>
@@ -36,6 +37,7 @@
         <p>
             This website was created for a university project, the group behind this project is A14 PATMAN.  
         </p>
+
 
         <footer>
         <p><a href="#">Design and Developed by A14</a></p>
