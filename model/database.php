@@ -20,7 +20,7 @@ function getAllCoaches(){
         $queryResult = $statement->fetch(PDO::FETCH_OBJ);
         $result->vehicleType = $queryResult->type; 
     }
-    
+
     return $results;
 }
 

@@ -2,6 +2,7 @@
   --h1-size: 2.5em;
   --h2-size: 2em;
   --h1-mobile-size: 2.1em;
+  --a-nav-size: 1.2em;
 }
 html,
 body {
@@ -41,7 +42,7 @@ header {
   background-color: rgb(33, 144, 255);
 }
 #line2 {
-  width: 550px;
+  width: 530px;
   height: 15px;
   background-color: rgb(69, 75, 243);
 }
@@ -61,7 +62,7 @@ nav ul li {
 nav ul li a {
   color: black;
   font-weight: 700;
-  font-size: 1.2em;
+  font-size: var(--a-nav-size);
   text-decoration: none;
 }
 nav ul li a:hover {
@@ -212,13 +213,51 @@ footer p a {
 }
 
 /* RESPONSIVE */
+@media only screen and (max-width: 1036px) {
+  header {
+    display: block;
+  }
+  #line1 {
+    width: 430px;
+  }
+  #line2 {
+    width: 450px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .book-coach,
+  .book-coach-header {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 466px) {
+  :root {
+    --a-nav-size: 1em;
+  }
+  .logo h1 {
+    width: 250px;
+  }
+  #line1 {
+    width: 380px;
+  }
+  #line2 {
+    width: 400px;
+  }
+  #basketItems {
+    font-size: 1.2em;
+  }
+}
+
+/* MOBILE */
 @media only screen and (max-width: 400px) {
   :root {
-    --h1-size: 2.1em;
+    --h1-size: 2em;
     --h2-size: 1.8em;
   }
-  nav {
-    display: none;
+  .logo h1 {
+    width: 200px;
   }
   #line1 {
     width: 340px;
@@ -226,9 +265,7 @@ footer p a {
   #line2 {
     width: 360px;
   }
-  .book-coach {
-    width: 320px;
-  }
+  .book-coach,
   .book-coach-header {
     width: 320px;
   }
