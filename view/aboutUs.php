@@ -31,7 +31,7 @@
             optional of hiring a professional driver to get you from point A to point B.</br>
             The vehicles come in a veriety or size ranging from a small seven seaters to a large 150 seat double decker bus. </br>
         </p>
-        <img id="jumpImg" src = "../content/images/peoplejump.jpg" />         
+        <img id="jumpImg" src = "../content/images/peoplejump.jpeg" />         
         <h2>The Team</h2>
         <p>
             This website was created for a university project, the group behind this project is A14 PATMAN.  
