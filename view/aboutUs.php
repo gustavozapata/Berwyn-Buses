@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <style></style>
         <title>About Us</title>
     </head>
     <body>
@@ -28,4 +18,5 @@
             This website was created for a university project, the group behind this project is A14 PATMAN.  
         </p>
     </body>
+
 </html>
