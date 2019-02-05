@@ -13,9 +13,6 @@ function getAllCoaches(){
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
 
-    // go through each coach
-    // get its text-based vehicle type
-    // add the text-based result to the object
     foreach($results as $result) {
         $statement = $pdo->prepare("SELECT type FROM VehicleType WHERE id = :id");
         $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
@@ -23,6 +20,7 @@ function getAllCoaches(){
         $queryResult = $statement->fetch(PDO::FETCH_OBJ);
         $result->vehicleType = $queryResult->type; 
     }
+    
     return $results;
 }
 
