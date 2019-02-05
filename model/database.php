@@ -1,20 +1,10 @@
 <?php
 
 // TAVO DB
-// $database = "db_k1715308";
-// $username = "k1715308";
-// $password = "webdevdatabase";
+$database = "db_k1715308";
+$username = "k1715308";
+$password = "webdevdatabase";
 
-// JAMES DB
-// $database = "db_k1627667";
-// $username = "k1627667";
-// $password = "kudb1234";
-
-
-// LEWIS DB
-$database = "db_k1732912";
-$username = "k1732912";
-$password = "laptop";
 
 $pdo = new PDO("mysql:host=kunet;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
