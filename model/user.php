@@ -1,4 +1,5 @@
 <?php
+//EITHER THIS APPROACH OR [CUSTOMER TABLE AND ADMIN TABLE ONLY] AND [ONE WEBPAGE FOR CUSTOMERS AND ONE FOR ADMIN]
 class User{
     private $username;
     private $password;
