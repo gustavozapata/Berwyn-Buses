@@ -10,3 +10,12 @@ page.style.height = viewport + "px";
 //   $(".contact").on("click", function() {
 //     $(this).toggleClass("contact-open");
 //   });
+
+//BASKET
+// window.addEventListener("resize", function(){
+//   if (window.matchMedia("(max-width: 466px)").matches) {
+//     $("#movilBasket").html($("#liBasket a"));
+//   } else {
+//     $("#movilBasket").html("");
+//   }
+// }, false);

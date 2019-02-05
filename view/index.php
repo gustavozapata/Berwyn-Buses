@@ -10,7 +10,6 @@
     />
     <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../scripts/index.js"></script>
     <title>🚎 Home Page</title>
   </head>
   <body>
@@ -60,16 +59,6 @@
       </div>
     </div>
     <!-- PAGE -->
-    <script>
-    //BASKET
-    // window.addEventListener("resize", function(){
-    //   if (window.matchMedia("(max-width: 466px)").matches) {
-    //     $("#movilBasket").html($("#liBasket a"));
-    //   } else {
-    //     $("#movilBasket").html("");
-    //   }
-    // }, false);
-    
-    </script>
+    <script src="../scripts/index.js"></script>
   </body>
 </html>
