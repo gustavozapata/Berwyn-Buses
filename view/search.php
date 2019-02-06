@@ -4,7 +4,7 @@ require_once "../model/database.php";
 require_once "../model/coach.php";
 
 $coaches = getAllCoaches();
-$VehicleTypes = getAllVehicleTypes();
+// $VehicleTypes = getAllVehicleTypes();
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $VehicleTypes = getAllVehicleTypes();
       require_once "./header.php";
       ?>
 
-    <article class="main-article">
+    <section class="main-section">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
@@ -35,17 +35,8 @@ $VehicleTypes = getAllVehicleTypes();
         <p>Vehicle Type: <?= $coach->vehicleType ?></p>
         <p>Make: <?= $coach->make ?></p>
         <p>Colour: <?= $coach->colour ?></p>
-    </div>
-    <?php endforeach ?>
-    </article>
-
-    <section>
-    <?php foreach($VehicleTypes as $type): ?>
-    <div>
-        <p>VehicleType id: <?= $type->id ?></p>
-        <p>Vehicle Type: <?= $type->type ?></p>
-        <p>Max Capacity: <?= $type->maxCapacity ?></p>
-        <p>Hourly Rate: <?= $type->hourlyRate ?></p>
+        <p>Max. Capacity: <?= $coach->maxCapacity ?></p>
+        <p>Hourly Rate: <?= $coach->hourlyRate ?></p>
     </div>
     <?php endforeach ?>
     </section>

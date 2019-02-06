@@ -8,9 +8,9 @@ $username = "k1715308";
 $password = "webdevdatabase";
 
 //XAMPP (LOCALHOST)
-// $username = "root";
-// $password = "";
-// $host = "localhost";
+$username = "root";
+$password = "";
+$host = "localhost";
 
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
@@ -22,11 +22,13 @@ function getAllCoaches(){
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
 
     foreach($results as $result) {
-        $statement = $pdo->prepare("SELECT type FROM VehicleType WHERE id = :id");
+        $statement = $pdo->prepare("SELECT * FROM VehicleType WHERE id = :id");
         $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
         $statement->execute();
         $queryResult = $statement->fetch(PDO::FETCH_OBJ);
         $result->vehicleType = $queryResult->type; 
+        $result->maxCapacity = $queryResult->maxCapacity; 
+        $result->hourlyRate = $queryResult->hourlyRate; 
     }
 
     return $results;
@@ -37,15 +39,6 @@ function getAllVehicleTypes(){
     $statement = $pdo->prepare("SELECT * FROM VehicleType");
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
-    return $results;
-}
-
-function testing($id){
-    global $pdo;
-    $statement = $pdo->prepare("SELECT type FROM VehicleType WHERE id = :id");
-    $statement->bindValue(":id", $id, PDO::PARAM_INT);
-    $statement->execute();
-    $results = $statement->fetchAll(PDO::FETCH_NUM);
     return $results;
 }
 

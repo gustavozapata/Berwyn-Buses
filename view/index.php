@@ -18,8 +18,8 @@
       require_once "./header.php";
       ?>
 
-      <article class="main-article">
-        <section class="book-coach">
+      <section class="main-section">
+        <article class="book-coach">
           <div class="book-coach-header">
             <h2>Book🚍Coach</h2>
             <div id="line3"></div>
@@ -47,8 +47,8 @@
               <input type="submit" value="Search" />
             </form>
           </div>
-        </section>
-      </article>
+        </article>
+      </section>
 
       <footer>
         <p><a href="#">Design and Developed by A14</a></p>

@@ -1,24 +1,14 @@
 .coach-div {
   display: inline-block;
   margin: 10px 15px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgb(200, 200, 200);
+  cursor: pointer;
 }
 .coach-div p {
   font-weight: 500;
 }
 .coach-img {
   width: 220px;
-}
-
-/* DELETE */
-section {
-  width: 90%;
-  margin: 10px auto;
-  border: 1px solid rgb(200, 200, 200);
-}
-section div {
-  display: inline-block;
-  margin: 15px;
-}
-section p {
-  font-weight: 500;
 }
