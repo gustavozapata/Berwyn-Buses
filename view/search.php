@@ -4,7 +4,6 @@ require_once "../model/database.php";
 require_once "../model/coach.php";
 
 $coaches = getAllCoaches();
-// $VehicleTypes = getAllVehicleTypes();
 
 ?>
 <!DOCTYPE html>
@@ -19,6 +18,7 @@ $coaches = getAllCoaches();
     />
     <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>Search Result</title>
 </head>
 <body>
@@ -31,17 +31,18 @@ $coaches = getAllCoaches();
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
-        <p>Registration Number: <?= $coach->registrationNumber ?></p>
-        <p>Vehicle Type: <?= $coach->vehicleType ?></p>
-        <p>Make: <?= $coach->make ?></p>
-        <p>Colour: <?= $coach->colour ?></p>
-        <p>Max. Capacity: <?= $coach->maxCapacity ?></p>
-        <p>Hourly Rate: <?= $coach->hourlyRate ?></p>
+        <p><?= $coach->registrationNumber ?></p>
+        <p><?= $coach->vehicleType ?></p>
+        <div class="coach-status">
+            <p><img src="../content/images/mercedes.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
+            <p><img src="../content/images/passengers.png" /> Max. Passengers: <?= $coach->maxCapacity ?></p>
+            <p><img src="../content/images/hourly.png" /> Hourly Rate: <?= $coach->hourlyRate ?></p>
+        </div>
     </div>
     <?php endforeach ?>
     </section>
 
     </div><!-- PAGE -->
-    
+    <script src="../scripts/index.js"></script>
 </body>
 </html>

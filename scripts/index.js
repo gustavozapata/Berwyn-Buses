@@ -3,8 +3,8 @@ var viewport = Math.max(
   document.documentElement.clientHeight,
   window.innerHeight || 0
 );
-var page = document.getElementById("page");
-page.style.height = viewport + "px";
+// var page = document.getElementById("page");
+// page.style.height = viewport + "px";
 
 //CHAT
 //   $(".contact").on("click", function() {
@@ -19,3 +19,10 @@ page.style.height = viewport + "px";
 //     $("#movilBasket").html("");
 //   }
 // }, false);
+
+//BOOKING
+$(".coach-div").on("click", function() {
+  $(this)
+    .find(".coach-status")
+    .replaceWith("<button>Add to basket</button>");
+});
