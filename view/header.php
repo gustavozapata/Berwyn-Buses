@@ -14,7 +14,7 @@
               <a href="checkout.html"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
                   id="basketItems"
-                  >1</span
+                  ></span
                 ></a
               >
             </li>
