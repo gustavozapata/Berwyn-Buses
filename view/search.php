@@ -34,7 +34,7 @@ $coaches = getAllCoaches();
         <p><?= $coach->registrationNumber ?></p>
         <p><?= $coach->vehicleType ?></p>
         <div class="coach-status">
-            <p><img src="../content/images/mercedes.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
+            <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
             <p><img src="../content/images/passengers.png" /> Max. Passengers: <?= $coach->maxCapacity ?></p>
             <p><img src="../content/images/hourly.png" /> Hourly Rate: <?= $coach->hourlyRate ?></p>
         </div>
