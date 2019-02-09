@@ -23,6 +23,9 @@ var viewport = Math.max(
 //BOOKING
 $(".coach-div").on("click", function() {
   $(this)
-    .find(".coach-status")
-    .replaceWith("<button>Add to basket</button>");
+    .find(".coach-addbasket")
+    .css("display", "block");
+  $(this)
+    .find(".coach-info")
+    .css("display", "none");
 });
