@@ -37,6 +37,7 @@ $(".coach-addbasket button").on("click", function() {
 
 //##### BOOKING #####
 $(".coach-div").on("click", function() {
+  $(".coach-div-selected").removeClass("coach-div-selected");
   $(this).toggleClass("coach-div-selected");
   // $(this)
   //   .find(".coach-addbasket")

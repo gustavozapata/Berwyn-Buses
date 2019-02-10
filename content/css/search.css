@@ -67,18 +67,20 @@
   display: none;
 }
 .coach-addbasket button {
-  margin: 50px;
+  width: 120px;
+  margin: 51px;
   border-radius: 20px;
-  background-color: white;
-  border: 1px solid rgb(33, 144, 255);
-  color: rgb(33, 144, 255);
+  background-color: rgb(33, 144, 255);
+  color: white;
+  border: none;
+  /* background-color: white;
+  color: rgb(33, 144, 255); */
   padding: 5px 15px;
   cursor: pointer;
   transition: all 0.2s;
 }
 .coach-addbasket button:hover {
-  background-color: rgb(33, 144, 255);
-  color: white;
+  transform: scale(1.02);
 }
 .coach-status img {
   width: 20px;
