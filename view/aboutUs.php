@@ -16,6 +16,7 @@
     <style>
     img  {
         width: 500px;
+        border-radius: 50%;
     }
     </style>
     <body>
