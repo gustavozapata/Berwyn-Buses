@@ -39,7 +39,7 @@ $coaches = getAllCoaches();
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
             <div class="coach-addbasket">
-              <input type="hidden" id="registrationNumber" name="registrationNumber" value="<?= $coach->registrationNUmber ?>">
+              <input type="hidden" id="registrationNumber" name="registrationNumber" value="<?= $coach->registrationNumber ?>">
               <button type="submit" form="cartForm" value="Add to basket">Add to basket</button>
             </div>
         </div>

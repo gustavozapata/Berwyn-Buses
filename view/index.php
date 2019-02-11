@@ -1,7 +1,9 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <?php require_once "./head.php"; ?>
+    
     <title>🚎 Home Page</title>
   </head>
   <body>
