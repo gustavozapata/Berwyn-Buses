@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php require_once "./head.php"; ?>
+    <?php require_once "../view/head.php"; ?>
     
     <title>🚎 Home Page</title>
   </head>
   <body>
     <div id="page">
       <?php
-      require_once "./header.php";
+      require_once "../view/header.php";
       ?>
       <section class="main-section">
         <article class="book-coach">
