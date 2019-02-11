@@ -1,13 +1,13 @@
 <?php
 $database = "db_k1715308";
 //TAVO'S DATABASE
-$host = "kunet";
-$username = "k1715308";
-$password = "webdevdatabase";
+//$host = "kunet";
+//$username = "k1715308";
+//$password = "webdevdatabase";
 //XAMPP (LOCALHOST)
-// $username = "root";
-// $password = "";
-// $host = "localhost";
+$username = "root";
+$password = "";
+$host = "localhost";
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 function getAllCoaches(){
     global $pdo;
