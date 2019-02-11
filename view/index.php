@@ -9,7 +9,6 @@
       <?php
       require_once "./header.php";
       ?>
-
       <section class="main-section">
         <article class="book-coach">
           <div class="book-coach-header">
@@ -18,7 +17,7 @@
             <div id="line4"></div>
           </div>
           <div>
-            <form action="./search.php">
+            <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
                 <input type="date" name="depart" />

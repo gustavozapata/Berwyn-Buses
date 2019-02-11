@@ -1,30 +1,23 @@
 <?php
-
-require_once "../model/database.php";
-require_once "../model/coach.php";
-
-$coaches = getAllCoaches();
-
+require_once "../controller/search_controller.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once "./head.php"; ?>
+    <?php require_once "head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <title>Search Result</title>
 </head>
 <body>
     <div id="page">
       <?php
-      require_once "./header.php";
+      require_once "header.php";
       ?>
 
     <section class="main-section">
-
     <div class="search-filter">
       <h3>Refine Search</h3>
     </div>
-    
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
@@ -44,7 +37,6 @@ $coaches = getAllCoaches();
     </div>
     <?php endforeach ?>
     </div>
-    
     </section>
     <?php require_once "./footer.php"; ?>
 
