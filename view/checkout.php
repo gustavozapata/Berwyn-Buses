@@ -15,7 +15,9 @@
         <div class="col-sm-8 ">
             <div class="box-outline">
                 <h1>Your basket</h1>
-                <h2><?= $cart; ?></h2>
+                <?php foreach($_SESSION["cart"] as $reg):?>
+                <h2><?= $reg; ?></h2>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="col-sm-4 ">
