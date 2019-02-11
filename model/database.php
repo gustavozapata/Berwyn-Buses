@@ -1,9 +1,9 @@
 <?php
 $database = "db_k1715308";
 //TAVO'S DATABASE
-//$host = "kunet";
-//$username = "k1715308";
-//$password = "webdevdatabase";
+// $host = "kunet";
+// $username = "k1715308";
+// $password = "webdevdatabase";
 //XAMPP (LOCALHOST)
 $username = "root";
 $password = "";

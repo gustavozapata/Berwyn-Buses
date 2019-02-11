@@ -1,9 +1,11 @@
+<?php require_once "../controller/cart.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <?php require_once "head.php";?>
-    <?php require_once "../controller/cart.php" ?>
+    
     <title>Document</title>
 </head>
 <?php require_once"header.php";?>
@@ -13,7 +15,9 @@
         <div class="col-sm-8 ">
             <div class="box-outline">
                 <h1>Your basket</h1>
-                <h2><?= $cart ?></h2>
+                <?php foreach($_SESSION["cart"] as $reg):?>
+                <h2><?= $reg; ?></h2>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="col-sm-4 ">

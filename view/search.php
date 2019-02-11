@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "../model/database.php";
 require_once "../model/coach.php";
 
@@ -39,7 +39,7 @@ $coaches = getAllCoaches();
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
             <div class="coach-addbasket">
-              <input type="hidden" id="registrationNumber" name="registrationNumber" value="<?= $coach->registrationNumber ?>">
+              <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
               <button type="submit" form="cartForm" value="Add to basket">Add to basket</button>
             </div>
         </div>
