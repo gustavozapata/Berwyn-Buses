@@ -21,17 +21,20 @@ if (!basketItems) {
 $(".coach-addbasket button").on("click", function() {
   $("#basketItems").css("visibility", "visible");
   $("#basketItems").text(++basketItems);
-  $(this)
-    .parentsUntil(".coach-results")
-    .css("display", "none");
+  //THIS MAKES DISAPEAR THE CLICKED (ADD TO BASKET) VEHICLE
+  // $(this)
+  //   .parentsUntil(".coach-results")
+  //   .css("display", "none");
+  $(this).parentsUntil(".coach-results").toggleClass("coach-in-basket");
+  $(this).text("Remove");
 });
 //MOVE BASKET ON MOBILE
 // window.addEventListener("resize", function(){
-//   if (window.matchMedia("(max-width: 466px)").matches) {
-//     $("#movilBasket").html($("#liBasket a"));
-//   } else {
-//     $("#movilBasket").html("");
-//   }
+  if (window.matchMedia("(max-width: 466px)").matches) {
+    $("#movilBasket").html($("#liBasket a"));
+  } else {
+    $("#movilBasket").html("");
+  }
 // }, false);
 //BASKET END
 

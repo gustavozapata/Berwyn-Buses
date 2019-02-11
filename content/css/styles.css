@@ -94,6 +94,7 @@ nav ul li a:hover {
   margin: -10px;
   border-radius: 20px;
   vertical-align: top;
+  font-weight: 700;
   color: white;
   background-color: rgb(33, 144, 255);
 }
@@ -292,10 +293,10 @@ footer p a {
     width: 200px;
   }
   #line1 {
-    width: 340px;
+    width: 220px;
   }
   #line2 {
-    width: 360px;
+    width: 240px;
   }
   .book-coach,
   .book-coach-header {

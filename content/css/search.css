@@ -40,6 +40,10 @@
   background-color: rgb(219, 237, 255);
   border-color: rgb(33, 144, 255);
 }
+.coach-in-basket {
+  background-color: rgb(255, 241, 219);
+  border-color: rgb(255, 166, 33);
+}
 .coach-div:hover {
   border-color: rgb(33, 144, 255);
 }
