@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,900"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" type="text/css" href="../content/css/styles.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style></style>
+<?php require_once "./head.php"; ?>
         <title>About Us</title>
         </head>
-    <style>
-    img  {
-        width: 500px;
-        border-radius: 50%;
+        <style>
+    #Gpiece {
+      width: 500px;
+      border-radius:50%;
     }
     </style>
     <body>
@@ -33,12 +24,12 @@
             optional of hiring a professional driver to get you from point A to point B.<br>
             The vehicles come in a veriety or size ranging from a small seven seaters to a large 150 seat double decker bus. </br>
         </p>
-        <img id="jumpImg" src = "../content/images/peoplejump.jpeg" />         
+        <img id = "Gpiece" src = "../content/images/gamepiece.jpeg"/>
+
         <h2>The Team</h2>
         <p>
             This website was created for a university project, the group behind this project is A14 PATMAN.  
         </p>
-
 
         <footer>
         <p><a href="#">Design and Developed by A14</a></p>
