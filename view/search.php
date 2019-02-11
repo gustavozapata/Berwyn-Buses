@@ -38,7 +38,7 @@ require_once "../controller/search_controller.php";
     <?php endforeach ?>
     </div>
     </section>
-    <?php require_once "./footer.php"; ?>
+    <?php require_once "../view/footer.php"; ?>
 
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
