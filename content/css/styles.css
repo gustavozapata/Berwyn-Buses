@@ -193,23 +193,10 @@ input:focus {
   color: white;
 }
 
-
-/* FOOTER */
-footer {
-  margin-bottom: 50px;
-}
-footer p {
-  text-align: center;
-}
-footer p a {
-  color: rgb(50, 50, 50);
-  font-weight: 700;
-  font-size: 1.1em;
-}
 /* CONTACT */
 .contact {
   position: fixed;
-  /* width: 180px; */
+  width: 180px;
   height: auto;
   background-color: white;
   border: 1px solid rgb(112, 112, 112);
@@ -226,11 +213,18 @@ footer p a {
 }
 .contact img {
   width: 30px;
-  margin: 5px 10px;
   vertical-align: middle;
 }
 
-
+/* FOOTER */
+footer p {
+  text-align: center;
+}
+footer p a {
+  color: rgb(50, 50, 50);
+  font-weight: 700;
+  font-size: 1.1em;
+}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {
@@ -266,19 +260,16 @@ footer p a {
     width: 250px;
   }
   #line1 {
-    width: 280px;
+    width: 380px;
   }
   #line2 {
-    width: 300px;
+    width: 400px;
   }
   #liBasket {
     display: none;
   }
   #basketItems {
     font-size: 1.2em;
-  }
-  .contact p {
-    display: none;
   }
 }
 
@@ -310,4 +301,11 @@ footer p a {
   .book-coach form span {
     display: block;
   }
+}
+
+/* Basket */
+.box-outline {
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 20px;
+  text-align: center;
 }
