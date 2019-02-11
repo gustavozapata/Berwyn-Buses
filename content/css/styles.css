@@ -193,10 +193,23 @@ input:focus {
   color: white;
 }
 
+
+/* FOOTER */
+footer {
+  margin-bottom: 50px;
+}
+footer p {
+  text-align: center;
+}
+footer p a {
+  color: rgb(50, 50, 50);
+  font-weight: 700;
+  font-size: 1.1em;
+}
 /* CONTACT */
 .contact {
   position: fixed;
-  width: 180px;
+  /* width: 180px; */
   height: auto;
   background-color: white;
   border: 1px solid rgb(112, 112, 112);
@@ -213,18 +226,11 @@ input:focus {
 }
 .contact img {
   width: 30px;
+  margin: 5px 10px;
   vertical-align: middle;
 }
 
-/* FOOTER */
-footer p {
-  text-align: center;
-}
-footer p a {
-  color: rgb(50, 50, 50);
-  font-weight: 700;
-  font-size: 1.1em;
-}
+
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {
@@ -260,16 +266,19 @@ footer p a {
     width: 250px;
   }
   #line1 {
-    width: 380px;
+    width: 280px;
   }
   #line2 {
-    width: 400px;
+    width: 300px;
   }
   #liBasket {
     display: none;
   }
   #basketItems {
     font-size: 1.2em;
+  }
+  .contact p {
+    display: none;
   }
 }
 

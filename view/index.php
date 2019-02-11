@@ -9,7 +9,6 @@
       <?php
       require_once "./header.php";
       ?>
-
       <section class="main-section">
         <article class="book-coach">
           <div class="book-coach-header">
@@ -18,7 +17,7 @@
             <div id="line4"></div>
           </div>
           <div>
-            <form action="./search.php">
+            <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
                 <input type="date" name="depart" />
@@ -42,13 +41,10 @@
         </article>
       </section>
 
-      <footer>
-        <p><a href="#">Design and Developed by A14</a></p>
-      </footer>
-      <div class="contact">
-        <p>Contact Us</p>
-        <img src="../content/images/chat.png" />
-      </div>
+    <?php
+      require_once "./footer.php";
+    ?>
+
     </div>
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
