@@ -46,6 +46,7 @@ $coaches = getAllCoaches();
     </div>
     
     </section>
+    <?php require_once "./footer.php"; ?>
 
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
