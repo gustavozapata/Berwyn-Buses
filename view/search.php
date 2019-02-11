@@ -1,10 +1,7 @@
 <?php
-
 require_once "../model/database.php";
 require_once "../model/coach.php";
-
 $coaches = getAllCoaches();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,11 +17,9 @@ $coaches = getAllCoaches();
       ?>
 
     <section class="main-section">
-
     <div class="search-filter">
       <h3>Refine Search</h3>
     </div>
-    
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
@@ -44,9 +39,7 @@ $coaches = getAllCoaches();
     </div>
     <?php endforeach ?>
     </div>
-    
     </section>
-
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
 </body>

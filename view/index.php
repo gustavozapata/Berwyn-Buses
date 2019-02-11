@@ -9,7 +9,6 @@
       <?php
       require_once "./header.php";
       ?>
-
       <section class="main-section">
         <article class="book-coach">
           <div class="book-coach-header">
