@@ -15,11 +15,9 @@ require_once "../controller/search_controller.php";
       ?>
 
     <section class="main-section">
-
     <div class="search-filter">
       <h3>Refine Search</h3>
     </div>
-    
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
@@ -39,9 +37,7 @@ require_once "../controller/search_controller.php";
     </div>
     <?php endforeach ?>
     </div>
-    
     </section>
-
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
 </body>
