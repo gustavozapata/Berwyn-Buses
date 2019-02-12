@@ -2,18 +2,19 @@
 session_start();
 require_once "../model/database.php";
 
-if (!isset($_REQUEST['regNumber'])&& !isset($_SESSION['cart'])){
+if(isset($_POST['regNumber']) && isset($_SESSION['cart']) ){
+    $_SESSION['cart'][] = $_POST['regNumber'];
+}
+if (!isset($_POST['regNumber'])&& !isset($_SESSION['cart'])){
     $_SESSION['cart'][] = 'Empty';
 }
-elseif(!isset($_SESSION['cart']) && isset($_REQUEST['regNumber'])){
-    $_SESSION['cart'][] = $_REQUEST['regNumber'];
+if(!isset($_SESSION['cart']) && isset($_POST['regNumber'])){
+    $_SESSION['cart'][] = $_POST['regNumber'];
 }
-elseif($_SESSION['cart'][0]=='Empty' && !isset($_REQUEST['regNumber'])){}
+if($_SESSION['cart'][0]=='Empty' && !isset($_POST['regNumber'])){}
 
-elseif(isset($_REQUEST['regNumber']) && $_SESSION['cart'][0]=='Empty'){
-    $_SESSION['cart'][0] = $_REQUEST['regNumber'];
+if(isset($_POST['regNumber']) && $_SESSION['cart'][0]=='Empty'){
+    $_SESSION['cart'][0] = $_POST['regNumber'];
 }
-else{
-    $_SESSION['cart'][] = $_REQUEST['regNumber'];
-}
+
 ?>
