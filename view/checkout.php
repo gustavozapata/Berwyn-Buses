@@ -18,7 +18,7 @@
                 <?php foreach($_SESSION["cart"] as $reg):?>
 
                 <div class="row">
-                    <div class ="col-sm-4" >
+                    <div class ="col-sm-4 basketInfo" id="image" >
                         <img src="<?= $reg['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
                     </div>
                     <div class ="col-sm-4 basketInfo" >
@@ -45,6 +45,7 @@
 <script>
 var $text = $('p#check').text();
  if($text=='empty'){
+     $('div#image').replaceWith();
      $('div.basketInfo').replaceWith('<p>Empty</p>');
  }
 </script>
