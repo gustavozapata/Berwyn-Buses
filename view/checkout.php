@@ -25,7 +25,7 @@
                         <p id="check"><?= $reg['regNumber'] ?></p> 
                         <p><?= $reg['rate'] ?></p>
                     </div>
->>>>>>> 5209be3f57f529d4d81dcab1082fba13cf6339de
+
                 </div>
                 <?php endforeach; ?>
             </div>
