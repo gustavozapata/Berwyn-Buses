@@ -16,11 +16,15 @@
             <div class="box-outline">
                 <h1>Your basket</h1>
                 <?php foreach($_SESSION["cart"] as $reg):?>
-                
-                <img class="img-fluid" src="<?= $reg['coachIMG'] ?>" alt="Image Coach"/>
-                    <p><?= $reg['regNumber'] ?></p>
-                    <p><?= $reg['rate'] ?></p>
-                
+                <div class="row">
+                    <div class ="col-sm-4" >
+                        <img src="<?= $reg['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
+                    </div>
+                    <div class ="col-sm-4" >
+                        <p><?= $reg['regNumber'] ?></p> 
+                        <p><?= $reg['rate'] ?></p>
+                    </div>
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
