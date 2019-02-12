@@ -36,9 +36,9 @@ require_once "../controller/search_controller.php";
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <?= $coach->maxCapacity ?></p>
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
+        
             <div class="coach-addbasket">
-              
-              <button type="submit" form="cartForm" value="Add to basket">Add to basket</button>
+              <button type="submit"  value="Add to basket">Add to basket</button>
             </div>
         </div>
       </form>
