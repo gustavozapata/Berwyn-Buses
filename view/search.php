@@ -30,6 +30,7 @@ $coaches = getAllCoaches();
     <div class="coach-div">
       <form action="../view/checkout.php" method="post" id="cartForm">
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
+        <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
         <p><?= $coach->registrationNumber ?></p>
         <p><?= $coach->vehicleType ?></p>
         <div class="coach-status">
@@ -39,7 +40,7 @@ $coaches = getAllCoaches();
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
             <div class="coach-addbasket">
-              <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
+              
               <button type="submit" form="cartForm" value="Add to basket">Add to basket</button>
             </div>
         </div>
