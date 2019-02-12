@@ -8,46 +8,46 @@
     
     <title>Document</title>
 </head>
-<?php require_once"header.php";?>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8 ">
-            <div class="box-outline">
-                <h1>Your basket</h1>
-                <?php foreach($_SESSION["cart"] as $reg):?>
-
+    <div id="page">
+    <?php require_once"header.php";?>
+        <section class="main-section">
+            <div class="container">
                 <div class="row">
-                    <div class ="col-sm-4 basketInfo" id="image" >
-                        <img src="<?= $reg['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
+                    <div class="col-sm-8 ">
+                        <div class="box-outline">
+                            <h1>Your cart</h1>
+                            <hr/>
+                            <?php foreach($_SESSION["cart"] as $reg):?>
+                            <div class="row coach-info">
+                                <div class ="col-sm-4 basketInfo" id="image" >
+                                    <img src="<?= $reg['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
+                                </div>
+                                <div class ="col-sm-8 basketInfo" style="text-align:left;" >
+                                    <p> Registration Number: <?= $reg['regNumber'] ?></p> 
+                                    <p>Hourly rate: &#8356;<?= $reg['rate'] ?></p>
+                                </div>
+                            </div>
+                            <hr/>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                    <div class ="col-sm-4 basketInfo" >
-                        <p id="check"><?= $reg['regNumber'] ?></p> 
-                        <p><?= $reg['rate'] ?></p>
+                    <div class="col-sm-4 ">
+                        <div class="box-outline">
+                        <h2>Please sign in to complete booking</h2>
+                        </div>
                     </div>
-
                 </div>
-                <?php endforeach; ?>
             </div>
-        </div>
-        <div class="col-sm-4 ">
-            <div class="box-outline">
-            <h2>Please sign in to complete booking</h2>
-            </div>
-        </div>
+        </section>
     </div>
-</div>
-
-
-
-
 <?php require_once "../scripts/call_last.php";?>
 <script>
-var $text = $('p#check').text();
- if($text=='empty'){
-     $('div#image').replaceWith();
-     $('div.basketInfo').replaceWith('<p>Empty</p>');
- }
+var text = '<?= $_SESSION['cart'][0]['regNumber'] ?>';
+    if(text== 'empty' ){
+        $('div#image').replaceWith();
+        $('div.basketInfo').replaceWith('<div class="col-sm-12"><h3 style="text-align:center">Your cart is empty</h3></div>');
+    }
 </script>
 </body>
 </html>
