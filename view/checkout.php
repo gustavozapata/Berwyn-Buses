@@ -1,4 +1,4 @@
-<?php require_once "../controller/cart.php";?>
+<?php session_start()?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +16,11 @@
             <div class="box-outline">
                 <h1>Your basket</h1>
                 <?php foreach($_SESSION["cart"] as $reg):?>
-                <h2><?= $reg; ?></h2>
+                
+                <img class="img-fluid" src="<?= $reg['coachIMG'] ?>" alt="Image Coach"/>
+                    <p><?= $reg['regNumber'] ?></p>
+                    <p><?= $reg['rate'] ?></p>
+                
                 <?php endforeach; ?>
             </div>
         </div>

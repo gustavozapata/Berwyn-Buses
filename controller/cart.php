@@ -3,18 +3,27 @@ session_start();
 require_once "../model/database.php";
 
 if(isset($_POST['regNumber']) && isset($_SESSION['cart']) ){
-    $_SESSION['cart'][] = $_POST['regNumber'];
+    $_SESSION['cart'][] = array('regNumber' => $_POST['regNumber'],
+                                'vehicleType' => $_POST['vehicleType'],
+                                'coachIMG' => $_POST['coachIMG'],
+                                'rate' => '1');
 }
-if (!isset($_POST['regNumber'])&& !isset($_SESSION['cart'])){
-    $_SESSION['cart'][] = 'Empty';
-}
+
 if(!isset($_SESSION['cart']) && isset($_POST['regNumber'])){
-    $_SESSION['cart'][] = $_POST['regNumber'];
+    $_SESSION['cart'][] = array('regNumber' => $_POST['regNumber'],
+                                'vehicleType' => $_POST['vehicleType'],
+                                'coachIMG' => $_POST['coachIMG'],
+                                'rate' => '2');
+                                // 'rate' => $_POST['rate']);
 }
-if($_SESSION['cart'][0]=='Empty' && !isset($_POST['regNumber'])){}
 
 if(isset($_POST['regNumber']) && $_SESSION['cart'][0]=='Empty'){
-    $_SESSION['cart'][0] = $_POST['regNumber'];
+    $_SESSION['cart'][0] = array('regNumber' => $_POST['regNumber'],
+                                'vehicleType' => $_POST['vehicleType'],
+                                'coachIMG' => $_POST['coachIMG'],
+                                'rate' => '3');
 }
+
+
 
 ?>

@@ -13,18 +13,18 @@ var viewport = Math.max(
 //   });
 
 //##### BASKET #####
-var basketItems = $("#basketItems").text();
-if (!basketItems) {
-  $("#basketItems").css("visibility", "hidden");
-}
+// var basketItems = $("#basketItems").text();
+// if (!basketItems) {
+//   $("#basketItems").css("visibility", "hidden");
+// }
 
-$(".coach-addbasket button").on("click", function() {
-  $("#basketItems").css("visibility", "visible");
-  $("#basketItems").text(++basketItems);
-  $(this)
-    .parentsUntil(".coach-results")
-    .css("display", "none");
-});
+// $(".coach-addbasket button").on("click", function() {
+//   $("#basketItems").css("visibility", "visible");
+//   $("#basketItems").text(++basketItems);
+//   $(this)
+//     .parentsUntil(".coach-results")
+//     .css("display", "none");
+// });
 //MOVE BASKET ON MOBILE
 // window.addEventListener("resize", function(){
 //   if (window.matchMedia("(max-width: 466px)").matches) {

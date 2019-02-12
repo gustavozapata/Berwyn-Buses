@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../controller/cart.php";
 require_once "../controller/search_controller.php";
 
 ?>
@@ -25,7 +25,7 @@ require_once "../controller/search_controller.php";
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
-      <form action="../view/checkout.php" method="post" id="cartForm">
+      <form action="#" method="post" id="cartForm">
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p><?= $coach->registrationNumber ?></p>
         <p><?= $coach->vehicleType ?></p>
@@ -38,9 +38,9 @@ require_once "../controller/search_controller.php";
         
             <div class="coach-addbasket">
               <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
-              <!-- <input type="hidden" id="vehicleType" name="vehicleType" value="<?= $coach->vehicleType ?>">
+              <input type="hidden" id="vehicleType" name="vehicleType" value="<?= $coach->vehicleType ?>">
               <input type="hidden" id="coachIMG" name="coachIMG" value="../content/images/<?= $coach->image ?>">
-              <input type="hidden" id="rate" name="rate" value="<?= $coach->hourlyRate ?>"> -->
+              <input type="hidden" id="rate" name="rate" value="<?= $coach->hourlyRate ?>">
               <button type="submit"  value="Add to basket">Add to basket</button>
             </div>
         </div>
