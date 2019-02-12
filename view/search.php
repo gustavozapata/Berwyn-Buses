@@ -26,7 +26,8 @@ require_once "../controller/search_controller.php";
         <p><?= $coach->vehicleType ?></p>
         <div class="coach-status">
             <div class="coach-addbasket">
-              <button>Add to basket</button>
+              <button class="btn-add-basket">Add to basket</button>
+              <button class="btn-remove-basket">Remove</button>
             </div>
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>

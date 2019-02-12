@@ -34,18 +34,21 @@
   border-radius: 20px;
   /* box-shadow: 0 0 5px rgb(200, 200, 200); */
   cursor: pointer;
-  transition: all 0.3s;
+  transition: border 0.3s;
 }
 .coach-div-selected {
   background-color: rgb(219, 237, 255);
   border-color: rgb(33, 144, 255);
 }
 .coach-in-basket {
-  background-color: rgb(255, 241, 219);
-  border-color: rgb(255, 166, 33);
+  background-color: rgb(234, 232, 255);
+  border-color: rgb(69, 75, 243);
 }
 .coach-div:hover {
   border-color: rgb(33, 144, 255);
+}
+.coach-in-basket:hover {
+  border-color: rgb(69, 75, 243);
 }
 .coach-div p {
   font-weight: 500;
@@ -61,10 +64,12 @@
   height: 100px;
   text-align: left;
 }
-.coach-div-selected .coach-addbasket {
+.coach-div-selected .coach-addbasket,
+.coach-in-basket .coach-addbasket {
   display: block;
 }
-.coach-div-selected .coach-info {
+.coach-div-selected .coach-info,
+.coach-in-basket .coach-info {
   display: none;
 }
 .coach-addbasket {
@@ -85,6 +90,12 @@
 }
 .coach-addbasket button:hover {
   transform: scale(1.02);
+}
+.coach-in-basket button {
+  background-color: rgb(69, 75, 243);
+}
+.btn-remove-basket {
+  display: none;
 }
 .coach-status img {
   width: 20px;
