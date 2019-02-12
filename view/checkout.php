@@ -16,11 +16,11 @@
             <div class="box-outline">
                 <h1>Your basket</h1>
                 <?php foreach($_SESSION["cart"] as $reg):?>
-                
+                <div class="basketInfo">
                 <img class="img-fluid" src="<?= $reg['coachIMG'] ?>" alt="Image Coach"/>
-                    <p><?= $reg['regNumber'] ?></p>
+                    <p id="check"><?= $reg['regNumber'] ?></p>
                     <p><?= $reg['rate'] ?></p>
-                
+                </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -35,6 +35,12 @@
 
 
 
-<?php require_once"../scripts/call_last.php";?>
+<?php require_once "../scripts/call_last.php";?>
+<script>
+var $text = $('p#check').text();
+ if($text=='empty'){
+     $('div.basketInfo').replaceWith('<p>Empty</p>');
+ }
+</script>
 </body>
 </html>
