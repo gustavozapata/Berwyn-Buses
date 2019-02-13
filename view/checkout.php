@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="page">
-    <?php require_once"header.php";?>
+    <?php require_once "header.php";?>
         <section class="main-section">
             <div class="container">
                 <div class="row">
