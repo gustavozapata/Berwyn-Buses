@@ -43,5 +43,6 @@ require_once "../controller/search_controller.php";
 
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
+    <script src="../scripts/search.js"></script>
 </body>
 </html>

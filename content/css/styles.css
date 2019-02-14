@@ -173,11 +173,20 @@ input:focus {
 .book-coach form input[type="checkbox"] {
   width: 25px;
   height: 25px;
-  margin: 30px 5px;
+  margin: 20px 5px 30px 5px;
   vertical-align: middle;
 }
 .book-coach form label {
   font-weight: 500;
+}
+#overcapacity {
+  /* position: absolute; */
+  margin: 15px 0 0 0;
+  opacity: 0;
+  background-color: #ffdd00;
+  font-weight: 600;
+  font-size: 0.7em;
+  transition: opacity 0.4s;
 }
 .book-coach form input[type="submit"] {
   margin: 5px auto 25px auto;
@@ -193,7 +202,6 @@ input:focus {
   border: 2px solid rgb(112, 112, 112);
   color: white;
 }
-
 
 /* FOOTER */
 footer {
@@ -230,8 +238,6 @@ footer p a {
   margin: 5px 10px;
   vertical-align: middle;
 }
-
-
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {

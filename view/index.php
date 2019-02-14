@@ -20,7 +20,7 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input type="date" name="depart" />
+                <input type="date" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
@@ -28,8 +28,10 @@
               </span>
               <span>
                 <p>Passengers</p>
-                <input name="passengers" /> </span
-              ><br />
+                <input name="passengers" required/> </span
+              >
+              <span id="overcapacity">You might need to book more than one coach</span>
+              <br />
               <input
                 id="requireDriver"
                 type="checkbox"
