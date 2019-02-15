@@ -1,5 +1,7 @@
 <?php
+
 require_once "../controller/search_controller.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,9 +12,8 @@ require_once "../controller/search_controller.php";
 </head>
 <body>
     <div id="page">
-      <?php
-      require_once "header.php";
-      ?>
+      <?php require_once "header.php"; ?>
+
 
     <section class="main-section">
     <div class="search-filter">
