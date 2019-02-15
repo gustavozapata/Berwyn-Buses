@@ -30,7 +30,7 @@
                 <p>Passengers</p>
                 <input name="passengers" required/> </span
               >
-              <span id="overcapacity">You might need to book more than one coach</span>
+              <span id="warning">Status</span>
               <br />
               <input
                 id="requireDriver"

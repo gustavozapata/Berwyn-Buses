@@ -179,11 +179,12 @@ input:focus {
 .book-coach form label {
   font-weight: 500;
 }
-#overcapacity {
+#warning {
   /* position: absolute; */
   margin: 15px 0 0 0;
+  padding: 1px 10px;
+  border-radius: 10px;
   opacity: 0;
-  background-color: #ffdd00;
   font-weight: 600;
   font-size: 0.7em;
   transition: opacity 0.4s;

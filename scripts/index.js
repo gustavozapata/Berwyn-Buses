@@ -25,9 +25,22 @@ function isBasketEmpty() {
 
 //##### BOOK COACH FORM #####
 $("input[name='passengers']").on("keyup", function() {
-  if ($(this).val() > 73) {
-    $("#overcapacity").css("opacity", "1");
+  var numPassengers = $(this).val();
+  if (numPassengers > 73 && numPassengers < 300) {
+    $("#warning")
+      .text("You might need to book more than one coach")
+      .css({
+        opacity: 1,
+        backgroundColor: "#ffdd00"
+      });
+  } else if (numPassengers > 500) {
+    $("#warning")
+      .text("Sorry max. 500 passengers")
+      .css({
+        opacity: 1,
+        backgroundColor: "#FB3F3F"
+      });
   } else {
-    $("#overcapacity").css("opacity", "0");
+    $("#warning").css("opacity", "0");
   }
 });
