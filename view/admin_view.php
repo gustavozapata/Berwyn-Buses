@@ -13,9 +13,14 @@ require_once "../controller/admin_controller.php";
   </head>
   <body>
     <div id="page">
-      <?php
-      require_once "header.php";
-      ?>
+      <header>
+        <div class="logo">
+          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
+          <span id="movilBasket"></span>
+          <div id="line1"></div>
+          <div id="line2"></div>
+        </div>
+      </header>
       <section class="main-section">
         <article class="book-coach">
           <?php if(!$isLogged): ?>

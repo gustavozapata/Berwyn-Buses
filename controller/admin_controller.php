@@ -11,8 +11,10 @@ if(isset($_REQUEST["username"])) {
     $username = $_REQUEST["username"];
     $password = $_REQUEST["password"];
     $admin = checkAdminLogin($username, $password);
-    if( $admin[0]->username == $username && $admin[0]->password == $password){
-      $isLogged = true;
+    if($admin){
+      if($admin[0]->username == $username && $admin[0]->password == $password){
+        $isLogged = true;
+      }
     }
   }
 
