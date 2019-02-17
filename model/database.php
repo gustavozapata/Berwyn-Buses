@@ -15,17 +15,17 @@ function getAllCoaches(){
     // $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-    // foreach($results as $result) {
-    //     $statement = $pdo->prepare("SELECT * FROM VehicleType WHERE id = :id");
-    //     $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
-    //     $statement->execute();
-    //     $queryResult = $statement->fetch(PDO::FETCH_OBJ);
-    //     $result->vehicleType = $queryResult->type; 
-    //     $result->maxCapacity = $queryResult->maxCapacity; 
-    //     $result->hourlyRate = $queryResult->hourlyRate; 
+    /*foreach($results as $result) {
+        $statement = $pdo->prepare("SELECT * FROM VehicleType WHERE id = :id");
+        $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
+        $statement->execute();
+        $queryResult = $statement->fetch(PDO::FETCH_OBJ);
+        $result->vehicleType = $queryResult->type; 
+        $result->maxCapacity = $queryResult->maxCapacity; 
+        $result->hourlyRate = $queryResult->hourlyRate; 
 
-        // $queryResult = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
-    // }
+        $queryResult = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+    }*/
     return $results;
 }
 function getAllVehicleTypes(){
@@ -33,6 +33,15 @@ function getAllVehicleTypes(){
     $statement = $pdo->prepare("SELECT * FROM VehicleType");
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+    return $results;
+}
+
+function checkAdminLogin($password){
+    global $pdo;
+    $statement = $pdo->prepare("SELECT * FROM admin WHERE password = :password");
+    $statement->bindValue(":password", $password, PDO::PARAM_INT);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_CLASS, "Admin");
     return $results;
 }
 ?>

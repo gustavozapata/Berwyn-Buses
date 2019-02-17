@@ -1,0 +1,30 @@
+#line1 {
+  background-color: #bbe3f9;
+}
+#line2 {
+  background-color: #8cb6ce;
+}
+.book-coach form span p {
+  /* margin: 0 auto; */
+  text-align: center;
+}
+.book-coach form input {
+  width: 200px;
+  text-align: left;
+  font-size: 1.2em;
+  color: black;
+  padding-left: 10px;
+}
+.book-coach form input[type="submit"] {
+  width: 140px;
+  margin: 50px auto;
+  border-color: #8cb6ce;
+  text-align: center;
+}
+.book-coach form input[type="submit"]:hover {
+  background-color: #8cb6ce;
+}
+#loginStatus {
+  color: rgb(255, 22, 80);
+  font-weight: 500;
+}
