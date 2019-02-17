@@ -1,8 +1,6 @@
 <?php 
 
-// session_start();
-
-require_once "../controller/admin_controller.php";
+require_once "../controller/customer_controller.php";
 
 ?>
 
@@ -10,41 +8,28 @@ require_once "../controller/admin_controller.php";
 <html lang="en">
   <head>
     <?php require_once "head.php"; ?>
-    <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
-    <title>Admin Page</title>
+    <title>User Page</title>
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <?php if($isLogged): ?>
-        <nav>
-          <ul>
-            <li><a href="../view/admin_view.php">Logout</a></li>
-          </ul>
-        </nav>
-        <?php endif; ?>
-      </header>
+      <?php
+      require_once "header.php";
+      ?>
       <section class="main-section">
         <article class="book-coach">
           <?php if(!$isLogged): ?>
           <div class="book-coach-header">
-            <h2>Admin Login</h2>
-            <?php if(isset($_REQUEST["username"])): ?>
+            <h2>User Login</h2>
+            <?php if(isset($_REQUEST["email"])): ?>
             <p id="loginStatus">Username or password incorrect</p>
             <?php endif; ?>
           </div>
           <div>
-            <form action="../controller/admin_controller.php">
+            <form action="../controller/customer_controller.php">
               <span>
-                <p>Username</p>
-                <input type="name" name="username" required/>
+                <p>Email</p>
+                <input type="name" name="email" required/>
               </span><br>
               <span>
                 <p>Password</p>
@@ -56,8 +41,7 @@ require_once "../controller/admin_controller.php";
           </div>
           <?php else: ?>
           <div class="book-coach-header">
-            <h2>Coaches</h2>
-            <h3>Welcome <?= $admin[0]->givenName ?></h3>
+            <h2>Welcome <?= $user[0]->givenName ?></h2>
           </div>
           <div>
             <form action="../controller/search_controller.php">
@@ -74,6 +58,11 @@ require_once "../controller/admin_controller.php";
     </div>
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
-    <script src="../scripts/admin.js"></script>
+    <script>
+    var logged = "<?php if($isLogged) echo true; else echo false; ?>";
+    if(logged){
+      $("header nav ul li").eq(2).find("a").text("Logout");
+    }
+    </script>
   </body>
 </html>

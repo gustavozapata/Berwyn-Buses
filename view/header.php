@@ -9,7 +9,7 @@
           <ul>
             <li><a href="../view/index.php">Home</a></li>
             <li><a href="../view/about.php">About Us</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="../view/customer_view.php">Login</a></li>
             <li id="liBasket">
               <a href="checkout.html"
                 ><img id="basketImg" src="../content/images/basket.png" /><span

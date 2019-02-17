@@ -17,8 +17,18 @@ require_once "../controller/search_controller.php";
 
     <section class="main-section">
     <div class="search-filter">
-      <h3>Refine Search</h3>
-    </div>
+      <h3>Summary</h3>
+      <div>
+        <p>Passengers<br><span><?= $_REQUEST["passengers"] ?></span></p>
+        <p>Passengers left<br><span id="passengersLeft"><?= $_REQUEST["passengers"] ?></span></p>
+      </div>
+      <h3>Filter Search</h3>
+      <div>
+        <p>Passengers<br><span id="outputPassengers"><?= $_REQUEST["passengers"] ?></span></p>
+        <input type="range" min="5" max="500" value="<?= $_REQUEST["passengers"] ?>" id="filterPassengers">
+      </div>
+      <button>Apply</button>
+    </div><!-- search-filter -->
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
@@ -32,7 +42,7 @@ require_once "../controller/search_controller.php";
             </div>
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
-              <p><img src="../content/images/passengers.png" /> Max. Passengers: <?= $coach->maxCapacity ?></p>
+              <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
         </div>

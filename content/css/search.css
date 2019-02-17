@@ -16,6 +16,45 @@
 .search-filter h3 {
   text-align: center;
 }
+.search-filter div {
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 10px;
+  width: 92%;
+  margin: 10px auto;
+  height: 200px;
+  text-align: center;
+}
+.search-filter div p {
+  color: rgb(33, 144, 255);
+  font-weight: 500;
+  /* text-align: left; */
+}
+.search-filter div p span {
+  color: black;
+}
+.search-filter button {
+  display: block;
+  font-size: 1em;
+  margin: 40px auto;
+  padding: 5px 20px;
+  border-radius: 20px;
+  border: 1px solid rgb(33, 144, 255);
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.4s;
+}
+.search-filter button:hover {
+  background-color: rgb(33, 144, 255);
+  color: white;
+  border-color: black;
+}
+.coverPassengers {
+  padding: 2px 5px;
+  background-color: #02cb31;
+  border: 1px solid black;
+  border-radius: 25px;
+  color: white !important;
+}
 .coach-results {
   flex-basis: 77%;
   border: 1px solid rgb(200, 200, 200);

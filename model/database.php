@@ -9,10 +9,10 @@ $password = "webdevdatabase";
 // $password = "";
 // $host = "localhost";
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-function getAllCoaches(){
+function getAllCoaches($passengers){
     global $pdo;
-    $statement = $pdo->prepare("SELECT * FROM view_coach_type WHERE maxCapacity > 45");
-    // $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+    $statement = $pdo->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+    $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
     /*foreach($results as $result) {
@@ -36,13 +36,13 @@ function getAllVehicleTypes(){
     return $results;
 }
 
-function checkAdminLogin($username, $password){
+function checkLoginDetails($username, $password, $type){
     global $pdo;
-    $statement = $pdo->prepare("SELECT * FROM Admin WHERE username = :username AND password = :password");
+    $statement = $pdo->prepare("SELECT * FROM $type WHERE username = :username AND password = :password");
     $statement->bindValue(":username", $username, PDO::PARAM_INT);
     $statement->bindValue(":password", $password);
     $statement->execute();
-    $results = $statement->fetchAll(PDO::FETCH_CLASS, "Admin");
+    $results = $statement->fetchAll(PDO::FETCH_CLASS, $type);
     return $results;
 }
 ?>

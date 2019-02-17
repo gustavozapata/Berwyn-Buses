@@ -7,11 +7,26 @@ $(".btn-remove-basket").on("click", function() {
   updateBasket($(this), "add");
 });
 
+var currentPassengers = $("#passengersLeft").text();
 function updateBasket(button, action) {
+  var thisCoachPassengers = button
+    .parentsUntil(".coach-results")
+    .find(".coachPassengers")
+    .text();
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
+    $("#passengersLeft")
+      .text(currentPassengers)
+      .removeClass("coverPassengers");
   } else {
     $("#basketItems").text(++basketItems);
+    $("#passengersLeft")
+      .text(
+        thisCoachPassengers > $("#passengersLeft").text()
+          ? 0
+          : $("#passengersLeft").text() - thisCoachPassengers
+      )
+      .addClass("coverPassengers");
   }
   isBasketEmpty();
   button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
@@ -42,4 +57,10 @@ $(".coach-div").on("click", function() {
   // $(this)
   //   .find(".coach-info")
   //   .css("display", "none");
+});
+
+//##### FILTER SEARCH #####
+$("#filterPassengers").on("input", function() {
+  $(this).attr("value", $(this).val());
+  $("#outputPassengers").text($(this).val());
 });
