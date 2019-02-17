@@ -206,15 +206,30 @@ input:focus {
 
 /* FOOTER */
 footer {
-  margin-bottom: 50px;
+  padding: 1px;
+  /* margin-bottom: 50px; */
+  /* background-color: #eef7fc; */
+  background-color: rgb(245, 245, 245);
 }
 footer p {
   text-align: center;
+  margin-bottom: 30px;
 }
 footer p a {
   color: rgb(50, 50, 50);
   font-weight: 700;
-  font-size: 1.1em;
+  font-size: 0.9em;
+}
+.footer-links {
+  margin: 40px auto 50px auto;
+  text-align: center;
+}
+.footer-links a {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: black;
+  margin: 35px;
+  /* text-decoration: none; */
 }
 /* CONTACT */
 .contact {
