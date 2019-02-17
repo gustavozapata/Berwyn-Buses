@@ -10,8 +10,8 @@ if(isset($_REQUEST["username"])) {
     global $pdo;
     $username = $_REQUEST["username"];
     $password = $_REQUEST["password"];
-    $admin = checkAdminLogin($password);
-    if($admin[0]->password == $password){
+    $admin = checkAdminLogin($username, $password);
+    if( $admin[0]->username == $username && $admin[0]->password == $password){
       $isLogged = true;
     }
   }
