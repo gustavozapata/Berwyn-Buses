@@ -20,7 +20,7 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input id="departureDate" type="date" name="depart"/>
+                <input id="departureDate" type="date" onchange="setReturnMin()" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
@@ -28,8 +28,8 @@
               </span>
               <span>
                 <p>Passengers</p>
-                <input type="number" name="passengers" maxlength="3" required/> </span
-              >
+                <input id="passengers" name="passengers" type="number" maxlength="3" required/>
+              </span>
               <span id="warning">Status</span>
               <br />
               <input
@@ -49,7 +49,7 @@
 
     </div>
     <!-- PAGE -->
-    <script src="../scripts/dates.js"></script>
+    <script src="../scripts/bookingSearch.js"></script>
     <script src="../scripts/index.js"></script>
   </body>
 </html>
