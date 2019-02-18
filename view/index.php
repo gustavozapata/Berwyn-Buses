@@ -20,15 +20,15 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input type="date" name="depart"/>
+                <input id="departureDate" type="date" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
-                <input type="date" name="return" />
+                <input id="returnDate" type="date" name="return" />
               </span>
               <span>
                 <p>Passengers</p>
-                <input name="passengers" required/> </span
+                <input type="number" name="passengers" maxlength="3" required/> </span
               >
               <span id="warning">Status</span>
               <br />
@@ -49,6 +49,7 @@
 
     </div>
     <!-- PAGE -->
+    <script src="../scripts/dates.js"></script>
     <script src="../scripts/index.js"></script>
   </body>
 </html>
