@@ -22,10 +22,12 @@ require_once "../controller/search_controller.php";
         <p>Passengers<br><span><?= $_REQUEST["passengers"] ?></span></p>
         <p>Passengers left<br><span id="passengersLeft"><?= $_REQUEST["passengers"] ?></span></p>
       </div>
-      <h3>Filter Search</h3>
+      <h3 class="filterTitle">Filter Search</h3>
       <div>
         <p>Passengers<br><span id="outputPassengers"><?= $_REQUEST["passengers"] ?></span></p>
         <input type="range" min="5" max="500" value="<?= $_REQUEST["passengers"] ?>" id="filterPassengers">
+        <p>Price<br><span id="outputPrice">55</span></p>
+        <input type="range" min="55" max="150" value="55" id="filterPrice">
       </div>
       <button>Apply</button>
     </div><!-- search-filter -->

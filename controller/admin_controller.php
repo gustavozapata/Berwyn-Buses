@@ -1,17 +1,19 @@
 <?php
 
+session_start();
+
 require_once "../model/admin.php";
 require_once "../model/database.php";
 
-$isLogged = false;
+$_SESSION["isLogged"] = false;
 
 if(isset($_REQUEST["username"])) {
-    $username = $_REQUEST["username"];
+    $_SESSION["username"] = $_REQUEST["username"];
     $password = $_REQUEST["password"];
-    $admin = checkLoginDetails($username, $password, "Admin");
+    $admin = checkLoginDetails($_SESSION["username"], $password, "Admin");
     if($admin){
-      if($admin[0]->username == $username && $admin[0]->password == $password){
-        $isLogged = true;
+      if($admin[0]->username == $_SESSION["username"] && $admin[0]->password == $password){
+        $_SESSION["isLogged"]  = true;
       }
     }
   }

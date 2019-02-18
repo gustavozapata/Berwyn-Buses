@@ -23,17 +23,18 @@ require_once "../controller/admin_controller.php";
           <div id="line1"></div>
           <div id="line2"></div>
         </div>
-        <?php if($isLogged): ?>
+        <?php if($_SESSION["isLogged"]): ?>
         <nav>
           <ul>
             <li><a href="../view/admin_view.php">Logout</a></li>
+            <li><a href="../view/admin_view.php"><?= $_SESSION["username"]?></a></li>
           </ul>
         </nav>
         <?php endif; ?>
       </header>
       <section class="main-section">
         <article class="book-coach">
-          <?php if(!$isLogged): ?>
+          <?php if(!$_SESSION["isLogged"]): ?>
           <div class="book-coach-header">
             <h2>Admin Login</h2>
             <?php if(isset($_REQUEST["username"])): ?>
@@ -41,7 +42,7 @@ require_once "../controller/admin_controller.php";
             <?php endif; ?>
           </div>
           <div>
-            <form action="../controller/admin_controller.php">
+            <form action="../controller/admin_controller.php" method="post">
               <span>
                 <p>Username</p>
                 <input type="name" name="username" required/>
@@ -57,20 +58,17 @@ require_once "../controller/admin_controller.php";
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Coaches</h2>
-            <h3>Welcome <?= $admin[0]->givenName ?></h3>
+            <div class="admin-buttons">
+              <a href="../view/addcoach.php">Add coach</a>
+              <a href="#">Edit coach</a>
+            </div>
 
-            <!-- UPLOAD FILE TO SERVER -->
-            <form action="../view/submit.php" id="formulario">
-              <input style="width: 300px; border: none" type="file" name="file" id="file"><br>
-              <button type="submit">Upload</button>
-            </form>
-            <div id="progress"></div>
-            <!-- UPLOAD FILE TO SERVER -->
+            <h2>Promotions</h2>
+            <div class="admin-buttons">
+              <a href="#">Add promotion</a>
+              <a href="#">Edit promotion</a>
+            </div>
 
-          </div>
-          <div>
-            <form action="../controller/search_controller.php">
-            </form>
           </div>
           <?php endif ?>
         </article>
@@ -84,29 +82,5 @@ require_once "../controller/admin_controller.php";
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
-    
-    <!-- UPLOAD FILE TO SERVER -->
-    <script>
-      var forma = document.getElementById("formulario");
-      var elfile = document.getElementById("file");
-
-      var request = new XMLHttpRequest();
-
-      request.upload.addEventListener("progress", function(e){
-        document.querySelector("#progress").innerHTML = Math.round(e.loaded/e.total * 100) + "%";
-      }, false);
-
-      forma.addEventListener("submit", function(e){
-        e.preventDefault();
-
-        var formData = new FormData();
-        formData.append("file", elfile.files[0]);
-
-        request.open("post", "../view/submit.php");
-        request.send(formData);
-
-      }, false);
-    </script>
-    <!-- UPLOAD FILE TO SERVER -->
   </body>
 </html>

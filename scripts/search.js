@@ -64,3 +64,7 @@ $("#filterPassengers").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPassengers").text($(this).val());
 });
+$("#filterPrice").on("input", function() {
+  $(this).attr("value", $(this).val());
+  $("#outputPrice").text($(this).val());
+});

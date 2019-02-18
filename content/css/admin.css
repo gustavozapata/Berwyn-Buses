@@ -4,6 +4,9 @@
 #line2 {
   background-color: #8cb6ce;
 }
+.book-coach {
+  background-color: #eef7fc;
+}
 .book-coach form input[type="submit"] {
   width: 140px;
   margin: 50px auto;
@@ -12,4 +15,24 @@
 }
 .book-coach form input[type="submit"]:hover {
   background-color: #8cb6ce;
+}
+.admin-buttons a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 25px 10px;
+  padding: 5px 0;
+  border: 2px solid #8cb6ce;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 165px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #687ab4;
+  border-radius: 30px;
+}
+.admin-buttons a:hover {
+  background-color: #8cb6ce;
+  border: 2px solid rgb(112, 112, 112);
+  color: white;
 }

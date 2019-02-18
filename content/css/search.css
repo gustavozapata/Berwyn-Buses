@@ -48,6 +48,9 @@
   color: white;
   border-color: black;
 }
+.filterTitle {
+  margin-top: 80px;
+}
 .coverPassengers {
   padding: 2px 5px;
   background-color: #02cb31;
