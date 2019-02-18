@@ -27,7 +27,7 @@ session_start();
         <nav>
           <ul>
             <li><a href="../controller/admin_logout.php">Logout</a></li>
-            <li><a href="admin_view.php"><?= $_SESSION["username"] ?></a></li>
+            <li><a href="../view/admin_view.php"><?= $_SESSION["username"]?></a></li>
           </ul>
         </nav>
         <?php endif; ?>

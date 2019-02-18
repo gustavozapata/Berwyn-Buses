@@ -26,7 +26,7 @@ require_once "../controller/admin_controller.php";
         <?php if($_SESSION["isLogged"]): ?>
         <nav>
           <ul>
-            <li><a href="../view/admin_view.php">Logout</a></li>
+            <li><a href="../controller/admin_logout.php">Logout</a></li>
             <li><a href="../view/admin_view.php"><?= $_SESSION["username"]?></a></li>
           </ul>
         </nav>
