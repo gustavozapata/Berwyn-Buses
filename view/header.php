@@ -11,7 +11,7 @@
             <li><a href="../view/aboutUs.php">About Us</a></li>
             <li><a href="#">Login</a></li>
             <li id="liBasket">
-              <a href="checkout.php"
+              <a href="../view/checkout.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
                   id="basketItems"
                   ></span
