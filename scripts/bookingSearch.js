@@ -3,33 +3,32 @@
  * 
  */
 
- $(document).ready(function()
- {
-	var todaysDate = new Date();
+$(document).ready(function () {
+	var dateFormat = "dd/mm/yy",
+		from = $("#from").datepicker({
+			dateFormat: 'dd/mm/yy',
+			minDate: 0,
+			format: 'LT'
+		})
+		.on("change", function () {
+			to.datepicker("option", "minDate", getDate(this));
+		}),
+		to = $("#to").datepicker({
+			dateFormat: 'dd/mm/yy',
+			minDate: 0,
+			format: 'LT'
+		})
+		.on("change", function () {
+			from.datepicker("option", "maxDate", getDate(this));
+		});
 
-	var month = todaysDate.getMonth() +1;
-	var day = todaysDate.getDate();
-	var year = todaysDate.getFullYear();
-
-	var datefield = document.createElement("input")
-	datefield.setAttribute("type", "date")
-	$('#departureDate').attr('type', 'text');
-	$('#returnDate').attr('type', 'text')
-
-	$('#departureDate').datepicker({
-		dateFormat: 'dd/mm/yy',
-		minDate: 0,
-		format: 'LT'
-	});
-	$('#returnDate').datepicker({
-		dateFormat: 'dd/mm/yy',
-		minDate: 0,
-		format: 'LT'
-	});
+	function getDate(element) {
+		var date;
+		try {
+			date = $.datepicker.parseDate(dateFormat, element.value);
+		} catch (error) {
+			date = null;
+		}
+		return date;
+	}
 });
-
-function setReturnMin()
-{
-	returnDateMin = $('#departureDate').val();
-	$('#returnDate').attr('min', returnDateMin);
-}

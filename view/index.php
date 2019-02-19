@@ -20,11 +20,11 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input id="departureDate" type="date" onchange="setReturnMin()" name="depart"/>
+                <input id="from" type="text" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
-                <input id="returnDate" type="date" name="return" />
+                <input id="to" type="text" name="return" />
               </span>
               <span>
                 <p>Passengers</p>
