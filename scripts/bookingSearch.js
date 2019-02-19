@@ -14,8 +14,8 @@
 	var datefield = document.createElement("input")
 	datefield.setAttribute("type", "date")
 
-	if (datefield.type != "date")
-	{
+	//if (datefield.type != "date")
+	//{
 		$('#departureDate').attr('type', 'text');
 		$('#returnDate').attr('type', 'text')
 
@@ -29,21 +29,21 @@
 			minDate: 0,
 			format: 'LT'
 		});
-	}
-	else if (datefield.type == 'date')
-	{
-		if (day <10){
-			day = '0' + day.toString();
-		}
-		if (month <10){
-			month = '0' + month.toString();
-		}
+	//}
+	// else if (datefield.type == 'date')
+	// {
+	// 	if (day <10){
+	// 		day = '0' + day.toString();
+	// 	}
+	// 	if (month <10){
+	// 		month = '0' + month.toString();
+	// 	}
 
-		var maxDate = year + '-' + month + '-' + day;
-		$('#departureDate').val(maxDate);
-		$('#departureDate').attr('min', maxDate);
-		$('#returnDate').attr('min', maxDate);
-	}
+	// 	var maxDate = year + '-' + month + '-' + day;
+	// 	$('#departureDate').val(maxDate);
+	// 	$('#departureDate').attr('min', maxDate);
+	// 	$('#returnDate').attr('min', maxDate);
+	// }
 });
 
 function setReturnMin()
