@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php require_once "../controller/cart.php"?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,14 +18,14 @@
                         <div class="box-outline">
                             <h1>Your cart</h1>
                             <hr/>
-                            <?php foreach($_SESSION["cart"] as $reg):?>
+                            <?php foreach($_SESSION["cart"] as $vehicle):?>
                             <div class="row coach-info">
                                 <div class ="col-sm-4 basketInfo" id="image" >
-                                    <img src="<?= $reg['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
+                                    <img src="<?= $vehicle['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
                                 </div>
                                 <div class ="col-sm-8 basketInfo" style="text-align:left;" >
-                                    <p> Registration Number: <?= $reg['regNumber'] ?></p> 
-                                    <p>Hourly rate: &#8356;<?= $reg['rate'] ?></p>
+                                    <p> Registration Number: <?= $vehicle['regNumber'] ?></p> 
+                                    <p>Hourly rate: &#8356;<?= $vehicle['rate'] ?></p>
                                 </div>
                             </div>
                             <hr/>
@@ -42,12 +42,6 @@
         </section>
     </div>
 <?php require_once "../scripts/call_last.php";?>
-<script>
-var text = '<?= $_SESSION['cart'][0]['regNumber'] ?>';
-    if(text== 'empty' ){
-        $('div#image').replaceWith();
-        $('div.basketInfo').replaceWith('<div class="col-sm-12"><h3 style="text-align:center">Your cart is empty</h3></div>');
-    }
-</script>
+<?php require_once "../scripts/checkout_script.php";?>
 </body>
 </html>
