@@ -13,37 +13,19 @@
 
 	var datefield = document.createElement("input")
 	datefield.setAttribute("type", "date")
+	$('#departureDate').attr('type', 'text');
+	$('#returnDate').attr('type', 'text')
 
-	if (datefield.type != "date")
-	{
-		$('#departureDate').attr('type', 'text');
-		$('#returnDate').attr('type', 'text')
-
-		$('#departureDate').datepicker({
-			dateFormat: 'dd/mm/yy',
-			minDate: 0,
-			format: 'LT'
-		});
-		$('#returnDate').datepicker({
-			dateFormat: 'dd/mm/yy',
-			minDate: 0,
-			format: 'LT'
-		});
-	}
-	else if (datefield.type == 'date')
-	{
-		if (day <10){
-			day = '0' + day.toString();
-		}
-		if (month <10){
-			month = '0' + month.toString();
-		}
-
-		var maxDate = year + '-' + month + '-' + day;
-		$('#departureDate').val(maxDate);
-		$('#departureDate').attr('min', maxDate);
-		$('#returnDate').attr('min', maxDate);
-	}
+	$('#departureDate').datepicker({
+		dateFormat: 'dd/mm/yy',
+		minDate: 0,
+		format: 'LT'
+	});
+	$('#returnDate').datepicker({
+		dateFormat: 'dd/mm/yy',
+		minDate: 0,
+		format: 'LT'
+	});
 });
 
 function setReturnMin()
