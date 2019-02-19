@@ -6,13 +6,13 @@ require_once "../controller/search_controller.php";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once "head.php"; ?>
+    <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <title>Search Result</title>
 </head>
 <body>
     <div id="page">
-      <?php require_once "header.php"; ?>
+      <?php require_once "../includes/header.php"; ?>
 
 
     <section class="main-section">
@@ -52,7 +52,7 @@ require_once "../controller/search_controller.php";
     <?php endforeach ?>
     </div>
     </section>
-    <?php require_once "../view/footer.php"; ?>
+    <?php require_once "../includes/footer.php"; ?>
 
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>

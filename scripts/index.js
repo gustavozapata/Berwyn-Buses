@@ -44,3 +44,13 @@ $("input[name='passengers']").on("keyup", function() {
     $("#warning").css("opacity", "0");
   }
 });
+
+$(".contact").on("click", function(){
+  $(".faded-background").fadeIn();
+  $(".modal").fadeIn();
+});
+
+$(".faded-background").on("click", function(){
+  $(".faded-background").fadeOut();
+  $(".modal").fadeOut();
+});
