@@ -43,5 +43,4 @@ $("input[name='passengers']").on("keyup", function() {
   } else {
     $("#warning").css("opacity", "0");
   }
->>>>>>> master
 });

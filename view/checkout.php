@@ -41,7 +41,7 @@
             </div>
         </section>
     </div>
-<?php require_once "../scripts/call_last.php";?>
+    <?php require_once "../scripts/call_last.php";?>
 <script>
 var text = '<?= $_SESSION['cart'][0]['regNumber'] ?>';
     if(text== 'empty' ){

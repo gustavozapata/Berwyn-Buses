@@ -1,7 +1,4 @@
 
-<?php 
-require_once "../controller/cart.php";
-require_once "../controller/search_controller.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +46,9 @@ require_once "../controller/search_controller.php"; ?>
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
-        
+            
             <div class="coach-addbasket">
+            <?php //this is a comment ?>
               <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
               <input type="hidden" id="vehicleType" name="vehicleType" value="<?= $coach->vehicleType ?>">
               <input type="hidden" id="coachIMG" name="coachIMG" value="../content/images/<?= $coach->image ?>">
