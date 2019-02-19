@@ -1,4 +1,7 @@
-<?php require_once "../controller/search_controller.php"; ?>
+
+<?php 
+require_once "../controller/cart.php";
+require_once "../controller/search_controller.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +40,10 @@
         <p><?= $coach->registrationNumber ?></p>
         <p><?= $coach->vehicleType ?></p>
         <div class="coach-status">
-            <div class="coach-addbasket">
+            <!-- <div class="coach-addbasket">
               <button class="btn-add-basket">Add to basket</button>
               <button class="btn-remove-basket">Remove</button>
-            </div>
+            </div> -->
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
