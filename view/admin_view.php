@@ -75,7 +75,7 @@ require_once "../controller/admin_controller.php";
       </section>
 
     <?php
-      require_once "footer.php";
+      require_once "../includes/footer.php";
     ?>
 
     </div>
