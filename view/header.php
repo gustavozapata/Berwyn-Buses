@@ -7,9 +7,9 @@
         </div>
         <nav>
           <ul>
-            <li><a class="active" href="../view/index.php">Home</a></li>
-            <li><a href="../view/aboutUs.php">About Us</a></li>
-            <li><a href="#">Login</a></li>
+            <li><a href="../view/index.php">Home</a></li>
+            <li><a href="../view/about.php">About Us</a></li>
+            <li><a href="../view/customer_view.php">Login</a></li>
             <li id="liBasket">
               <a href="../view/checkout.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span

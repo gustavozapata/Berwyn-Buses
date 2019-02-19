@@ -13,36 +13,35 @@ var viewport = Math.max(
 //   });
 
 //##### BASKET #####
-// var basketItems = $("#basketItems").text();
-// if (!basketItems) {
-//   $("#basketItems").css("visibility", "hidden");
-// }
+var basketItems = $("#basketItems").text();
+isBasketEmpty();
+function isBasketEmpty() {
+  if (!basketItems) {
+    $("#basketItems").css("visibility", "hidden");
+  } else {
+    $("#basketItems").css("visibility", "visible");
+  }
+}
 
-// $(".coach-addbasket button").on("click", function() {
-//   $("#basketItems").css("visibility", "visible");
-//   $("#basketItems").text(++basketItems);
-//   $(this)
-//     .parentsUntil(".coach-results")
-//     .css("display", "none");
-// });
-//MOVE BASKET ON MOBILE
-// window.addEventListener("resize", function(){
-//   if (window.matchMedia("(max-width: 466px)").matches) {
-//     $("#movilBasket").html($("#liBasket a"));
-//   } else {
-//     $("#movilBasket").html("");
-//   }
-// }, false);
-//BASKET END
-
-//##### BOOKING #####
-$(".coach-div").on("click", function() {
-  $(".coach-div-selected").removeClass("coach-div-selected");
-  $(this).toggleClass("coach-div-selected");
-  // $(this)
-  //   .find(".coach-addbasket")
-  //   .css("display", "block");
-  // $(this)
-  //   .find(".coach-info")
-  //   .css("display", "none");
+//##### BOOK COACH FORM #####
+$("input[name='passengers']").on("keyup", function() {
+  var numPassengers = $(this).val();
+  if (numPassengers > 73 && numPassengers < 500) {
+    $("#warning")
+      .text("You might need to book more than one coach")
+      .css({
+        opacity: 1,
+        backgroundColor: "#ffdd00"
+      });
+  } else if (numPassengers > 500) {
+    $("#warning")
+      .text("Sorry max. 500 passengers")
+      .css({
+        opacity: 1,
+        backgroundColor: "#FB3F3F"
+      });
+  } else {
+    $("#warning").css("opacity", "0");
+  }
+>>>>>>> master
 });

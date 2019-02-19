@@ -9,12 +9,13 @@ $username = "root";
 $password = "";
 $host = "localhost";
 $pdo = new PDO("mysql:host=$host;dbname=$database", $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-function getAllCoaches(){
+function getAllCoaches($passengers){
     global $pdo;
-    $statement = $pdo->prepare("SELECT * FROM Coach");
+    $statement = $pdo->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+    $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-    foreach($results as $result) {
+    /*foreach($results as $result) {
         $statement = $pdo->prepare("SELECT * FROM VehicleType WHERE id = :id");
         $statement->bindValue(":id", $result->vehicleType, PDO::PARAM_INT);
         $statement->execute();
@@ -22,14 +23,26 @@ function getAllCoaches(){
         $result->vehicleType = $queryResult->type; 
         $result->maxCapacity = $queryResult->maxCapacity; 
         $result->hourlyRate = $queryResult->hourlyRate; 
-    }
+
+        $queryResult = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+    }*/
     return $results;
 }
-function getAllVehicleTypes(){
+/*function getAllVehicleTypes(){
     global $pdo;
     $statement = $pdo->prepare("SELECT * FROM VehicleType");
     $statement->execute();
     $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+    return $results;
+}*/
+
+function checkLoginDetails($username, $password, $type){
+    global $pdo;
+    $statement = $pdo->prepare("SELECT * FROM $type WHERE username = :username AND password = :password");
+    $statement->bindValue(":username", $username, PDO::PARAM_INT);
+    $statement->bindValue(":password", $password);
+    $statement->execute();
+    $results = $statement->fetchAll(PDO::FETCH_CLASS, $type);
     return $results;
 }
 ?>

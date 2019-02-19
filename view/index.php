@@ -21,16 +21,18 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input type="date" name="depart" />
+                <input id="departureDate" type="date" onchange="setReturnMin()" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
-                <input type="date" name="return" />
+                <input id="returnDate" type="date" name="return" />
               </span>
               <span>
                 <p>Passengers</p>
-                <input name="passengers" /> </span
-              ><br />
+                <input id="passengers" name="passengers" type="number" maxlength="3" required/>
+              </span>
+              <span id="warning">Status</span>
+              <br />
               <input
                 id="requireDriver"
                 type="checkbox"
@@ -48,6 +50,7 @@
 
     </div>
     <!-- PAGE -->
+    <script src="../scripts/bookingSearch.js"></script>
     <script src="../scripts/index.js"></script>
   </body>
 </html>

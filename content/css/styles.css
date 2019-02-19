@@ -94,6 +94,7 @@ nav ul li a:hover {
   margin: -10px;
   border-radius: 20px;
   vertical-align: top;
+  font-weight: 700;
   color: white;
   background-color: rgb(33, 144, 255);
 }
@@ -172,11 +173,21 @@ input:focus {
 .book-coach form input[type="checkbox"] {
   width: 25px;
   height: 25px;
-  margin: 30px 5px;
+  margin: 20px 5px 30px 5px;
   vertical-align: middle;
 }
 .book-coach form label {
   font-weight: 500;
+}
+#warning {
+  /* position: absolute; */
+  margin: 15px 0 0 0;
+  padding: 1px 10px;
+  border-radius: 10px;
+  opacity: 0;
+  font-weight: 600;
+  font-size: 0.7em;
+  transition: opacity 0.4s;
 }
 .book-coach form input[type="submit"] {
   margin: 5px auto 25px auto;
@@ -191,6 +202,35 @@ input:focus {
   background-color: rgb(33, 144, 255);
   border: 2px solid rgb(112, 112, 112);
   color: white;
+}
+
+
+/* FOOTER */
+footer {
+  padding: 1px;
+  /* margin-bottom: 50px; */
+  /* background-color: #eef7fc; */
+  background-color: rgb(245, 245, 245);
+}
+footer p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+footer p a {
+  color: rgb(50, 50, 50);
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.footer-links {
+  margin: 40px auto 50px auto;
+  text-align: center;
+}
+.footer-links a {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: black;
+  margin: 35px;
+  /* text-decoration: none; */
 }
 
 /* CONTACT */
@@ -216,15 +256,6 @@ input:focus {
   vertical-align: middle;
 }
 
-/* FOOTER */
-footer p {
-  text-align: center;
-}
-footer p a {
-  color: rgb(50, 50, 50);
-  font-weight: 700;
-  font-size: 1.1em;
-}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {
@@ -283,10 +314,10 @@ footer p a {
     width: 200px;
   }
   #line1 {
-    width: 340px;
+    width: 220px;
   }
   #line2 {
-    width: 360px;
+    width: 240px;
   }
   .book-coach,
   .book-coach-header {
