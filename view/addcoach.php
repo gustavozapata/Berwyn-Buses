@@ -67,25 +67,25 @@ session_start();
     <script src="../scripts/admin.js"></script>
     <!-- UPLOAD FILE TO SERVER -->
     <script>
-      // var forma = document.getElementById("formulario");
-      // var elfile = document.getElementById("file");
+      /*var forma = document.getElementById("formulario");
+      var elfile = document.getElementById("file");
 
-      // var request = new XMLHttpRequest();
+      var request = new XMLHttpRequest();
 
-      // request.upload.addEventListener("progress", function(e){
-      //   document.querySelector("#progress").innerHTML = Math.round(e.loaded/e.total * 100) + "%";
-      // }, false);
+      request.upload.addEventListener("progress", function(e){
+        document.querySelector("#progress").innerHTML = Math.round(e.loaded/e.total * 100) + "%";
+      }, false);
 
-      // forma.addEventListener("submit", function(e){
-      //   e.preventDefault();
+      forma.addEventListener("submit", function(e){
+        e.preventDefault();
 
-      //   var formData = new FormData();
-      //   formData.append("file", elfile.files[0]);
+        var formData = new FormData();
+        formData.append("file", elfile.files[0]);
 
-      //   request.open("post", "../view/submit.php");
-      //   request.send(formData);
+        request.open("post", "../view/submit.php");
+        request.send(formData);
 
-      // }, false);
+      }, false);*/
     </script>
     <!-- UPLOAD FILE TO SERVER -->
   </body>
