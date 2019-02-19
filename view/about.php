@@ -52,7 +52,6 @@
         <?php
       require_once "../includes/footer.php";
     ?>
-]\''
     </div>
     <!-- PAGE -->
     <script src="../scripts/bookingSearch.js"></script>
