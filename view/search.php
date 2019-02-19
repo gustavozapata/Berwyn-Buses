@@ -1,4 +1,6 @@
 
+<?php require_once "../controller/cart.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +58,7 @@
               <button type="submit"  value="Add to basket">Add to basket</button>
             </div>
         </div>
+        <?php // "coach-addbasket" - for every instance of coach, store it's parameters in hidden form fields to be passed into SESSION variable. ?>
       </form>
     </div>
     <?php endforeach ?>
