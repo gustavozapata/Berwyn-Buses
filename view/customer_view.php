@@ -1,20 +1,18 @@
 <?php 
-
 require_once "../controller/customer_controller.php";
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php require_once "head.php"; ?>
+    <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
     <title>User Page</title>
   </head>
   <body>
     <div id="page">
       <?php
-      require_once "header.php";
+      require_once "../includes/header.php";
       ?>
       <section class="main-section">
         <article class="book-coach">
@@ -52,7 +50,7 @@ require_once "../controller/customer_controller.php";
       </section>
 
     <?php
-      require_once "footer.php";
+      require_once "../includes/footer.php";
     ?>
 
     </div>

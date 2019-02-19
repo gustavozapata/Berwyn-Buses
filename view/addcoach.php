@@ -9,7 +9,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php require_once "head.php"; ?>
+    <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
     <title>➕Add Coach</title>
@@ -58,7 +58,7 @@ session_start();
       </section>
 
     <?php
-      require_once "footer.php";
+      require_once "../includes/footer.php";
     ?>
 
     </div>

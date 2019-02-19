@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<?php require_once "./head.php"; ?>
+<?php require_once "../includes/head.php"; ?>
         <title>About Us</title>
         </head>
         <style>
@@ -25,6 +25,7 @@
     }
       .about{
       text-align: center;
+      padding: 20pxjh drbvc;
       padding: 20px;
       position: relative; 
       }
@@ -34,7 +35,7 @@
     <body>
     <div id="page">
       <?php
-      require_once "./header.php";
+      require_once "../includes/header.php";
       ?>
 
         <h1 align = "center"> About Us </h1>
@@ -49,9 +50,9 @@
         <img id = "Gpiece" src = "../content/images/gamepiece.jpeg"/>
         </div>
         <?php
-      require_once "./footer.php";
+      require_once "../includes/footer.php";
     ?>
-
+]\''
     </div>
     <!-- PAGE -->
     <script src="../scripts/bookingSearch.js"></script>
