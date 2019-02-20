@@ -30,6 +30,7 @@
                             </div>
                             <hr/>
                             <?php endforeach; ?>
+                            <div>Total: £<?= $total?></div>
                         </div>
                     </div>
                     <div class="col-sm-4 ">
