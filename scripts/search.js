@@ -13,6 +13,7 @@ function updateBasket(button, action) {
     .parentsUntil(".coach-results")
     .find(".coachPassengers")
     .text();
+  console.log(thisCoachPassengers);
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
     $("#passengersLeft")

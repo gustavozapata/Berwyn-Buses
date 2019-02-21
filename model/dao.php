@@ -35,7 +35,11 @@ class DAO {
         $instance = DAO::getInstance();
         $connection = $instance->getConnection();
         // IS THE ABOVE RIGHT?
-        $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+        if($passengers <= 73){
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+        } else {
+            $statement = $connection->prepare("SELECT * FROM view_coach_type");
+        }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
