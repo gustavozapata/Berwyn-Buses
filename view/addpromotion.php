@@ -43,6 +43,10 @@ session_start();
             <h2>Add Promotion</h2>
             <form action="">
                 <input type="text" placeholder="Promotion ID">
+                <input type="text" placeholder="Promotion Descripton">
+                <span>
+                <input type="number" placeholder="Discount Amount"/>
+              </span>
                 <div class="admin-buttons">
               <a href="#">Add</a>
             </div>
