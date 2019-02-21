@@ -65,7 +65,7 @@ require_once "../controller/admin_controller.php";
 
             <h2>Promotions</h2>
             <div class="admin-buttons">
-              <a href="#">Add promotion</a>
+              <a href="../view/addpromotion.php">Add promotion</a>
               <a href="#">Edit promotion</a>
             </div>
 
