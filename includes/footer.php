@@ -10,7 +10,7 @@
     </div>
 </footer>
 
-<style>
+<!-- <style>
     .faded-background {
         display: none;
         position: fixed;
@@ -69,4 +69,4 @@
     <div class="modal-footer">
         <button>Send now</button>
     </div>
-</div>
+</div> -->

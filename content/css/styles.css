@@ -234,7 +234,7 @@ footer p a {
 /* CONTACT */
 .contact {
   position: fixed;
-  /* width: 180px; */
+  width: 180px;
   height: auto;
   background-color: white;
   border: 1px solid rgb(112, 112, 112);
