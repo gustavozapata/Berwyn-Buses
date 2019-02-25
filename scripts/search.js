@@ -7,27 +7,31 @@ $(".btn-remove-basket").on("click", function() {
   updateBasket($(this), "add");
 });
 
-var currentPassengers = $("#passengersLeft").text();
 function updateBasket(button, action) {
   var thisCoachPassengers = button
     .parentsUntil(".coach-results")
     .find(".coachPassengers")
     .text();
-  console.log(thisCoachPassengers);
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
     $("#passengersLeft")
-      .text(currentPassengers)
+      .text($("#passengersLeft").text())
       .removeClass("coverPassengers");
   } else {
     $("#basketItems").text(++basketItems);
     $("#passengersLeft")
       .text(
-        thisCoachPassengers > $("#passengersLeft").text()
+        thisCoachPassengers > parseInt($("#passengersLeft").text(),10)
           ? 0
           : $("#passengersLeft").text() - thisCoachPassengers
       )
+      // .text($("#passengersLeft").text() - thisCoachPassengers)
       .addClass("coverPassengers");
+      if(thisCoachPassengers > $("#passengersLeft").text()){
+        console.log("thiscoach passenger greater than passenger left");
+      } else {
+        console.log("thiscoas passenger less than passenger left");
+      }
   }
   isBasketEmpty();
   button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
