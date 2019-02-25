@@ -18,7 +18,7 @@ require_once "../controller/admin_controller.php";
     <div id="page">
       <header>
         <div class="logo">
-          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
+          <h1><a href="../view/admin_view.php">Berwyn Buses Hire</a></h1>
           <span id="movilBasket"></span>
           <div id="line1"></div>
           <div id="line2"></div>

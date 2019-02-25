@@ -11,5 +11,4 @@ if(isset($_REQUEST["passengers"])) {
 
 require_once "../view/search.php"; 
 
-
 ?>
