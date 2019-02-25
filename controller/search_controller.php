@@ -8,7 +8,8 @@ require_once "../model/coach.php";
 
 if(isset($_REQUEST["passengers"])) {
     $passengers = $_REQUEST["passengers"];
-    $coaches = DAO::getAllCoaches($passengers);
+    // $coaches = DAO::getAllCoaches($passengers);
+    $coaches = DAO::getInstance()->getAllCoaches($passengers);
     //REGULAR DB ACCESS ^^^
     // $coaches = getAllCoaches($passengers);
 }

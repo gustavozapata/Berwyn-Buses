@@ -32,8 +32,9 @@ class DAO {
 
     function getAllCoaches($passengers){
         // IS THE BELOW RIGHT?
-        $instance = DAO::getInstance();
-        $connection = $instance->getConnection();
+        // $instance = DAO::getInstance();
+        // $connection = $instance->getConnection();
+        $connection = $this->getConnection();
         // IS THE ABOVE RIGHT?
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
