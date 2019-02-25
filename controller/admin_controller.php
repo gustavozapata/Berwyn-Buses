@@ -3,15 +3,14 @@
 session_start();
 
 require_once "../model/admin.php";
-// require_once "../model/database.php";
-require_once "../model/dao.php";
+require_once "../model/DataAccess.php";
 
 $_SESSION["isLogged"] = false;
 
 if(isset($_REQUEST["username"])) {
-    $_SESSION["username"] = $_REQUEST["username"];
-    $password = $_REQUEST["password"];
-    $admin = DAO::checkLoginDetails($_SESSION["username"], $password, "Admin");
+    $_SESSION["username"] = htmlentities($_REQUEST["username"]);
+    $password = htmlentities($_REQUEST["password"]);
+    $admin = DataAccess::getInstance()->checkLoginDetails($_SESSION["username"], $password, "Admin");
     if($admin){
       if($admin[0]->username == $_SESSION["username"] && $admin[0]->password == $password){
         $_SESSION["isLogged"]  = true;

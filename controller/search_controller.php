@@ -1,17 +1,12 @@
 <?php
 
-//REGULAR DB ACCESS ^^^
-// require_once "../model/database.php";
-require_once "../model/dao.php";
+require_once "../model/DataAccess.php";
 require_once "../model/coach.php";
 
 
 if(isset($_REQUEST["passengers"])) {
-    $passengers = $_REQUEST["passengers"];
-    // $coaches = DAO::getAllCoaches($passengers);
-    $coaches = DAO::getInstance()->getAllCoaches($passengers);
-    //REGULAR DB ACCESS ^^^
-    // $coaches = getAllCoaches($passengers);
+    $passengers = htmlentities($_REQUEST["passengers"]);
+    $coaches = DataAccess::getInstance()->getAllCoaches($passengers);
 }
 
 require_once "../view/search.php"; 

@@ -1,6 +1,6 @@
 <?php
 
-class DAO {
+class DataAccess {
     private static $instance = null;
     private $connection;
 
@@ -21,7 +21,7 @@ class DAO {
 
     public static function getInstance(){
         if(!self::$instance){
-            self::$instance = new DAO();
+            self::$instance = new DataAccess();
         }
         return self::$instance;
     }
@@ -31,11 +31,7 @@ class DAO {
     }
 
     function getAllCoaches($passengers){
-        // IS THE BELOW RIGHT?
-        // $instance = DAO::getInstance();
-        // $connection = $instance->getConnection();
         $connection = $this->getConnection();
-        // IS THE ABOVE RIGHT?
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
         } else {
@@ -48,10 +44,7 @@ class DAO {
     }
 
     function checkLoginDetails($username, $password, $type){
-        // IS THE BELOW RIGHT?
-        $instance = DAO::getInstance();
-        $connection = $instance->getConnection();
-        // IS THE ABOVE RIGHT?
+        $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT * FROM $type WHERE username = :username AND password = :password");
         $statement->bindValue(":username", $username, PDO::PARAM_INT);
         $statement->bindValue(":password", $password);
