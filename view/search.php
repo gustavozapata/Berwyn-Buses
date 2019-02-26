@@ -4,14 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once "../view/head.php"; ?>
+    <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <title>Search Result</title>
 </head>
 <body>
     <div id="page">
-
-      <?php require_once "header.php"; ?>
+      <?php require_once "../includes/header.php"; ?>
 
     <section class="main-section">
 
@@ -66,6 +65,7 @@
     
     </section>
 
+    <?php require_once "../includes/footer.php"; ?>
     <?php require_once "../view/footer.php"; ?>
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
