@@ -21,6 +21,7 @@ require_once "../controller/search_controller.php";
       <div>
         <p>Passengers<br><span><?= $_REQUEST["passengers"] ?></span></p>
         <p>Passengers left<br><span id="passengersLeft"><?= $_REQUEST["passengers"] ?></span></p>
+        <p>Free seats<br><span id="freeSeats">-</span></p>
       </div>
       <h3 class="filterTitle">Filter Search</h3>
       <div>

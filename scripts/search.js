@@ -8,15 +8,15 @@ $(".btn-remove-basket").on("click", function() {
 });
 
 function updateBasket(button, action) {
-  var thisCoachPassengers = button
+  // var passengersLeft = parseInt($("#passengersLeft").text(),10);
+  var thisCoachPassengers = parseInt(button
     .parentsUntil(".coach-results")
     .find(".coachPassengers")
-    .text();
+    .text(), 10);
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
-    $("#passengersLeft")
-      .text($("#passengersLeft").text())
-      .removeClass("coverPassengers");
+    $("#passengersLeft").text(parseInt($("#passengersLeft").text(),10) + thisCoachPassengers);
+      // .removeClass("coverPassengers");
   } else {
     $("#basketItems").text(++basketItems);
     $("#passengersLeft")
@@ -24,14 +24,8 @@ function updateBasket(button, action) {
         thisCoachPassengers > parseInt($("#passengersLeft").text(),10)
           ? 0
           : $("#passengersLeft").text() - thisCoachPassengers
-      )
-      // .text($("#passengersLeft").text() - thisCoachPassengers)
-      .addClass("coverPassengers");
-      if(thisCoachPassengers > $("#passengersLeft").text()){
-        console.log("thiscoach passenger greater than passenger left");
-      } else {
-        console.log("thiscoas passenger less than passenger left");
-      }
+      );
+      // .addClass("coverPassengers");
   }
   isBasketEmpty();
   button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
