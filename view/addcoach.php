@@ -43,6 +43,9 @@ session_start();
             <h2>Add Coach</h2>
             <form action="">
                 <input type="text" placeholder="Reg. Number">
+                <div class="admin-buttons">
+              <a href="../view/admin_view.php">Add</a>
+            </div>
             </form>
             <!-- UPLOAD FILE TO SERVER -->
             <!--<form action="../view/submit.php" id="formulario">
