@@ -11,6 +11,7 @@ if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]){
   $_SESSION["userLogged"] = false;
 }
 
+//https://stackoverflow.com/FIND THE WEBSITE
 if ($_POST) {
   if(isset($_REQUEST["email"])) {
     $_SESSION["username"] = htmlentities($_REQUEST["email"]);

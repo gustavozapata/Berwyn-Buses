@@ -16,12 +16,13 @@ require_once "../controller/search_controller.php";
 
 
     <section class="main-section">
+    <div class="search-holder"></div>
     <div class="search-filter">
       <h3>Summary</h3>
       <div>
-        <p>Passengers<br><span><?= $_REQUEST["passengers"] ?></span></p>
-        <p>Passengers left<br><span id="passengersLeft"><?= $_REQUEST["passengers"] ?></span></p>
-        <p>Free seats<br><span id="freeSeats">-</span></p>
+        <p>Passengers<br><span id="actualPassengers"><?= $_REQUEST["passengers"] ?></span></p>
+        <p>Passengers left<br><span id="passengersLeft"><?= $_REQUEST["passengers"] ?></span><span id="coverPassengers">✅</span></p>
+        <p>Free seats<br><span id="freeSeats">-</span><span id="seat">💺</span></p>
       </div>
       <h3 class="filterTitle">Filter Search</h3>
       <div>
