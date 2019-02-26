@@ -9,28 +9,33 @@ $(".btn-remove-basket").on("click", function() {
 
 function updateBasket(button, action) {
   var freeSeats = 0;
-  var passengersLeft = parseInt($("#passengersLeft").text(),10);
-  var actualPassengers = parseInt($("#actualPassengers").text(),10);
-  var thisCoachPassengers = parseInt(button
-    .parentsUntil(".coach-results")
-    .find(".coachPassengers")
-    .text(), 10);
+  var passengersLeft = parseInt($("#passengersLeft").text(), 10);
+  var actualPassengers = parseInt($("#actualPassengers").text(), 10);
+  var thisCoachPassengers = parseInt(
+    button
+      .parentsUntil(".coach-results")
+      .find(".coachPassengers")
+      .text(),
+    10
+  );
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
-    if(thisCoachPassengers > actualPassengers){
+    if (thisCoachPassengers > actualPassengers) {
       $("#passengersLeft").text(actualPassengers);
       $("#freeSeats").text("-");
     } else {
-      $("#passengersLeft").text((passengersLeft + thisCoachPassengers) - freeSeats);
+      $("#passengersLeft").text(
+        passengersLeft + thisCoachPassengers - freeSeats
+      );
       freeSeats = thisCoachPassengers + passengersLeft;
       $("#freeSeats").text(freeSeats);
     }
-    $("#coverPassengers, #seat").css("display","none");
+    $("#coverPassengers, #seat").css("display", "none");
   } else {
     $("#basketItems").text(++basketItems);
-    if(thisCoachPassengers > passengersLeft){
+    if (thisCoachPassengers > passengersLeft) {
       $("#passengersLeft").text(0);
-      $("#coverPassengers, #seat").css("display","inline");
+      $("#coverPassengers, #seat").css("display", "inline");
       freeSeats = thisCoachPassengers - passengersLeft;
       $("#freeSeats").text(freeSeats);
     } else {
@@ -46,16 +51,18 @@ function updateBasket(button, action) {
     .css("display", "inline");
 }
 
-
 // SEARCH SUMMARY AND FILTER FIXED
-$(window).scroll(function(){
-  if($(this).scrollTop() < $(".coach-results").position().top){
-    $(".search-filter").css("margin-top","0px");
+$(window).scroll(function() {
+  if ($(this).scrollTop() < $(".coach-results").position().top) {
+    $(".search-filter").css({
+      position: "absolute"
+    });
   } else {
-    $(".search-filter").css("margin-top","-160px");
+    $(".search-filter").css({
+      position: "fixed"
+    });
   }
 });
-
 
 //MOVE BASKET ON MOBILE
 // window.addEventListener("resize", function(){
