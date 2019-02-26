@@ -12,8 +12,6 @@
     <div id="page">
       <?php require_once "../includes/header.php"; ?>
 
-      <?php require_once "header.php"; ?>
-
     <section class="main-section">
 
     <div class="search-filter">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../model/database.php";
+require_once "../model/DataAccess.php";
 if (!isset($_POST['regNumber'])&& !isset($_SESSION['cart'])){  
     $_SESSION['cart'][] = '';
 }
