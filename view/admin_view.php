@@ -58,7 +58,7 @@ require_once "../controller/admin_controller.php";
             <h2>Coaches</h2>
             <div class="admin-buttons">
               <a href="../view/addcoach.php">Add coach</a>
-              <a href="#">Edit coach</a>
+              <a href="../view/editcoach.php">Edit coach</a>
             </div>
 
             <h2>Promotions</h2>

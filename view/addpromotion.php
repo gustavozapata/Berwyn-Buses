@@ -48,7 +48,7 @@ session_start();
                 <input type="number" placeholder="Discount Amount"/>
               </span>
                 <div class="admin-buttons">
-              <a href="#">Add</a>
+              <a href="../view/admin_view.php">Add</a>
             </div>
             </form>
 
