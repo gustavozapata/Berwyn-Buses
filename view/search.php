@@ -33,32 +33,23 @@
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
-      <form action="#" method="post" id="cartForm">
-        <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
-        <p><?= $coach->registrationNumber ?></p>
-        <p><?= $coach->vehicleType ?></p>
+        <img class="coach-img" id="coachIMG" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
+        <p id="regNum"><?= $coach->registrationNumber ?></p>
+        <p id="type"><?= $coach->vehicleType ?></p>
         <div class="coach-status">
-            <!-- <div class="coach-addbasket">
+            <div class="coach-addbasket">
               <button class="btn-add-basket">Add to basket</button>
               <button class="btn-remove-basket">Remove</button>
-            </div> -->
+            </div>
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
-              <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
+              <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers" id="maxPasseners"><?= $coach->maxCapacity ?></span></p>
               <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
-            
             <div class="coach-addbasket">
-            <?php //this is a comment ?>
-              <input type="hidden" id="regNumber" name="regNumber" value="<?= $coach->registrationNumber ?>">
-              <input type="hidden" id="vehicleType" name="vehicleType" value="<?= $coach->vehicleType ?>">
-              <input type="hidden" id="coachIMG" name="coachIMG" value="../content/images/<?= $coach->image ?>">
-              <input type="hidden" id="rate" name="rate" value="<?= $coach->hourlyRate ?>">
-              <button type="submit"  value="Add to basket">Add to basket</button>
             </div>
         </div>
         <?php // "coach-addbasket" - for every instance of coach, store it's parameters in hidden form fields to be passed into SESSION variable. ?>
-      </form>
     </div>
     <?php endforeach ?>
     </div>
@@ -69,5 +60,6 @@
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/search.js"></script>
+    <script src="../scripts/total.js"></script>
 </body>
 </html>
