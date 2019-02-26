@@ -66,7 +66,6 @@
     </section>
 
     <?php require_once "../includes/footer.php"; ?>
-    <?php require_once "../view/footer.php"; ?>
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/search.js"></script>
