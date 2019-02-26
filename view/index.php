@@ -1,15 +1,18 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php require_once "../view/head.php"; ?>
-    
-    <title>🚎 Home Page</title>
+    <?php require_once "../includes/head.php"; ?>
+<title>🚎 Home Page</title>
   </head>
   <body>
     <div id="page">
       <?php
-      require_once "../view/header.php";
+      require_once "../includes/header.php";
+
       ?>
       <section class="main-section">
         <article class="book-coach">
@@ -22,11 +25,11 @@
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input id="departureDate" type="date" onchange="setReturnMin()" name="depart"/>
+                <input id="from" type="text" name="depart"/>
               </span>
               <span>
                 <p>Return</p>
-                <input id="returnDate" type="date" name="return" />
+                <input id="to" type="text" name="return" />
               </span>
               <span>
                 <p>Passengers</p>
@@ -46,7 +49,7 @@
       </section>
 
     <?php
-      require_once "./footer.php";
+      require_once "../includes/footer.php";
     ?>
 
     </div>

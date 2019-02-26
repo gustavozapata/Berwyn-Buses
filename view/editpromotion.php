@@ -12,7 +12,7 @@ session_start();
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
-    <title>➕Add Coach</title>
+    <title>➕Edit Promotion</title>
   </head>
   <body>
     <div id="page">
@@ -26,7 +26,7 @@ session_start();
         <?php if($_SESSION["adminLogged"]): ?>
         <nav>
           <ul>
-            <li><a href="../controller/admin_logout.php">Logout</a></li>
+            <li><a href="../controller/logout.php">Logout</a></li>
             <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
           </ul>
         </nav>
@@ -40,17 +40,17 @@ session_start();
           </div>
           <?php else: ?>
           <div class="book-coach-header">
-            <h2>Add Coach</h2>
+            <h2>Edit Promotion</h2>
             <form action="">
-                <input type="text" placeholder="Reg. Number">
+                <input type="text" placeholder="Promotion ID">
+                <input type="text" placeholder="Promotion Descripton">
+                <span>
+                <input type="number" placeholder="Discount Amount"/>
+              </span>
+                <div class="admin-buttons">
+              <a href="#">Add</a>
+            </div>
             </form>
-            <!-- UPLOAD FILE TO SERVER -->
-            <!--<form action="../view/submit.php" id="formulario">
-              <input style="width: 300px; border: none" type="file" name="file" id="file"><br>
-              <button type="submit">Upload</button>
-            </form>
-            <div id="progress"></div> -->
-            <!-- UPLOAD FILE TO SERVER -->
 
           </div>
           <?php endif ?>
@@ -65,28 +65,5 @@ session_start();
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
-    <!-- UPLOAD FILE TO SERVER -->
-    <script>
-      /*var forma = document.getElementById("formulario");
-      var elfile = document.getElementById("file");
-
-      var request = new XMLHttpRequest();
-
-      request.upload.addEventListener("progress", function(e){
-        document.querySelector("#progress").innerHTML = Math.round(e.loaded/e.total * 100) + "%";
-      }, false);
-
-      forma.addEventListener("submit", function(e){
-        e.preventDefault();
-
-        var formData = new FormData();
-        formData.append("file", elfile.files[0]);
-
-        request.open("post", "../view/submit.php");
-        request.send(formData);
-
-      }, false);*/
-    </script>
-    <!-- UPLOAD FILE TO SERVER -->
   </body>
 </html>
