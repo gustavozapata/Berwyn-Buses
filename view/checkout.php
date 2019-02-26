@@ -23,14 +23,14 @@
                                 <div class ="col-sm-4 basketInfo" id="image" >
                                     <img src="<?= $vehicle['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
                                 </div>
-                                <div class ="col-sm-8 basketInfo" style="text-align:left;" >
+                                <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
                                     <p> Registration Number: <?= $vehicle['regNumber'] ?></p> 
-                                    <p>Hourly rate: &#8356;<?= $vehicle['rate'] ?></p>
+                                    <p>Hourly rate: &#8356;<span id='rate'><?= $vehicle['rate'] ?></span></p>
                                 </div>
                             </div>
                             <hr/>
                             <?php endforeach; ?>
-                            <div>Total: £<?= $total?></div>
+                            <div>Total: &#8356;<span id='total'>0</span></div>
                         </div>
                     </div>
                     <div class="col-sm-4 ">
@@ -44,5 +44,6 @@
     </div>
 <?php require_once "../scripts/call_last.php";?>
 <?php require_once "../scripts/checkout_script.php";?>
+<?php require_once "../scripts/total.php";?>
 </body>
 </html>

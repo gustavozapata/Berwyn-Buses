@@ -27,20 +27,5 @@ elseif(!isset($_SESSION['cart']) && isset($_POST['regNumber'])){
                                
 }
 
-if (!isset($_SESSION['cart'])){
-     $total = 0;
-}
-else $total = totalValue($_SESSION['cart']); 
-    
-function totalValue($cart){
-    $value = 0;
-    foreach ($cart as $item) {
-        foreach ($item as $key => $rate) {
-            $value += (int)$rate;
-        }
-    }
-    return $value;
-}
-
 
 ?>
