@@ -31,14 +31,16 @@ $("input[name='passengers']").on("keyup", function() {
       .text("You might need to book more than one coach")
       .css({
         opacity: 1,
-        backgroundColor: "#ffdd00"
+        backgroundColor: "#ffdd00",
+        color: "black"
       });
   } else if (numPassengers > 500) {
     $("#warning")
       .text("Sorry max. 500 passengers")
       .css({
         opacity: 1,
-        backgroundColor: "#FB3F3F"
+        backgroundColor: "#FB3F3F",
+        color: "white"
       });
   } else {
     $("#warning").css("opacity", "0");
