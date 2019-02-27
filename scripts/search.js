@@ -7,10 +7,27 @@ $(".btn-remove-basket").on("click", function() {
   updateBasket($(this), "add");
 });
 
+var freeSeats = 0;
+var passengersLeft = parseInt($("#passengersLeft").text(), 10);
 function updateBasket(button, action) {
-  var freeSeats = 0;
-  var passengersLeft = parseInt($("#passengersLeft").text(), 10);
-  var actualPassengers = parseInt($("#actualPassengers").text(), 10);
+  if (action === "add") {
+    $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
+  } else {
+    $("#basketItems").text(++basketItems);
+  }
+  isBasketEmpty();
+  updateSummary(button, action);
+  button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
+  button.css("display", "none");
+  button
+    .parentsUntil(".coach-status")
+    .find(".btn-" + action + "-basket")
+    .css("display", "inline");
+}
+
+function readyToCheckout() {}
+
+function updateSummary(button, action) {
   var thisCoachPassengers = parseInt(
     button
       .parentsUntil(".coach-results")
@@ -18,37 +35,25 @@ function updateBasket(button, action) {
       .text(),
     10
   );
-  if (action === "add") {
-    $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
-    if (thisCoachPassengers > actualPassengers) {
-      $("#passengersLeft").text(actualPassengers);
-      $("#freeSeats").text("-");
-    } else {
-      $("#passengersLeft").text(
-        passengersLeft + thisCoachPassengers - freeSeats
-      );
-      freeSeats = thisCoachPassengers + passengersLeft;
-      $("#freeSeats").text(freeSeats);
-    }
-    $("#coverPassengers, #seat").css("display", "none");
-  } else {
-    $("#basketItems").text(++basketItems);
-    if (thisCoachPassengers > passengersLeft) {
-      $("#passengersLeft").text(0);
-      $("#coverPassengers, #seat").css("display", "inline");
+
+  if (action === "remove") {
+    //IF ADD BUTTON IS PRESSED
+    if (passengersLeft - thisCoachPassengers <= 0) {
       freeSeats = thisCoachPassengers - passengersLeft;
-      $("#freeSeats").text(freeSeats);
-    } else {
-      $("#passengersLeft").text(passengersLeft - thisCoachPassengers);
+      $("#coverPassengers, #seat").css("display", "inline");
+      readyToCheckout();
     }
+    passengersLeft -= thisCoachPassengers;
+  } else {
+    //IF REMOVE BUTTON IS PRESSED
+    if (passengersLeft <= 0) {
+      freeSeats -= thisCoachPassengers;
+    }
+    passengersLeft += thisCoachPassengers;
   }
-  isBasketEmpty();
-  button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
-  button.css("display", "none");
-  button
-    .parentsUntil(".coach-status")
-    .find(".btn-" + action + "-basket")
-    .css("display", "inline");
+  $("#passengersLeft").text(passengersLeft <= 0 ? 0 : passengersLeft);
+  $("#freeSeats").text(freeSeats <= 0 ? 0 : freeSeats);
+  if (passengersLeft > 0) $("#coverPassengers, #seat").css("display", "none");
 }
 
 // SEARCH SUMMARY AND FILTER FIXED
@@ -78,12 +83,6 @@ if (window.matchMedia("(max-width: 466px)").matches) {
 $(".coach-div").on("click", function() {
   $(".coach-div-selected").removeClass("coach-div-selected");
   $(this).toggleClass("coach-div-selected");
-  // $(this)
-  //   .find(".coach-addbasket")
-  //   .css("display", "block");
-  // $(this)
-  //   .find(".coach-info")
-  //   .css("display", "none");
 });
 
 //##### FILTER SEARCH #####

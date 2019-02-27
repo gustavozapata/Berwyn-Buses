@@ -26,7 +26,7 @@ function isBasketEmpty() {
 //##### BOOK COACH FORM #####
 $("input[name='passengers']").on("keyup", function() {
   var numPassengers = $(this).val();
-  if (numPassengers > 73 && numPassengers < 500) {
+  if (numPassengers > 73 && numPassengers <= 500) {
     $("#warning")
       .text("You might need to book more than one coach")
       .css({
