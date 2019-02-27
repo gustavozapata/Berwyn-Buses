@@ -229,12 +229,11 @@ footer p a {
   font-weight: 500;
   color: black;
   margin: 35px;
-  /* text-decoration: none; */
 }
 /* CONTACT */
 .contact {
   position: fixed;
-  width: 180px;
+  width: auto;
   height: auto;
   background-color: white;
   border: 1px solid rgb(112, 112, 112);
@@ -246,12 +245,12 @@ footer p a {
 }
 .contact p {
   display: inline-block;
-  margin: 12px;
+  margin: 10px;
   font-weight: 700;
 }
 .contact img {
   width: 30px;
-  margin: 5px 10px;
+  margin: 6px;
   vertical-align: middle;
 }
 

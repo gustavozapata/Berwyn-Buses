@@ -19,15 +19,12 @@ if ($_POST) {
     if($admin){
       if($admin[0]->username == $_SESSION["adminname"] && $admin[0]->password == $password){
         $_SESSION["adminLogged"]  = true;
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit;
       }
     }
   }
-
-
-  header("Location: " . $_SERVER['REQUEST_URI']);
-  exit;
 }
-
 
 require_once "../view/admin_view.php"; 
 

@@ -1,3 +1,7 @@
+//##### SEARCH SUMMARY #####
+var freeSeats = 0;
+var passengersLeft = parseInt($("#passengersLeft").text(), 10);
+
 //ADD TO BASKET BUTTON
 $(".btn-add-basket").on("click", function() {
   updateBasket($(this), "remove");
@@ -7,8 +11,6 @@ $(".btn-remove-basket").on("click", function() {
   updateBasket($(this), "add");
 });
 
-var freeSeats = 0;
-var passengersLeft = parseInt($("#passengersLeft").text(), 10);
 function updateBasket(button, action) {
   if (action === "add") {
     $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
@@ -55,8 +57,9 @@ function updateSummary(button, action) {
   $("#freeSeats").text(freeSeats <= 0 ? 0 : freeSeats);
   if (passengersLeft > 0) $("#coverPassengers, #seat").css("display", "none");
 }
+//##### END SEARCH SUMMARY #####
 
-// SEARCH SUMMARY AND FILTER FIXED
+//SEARCH FILTER MOVES AS USER SCROLLS
 $(window).scroll(function() {
   if ($(this).scrollTop() < $(".coach-results").position().top) {
     $(".search-filter").css({
