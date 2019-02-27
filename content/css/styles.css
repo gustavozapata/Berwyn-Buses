@@ -253,6 +253,31 @@ footer p a {
   margin: 6px;
   vertical-align: middle;
 }
+/* INFO BANNER */
+#infoBanner {
+  position: fixed;
+  width: 60%;
+  margin-left: -30%;
+  left: 50%;
+  bottom: -40px;
+  background-color: #ffdd00;
+  font-weight: 700;
+  font-size: 1em;
+  transition: bottom 0.4s;
+}
+#infoBanner p {
+  margin: 10px;
+}
+#infoBanner p a {
+  color: black;
+  /* text-decoration: none; */
+}
+#infoBanner img {
+  width: 25px;
+  float: right;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {

@@ -27,7 +27,16 @@ function updateBasket(button, action) {
     .css("display", "inline");
 }
 
-function readyToCheckout() {}
+function readyToCheckout(value) {
+  $("#infoBanner").css("bottom", value);
+  $("#infoBanner p").html(
+    "Perfecto. Now you can proceed to the <a href='../view/checkout.php'>check-out</a> page"
+  );
+}
+
+$("#infoBanner img").on("click", function() {
+  readyToCheckout(-40);
+});
 
 function updateSummary(button, action) {
   var thisCoachPassengers = parseInt(
@@ -43,7 +52,7 @@ function updateSummary(button, action) {
     if (passengersLeft - thisCoachPassengers <= 0) {
       freeSeats = thisCoachPassengers - passengersLeft;
       $("#coverPassengers, #seat").css("display", "inline");
-      readyToCheckout();
+      readyToCheckout(0);
     }
     passengersLeft -= thisCoachPassengers;
   } else {
@@ -55,7 +64,10 @@ function updateSummary(button, action) {
   }
   $("#passengersLeft").text(passengersLeft <= 0 ? 0 : passengersLeft);
   $("#freeSeats").text(freeSeats <= 0 ? 0 : freeSeats);
-  if (passengersLeft > 0) $("#coverPassengers, #seat").css("display", "none");
+  if (passengersLeft > 0) {
+    $("#coverPassengers, #seat").css("display", "none");
+    readyToCheckout(-40);
+  }
 }
 //##### END SEARCH SUMMARY #####
 

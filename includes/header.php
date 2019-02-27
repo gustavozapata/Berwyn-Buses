@@ -16,7 +16,7 @@
             <li><a href="../view/customer_view.php">Login</a></li>
             <?php endif; ?>
             <li id="liBasket">
-              <a href="checkout.html"
+              <a href="../view/checkout.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
                   id="basketItems"
                   ></span

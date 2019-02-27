@@ -57,3 +57,13 @@ $("input[name='passengers']").on("keyup", function() {
 //   $(".faded-background").fadeOut();
 //   $(".modal").fadeOut();
 // });
+
+// NO COOKIES BANNER
+$(document).ready(function() {
+  if (window.location.pathname.includes("index.php")) {
+    $("#infoBanner").css("bottom", "0");
+    $("#infoBanner img").on("click", function() {
+      $("#infoBanner").css("bottom", "-40px");
+    });
+  }
+});
