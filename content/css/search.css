@@ -11,7 +11,7 @@
 }
 .search-filter {
   position: absolute;
-  top: 3.4%;
+  /* top: 3.4%; */
   background-color: rgb(243, 243, 243);
   width: 20%;
   height: 700px;

@@ -75,11 +75,13 @@ function updateSummary(button, action) {
 $(window).scroll(function() {
   if ($(this).scrollTop() < $(".coach-results").position().top) {
     $(".search-filter").css({
-      position: "absolute"
+      position: "absolute",
+      top: "initial"
     });
   } else {
     $(".search-filter").css({
-      position: "fixed"
+      position: "fixed",
+      top: "10px"
     });
   }
 });
