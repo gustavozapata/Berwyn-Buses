@@ -63,7 +63,7 @@ $(document).ready(function() {
   if (window.location.pathname.includes("index.php")) {
     $("#infoBanner").css("bottom", "0");
     $("#infoBanner img").on("click", function() {
-      $("#infoBanner").css("bottom", "-40px");
+      $("#infoBanner").css("bottom", "-100px");
     });
   }
 });

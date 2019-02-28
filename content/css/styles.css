@@ -259,18 +259,17 @@ footer p a {
   width: 60%;
   margin-left: -30%;
   left: 50%;
-  bottom: -40px;
+  bottom: -100px;
   background-color: #ffdd00;
   font-weight: 700;
-  font-size: 1em;
-  transition: bottom 0.4s;
+  transition: all 0.4s;
 }
 #infoBanner p {
   margin: 10px;
+  font-size: 1em;
 }
 #infoBanner p a {
   color: black;
-  /* text-decoration: none; */
 }
 #infoBanner img {
   width: 25px;
@@ -303,6 +302,12 @@ footer p a {
   .book-coach-header {
     width: 350px;
   }
+  #infoBanner p {
+    font-size: 0.8em;
+  }
+  #infoBanner img {
+    width: 20px;
+  }
 }
 
 @media only screen and (max-width: 466px) {
@@ -326,6 +331,11 @@ footer p a {
   }
   .contact p {
     display: none;
+  }
+  #infoBanner {
+    width: 100%;
+    margin: 0;
+    left: 0;
   }
 }
 

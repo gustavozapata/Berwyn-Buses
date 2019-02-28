@@ -35,7 +35,7 @@ function readyToCheckout(value) {
 }
 
 $("#infoBanner img").on("click", function() {
-  readyToCheckout(-40);
+  readyToCheckout(-100);
 });
 
 function updateSummary(button, action) {
@@ -66,7 +66,7 @@ function updateSummary(button, action) {
   $("#freeSeats").text(freeSeats <= 0 ? 0 : freeSeats);
   if (passengersLeft > 0) {
     $("#coverPassengers, #seat").css("display", "none");
-    readyToCheckout(-40);
+    readyToCheckout(-100);
   }
 }
 //##### END SEARCH SUMMARY #####
