@@ -30,7 +30,7 @@ function updateBasket(button, action) {
 function readyToCheckout(value) {
   $("#infoBanner").css("bottom", value);
   $("#infoBanner p").html(
-    "Perfecto. Now you can proceed to the <a href='../view/checkout.php'>check-out</a> page"
+    "Perfecto. Now you can proceed to the <a href='../view/checkout_test.php'>check-out</a> page"
   );
 }
 
