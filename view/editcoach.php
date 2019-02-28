@@ -23,18 +23,18 @@ session_start();
           <div id="line1"></div>
           <div id="line2"></div>
         </div>
-        <?php if($_SESSION["isLogged"]): ?>
+        <?php if($_SESSION["adminLogged"]): ?>
         <nav>
           <ul>
-            <li><a href="../controller/admin_logout.php">Logout</a></li>
-            <li><a href="../view/admin_view.php"><?= $_SESSION["username"]?></a></li>
+            <li><a href="../controller/logout.php">Logout</a></li>
+            <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
           </ul>
         </nav>
         <?php endif; ?>
       </header>
       <section class="main-section">
         <article class="book-coach">
-          <?php if(!$_SESSION["isLogged"]): ?>
+          <?php if(!$_SESSION["adminLogged"]): ?>
           <div class="book-coach-header">
             <h2><a href="../view/admin_view.php">OOPS Login!</a></h2>
           </div>
@@ -42,7 +42,8 @@ session_start();
           <div class="book-coach-header">
             <h2>Edit Coaches</h2>
             <form action="">
-
+                <input type="text" placeholder="Coach Reg. Number">
+              </span>
                 <div class="admin-buttons">
               <a href="../view/admin_view.php">Save Changes</a>
             </div>
