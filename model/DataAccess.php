@@ -6,13 +6,13 @@ class DataAccess {
 
     private $database = "db_k1715308";
 
-    // private $host = "kunet";
-    // private $user = "k1715308";
-    // private $password = "webdevdatabase";
+    private $host = "kunet";
+    private $user = "k1715308";
+    private $password = "webdevdatabase";
 
-    private $host = "localhost";
-    private $user = "root";
-    private $password = "";
+    // private $host = "localhost";
+    // private $user = "root";
+    // private $password = "";
     
     private function __construct() {
         $this->connection = new PDO("mysql:host={$this->host}; dbname={$this->database}", $this->user, $this->password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -42,6 +42,8 @@ class DataAccess {
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
         return $results;
     }
+    // MYSQL QUERY VIEW_BOOKING_INFO
+    // SELECT BookingAssignment.id "Assignment ID", Booking.id "Booking ID", Booking.destinationCity "Destination", Booking.numOfPassengers "Passengers", Driver.familyName "Driver", Booking.dateRequired "From", Booking.dateReturned "To", (Booking.dateReturned - Booking.dateRequired) "Days", Coach.registrationNumber "Coach", VehicleType.maxCapacity "Coach Capacity" from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();

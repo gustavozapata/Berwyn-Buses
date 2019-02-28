@@ -24,11 +24,11 @@ session_start();
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input id="from" type="text" name="depart"/>
+                <input id="from" type="text" name="depart" required/>
               </span>
               <span>
                 <p>Return</p>
-                <input id="to" type="text" name="return" />
+                <input id="to" type="text" name="return" required/>
               </span>
               <span>
                 <p>Passengers</p>
