@@ -13,9 +13,9 @@ $(".btn-remove-basket").on("click", function() {
 
 function updateBasket(button, action) {
   if (action === "add") {
-    $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
+    $(".basketItems").text(basketItems <= 0 ? 0 : --basketItems);
   } else {
-    $("#basketItems").text(++basketItems);
+    $(".basketItems").text(++basketItems);
   }
   isBasketEmpty();
   updateSummary(button, action);
@@ -30,8 +30,9 @@ function updateBasket(button, action) {
 function readyToCheckout(value) {
   $("#infoBanner").css("bottom", value);
   $("#infoBanner p").html(
-    "Perfecto. Now you can proceed to the <a href='../view/checkout_test.php'>check-out</a> page"
+    "Perfecto. Now you can proceed to the <a id='checkout_test'>check-out</a> page"
   );
+  redirectCheckoutPage();
 }
 
 $("#infoBanner img").on("click", function() {
@@ -111,3 +112,58 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
+
+//##### PROCEED TO CHECKOUT #####
+function redirectCheckoutPage() {
+  $("#checkout_test").on("click", function() {
+    alert(basketItems);
+    $.get(
+      "../controller/checkout_test_controller.php?basketItems=" + basketItems,
+      function() {
+        window.location.href =
+          "../controller/checkout_test_controller.php?basketItems=" +
+          basketItems;
+      }
+    );
+  });
+}
+
+function redirect(result) {
+  if (result === "no_errors") {
+    window.location.href = "../controller/checkout_test_controller.php";
+  }
+}
+
+//PAUL'S CODE
+function ajaxSearch() {
+  var search = $("input[name=ajaxsearchname]")
+    .val()
+    .trim();
+  $.get(
+    "getCustomersBySurname_service.php?surname=" + search,
+    ajaxSearchCallback
+  );
+}
+
+function ajaxSearchCallback(results) {
+  // results will be an array of Javascript objects which precisely match
+  // the Customer objects in PHP land.
+
+  // wipe out the existing rows in the table seeing as how we're replacing them
+  $("table#resultstable tbody").empty();
+  // now we can iterate through results
+  for (var i = 0; i < results.length; i++) {
+    var customer = results[i];
+    // build a new table row
+    var newrow = $("<tr></tr>");
+    // just so we can see the difference between AJAX-generated rows and
+    // normal rows
+    newrow.css("color", "blue");
+    // build the table cells
+    newrow.append("<td>" + customer.givenname + "</td>");
+    newrow.append("<td>" + customer.surname + "</td>");
+    newrow.append("<td>" + customer.address + "</td>");
+    // append the new row to the table
+    $("table#resultstable tbody").append(newrow);
+  }
+}

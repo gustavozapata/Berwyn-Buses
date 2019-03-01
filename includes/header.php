@@ -18,7 +18,7 @@
             <li id="liBasket">
               <a href="../view/checkout.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
-                  id="basketItems"
+                  class="basketItems"
                   ></span
                 ></a
               >

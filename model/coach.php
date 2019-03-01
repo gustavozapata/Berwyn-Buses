@@ -1,5 +1,5 @@
 <?php
-require_once "vehicleType.php";
+require_once "VehicleType.php";
 class Coach extends VehicleType {
     private $id;
     private $vehicleType;

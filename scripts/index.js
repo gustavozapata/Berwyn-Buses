@@ -13,13 +13,13 @@ var viewport = Math.max(
 //   });
 
 //##### BASKET #####
-var basketItems = $("#basketItems").text();
+var basketItems = $(".basketItems").text();
 isBasketEmpty();
 function isBasketEmpty() {
   if (!basketItems) {
-    $("#basketItems").css("visibility", "hidden");
+    $(".basketItems").css("visibility", "hidden");
   } else {
-    $("#basketItems").css("visibility", "visible");
+    $(".basketItems").css("visibility", "visible");
   }
 }
 

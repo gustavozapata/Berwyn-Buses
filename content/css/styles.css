@@ -87,7 +87,7 @@ nav ul li a:hover {
   width: 32px;
   vertical-align: bottom;
 }
-#basketItems {
+.basketItems {
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -123,12 +123,6 @@ nav ul li a:hover {
   font-size: var(--h2-size);
   font-weight: 900;
 }
-.book-coach:hover #line3 {
-  background-color: rgb(33, 144, 255);
-}
-.book-coach:hover #line4 {
-  background-color: rgb(69, 75, 243);
-}
 #line3 {
   width: 250px;
   height: 10px;
@@ -141,6 +135,12 @@ nav ul li a:hover {
   height: 10px;
   margin: 0 auto;
   background-color: rgb(155, 155, 155);
+}
+.book-coach:hover #line3 {
+  background-color: rgb(33, 144, 255);
+}
+.book-coach:hover #line4 {
+  background-color: rgb(69, 75, 243);
 }
 .book-coach {
   text-align: center;
@@ -269,7 +269,10 @@ footer p a {
   font-size: 1em;
 }
 #infoBanner p a {
+  text-decoration: underline;
   color: black;
+  font-size: 1em;
+  cursor: pointer;
 }
 #infoBanner img {
   width: 25px;
@@ -326,7 +329,7 @@ footer p a {
   #liBasket {
     display: none;
   }
-  #basketItems {
+  .basketItems {
     font-size: 1.2em;
   }
   .contact p {

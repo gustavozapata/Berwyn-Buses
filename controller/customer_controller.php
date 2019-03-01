@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "../model/customer.php";
+require_once "../model/Customer.php";
 require_once "../model/DataAccess.php";
 
 if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]){

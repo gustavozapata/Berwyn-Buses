@@ -1,0 +1,15 @@
+.book-coach {
+  border: none;
+}
+.book-coach:hover #line3 {
+  background-color: #131971;
+}
+.book-coach:hover #line4 {
+  background-color: #f7b700;
+}
+#line3 {
+  background-color: #131971;
+}
+#line4 {
+  background-color: #f7b700;
+}

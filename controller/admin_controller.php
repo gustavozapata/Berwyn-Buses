@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "../model/admin.php";
+require_once "../model/Admin.php";
 require_once "../model/DataAccess.php";
 
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
