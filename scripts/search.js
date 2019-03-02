@@ -1,6 +1,8 @@
 //##### SEARCH SUMMARY #####
 var freeSeats = 0;
 var passengersLeft = parseInt($("#passengersLeft").text(), 10);
+var isBookingReady = false;
+var coachSelection = [];
 
 //ADD TO BASKET BUTTON
 $(".btn-add-basket").on("click", function() {
@@ -30,9 +32,8 @@ function updateBasket(button, action) {
 function readyToCheckout(value) {
   $("#infoBanner").css("bottom", value);
   $("#infoBanner p").html(
-    "Perfecto. Now you can proceed to the <a id='checkout_test'>check-out</a> page"
+    "Perfecto. Now you can proceed to the <a class='checkout_test'>check-out</a> page"
   );
-  redirectCheckoutPage();
 }
 
 $("#infoBanner img").on("click", function() {
@@ -68,9 +69,36 @@ function updateSummary(button, action) {
   if (passengersLeft > 0) {
     $("#coverPassengers, #seat").css("display", "none");
     readyToCheckout(-100);
+    isBookingReady = false;
+  } else {
+    isBookingReady = true;
   }
+  redirectCheckoutPage();
 }
 //##### END SEARCH SUMMARY #####
+
+//##### PROCEED TO CHECKOUT #####
+function redirectCheckoutPage() {
+  $(".checkout_test").on("click", function() {
+    if (isBookingReady) {
+      var i = 0;
+      $(".coach-in-basket[id^=x]").each(function() {
+        coachSelection[i] = $(this)
+          .attr("id")
+          .slice(1);
+        i++;
+      });
+      window.location.href =
+        "../controller/checkout_test_controller.php?basketItems=" +
+        basketItems +
+        "&coachSelection=" +
+        coachSelection;
+    } else {
+      $("#infoBanner").css("bottom", "0");
+      $("#infoBanner p").html("Some passengers need to be accommodated first");
+    }
+  });
+}
 
 //SEARCH FILTER MOVES AS USER SCROLLS
 $(window).scroll(function() {
@@ -113,27 +141,6 @@ $("#filterPrice").on("input", function() {
   $("#outputPrice").text($(this).val());
 });
 
-//##### PROCEED TO CHECKOUT #####
-function redirectCheckoutPage() {
-  $("#checkout_test").on("click", function() {
-    alert(basketItems);
-    $.get(
-      "../controller/checkout_test_controller.php?basketItems=" + basketItems,
-      function() {
-        window.location.href =
-          "../controller/checkout_test_controller.php?basketItems=" +
-          basketItems;
-      }
-    );
-  });
-}
-
-function redirect(result) {
-  if (result === "no_errors") {
-    window.location.href = "../controller/checkout_test_controller.php";
-  }
-}
-
 //PAUL'S CODE
 function ajaxSearch() {
   var search = $("input[name=ajaxsearchname]")
@@ -144,7 +151,6 @@ function ajaxSearch() {
     ajaxSearchCallback
   );
 }
-
 function ajaxSearchCallback(results) {
   // results will be an array of Javascript objects which precisely match
   // the Customer objects in PHP land.

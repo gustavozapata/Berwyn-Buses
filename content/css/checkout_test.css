@@ -1,5 +1,50 @@
+.main-section {
+  display: block;
+}
+.checkout-coaches {
+  margin: 50px auto;
+  text-align: center;
+}
+.checkout-coaches h3 {
+  font-weight: 700;
+  font-size: var(--h3-size);
+  color: #131971;
+  /* text-align: left; */
+  /* border: 1px solid red; */
+}
 .book-coach {
   border: none;
+}
+#backSearch {
+  position: absolute;
+  left: 20px;
+}
+#backSearch a {
+  text-decoration: none;
+  color: #3a3a3a;
+  font-weight: 700;
+}
+#backSearch:hover a {
+  text-decoration: underline;
+}
+.coach-div {
+  width: 160px;
+  height: 215px;
+  border-color: #f7b700;
+  cursor: default;
+}
+.coach-div p {
+  font-size: 0.73em;
+}
+.coach-check:hover {
+  /* pointer-events: none; */
+  border-color: #f7b700;
+}
+.coach-img {
+  height: 65px;
+}
+.coach-status {
+  width: 160px;
 }
 .book-coach:hover #line3 {
   background-color: #131971;
@@ -13,3 +58,25 @@
 #line4 {
   background-color: #f7b700;
 }
+.basketItems {
+  font-size: 0.6em;
+}
+
+/* RULES IF DELETE ITEMS */
+/* .coach-addbasket button {
+  width: 90px;
+  margin: 35px;
+  border-radius: 20px;
+  background-color: #131971;
+  padding: 4px 10px;
+}
+.coach-div:hover {
+  border-color: #f7b700;
+}
+.coach-div-selected {
+  background-color: white;
+  border-color: #f7b700;
+}
+.coach-div-selected .btn-remove-basket {
+  display: block;
+} */

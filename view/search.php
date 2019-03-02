@@ -35,10 +35,10 @@ require_once "../controller/search_controller.php";
     </div><!-- search-filter -->
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>
-    <div class="coach-div">
+    <div class="coach-div" id="x<?= $coach->id ?>">
         <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p><?= $coach->registrationNumber ?></p>
-        <p><?= $coach->vehicleType ?></p>
+        <p><?= $coach->type ?></p>
         <div class="coach-status">
             <div class="coach-addbasket">
               <button class="btn-add-basket">Add to basket</button>
@@ -47,7 +47,7 @@ require_once "../controller/search_controller.php";
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
-              <p><img src="../content/images/hourly.png" /> Hourly Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
+              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
             </div>
         </div>
     </div>

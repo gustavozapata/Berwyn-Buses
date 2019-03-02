@@ -45,6 +45,17 @@ class DataAccess {
     // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "Assignment ID", Booking.id "Booking ID", Booking.destinationCity "Destination", Booking.numOfPassengers "Passengers", Driver.familyName "Driver", Booking.dateRequired "From", Booking.dateReturned "To", (Booking.dateReturned - Booking.dateRequired) "Days", Coach.registrationNumber "Coach", VehicleType.maxCapacity "Coach Capacity" from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
+    function getSelectedCoaches($coachSelection){
+        $connection = $this->getConnection();
+        //https://stackoverflow.com/questions/14767530/php-using-pdo-with-in-clause-array
+        $in = str_repeat('?,', count($coachSelection) - 1) . '?';
+        $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE id IN ($in)");
+        //end of reference
+        $statement->execute($coachSelection);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        return $results;
+    }
+
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT * FROM $type WHERE username = :username AND password = :password");
