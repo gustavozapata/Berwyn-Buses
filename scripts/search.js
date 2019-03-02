@@ -79,6 +79,11 @@ function updateSummary(button, action) {
 
 //##### PROCEED TO CHECKOUT #####
 function redirectCheckoutPage() {
+  //https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
+  parametersUrl = new URL(document.location).searchParams;
+  departUrl = parametersUrl.get("depart");
+  returnUrl = parametersUrl.get("return");
+  passengersUrl = parametersUrl.get("passengers");
   $(".checkout_test").on("click", function() {
     if (isBookingReady) {
       var i = 0;
@@ -89,7 +94,13 @@ function redirectCheckoutPage() {
         i++;
       });
       window.location.href =
-        "../controller/checkout_test_controller.php?basketItems=" +
+        "../controller/checkout_test_controller.php?depart=" +
+        departUrl +
+        "&return=" +
+        returnUrl +
+        "&passengers=" +
+        passengersUrl +
+        "&basketItems=" +
         basketItems +
         "&coachSelection=" +
         coachSelection;

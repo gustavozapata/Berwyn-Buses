@@ -67,3 +67,9 @@ $(document).ready(function() {
     });
   }
 });
+
+//BACK TO SEARCH URL PARAMETERS
+var parametersUrl = "";
+var departUrl = "";
+var returnUrl = "";
+var passengersUrl = "";
