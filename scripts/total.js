@@ -21,7 +21,7 @@ $('.coach-div').each(function(index){
     var $vehicleType = this.type;
     var $coachIMG = "coachIMG"+this.coachIMG;
     var $rate = "rate="+this.price;
-    $(this).children('.coach-status').on('click', function(){ //need to narrow this down to just the button!!!
+    $(this).children('.coach-status').on('click', function(){ 
         console.log('Index: '+index);
         console.log($regNumber);
     });

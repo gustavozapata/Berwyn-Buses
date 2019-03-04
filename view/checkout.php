@@ -44,6 +44,6 @@
     </div>
 <?php require_once "../scripts/call_last.php";?>
 <?php require_once "../scripts/checkout_script.php";?>
-<?php require_once "../scripts/total.js";?>
+<script src="../scripts/total.js"></script>
 </body>
 </html>
