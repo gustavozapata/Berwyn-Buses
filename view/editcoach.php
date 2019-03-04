@@ -2,7 +2,15 @@
 
 session_start();
 
-// require_once "../controller/admin_controller.php";
+require_once "../model/DataAccess.php";
+require_once "../model/Coach.php";
+
+if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
+  $_SESSION["adminLogged"] = true;
+  $coaches = DataAccess::getInstance()->getAllCoaches(74);
+} else {
+  $_SESSION["adminLogged"] = false;
+}
 
 ?>
 
@@ -10,46 +18,50 @@ session_start();
 <html lang="en">
   <head>
     <?php require_once "../includes/head.php"; ?>
+    <link rel="stylesheet" type="text/css" href="../content/css/editcoach.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
     <title>🔧Edit Coaches</title>
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <?php if($_SESSION["adminLogged"]): ?>
-        <nav>
-          <ul>
-            <li><a href="../controller/logout.php">Logout</a></li>
-            <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
-          </ul>
-        </nav>
-        <?php endif; ?>
-      </header>
+      <?php require_once "../includes/admin_header.php" ?>
       <section class="main-section">
         <article class="book-coach">
+          <div class="book-coach-header">
           <?php if(!$_SESSION["adminLogged"]): ?>
-          <div class="book-coach-header">
             <h2><a href="../view/admin_view.php">OOPS Login!</a></h2>
-          </div>
           <?php else: ?>
-          <div class="book-coach-header">
             <h2>Edit Coaches</h2>
-            <form action="">
-                <input type="text" placeholder="Coach Reg. Number">
-              </span>
-                <div class="admin-buttons">
-              <a href="../view/admin_view.php">Save Changes</a>
             </div>
-            </form>
-
-          </div>
+            <div class="edit-coaches">
+              <table>
+              <tr>
+                <th>ID</th>
+                <th>Reg. Number</th>
+                <th>Type</th>
+                <th>Make</th>
+                <th>Colour</th>
+                <th>Max. Capacity</th>
+                <th>Daily Rate</th>
+              </tr>
+              <?php foreach($coaches as $coach): ?>
+              <tr>
+                <td><?= $coach->id ?></td>
+                <td><?= $coach->registrationNumber ?></td>
+                <td><?= $coach->type ?></td>
+                <td><?= $coach->make ?></td>
+                <td><?= $coach->colour ?></td>
+                <td><?= $coach->maxCapacity ?></td>
+                <td><?= $coach->hourlyRate ?></td>
+              </tr>
+              <?php endforeach; ?>
+              </table>
+            </div>
+      
+            <div class="admin-buttons">
+              <a href="#">Save Changes</a>
+            </div>
           <?php endif ?>
         </article>
       </section>

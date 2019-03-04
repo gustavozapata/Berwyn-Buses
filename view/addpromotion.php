@@ -2,7 +2,11 @@
 
 session_start();
 
-// require_once "../controller/admin_controller.php";
+if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
+  $_SESSION["adminLogged"] = true;
+} else {
+  $_SESSION["adminLogged"] = false;
+}
 
 ?>
 
@@ -16,22 +20,7 @@ session_start();
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <?php if($_SESSION["adminLogged"]): ?>
-        <nav>
-          <ul>
-            <li><a href="../controller/logout.php">Logout</a></li>
-            <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
-          </ul>
-        </nav>
-        <?php endif; ?>
-      </header>
+    <?php require_once "../includes/admin_header.php" ?>
       <section class="main-section">
         <article class="book-coach">
           <?php if(!$_SESSION["adminLogged"]): ?>

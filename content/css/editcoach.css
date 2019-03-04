@@ -1,0 +1,22 @@
+.book-coach {
+  width: 80%;
+}
+.edit-coaches {
+    /* border: 1px solid red; */
+}
+.edit-coaches table {
+  border-bottom: 1px solid #8cb6ce;
+  width: 94%;
+  margin: 70px auto;
+  border-spacing: 5px;
+}
+.edit-coaches table td {
+  padding: 10px 5px;
+  /* border: 1px solid red; */
+}
+.edit-coaches table tr:hover {
+  background-color: #bbe3f9;
+}
+.edit-coaches table th {
+  font-size: 1.2em;
+}
