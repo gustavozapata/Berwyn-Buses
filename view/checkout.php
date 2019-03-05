@@ -17,22 +17,20 @@
                     <div class="col-sm-8 ">
                         <div class="box-outline">
                             <h1>Your cart</h1>
-                            <?php foreach($_SESSION["cart"] as $cart)?>
-                            <p><?= $cart ?></p> 
                             <hr/>
-                            <!-- <?php foreach($_SESSION["cart"] as $vehicle):?>
-                            <p><?=count($_SESSION["cart"])?></p>
+                            <?php echo sizeof($_SESSION["cart"]); ?>
+                            <?php foreach($_SESSION["cart"] as $vehicle):?>
                             <div class="row coach-info">
                                 <div class ="col-sm-4 basketInfo" id="image" >
-                                    <img src="<?= $vehicle['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
+                                    <img src="../content/images/<?= $vehicle->image ?>" class="img-fluid" alt="Image Coach" />
                                 </div>
                                 <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
-                                    <p> Registration Number: <?= $vehicle['regNumber'] ?></p> 
-                                    <p>Hourly rate: &#8356;<span id='rate'><?= $vehicle['rate'] ?></span></p>
+                                    <p> Registration Number:<?= $vehicle->registrationNumber ?> </p> 
+                                    <p>Hourly rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
                                 </div>
                             </div>
                             <hr/>
-                            <?php endforeach; ?> -->
+                            <?php endforeach; ?> 
                             <div>Total: &#8356;<span id='total'>0</span></div>
                         </div>
                     </div>

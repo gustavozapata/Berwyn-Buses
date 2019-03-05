@@ -18,13 +18,10 @@ if(price != '0'){
 
 $('.coach-div').each(function(index){
     var $cartInfo = $(this).children('#coachObj').val();
-    console.log($cartInfo);
-    var $regNumber = $(this).children('#regNum').text();
-    var $vehicleType = this.type;
-    var $coachIMG = "coachIMG"+this.coachIMG;
-    var $rate = "rate="+this.price;
-    $(this).children('.coach-status').on('click', function(){ 
+    $(this).children('.btn-add-basket').on('click', function(){ 
         $.post( "../controller/cart.php", {cart: $cartInfo});
+        console.log("click"); 
     });
+    
 });
 
