@@ -17,8 +17,11 @@
                     <div class="col-sm-8 ">
                         <div class="box-outline">
                             <h1>Your cart</h1>
+                            <?php foreach($_SESSION["cart"] as $cart)?>
+                            <p><?= $cart ?></p> 
                             <hr/>
-                            <?php foreach($_SESSION["cart"] as $vehicle):?>
+                            <!-- <?php foreach($_SESSION["cart"] as $vehicle):?>
+                            <p><?=count($_SESSION["cart"])?></p>
                             <div class="row coach-info">
                                 <div class ="col-sm-4 basketInfo" id="image" >
                                     <img src="<?= $vehicle['coachIMG'] ?>" class="img-fluid" alt="Image Coach" />
@@ -29,7 +32,7 @@
                                 </div>
                             </div>
                             <hr/>
-                            <?php endforeach; ?>
+                            <?php endforeach; ?> -->
                             <div>Total: &#8356;<span id='total'>0</span></div>
                         </div>
                     </div>

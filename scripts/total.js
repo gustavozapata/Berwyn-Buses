@@ -14,16 +14,17 @@ if(price != '0'){
     $('span#total').replaceWith(total);
 }
 
-//Ajax code
+
 
 $('.coach-div').each(function(index){
+    var $cartInfo = $(this).children('#coachObj').val();
+    console.log($cartInfo);
     var $regNumber = $(this).children('#regNum').text();
     var $vehicleType = this.type;
     var $coachIMG = "coachIMG"+this.coachIMG;
     var $rate = "rate="+this.price;
     $(this).children('.coach-status').on('click', function(){ 
-        console.log('Index: '+index);
-        console.log($regNumber);
+        $.post( "../controller/cart.php", {cart: $cartInfo});
     });
 });
 
