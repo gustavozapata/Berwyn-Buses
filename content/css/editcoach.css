@@ -14,9 +14,22 @@
   padding: 10px 5px;
   /* border: 1px solid red; */
 }
-.edit-coaches table tr:hover {
-  background-color: #bbe3f9;
-}
 .edit-coaches table th {
   font-size: 1.2em;
 }
+.edit-coaches table td img {
+  width: 17px;
+  cursor: pointer;
+}
+
+/* INPUT EDITABLE */
+/*.edit-coaches table td input {
+  width: initial;
+  background-color: #eef7fc;
+  border: none;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1em;
+  padding: initial;
+  border: 1px solid red;
+}*/

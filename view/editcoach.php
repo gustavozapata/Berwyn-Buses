@@ -54,6 +54,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
                 <td><?= $coach->colour ?></td>
                 <td><?= $coach->maxCapacity ?></td>
                 <td><?= $coach->hourlyRate ?></td>
+                <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
               </tr>
               <?php endforeach; ?>
               </table>
