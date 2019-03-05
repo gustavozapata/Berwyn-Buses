@@ -31,10 +31,9 @@
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div">
     <input type="hidden" id="coachObj" value='<?php echo json_encode($coach);?>'> 
-    <p><?php echo print_r($coach)?></p>
         <img class="coach-img" id="coachIMG" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
         <p id="regNum"><?= $coach->registrationNumber ?></p>
-        <p id="type"><?= $coach->vehicleType ?></p>
+        <p id="type"><?= $coach->type ?></p>
         <div class="coach-status">
             <div class="coach-addbasket">
               <button class="btn-add-basket">Add to basket</button>

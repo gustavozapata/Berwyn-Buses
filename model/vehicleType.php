@@ -1,5 +1,5 @@
 <?php
-class VehicleType {
+class VehicleType implements \JsonSerializable{
     private $id;
     private $type;
     private $maxCapacity;
@@ -9,6 +9,13 @@ class VehicleType {
     }
     function __set($name, $value){
         $this->$name = $value;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
     }
 }
 ?>

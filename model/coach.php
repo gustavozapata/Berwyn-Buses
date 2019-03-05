@@ -1,6 +1,6 @@
 <?php
 require_once "vehicleType.php";
-class Coach extends VehicleType {
+class Coach extends VehicleType implements \JsonSerializable {
     private $id;
     private $vehicleType;
     private $registrationNumber;
@@ -12,6 +12,13 @@ class Coach extends VehicleType {
     }
     function __set($name, $value){
         $this->$name = $value;
+    }
+
+    public function jsonSerialize()
+    {
+        $vars = get_object_vars($this);
+
+        return $vars;
     }
 }
 ?>
