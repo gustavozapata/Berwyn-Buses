@@ -34,6 +34,7 @@ $("input[name='passengers']").on("keyup", function() {
         backgroundColor: "#ffdd00",
         color: "black"
       });
+    $('input[value="Search"]').prop("disabled", false);
   } else if (numPassengers > 500) {
     $("#warning")
       .text("Sorry max. 500 passengers")
@@ -42,8 +43,10 @@ $("input[name='passengers']").on("keyup", function() {
         backgroundColor: "#FB3F3F",
         color: "white"
       });
+    $('input[value="Search"]').prop("disabled", true);
   } else {
     $("#warning").css("opacity", "0");
+    $('input[value="Search"]').prop("disabled", false);
   }
 });
 
