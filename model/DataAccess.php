@@ -32,16 +32,20 @@ class DataAccess {
 
     //MYSQL QUERY VIEW_COACH_TYPE
     //select coach.id, coach.registrationNumber, vehicletype.type, coach.make, coach.colour, vehicletype.maxCapacity, vehicletype.hourlyRate, coach.image from coach, vehicletype where coach.vehicleType = vehicletype.id order by coach.id
-    function searchCoaches($passengers, $from, $to){
+    function searchCoaches($passengers, $dateFrom, $dateTo){
         $connection = $this->getConnection();
         if($passengers <= 73){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+            // $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
             $statement = $connection->prepare("SELECT * FROM view_coach_type");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        $statement->bindValue(":dateFrom", $dateFrom);
+        // $statement->bindValue(":dateTo", $dateTo);
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        // $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
     }
 
@@ -57,7 +61,7 @@ class DataAccess {
     }
 
     // MYSQL QUERY VIEW_BOOKING_INFO
-    // SELECT BookingAssignment.id "Assignment ID", Booking.id "Booking ID", Booking.destinationCity "Destination", Booking.numOfPassengers "Passengers", Driver.familyName "Driver", Booking.dateRequired "From", Booking.dateReturned "To", (Booking.dateReturned - Booking.dateRequired) "Days", Coach.registrationNumber "Coach", VehicleType.maxCapacity "Coach Capacity" from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
+    // SELECT BookingAssignment.id "Assignment ID", Booking.id "Booking ID", Booking.destinationCity, Booking.numOfPassengers, Driver.familyName "Driver", Booking.dateRequired "From", Booking.dateReturned "To", (Booking.dateReturned - Booking.dateRequired) "Days", Coach.registrationNumber "Coach", VehicleType.maxCapacity "Coach Capacity" from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();
