@@ -6,6 +6,7 @@ require_once "../model/Customer.php";
 require_once "../model/DataAccess.php";
 
 if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]){
+  unset($_SESSION['adminLogged']);
   $_SESSION["userLogged"] = true;
 } else {
   $_SESSION["userLogged"] = false;

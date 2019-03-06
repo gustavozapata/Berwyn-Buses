@@ -32,7 +32,7 @@ class DataAccess {
 
     //MYSQL QUERY VIEW_COACH_TYPE
     //select coach.id, coach.registrationNumber, vehicletype.type, coach.make, coach.colour, vehicletype.maxCapacity, vehicletype.hourlyRate, coach.image from coach, vehicletype where coach.vehicleType = vehicletype.id order by coach.id
-    function getAllCoaches($passengers){
+    function searchCoaches($passengers, $from, $to){
         $connection = $this->getConnection();
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
