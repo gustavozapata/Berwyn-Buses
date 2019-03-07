@@ -7,7 +7,7 @@ require_once "../model/Coach.php";
 
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
   $_SESSION["adminLogged"] = true;
-  $coaches = DataAccess::getInstance()->getAllCoaches(74);
+  $coaches = DataAccess::getInstance()->searchCoaches(74,0,0);
 } else {
   $_SESSION["adminLogged"] = false;
 }

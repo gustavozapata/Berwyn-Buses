@@ -35,17 +35,17 @@ class DataAccess {
     function searchCoaches($passengers, $dateFrom, $dateTo){
         $connection = $this->getConnection();
         if($passengers <= 73){
-            // $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
-            $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+            // $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
             $statement = $connection->prepare("SELECT * FROM view_coach_type");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
-        $statement->bindValue(":dateFrom", $dateFrom);
+        // $statement->bindValue(":dateFrom", $dateFrom);
         // $statement->bindValue(":dateTo", $dateTo);
         $statement->execute();
-        // $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        // $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
     }
 
