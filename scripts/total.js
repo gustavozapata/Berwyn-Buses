@@ -18,7 +18,7 @@ if(price != '0'){
 
 $('.coach-div').each(function(index){
     var $cartInfo = $(this).children('#coachObj').val();
-    $(this).children('.coach-status').on('click', function(){ 
+    $(this).find('.btn-add-basket').on('click', function(){ 
         $.post( "../controller/cart.php", {cart: $cartInfo});
         console.log("click"); 
     });
