@@ -61,7 +61,7 @@ class DataAccess {
     }
 
     // MYSQL QUERY VIEW_BOOKING_INFO
-    // SELECT BookingAssignment.id "Assignment ID", Booking.id "Booking ID", Booking.destinationCity, Booking.numOfPassengers, Driver.familyName "Driver", Booking.dateRequired "From", Booking.dateReturned "To", (Booking.dateReturned - Booking.dateRequired) "Days", Coach.registrationNumber "Coach", VehicleType.maxCapacity "Coach Capacity" from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
+    // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();
