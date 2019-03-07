@@ -60,6 +60,25 @@ class DataAccess {
         return $results;
     }
 
+    //BORRAR
+    function getSelectedCoaches2($editCoach){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE id = :editCoach");
+        $statement->bindValue(":editCoach", $editCoach);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $results;
+    }
+
+
+    function getVehicleTypes(){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT type FROM VehicleType");
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
+        return $results;
+    }
+
     // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 

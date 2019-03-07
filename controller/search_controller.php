@@ -1,7 +1,7 @@
 <?php
 
-require_once "../model/DataAccess.php";
 require_once "../model/Coach.php";
+require_once "../model/DataAccess.php";
 
 
 if(isset($_REQUEST["passengers"])) {

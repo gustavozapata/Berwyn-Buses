@@ -27,6 +27,7 @@ if ($_POST) {
   }
 }
 
+
 require_once "../view/admin_view.php"; 
 
 ?>

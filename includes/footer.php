@@ -9,9 +9,13 @@
     <div class="contact">
         <p>Contact Us</p><img src="../content/images/chat.png" />
     </div>
+    <!-- <div id="infoBanner">
+        <img src="../content/images/close.png" alt="Close Button">
+        <p>We don't use cookies so relax there's nothing to accept</p>
+    </div> -->
     <div id="infoBanner">
         <img src="../content/images/close.png" alt="Close Button">
         <p id = newcoach>NEW __ ADDED SEATS ___ PEOPLE!! ORDER NOW</p>
         <button type="button" onclick='document.getElementById("newcoach").innerHTML = "We dont use cookies so relax theres nothing to accept"'>Cookies?</button>
-</div>
+    </div>
 </footer>

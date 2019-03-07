@@ -31,14 +31,14 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <div class="book-coach-header">
             <h2>Edit Promotion</h2>
             <form action="">
-                <input type="text" placeholder="Promotion ID">
-                <input type="text" placeholder="Promotion Descripton">
-                <span>
+              <input type="text" placeholder="Promotion ID">
+              <input type="text" placeholder="Promotion Descripton">
+              <span>
                 <input type="number" placeholder="Discount Amount"/>
               </span>
-                <div class="admin-buttons">
-              <a href="../view/admin_view.php">Add</a>
-            </div>
+              <div class="admin-buttons">
+                <a href="../view/admin_view.php">Add</a>
+              </div>
             </form>
 
           </div>
