@@ -32,7 +32,7 @@ session_start();
               </span>
               <span>
                 <p>Passengers</p>
-                <input id="passengers" name="passengers" type="number" maxlength="3" required/>
+                <input id="passengers" name="passengers" type="number" min="5" max="500" required/>
               </span>
               <span id="warning">Status</span>
               <br />
