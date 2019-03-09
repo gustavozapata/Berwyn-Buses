@@ -18,19 +18,22 @@
                         <div class="box-outline">
                             <h1>Your cart</h1>
                             <hr/>
-                            <?php echo sizeof($_SESSION["cart"]); ?>
+                            <?php if(count($_SESSION["cart"])==0): ?>
+                            <h3> Your cart is empty </h3>
+                            <?php endif; ?>
                             <?php foreach($_SESSION["cart"] as $vehicle):?>
                             <div class="row coach-info">
                                 <div class ="col-sm-4 basketInfo" id="image" >
                                     <img src="../content/images/<?= $vehicle->image ?>" class="img-fluid" alt="Image Coach" />
                                 </div>
                                 <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
-                                    <p> Registration Number:<?= $vehicle->registrationNumber ?> </p> 
-                                    <p>Hourly rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
+                                    <p> Registration Number: <?= $vehicle->registrationNumber ?> </p> 
+                                    <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
                                 </div>
                             </div>
                             <hr/>
                             <?php endforeach; ?> 
+
                             <div>Total: &#8356;<span id='total'>0</span></div>
                         </div>
                     </div>
@@ -44,7 +47,6 @@
         </section>
     </div>
 <?php require_once "../scripts/call_last.php";?>
-<?php require_once "../scripts/checkout_script.php";?>
 <script src="../scripts/total.js"></script>
 </body>
 </html>
