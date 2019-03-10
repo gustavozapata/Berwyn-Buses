@@ -20,15 +20,23 @@ require_once "../controller/checkout_test_controller.php";
     <section class="main-section">
         <article class="book-coach">
           <div class="book-coach-header">
-            <h2>Check-out<span class="basketItems"><?= $_SESSION["basketItems"] ?></span></h2>
+            <h2>Check-out<span class="basketItems"><?= $_SESSION["basket"]->items ?></span></h2>
             <div id="line3"></div>
             <div id="line4"></div>
           </div>
           <div>
         </article>
         <article class="checkout-coaches">
-        <p id="backSearch"><a href="#">&lt; Back to search</a></p>
+        <?php if($comesFromSearch) : ?>
+        <p class="backSearch"><a href="#">&lt; Back to search</a></p>
+        <?php endif; ?> <!-- IF COMES FROM SEARCH -->
           <h3>Items</h3>
+          <?php if($_SESSION["basket"]->items < 1) : ?>
+          <div id="noItems">
+            <p>You don't have any items to check-out 😔</p>
+            <p class="backSearch"><a href="../view/index.php">Search</a>🔍</p>
+          </div>
+          <?php else : ?>
           <?php foreach($coaches as $coach): ?>
           <div class="coach-div coach-check" id="coach_<?= $coach->id ?>">
           <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
@@ -46,7 +54,15 @@ require_once "../controller/checkout_test_controller.php";
         </div>
     </div>
     <?php endforeach ?>
-        </article>
+    <hr>
+    <article class="checkout-payment">
+      <h3>Payment Details</h3>
+      <p>Choose payment option</p>
+      <input id="visa" name="payment" type="radio"><label for="visa"><img src="../content/images/visa.png"></label>
+      <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label>
+    </article>
+    <?php endif ?> <!-- IF LESS THAN 1 ITEM -->
+    </article>
     </section>
     <?php require_once "../includes/footer.php"; ?>
 

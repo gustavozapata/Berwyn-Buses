@@ -96,7 +96,8 @@ nav ul li a:hover {
   margin: -10px;
   border-radius: 20px;
   vertical-align: top;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 0.9em;
   color: white;
   background-color: rgb(33, 144, 255);
 }

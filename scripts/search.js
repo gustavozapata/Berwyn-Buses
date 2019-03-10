@@ -1,3 +1,5 @@
+$(".checkout_test").attr("href", "#");
+
 //##### SEARCH SUMMARY #####
 var freeSeats = 0;
 var passengersLeft = parseInt($("#passengersLeft").text(), 10);
@@ -151,36 +153,3 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
-
-//PAUL'S CODE
-function ajaxSearch() {
-  var search = $("input[name=ajaxsearchname]")
-    .val()
-    .trim();
-  $.get(
-    "getCustomersBySurname_service.php?surname=" + search,
-    ajaxSearchCallback
-  );
-}
-function ajaxSearchCallback(results) {
-  // results will be an array of Javascript objects which precisely match
-  // the Customer objects in PHP land.
-
-  // wipe out the existing rows in the table seeing as how we're replacing them
-  $("table#resultstable tbody").empty();
-  // now we can iterate through results
-  for (var i = 0; i < results.length; i++) {
-    var customer = results[i];
-    // build a new table row
-    var newrow = $("<tr></tr>");
-    // just so we can see the difference between AJAX-generated rows and
-    // normal rows
-    newrow.css("color", "blue");
-    // build the table cells
-    newrow.append("<td>" + customer.givenname + "</td>");
-    newrow.append("<td>" + customer.surname + "</td>");
-    newrow.append("<td>" + customer.address + "</td>");
-    // append the new row to the table
-    $("table#resultstable tbody").append(newrow);
-  }
-}

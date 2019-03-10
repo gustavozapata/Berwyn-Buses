@@ -16,7 +16,7 @@ var viewport = Math.max(
 var basketItems = $(".basketItems").text();
 isBasketEmpty();
 function isBasketEmpty() {
-  if (!basketItems) {
+  if (!basketItems || basketItems < 1) {
     $(".basketItems").css("visibility", "hidden");
   } else {
     $(".basketItems").css("visibility", "visible");

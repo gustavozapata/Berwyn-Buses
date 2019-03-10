@@ -1,3 +1,14 @@
+<?php
+
+if(!isset($_SESSION['basket'])){
+  $_SESSION["basket"] = (object) [
+    'items' => 0,
+    'coaches' => []
+  ];
+}
+
+?>
+
 <header>
         <div class="logo">
           <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
@@ -16,10 +27,10 @@
             <li><a href="../view/customer_view.php">Login</a></li>
             <?php endif; ?>
             <li id="liBasket">
-              <a class="checkout_test" href="#"
+              <a class="checkout_test" href="../controller/checkout_test_controller.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
                   class="basketItems"
-                  ></span
+                  ><?= $_SESSION['basket']->items ?></span
                 ></a
               >
             </li>

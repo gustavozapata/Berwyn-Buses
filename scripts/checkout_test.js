@@ -8,7 +8,7 @@ $(function() {
   returnUrl = parametersUrl.get("return");
   passengersUrl = parametersUrl.get("passengers");
 
-  $("#backSearch").on("click", function() {
+  $(".backSearch").on("click", function() {
     window.location.href =
       "../controller/search_controller.php?depart=" +
       departUrl +

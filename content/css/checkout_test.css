@@ -15,17 +15,17 @@
 .book-coach {
   border: none;
 }
-#backSearch a {
+.backSearch a {
   text-decoration: none;
   color: #3a3a3a;
   font-weight: 700;
 }
-#backSearch:hover a {
+.backSearch:hover a {
   text-decoration: underline;
 }
 .coach-div {
   width: 160px;
-  height: 215px;
+  height: 230px;
   border-color: #f7b700;
   cursor: default;
 }
@@ -57,7 +57,19 @@
 .basketItems {
   font-size: 0.6em;
 }
-
+#noItems {
+  font-weight: 700;
+}
+hr {
+  border: 0;
+  width: 80%;
+  height: 1px;
+  margin: 50px auto;
+  background: rgba(19, 25, 113, 0.5);
+}
+.checkout-payment label img {
+  width: 50px;
+}
 /* RULES IF DELETE ITEMS */
 /* .coach-addbasket button {
   width: 90px;
