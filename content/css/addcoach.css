@@ -1,0 +1,12 @@
+form input {
+  margin: 6px auto;
+}
+select {
+  height: 35px;
+  width: 200px;
+  border-radius: 10px;
+  margin: 6px;
+}
+.book-coach-header h2 {
+  margin-bottom: 25px;
+}

@@ -5,23 +5,15 @@ require_once "../model/Coach.php";
 require_once "../model/DataAccess.php";
 
 if(isset($_REQUEST["editCoachId"])){
-    $editCoach = DataAccess::getInstance()->getSelectedCoaches2($_REQUEST["editCoachId"]);
-    echo json_encode($editCoach);
+  $editCoach = DataAccess::getInstance()->getEditableFields($_REQUEST["editCoachId"]);
+  echo json_encode($editCoach);
 }
 
-//PAUL'S CODE
-/* header('Content-Type: application/json');
-require_once ("customer.php");
-require_once ("dataAccess-db.php");
-
-if (!isset($_REQUEST["surname"]))
-{
-  echo json_encode([]); // send empty array
+if(isset($_REQUEST["saveEditCoach"])){
+  // $coachJson = json_decode($_REQUEST["saveEditCoach"]);
+  $coachJson = $_REQUEST["saveEditCoach"];
+  $updateCoach = DataAccess::getInstance()->updateCoaches($coachJson);
+  // echo json_encode($updateCoach);
 }
-else {
-  $names = getUsersByStartOfSurname($_REQUEST["surname"]);
-  echo json_encode($names);
-} */
-
 
 ?>

@@ -31,7 +31,7 @@ class DataAccess {
     }
 
     //MYSQL QUERY VIEW_COACH_TYPE
-    //select coach.id, coach.registrationNumber, vehicletype.type, coach.make, coach.colour, vehicletype.maxCapacity, vehicletype.hourlyRate, coach.image from coach, vehicletype where coach.vehicleType = vehicletype.id order by coach.id
+    //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.hourlyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
     function searchCoaches($passengers, $dateFrom, $dateTo){
         $connection = $this->getConnection();
         if($passengers <= 73){
@@ -60,14 +60,21 @@ class DataAccess {
         return $results;
     }
 
-    //BORRAR
-    function getSelectedCoaches2($editCoach){
+    function getEditableFields($editCoach){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE id = :editCoach");
+        $statement = $connection->prepare("SELECT id, registrationNumber, type, make, colour, maxCapacity, hourlyRate FROM view_coach_type WHERE id = :editCoach");
         $statement->bindValue(":editCoach", $editCoach);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
+    }
+
+    function updateCoaches($updateCoach){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("UPDATE coach SET colour=$updateCoach->{'colour'} WHERE id = 1");
+        $statement->execute();
+        // $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        // return $results;
     }
 
 

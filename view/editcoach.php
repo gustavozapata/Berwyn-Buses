@@ -103,10 +103,11 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
             </tr>
           </table>
           <div class="save-btn admin-buttons">
-            <a id="saveEditCoach" href="#">Save</a>
+            <a id="saveEditCoach">Save</a>
           </div>
         </div>
       </div>
+      <!-- END EDIT COACH POPUP -->
       
 
     <?php
@@ -117,5 +118,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
+    <script src="../scripts/editcoach.js"></script>
   </body>
 </html>
