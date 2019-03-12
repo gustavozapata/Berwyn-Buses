@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../content/css/checkout.css">
     <?php require_once "../includes/head.php";?>
     
     <title>Document</title>
@@ -15,9 +16,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 ">
-                        <div class="box-outline">
+                        <div class="box-outline cart">
+                            <div class="title">
                             <h1>Your cart</h1>
+                                <div class="top"></div>
+                                <div class="bottom"></div>
+                            </div>
+                            
+                            <?php if ($_SESSION["trip"]['depart'] != "" && $_SESSION["trip"]['return'] != "") : ?>
+                            <h3>Trip details</h3>
+                            <p><span style="font-weight:bold; text-align:left;">Trip duration: </span><?= $_SESSION["trip"]['depart'] ?> - <?= $_SESSION["trip"]['return'] ?></p>
+                            <p><span style="font-weight:bold; text-align:left;">Number of passengers: </span><?= $_SESSION["trip"]['passengers'] ?></p>
+                            <?php endif; ?>
                             <hr/>
+
                             <?php if(count($_SESSION["cart"])==0): ?>
                             <h3> Your cart is empty </h3>
                             <?php endif; ?>
