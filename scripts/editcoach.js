@@ -53,15 +53,12 @@ $("#saveEditCoach").on("click", function() {
 });
 
 function updateEditCoach(){
-  $("td#"+editCoach.id).next().next().next().text(editCoach.make);
+  $("tr#"+editCoach.id).find("[data-edit='reg']").text(editCoach.registrationNumber);
+  // $("tr#"+editCoach.id).find("[data-edit='type']").text(editCoach.type);
+  $("tr#"+editCoach.id).find("[data-edit='make']").text(editCoach.make);
+  $("tr#"+editCoach.id).find("[data-edit='colour']").text(editCoach.colour);
+  $("tr#"+editCoach.id).find("[data-edit='max']").text(editCoach.maxCapacity);
+  $("tr#"+editCoach.id).find("[data-edit='rate']").text("£"+editCoach.dailyRate);
   editCoach = JSON.stringify(editCoach);
-  $.get(
-    "../controller/editcoach_controller.php?saveEditCoach=" + editCoach
-    // updateEditCoaches
-  );
+  $.get("../controller/editcoach_controller.php?saveEditCoach=" + editCoach);
 }
-// function updateEditCoaches(results) {
-//   console.log("hla: " + results.id);
-//   console.log("from server: " + results[0]);
-//   location.reload();
-// }

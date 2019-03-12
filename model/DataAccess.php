@@ -73,9 +73,21 @@ class DataAccess {
 
     function updateCoaches($updateCoach){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("UPDATE view_coach_type SET registrationNumber='$updateCoach->registrationNumber', make='$updateCoach->make', colour='$updateCoach->colour' WHERE id = '$updateCoach->id'");
+
+        //COACH
+        $statement = $connection->prepare("UPDATE view_coach_type SET registrationNumber=:registrationNumber, make=:make, colour=:colour WHERE id = :id");
+        $statement->bindValue(":registrationNumber", $updateCoach->registrationNumber);
+        $statement->bindValue(":make", $updateCoach->make);
+        $statement->bindValue(":colour", $updateCoach->colour);
+        $statement->bindValue(":id", $updateCoach->id);
         $statement->execute();
-        $statement = $connection->prepare("UPDATE view_coach_type SET type='$updateCoach->type', maxCapacity='$updateCoach->maxCapacity', hourlyRate='$updateCoach->dailyRate' WHERE id = '$updateCoach->id'");
+
+        //VEHICLE TYPE
+        $statement = $connection->prepare("UPDATE view_coach_type SET type=':type', maxCapacity=':maxCapacity', hourlyRate=':dailyRate' WHERE id = ':id'");
+        $statement->bindValue(":type", $updateCoach->type);
+        $statement->bindValue(":maxCapacity", $updateCoach->maxCapacity);
+        $statement->bindValue(":dailyRate", $updateCoach->dailyRate);
+        $statement->bindValue(":id", $updateCoach->id);
         $statement->execute();
         // $results = $statement->fetch();
         // return $results;

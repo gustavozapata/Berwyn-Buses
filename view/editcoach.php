@@ -48,14 +48,14 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
                 <th>Daily Rate</th>
               </tr>
               <?php foreach($coaches as $coach): ?>
-              <tr>
+              <tr id="<?= $coach->id ?>">
                 <td><?= $coach->id ?></td>
-                <td><?= $coach->registrationNumber ?></td>
-                <td><?= $coach->type ?></td>
-                <td><?= $coach->make ?></td>
-                <td><?= $coach->colour ?></td>
-                <td><?= $coach->maxCapacity ?></td>
-                <td>£<?= $coach->hourlyRate ?></td>
+                <td data-edit="reg"><?= $coach->registrationNumber ?></td>
+                <td data-edit="type"><?= $coach->type ?></td>
+                <td data-edit="make"><?= $coach->make ?></td>
+                <td data-edit="colour"><?= $coach->colour ?></td>
+                <td data-edit="max"><?= $coach->maxCapacity ?></td>
+                <td data-edit="rate">£<?= $coach->hourlyRate ?></td>
                 <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
               </tr>
               <?php endforeach; ?>
