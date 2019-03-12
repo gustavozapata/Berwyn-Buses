@@ -36,11 +36,13 @@ class DataAccess {
         $connection = $this->getConnection();
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+            //DATE RANGE
             // $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
             $statement = $connection->prepare("SELECT * FROM view_coach_type");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        //DATE RANGE
         // $statement->bindValue(":dateFrom", $dateFrom);
         // $statement->bindValue(":dateTo", $dateTo);
         $statement->execute();
@@ -71,9 +73,11 @@ class DataAccess {
 
     function updateCoaches($updateCoach){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("UPDATE coach SET colour=$updateCoach->{'colour'} WHERE id = 1");
+        $statement = $connection->prepare("UPDATE view_coach_type SET registrationNumber='$updateCoach->registrationNumber', make='$updateCoach->make', colour='$updateCoach->colour' WHERE id = '$updateCoach->id'");
         $statement->execute();
-        // $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $statement = $connection->prepare("UPDATE view_coach_type SET type='$updateCoach->type', maxCapacity='$updateCoach->maxCapacity', hourlyRate='$updateCoach->dailyRate' WHERE id = '$updateCoach->id'");
+        $statement->execute();
+        // $results = $statement->fetch();
         // return $results;
     }
 

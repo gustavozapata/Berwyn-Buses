@@ -43,19 +43,25 @@ $("#saveEditCoach").on("click", function() {
     id: $("#editPopup h2 span").text(),
     registrationNumber: $("input[name='editReg']").val(),
     type: $("select[name='editType']").val(),
-    make: $("select[name='editMake']").val(),
+    make: $("input[name='editMake']").val(),
     colour: $("input[name='editColour']").val(),
     maxCapacity: $("input[name='editCapacity']").val(),
     dailyRate: $("input[name='editDaily']").val()
   };
-  editCoach = JSON.stringify(editCoach);
-  console.log(editCoach);
-  $.get(
-    "../controller/editcoach_controller.php?saveEditCoach=" + editCoach,
-    updateEditCoaches
-  );
+
+  updateEditCoach();
 });
 
-function updateEditCoaches(results) {
-  console.log("from server: " + results[0]);
+function updateEditCoach(){
+  $("td#"+editCoach.id).next().next().next().text(editCoach.make);
+  editCoach = JSON.stringify(editCoach);
+  $.get(
+    "../controller/editcoach_controller.php?saveEditCoach=" + editCoach
+    // updateEditCoaches
+  );
 }
+// function updateEditCoaches(results) {
+//   console.log("hla: " + results.id);
+//   console.log("from server: " + results[0]);
+//   location.reload();
+// }
