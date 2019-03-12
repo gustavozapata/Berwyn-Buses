@@ -44,6 +44,7 @@ require_once "../controller/admin_controller.php";
             <div class="admin-buttons">
               <a href="../view/addcoach.php">Add coach</a>
               <a href="../view/editcoach.php">Edit coach</a>
+              <a id="vehicleTypeButton" href="../view/editvehicletype.php">Edit vehicle type</a>
             </div>
 
             <h2>Promotions</h2>

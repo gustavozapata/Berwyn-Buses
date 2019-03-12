@@ -13,20 +13,14 @@ $(".edit-coaches img").on("click", function() {
     editCoachAjaxResults
   );
 });
-
+// LA60 FCB	Volvo	White
 var editCoach = {};
 function editCoachAjaxResults(results) {
   editCoach = results;
   $("#editPopup h2 span").text(results[0].id);
   $("input[name='editReg']").attr("value", results[0].registrationNumber);
-  $("select[name='editType'] option[value='" + results[0].type + "']").attr(
-    "selected",
-    true
-  );
   $("input[name='editMake']").attr("value", results[0].make);
   $("input[name='editColour']").attr("value", results[0].colour);
-  $("input[name='editCapacity']").attr("value", results[0].maxCapacity);
-  $("input[name='editDaily']").attr("value", results[0].hourlyRate);
 }
 
 $("#editPopup img").on("click", function() {
@@ -42,23 +36,23 @@ $("#saveEditCoach").on("click", function() {
   editCoach = {
     id: $("#editPopup h2 span").text(),
     registrationNumber: $("input[name='editReg']").val(),
-    type: $("select[name='editType']").val(),
     make: $("input[name='editMake']").val(),
-    colour: $("input[name='editColour']").val(),
-    maxCapacity: $("input[name='editCapacity']").val(),
-    dailyRate: $("input[name='editDaily']").val()
+    colour: $("input[name='editColour']").val()
   };
 
   updateEditCoach();
 });
 
-function updateEditCoach(){
-  $("tr#"+editCoach.id).find("[data-edit='reg']").text(editCoach.registrationNumber);
-  // $("tr#"+editCoach.id).find("[data-edit='type']").text(editCoach.type);
-  $("tr#"+editCoach.id).find("[data-edit='make']").text(editCoach.make);
-  $("tr#"+editCoach.id).find("[data-edit='colour']").text(editCoach.colour);
-  $("tr#"+editCoach.id).find("[data-edit='max']").text(editCoach.maxCapacity);
-  $("tr#"+editCoach.id).find("[data-edit='rate']").text("£"+editCoach.dailyRate);
+function updateEditCoach() {
+  $("tr#" + editCoach.id)
+    .find("[data-edit='reg']")
+    .text(editCoach.registrationNumber);
+  $("tr#" + editCoach.id)
+    .find("[data-edit='make']")
+    .text(editCoach.make);
+  $("tr#" + editCoach.id)
+    .find("[data-edit='colour']")
+    .text(editCoach.colour);
   editCoach = JSON.stringify(editCoach);
   $.get("../controller/editcoach_controller.php?saveEditCoach=" + editCoach);
 }

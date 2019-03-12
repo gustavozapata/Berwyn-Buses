@@ -36,3 +36,6 @@
   border: 2px solid rgb(112, 112, 112);
   color: white;
 }
+#vehicleTypeButton {
+  width: 200px;
+}

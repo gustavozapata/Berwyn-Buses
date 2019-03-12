@@ -8,7 +8,7 @@ require_once "../model/VehicleType.php";
 
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
   $_SESSION["adminLogged"] = true;
-  $coaches = DataAccess::getInstance()->searchCoaches(74,0,0);
+  $vehicleTypes = DataAccess::getInstance()->getVehicleTypes();
 } else {
   $_SESSION["adminLogged"] = false;
 }
@@ -22,7 +22,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <link rel="stylesheet" type="text/css" href="../content/css/editcoach.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
-    <title>🔧Edit Coaches</title>
+    <title>🔧Edit Vehicle Types</title>
   </head>
   <body>
     <div id="page">
@@ -33,22 +33,22 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <?php if(!$_SESSION["adminLogged"]): ?>
             <h2><a href="../view/admin_view.php">OOPS Login!</a></h2>
           <?php else: ?>
-            <h2>Edit Coaches</h2>
+            <h2>Edit Vehicle Types</h2>
             </div>
             <div class="edit-coaches">
               <table>
               <tr>
                 <th>ID</th>
-                <th>Reg. Number</th>
-                <th>Make</th>
-                <th>Colour</th>
+                <th>Type</th>
+                <th>Max. Capacity</th>
+                <th>Daily Rate</th>
               </tr>
-              <?php foreach($coaches as $coach): ?>
-              <tr id="<?= $coach->id ?>">
-                <td><?= $coach->id ?></td>
-                <td data-edit="reg"><?= $coach->registrationNumber ?></td>
-                <td data-edit="make"><?= $coach->make ?></td>
-                <td data-edit="colour"><?= $coach->colour ?></td>
+              <?php foreach($vehicleTypes as $vehicleType): ?>
+              <tr id="<?= $vehicleType->id ?>">
+                <td><?= $vehicleType->id ?></td>
+                <td data-edit="type"><?= $vehicleType->type ?></td>
+                <td data-edit="max"><?= $vehicleType->maxCapacity ?></td>
+                <td data-edit="rate">£<?= $vehicleType->hourlyRate ?></td>
                 <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
               </tr>
               <?php endforeach; ?>
@@ -65,20 +65,31 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <h2>Coach &#35;<span></span></h2>
           <table>
             <tr>
-              <td>Reg. Number:</td>
-              <td><input type="text" name="editReg"></td>
+              <td>Type:</td>
+              <td>
+                <select name="editType">
+                  <option value="VIP Coach">VIP Coach</option>
+                  <option value="Standard Minibus">Standard Minibus</option>
+                  <option value="Standard MPV">Standard MPV</option>
+                  <option value="Executive MPV">Executive MPV</option>
+                  <option value="Standard Coach">Standard Coach</option>
+                  <option value="Double Deck Coach">Double Deck Coach</option>
+                  <option value="Bus">Bus</option>
+                  <option value="Executive Mini Coach">Executive Mini Coach</option>
+                </select>
+              </td>
             </tr>
             <tr>
-              <td>Make:</td>
-              <td><input type="text" name="editMake"></td>
+              <td>Max. Capacity:</td>
+              <td><input type="number" name="editCapacity"></td>
             </tr>
             <tr>
-              <td>Colour:</td>
-              <td><input type="text" name="editColour"></td>
+              <td>Daily Rate:</td>
+              <td><input type="number" name="editDaily"></td>
             </tr>
           </table>
           <div class="save-btn admin-buttons">
-            <a id="saveEditCoach">Save</a>
+            <a id="saveEditVehicle">Save</a>
           </div>
         </div>
       </div>
@@ -93,6 +104,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
-    <script src="../scripts/editcoach.js"></script>
+    <script src="../scripts/editvehicletype.js"></script>
   </body>
 </html>

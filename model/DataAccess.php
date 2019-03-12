@@ -30,8 +30,6 @@ class DataAccess {
         return $this->connection;
     }
 
-    //MYSQL QUERY VIEW_COACH_TYPE
-    //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.hourlyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
     function searchCoaches($passengers, $dateFrom, $dateTo){
         $connection = $this->getConnection();
         if($passengers <= 73){
@@ -64,8 +62,17 @@ class DataAccess {
 
     function getEditableFields($editCoach){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("SELECT id, registrationNumber, type, make, colour, maxCapacity, hourlyRate FROM view_coach_type WHERE id = :editCoach");
+        $statement = $connection->prepare("SELECT id, registrationNumber, make, colour FROM Coach WHERE id = :editCoach");
         $statement->bindValue(":editCoach", $editCoach);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $results;
+    }
+
+    function getEditableFieldsVehicle($editVehicle){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT id, type, maxCapacity, hourlyRate FROM VehicleType WHERE id = :editVehicle");
+        $statement->bindValue(":editVehicle", $editVehicle);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
@@ -73,38 +80,34 @@ class DataAccess {
 
     function updateCoaches($updateCoach){
         $connection = $this->getConnection();
-
-        //COACH
-        $statement = $connection->prepare("UPDATE view_coach_type SET registrationNumber=:registrationNumber, make=:make, colour=:colour WHERE id = :id");
+        $statement = $connection->prepare("UPDATE Coach SET registrationNumber=:registrationNumber, make=:make, colour=:colour WHERE id = :id");
         $statement->bindValue(":registrationNumber", $updateCoach->registrationNumber);
         $statement->bindValue(":make", $updateCoach->make);
         $statement->bindValue(":colour", $updateCoach->colour);
         $statement->bindValue(":id", $updateCoach->id);
         $statement->execute();
+    }
 
-        //VEHICLE TYPE
-        $statement = $connection->prepare("UPDATE view_coach_type SET type=':type', maxCapacity=':maxCapacity', hourlyRate=':dailyRate' WHERE id = ':id'");
-        $statement->bindValue(":type", $updateCoach->type);
-        $statement->bindValue(":maxCapacity", $updateCoach->maxCapacity);
-        $statement->bindValue(":dailyRate", $updateCoach->dailyRate);
-        $statement->bindValue(":id", $updateCoach->id);
+    function updateVehicleTypes($updateVehicle){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("UPDATE VehicleType SET type=:type, maxCapacity=:maxCapacity, hourlyRate=:dailyRate WHERE id = :id");
+        $statement->bindValue(":type", $updateVehicle->type);
+        $statement->bindValue(":maxCapacity", $updateVehicle->maxCapacity);
+        $statement->bindValue(":dailyRate", $updateVehicle->dailyRate);
+        $statement->bindValue(":id", $updateVehicle->id);
         $statement->execute();
-        // $results = $statement->fetch();
-        // return $results;
     }
 
 
     function getVehicleTypes(){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("SELECT type FROM VehicleType");
+        $statement = $connection->prepare("SELECT * FROM VehicleType");
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
         return $results;
     }
 
-    // MYSQL QUERY VIEW_BOOKING_INFO
-    // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
-
+    
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT * FROM $type WHERE username = :username AND password = :password");
@@ -116,5 +119,10 @@ class DataAccess {
     }
 }
 
+//MYSQL QUERY VIEW_COACH_TYPE
+    //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.hourlyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
+
+// MYSQL QUERY VIEW_BOOKING_INFO
+    // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
 ?>

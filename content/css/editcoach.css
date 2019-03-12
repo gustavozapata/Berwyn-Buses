@@ -1,12 +1,12 @@
 .book-coach {
-  width: 80%;
+  width: 65%;
 }
 .edit-coaches {
   /* border: 1px solid red; */
 }
 .edit-coaches table {
   border-bottom: 1px solid #8cb6ce;
-  width: 94%;
+  width: 90%;
   margin: 70px auto 30px auto;
   border-spacing: 5px;
 }
@@ -39,7 +39,7 @@
   /* height: 300px; */
   margin: 20px auto;
   margin-left: -250px;
-  margin-top: -230px;
+  margin-top: -150px;
   border: 1px solid rgb(112, 112, 112);
   border-radius: 25px;
   text-align: center;
