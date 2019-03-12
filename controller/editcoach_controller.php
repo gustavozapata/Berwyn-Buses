@@ -1,6 +1,5 @@
 <?php
 
-
 require_once "../model/Coach.php";
 require_once "../model/DataAccess.php";
 

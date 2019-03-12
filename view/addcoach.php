@@ -35,17 +35,18 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Add Coach</h2>
-            <form action="">
-              <input type="text" placeholder="Reg. Number"><br>
+            <form action="../controller/addcoach_controller.php" method="post">
+              <input name="regNumber" placeholder="Reg. Number"><br>
               <select name="addType">
+                <option disabled selected value>Select a vehicle type</option>
                 <?php foreach($coachTypes as $coachType): ?>
                 <option value="<?= $coachType->type ?>"><?= $coachType->type ?></option>
                 <?php endforeach; ?>
               </select><br>
-              <input placeholder="Make">
-              <input placeholder="Colour">
+              <input name="make" placeholder="Make">
+              <input name="colour" placeholder="Colour">
               <div class="admin-buttons">
-                <a href="../view/admin_view.php">Add</a>
+                <input id="addCoachBtn" type="submit" value="Add">
               </div>
             </form>
 

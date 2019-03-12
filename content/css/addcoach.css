@@ -2,11 +2,19 @@ form input {
   margin: 6px auto;
 }
 select {
-  height: 35px;
-  width: 200px;
-  border-radius: 10px;
+  height: 40px;
+  width: 210px;
+  border-radius: 20px;
   margin: 6px;
 }
 .book-coach-header h2 {
   margin-bottom: 25px;
+}
+#addCoachBtn {
+  width: 170px;
+  height: 38px;
+  color: #687ab4;
+}
+#addCoachBtn:hover {
+  color: white;
 }

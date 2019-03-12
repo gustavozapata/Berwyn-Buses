@@ -107,6 +107,21 @@ class DataAccess {
         return $results;
     }
 
+    function addCoach($coach){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("INSERT INTO Coach (vehicleType, registrationNumber, make, colour) VALUES ('2','test','ferrari','rojo')");
+        // $statement->bindValue(":regNumber", $coach->regNumber);
+        // $statement->bindValue(":make", $coach->make);
+        // $statement->bindValue(":colour", $coach->colour);
+        // $statement = $pdo->prepare('INSERT INTO customers
+        // (givenname, surname, address) VALUES (?,?,?)');
+        // $statement->execute([$user->givenname,
+        //               $user->surname,
+        //               $user->address]);
+        // $statement->execute([$coach->regNumber, $coach->make, $coach->colour]);
+        $statement->execute();
+    }
+
     
     function checkLoginDetails($username, $password, $type){
         $connection = $this->getConnection();
