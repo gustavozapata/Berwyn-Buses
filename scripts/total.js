@@ -25,3 +25,10 @@ $('.coach-div').each(function(index){
     
 });
 
+$(".btn-remove-item").click(function() {
+   // $(this).find(".row coach-info").hide();
+    //$(this).remove(".row coach-info");
+  });
+
+  
+

@@ -41,6 +41,7 @@
                                 <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
                                     <p> Registration Number: <?= $vehicle->registrationNumber ?> </p> 
                                     <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
+                                    <button class="btn-remove-item">Remove</button>
                                 </div>
                             </div>
                             <hr/>
