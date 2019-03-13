@@ -102,6 +102,8 @@ function redirectCheckoutPage() {
         returnUrl +
         "&passengers=" +
         passengersUrl +
+        "&price=" +
+        priceUrl +
         "&basketItems=" +
         basketItems +
         "&coachSelection=" +
@@ -113,6 +115,7 @@ function redirectCheckoutPage() {
   });
 }
 
+//##### FILTER SEARCH #####
 //SEARCH FILTER MOVES AS USER SCROLLS
 $(window).scroll(function() {
   if ($(this).scrollTop() < $(".coach-results").position().top) {
@@ -126,6 +129,21 @@ $(window).scroll(function() {
       top: "10px"
     });
   }
+});
+
+$("#applySearch").on("click", function() {
+  var filterPassengers = $("#filterPassengers").val();
+  var filterPrice = $("#filterPrice").val();
+  window.location.href =
+    "../controller/search_controller.php?depart=" +
+    departUrl +
+    "&return=" +
+    returnUrl +
+    "&passengers=" +
+    filterPassengers +
+    "&price=" +
+    filterPrice +
+    "";
 });
 
 //MOVE BASKET ON MOBILE

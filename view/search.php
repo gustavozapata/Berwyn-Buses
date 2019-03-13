@@ -25,13 +25,13 @@ require_once "../controller/search_controller.php";
         <p>Free seats<br><span id="freeSeats">-</span><span id="seat">💺</span></p>
       </div>
       <h3 class="filterTitle">Filter Search</h3>
-      <!-- <div>
+       <div>
         <p>Passengers<br><span id="outputPassengers"><?= $_REQUEST["passengers"] ?></span></p>
-        <input type="range" min="5" max="500" value="<?= $_REQUEST["passengers"] ?>" id="filterPassengers">
-        <p>Price<br><span id="outputPrice">55</span></p>
-        <input type="range" min="55" max="150" value="55" id="filterPrice">
-      </div> -->
-      <button>Apply</button>
+        <input type="range" min="5" max="500" step="1" value="<?= $_REQUEST["passengers"] ?>" id="filterPassengers">
+        <p>Price<br><span id="outputPrice"><?= $_REQUEST["price"] ?></span></p>
+        <input type="range" min="55" max="150" value="<?= $_REQUEST["price"] ?>" id="filterPrice">
+      </div> 
+      <button id="applySearch">Apply</button>
     </div><!-- search-filter -->
     <div class="coach-results">
     <?php foreach($coaches as $coach): ?>

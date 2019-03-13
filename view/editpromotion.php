@@ -16,6 +16,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/editcoach.css" />
     <title>➕Edit Promotion</title>
   </head>
   <body>
@@ -30,17 +31,23 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Edit Promotion</h2>
-            <form action="">
-              <input type="text" placeholder="Promotion ID">
-              <input type="text" placeholder="Promotion Descripton">
-              <span>
-                <input type="number" placeholder="Discount Amount"/>
-              </span>
-              <div class="admin-buttons">
-                <a href="../view/admin_view.php">Add</a>
-              </div>
-            </form>
-
+            <div class="edit-coaches">
+              <table>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Promo Code</th>
+                <th>Expiry</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td data-edit="reg">25% Off</td>
+                <td data-edit="make">KU19PHP</td>
+                <td data-edit="colour">March 25, 2019</td>
+                <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
+              </tr>
+              </table>
+            </div>
           </div>
           <?php endif ?>
         </article>

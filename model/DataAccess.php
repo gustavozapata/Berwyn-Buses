@@ -30,16 +30,17 @@ class DataAccess {
         return $this->connection;
     }
 
-    function searchCoaches($passengers, $dateFrom, $dateTo){
+    function searchCoaches($passengers, $dateFrom, $dateTo, $price){
         $connection = $this->getConnection();
         if($passengers <= 73){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND hourlyRate >= :price");
             //DATE RANGE
             // $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
-            $statement = $connection->prepare("SELECT * FROM view_coach_type");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND hourlyRate >= :price");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        $statement->bindValue(":price", $price);
         //DATE RANGE
         // $statement->bindValue(":dateFrom", $dateFrom);
         // $statement->bindValue(":dateTo", $dateTo);
@@ -109,17 +110,8 @@ class DataAccess {
 
     function addCoach($coach){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("INSERT INTO Coach (vehicleType, registrationNumber, make, colour) VALUES ('2','test','ferrari','rojo')");
-        // $statement->bindValue(":regNumber", $coach->regNumber);
-        // $statement->bindValue(":make", $coach->make);
-        // $statement->bindValue(":colour", $coach->colour);
-        // $statement = $pdo->prepare('INSERT INTO customers
-        // (givenname, surname, address) VALUES (?,?,?)');
-        // $statement->execute([$user->givenname,
-        //               $user->surname,
-        //               $user->address]);
-        // $statement->execute([$coach->regNumber, $coach->make, $coach->colour]);
-        $statement->execute();
+        $statement = $connection->prepare("INSERT INTO Coach (vehicleType, registrationNumber, make, colour) VALUES (?,?,?,?)");
+        $statement->execute([$coach->type, $coach->regNumber, $coach->make, $coach->colour]);
     }
 
     

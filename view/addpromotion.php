@@ -16,6 +16,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
     <title>➕Add Promotion</title>
   </head>
   <body>
@@ -31,11 +32,10 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <div class="book-coach-header">
             <h2>Add Promotion</h2>
             <form action="">
-                <input type="text" placeholder="Promotion ID">
                 <input type="text" placeholder="Promotion Descripton">
-                <span>
                 <input type="number" placeholder="Discount Amount"/>
-              </span>
+                <input type="text" placeholder="Promotion Code">
+                <input type="text" placeholder="Expiry Date"/>
                 <div class="admin-buttons">
               <a href="../view/admin_view.php">Add</a>
             </div>

@@ -8,7 +8,7 @@ require_once "../model/VehicleType.php";
 
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
   $_SESSION["adminLogged"] = true;
-  $coaches = DataAccess::getInstance()->searchCoaches(74,0,0);
+  $coaches = DataAccess::getInstance()->searchCoaches(74,0,0,0);
 } else {
   $_SESSION["adminLogged"] = false;
 }
@@ -34,7 +34,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
             <h2><a href="../view/admin_view.php">OOPS Login!</a></h2>
           <?php else: ?>
             <h2>Edit Coaches</h2>
-            </div>
+          </div>
             <div class="edit-coaches">
               <table>
               <tr>

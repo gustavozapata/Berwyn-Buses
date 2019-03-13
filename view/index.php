@@ -36,6 +36,7 @@ session_start();
               </span>
               <span id="warning">Status</span>
               <br />
+              <input type="hidden" name="price" value="55">
               <input
                 id="requireDriver"
                 type="checkbox"

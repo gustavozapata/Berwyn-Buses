@@ -72,7 +72,8 @@ $(document).ready(function() {
 });
 
 //BACK TO SEARCH URL PARAMETERS
-var parametersUrl = "";
-var departUrl = "";
-var returnUrl = "";
-var passengersUrl = "";
+var parametersUrl = new URL(document.location).searchParams;
+var departUrl = parametersUrl.get("depart");
+var returnUrl = parametersUrl.get("return");
+var passengersUrl = parametersUrl.get("passengers");
+var priceUrl = parametersUrl.get("price");

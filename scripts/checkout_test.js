@@ -3,11 +3,6 @@ $(function() {
 
   $("#liBasket .basketItems").css("visibility", "hidden");
 
-  parametersUrl = new URL(document.location).searchParams;
-  departUrl = parametersUrl.get("depart");
-  returnUrl = parametersUrl.get("return");
-  passengersUrl = parametersUrl.get("passengers");
-
   $(".backSearch").on("click", function() {
     window.location.href =
       "../controller/search_controller.php?depart=" +
@@ -16,6 +11,8 @@ $(function() {
       returnUrl +
       "&passengers=" +
       passengersUrl +
+      "&price=" +
+      priceUrl +
       "";
   });
 
