@@ -36,15 +36,9 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
               <tr>
                 <th>ID</th>
                 <th>Description</th>
+                <th>Amount</th>
                 <th>Promo Code</th>
                 <th>Expiry</th>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td data-edit="reg">25% Off</td>
-                <td data-edit="make">KU19PHP</td>
-                <td data-edit="colour">March 25, 2019</td>
-                <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
               </tr>
               </table>
             </div>
@@ -61,5 +55,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
+    <script src="../scripts/promotions.js"></script>
   </body>
 </html>

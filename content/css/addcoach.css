@@ -10,16 +10,18 @@ select {
 .book-coach-header h2 {
   margin-bottom: 25px;
 }
-#addCoachBtn {
+#addCoachBtn,
+#addPromoBtn {
   width: 170px;
   height: 38px;
   margin: 35px;
   color: #687ab4;
 }
-#addCoachBtn:hover {
+#addCoachBtn:hover,
+#addPromoBtn:hover {
   color: white;
 }
-#coachAddedBg {
+.coachAddedBg {
   position: fixed;
   top: 0;
   left: 0;
@@ -28,7 +30,7 @@ select {
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 101;
 }
-#coachAddedPopup {
+.coachAddedPopup {
   position: absolute;
   background-color: white;
   border: 2px solid #16c60c;
@@ -43,10 +45,10 @@ select {
   border-radius: 25px;
   padding: 10px;
 }
-#coachAddedPopup img {
+.coachAddedPopup img {
   width: 40px;
 }
-#coachAddedPopup a {
+.coachAddedPopup a {
   display: inline-block;
   text-decoration: none;
   margin: 10px 10px 0px 10px;
@@ -62,7 +64,7 @@ select {
   border-radius: 30px;
   transition: all 0.4s;
 }
-#coachAddedPopup a:hover {
+.coachAddedPopup a:hover {
   background-color: var(--blue-colour);
   color: white;
 }

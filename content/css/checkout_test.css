@@ -1,7 +1,8 @@
 .main-section {
   display: block;
 }
-.checkout-coaches {
+.checkout-coaches,
+.checkout-payment {
   margin: 50px auto;
   text-align: center;
 }
@@ -59,6 +60,14 @@
 }
 #noItems {
   font-weight: 700;
+}
+#clearBasket {
+  margin: 20px auto;
+}
+#clearBasket a {
+  color: #3a3a3a;
+  font-weight: 700;
+  font-size: 0.9em;
 }
 hr {
   border: 0;

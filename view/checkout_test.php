@@ -16,7 +16,6 @@ require_once "../controller/checkout_test_controller.php";
     <div id="page">
       <?php require_once "../includes/header.php"; ?>
 
-
     <section class="main-section">
         <article class="book-coach">
           <div class="book-coach-header">
@@ -49,11 +48,15 @@ require_once "../controller/checkout_test_controller.php";
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
-              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
+              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->dailyRate ?></span></p>
             </div>
         </div>
     </div>
     <?php endforeach ?>
+    <div id="clearBasket">
+      <a href="#">Clear basket🗑️</a>
+    </div>
+    </article>
     <hr>
     <article class="checkout-payment">
       <h3>Payment Details</h3>
@@ -62,7 +65,7 @@ require_once "../controller/checkout_test_controller.php";
       <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label>
     </article>
     <?php endif ?> <!-- IF LESS THAN 1 ITEM -->
-    </article>
+    
     </section>
     <?php require_once "../includes/footer.php"; ?>
 

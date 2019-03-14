@@ -47,7 +47,7 @@ require_once "../controller/search_controller.php";
             <div class="coach-info">
               <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
-              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->hourlyRate ?></span></p>
+              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->dailyRate ?></span></p>
             </div>
         </div>
     </div>

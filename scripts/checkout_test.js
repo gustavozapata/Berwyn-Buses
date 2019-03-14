@@ -16,6 +16,17 @@ $(function() {
       "";
   });
 
+  $("#clearBasket a").on("click", function() {
+    $.get(
+      "../controller/checkout_test_controller.php?clearBasket=0",
+      clearBasket
+    );
+  });
+
+  function clearBasket() {
+    window.location.href = "../controller/checkout_test_controller.php";
+  }
+
   /* RULES IF DELETE ITEMS */
   /* $(".coach-div").on("click", function() {
     $(".coach-div-selected").removeClass("coach-div-selected");

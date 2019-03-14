@@ -4,6 +4,9 @@
 .edit-coaches {
   /* border: 1px solid red; */
 }
+.book-coach-header {
+  width: 95%;
+}
 .edit-coaches table {
   border-bottom: 1px solid #8cb6ce;
   width: 90%;

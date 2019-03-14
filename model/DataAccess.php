@@ -33,11 +33,11 @@ class DataAccess {
     function searchCoaches($passengers, $dateFrom, $dateTo, $price){
         $connection = $this->getConnection();
         if($passengers <= 73){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND hourlyRate >= :price");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
             //DATE RANGE
             // $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND hourlyRate >= :price");
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
         $statement->bindValue(":price", $price);
@@ -72,7 +72,7 @@ class DataAccess {
 
     function getEditableFieldsVehicle($editVehicle){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("SELECT id, type, maxCapacity, hourlyRate FROM VehicleType WHERE id = :editVehicle");
+        $statement = $connection->prepare("SELECT id, type, maxCapacity, dailyRate FROM VehicleType WHERE id = :editVehicle");
         $statement->bindValue(":editVehicle", $editVehicle);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_OBJ);
@@ -91,7 +91,7 @@ class DataAccess {
 
     function updateVehicleTypes($updateVehicle){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("UPDATE VehicleType SET type=:type, maxCapacity=:maxCapacity, hourlyRate=:dailyRate WHERE id = :id");
+        $statement = $connection->prepare("UPDATE VehicleType SET type=:type, maxCapacity=:maxCapacity, dailyRate=:dailyRate WHERE id = :id");
         $statement->bindValue(":type", $updateVehicle->type);
         $statement->bindValue(":maxCapacity", $updateVehicle->maxCapacity);
         $statement->bindValue(":dailyRate", $updateVehicle->dailyRate);
@@ -127,7 +127,7 @@ class DataAccess {
 }
 
 //MYSQL QUERY VIEW_COACH_TYPE
-    //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.hourlyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
+    //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.dailyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
 
 // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType

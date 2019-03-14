@@ -1,12 +1,12 @@
 $("#notifyCustomerBtn").on("click", function() {
-  $("#coachAddedPopup")
+  $(".coachAddedPopup")
     .find("p:nth-child(3)")
     .text("A notification has been sent to customer and visitors✅");
   $(this).remove();
-  $("#coachAddedPopup")
+  $(".coachAddedPopup")
     .find("a")
     .text("OK");
-  $("#coachAddedPopup")
+  $(".coachAddedPopup")
     .find("p:nth-child(2)")
     .css("color", "grey");
 });

@@ -20,6 +20,10 @@ if(isset($_REQUEST["coachSelection"])) {
     $coaches = DataAccess::getInstance()->getSelectedCoaches($_SESSION["basket"]->coaches);
 }
 
+if(isset($_REQUEST['clearBasket'])){
+    $_SESSION["basket"]->items = 0;
+}
+
 require_once "../view/checkout_test.php";
 
 ?>

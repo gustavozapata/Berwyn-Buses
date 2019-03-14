@@ -31,20 +31,30 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Add Promotion</h2>
-            <form action="">
-                <input type="text" placeholder="Promotion Descripton" required>
-                <input type="number" placeholder="Discount Amount" required/>
-                <input type="text" placeholder="Promotion Code" required>
-                <input id="expiery" type="text" placeholder="Expiry Date" required/>
+            <form action="../controller/promo_controller.php" method="post">
+                <input name="promoDescription" placeholder="Promotion Descripton" required>
+                <input type="number" name="promoAmount" placeholder="Discount Amount" required/>
+                <input name="promoCode" placeholder="Promotion Code" required>
+                <input id="expiry" name="promoExpiry" placeholder="Expiry Date" required/>
                 <div class="admin-buttons">
-              <a href="../view/admin_view.php">Add</a>
-            </div>
+                  <input id="addPromoBtn" type="submit" value="Add">
+                </div>
             </form>
 
           </div>
           <?php endif ?>
         </article>
       </section>
+
+      <?php if(isset($_REQUEST["promoAmount"])): ?>
+      <div class="coachAddedBg">
+        <div class="coachAddedPopup">
+            <img src="../content/images/tick.png" alt="Tick Image">
+            <p>The promotion has been added</p>
+            <a href="../view/addpromotion.php">OK</a>
+        </div>
+      </div>
+      <?php endif; ?>
 
     <?php
       require_once "../includes/footer.php";
@@ -55,5 +65,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <script src="../scripts/bookingSearch.js"></script>
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
+    <script src="../scripts/promotions.js"></script>
   </body>
 </html>

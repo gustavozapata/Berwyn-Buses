@@ -48,7 +48,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
                 <td><?= $vehicleType->id ?></td>
                 <td data-edit="type"><?= $vehicleType->type ?></td>
                 <td data-edit="max"><?= $vehicleType->maxCapacity ?></td>
-                <td data-edit="rate">£<?= $vehicleType->hourlyRate ?></td>
+                <td data-edit="rate">£<?= $vehicleType->dailyRate ?></td>
                 <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
               </tr>
               <?php endforeach; ?>

@@ -56,8 +56,8 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
       </section>
 
       <?php if(isset($_REQUEST["addType"])): ?>
-      <div id="coachAddedBg">
-        <div id="coachAddedPopup">
+      <div class="coachAddedBg">
+        <div class="coachAddedPopup">
             <img src="../content/images/tick.png" alt="Tick Image">
             <p>The coach has been added</p>
             <p>Would you like to notify customers and visitors?</p>

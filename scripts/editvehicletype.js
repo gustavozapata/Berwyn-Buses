@@ -23,7 +23,7 @@ function editVehicleAjaxResults(results) {
     true
   );
   $("input[name='editCapacity']").attr("value", results[0].maxCapacity);
-  $("input[name='editDaily']").attr("value", results[0].hourlyRate);
+  $("input[name='editDaily']").attr("value", results[0].dailyRate);
 }
 
 $("#editPopup img").on("click", function() {
