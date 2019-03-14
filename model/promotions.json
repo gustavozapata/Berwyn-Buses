@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "description": "Spring discount at Bewryn Buses. 25% off 👍",
+        "amount": 25,
+        "type": "percent",
+        "code": "KUSPRING19",
+        "expiry": "2019-04-30"
+    },
+    {
+        "id": 2,
+        "description": "Celebrate Kingston University day with a juicy £20 off",
+        "amount": 20,
+        "type": "amount",
+        "code": "PAULNEVE",
+        "expiry": "2019-03-31"
+    },
+    {
+        "id": 3,
+        "description": "End of term for our students at Berwyn! 15% off",
+        "amount": 15,
+        "type": "percent",
+        "code": "KUCS2019",
+        "expiry": "2019-05-16"
+    }
+]
