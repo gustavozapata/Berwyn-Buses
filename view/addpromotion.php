@@ -52,8 +52,8 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
 
     </div>
     <!-- PAGE -->
+    <script src="../scripts/bookingSearch.js"></script>
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
-    <script src="../scripts/bookingSearch.js"></script>
   </body>
 </html>

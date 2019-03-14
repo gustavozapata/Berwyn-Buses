@@ -21,7 +21,7 @@ $(document).ready(function () {
 		.on("change", function () {
 			from.datepicker("option", "maxDate", getDate(this));
 		});
-		expiery = $("#to").datepicker({
+		expiery = $("#expiery").datepicker({
 			dateFormat: 'dd/mm/yy',
 			minDate: 0,
 			format: 'LT'
