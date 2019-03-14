@@ -32,10 +32,10 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <div class="book-coach-header">
             <h2>Add Promotion</h2>
             <form action="">
-                <input type="text" placeholder="Promotion Descripton">
-                <input type="number" placeholder="Discount Amount"/>
-                <input type="text" placeholder="Promotion Code">
-                <input type="text" placeholder="Expiry Date"/>
+                <input type="text" placeholder="Promotion Descripton" required>
+                <input type="number" placeholder="Discount Amount" required/>
+                <input type="text" placeholder="Promotion Code" required>
+                <input id="expiery" type="text" placeholder="Expiry Date" required/>
                 <div class="admin-buttons">
               <a href="../view/admin_view.php">Add</a>
             </div>
@@ -54,5 +54,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
+    <script src="../scripts/bookingSearch.js"></script>
   </body>
 </html>
