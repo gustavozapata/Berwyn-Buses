@@ -30,11 +30,12 @@ if (isset($_GET["depart"]))
 if (isset($_GET["return"]))
 {
     $_SESSION["trip"] ['return'] = $_GET["return"];
+    
 }
 
 if (isset($_GET["passengers"]))
 {
-    $_SESSION["passengers"] ['passengers'] = $_GET["passengers"];
+    $_SESSION["trip"] ['passengers'] = $_GET["passengers"];
 }
 
 

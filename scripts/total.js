@@ -4,7 +4,6 @@ var price = $('span#rate').html();
 var basket = $('span#total').text();
 //console.log(basket);                    // Baskets total value
 
-console.log(price);
 
 if(price != '0'){
     var total = 0;
@@ -17,10 +16,17 @@ if(price != '0'){
 
 
 
+var regNums = [];
+
 $('.coach-div').each(function(index){
     var $cartInfo = $(this).children('#coachObj').val();
-    $(this).find('.btn-add-basket').on('click', function(){ 
+    var $regNum = $(this).children('#regNum').html();
+    $(this).find('.btn-add-basket').on('click', function(){
+        regNums.push($regNum);
+        localStorage.setItem("regNums", JSON.stringify(regNums));
+        console.log(localStorage.getItem("regNums"));
         $.post( "../controller/cart.php", {cart: $cartInfo});
+
     });
     
 });

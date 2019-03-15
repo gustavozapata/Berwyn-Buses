@@ -1,3 +1,11 @@
+$(".checkout_test").attr("href", "#");
+
+//##### SEARCH SUMMARY #####
+var freeSeats = 0;
+var passengersLeft = parseInt($("#passengersLeft").text(), 10);
+var isBookingReady = false;
+var coachSelection = [];
+
 //ADD TO BASKET BUTTON
 $(".btn-add-basket").on("click", function() {
   updateBasket($(this), "remove");
@@ -8,32 +16,13 @@ $(".btn-remove-basket").on("click", function() {
 });
 
 function updateBasket(button, action) {
-  var thisCoachPassengers = button
-    .parentsUntil(".coach-results")
-    .find(".coachPassengers")
-    .text();
   if (action === "add") {
-    $("#basketItems").text(basketItems <= 0 ? 0 : --basketItems);
-    $("#passengersLeft")
-      .text($("#passengersLeft").text())
-      .removeClass("coverPassengers");
+    $(".basketItems").text(basketItems <= 0 ? 0 : --basketItems);
   } else {
-    $("#basketItems").text(++basketItems);
-    $("#passengersLeft")
-      .text(
-        thisCoachPassengers > parseInt($("#passengersLeft").text(),10)
-          ? 0
-          : $("#passengersLeft").text() - thisCoachPassengers
-      )
-      // .text($("#passengersLeft").text() - thisCoachPassengers)
-      .addClass("coverPassengers");
-      if(thisCoachPassengers > $("#passengersLeft").text()){
-        console.log("thiscoach passenger greater than passenger left");
-      } else {
-        console.log("thiscoas passenger less than passenger left");
-      }
+    $(".basketItems").text(++basketItems);
   }
   isBasketEmpty();
+  updateSummary(button, action);
   button.parentsUntil(".coach-results").toggleClass("coach-in-basket");
   button.css("display", "none");
   button
@@ -41,6 +30,103 @@ function updateBasket(button, action) {
     .find(".btn-" + action + "-basket")
     .css("display", "inline");
 }
+
+function readyToCheckout(value) {
+  $("#infoBanner").css("bottom", value);
+  $("#infoBanner p").html(
+    "Perfecto. Now you can proceed to the <a class='checkout_test'>check-out</a> page"
+  );
+}
+
+$("#infoBanner img").on("click", function() {
+  readyToCheckout(-100);
+});
+
+function updateSummary(button, action) {
+  var thisCoachPassengers = parseInt(
+    button
+      .parentsUntil(".coach-results")
+      .find(".coachPassengers")
+      .text(),
+    10
+  );
+
+  if (action === "remove") {
+    //IF ADD BUTTON IS PRESSED
+    if (passengersLeft - thisCoachPassengers <= 0) {
+      freeSeats = thisCoachPassengers - passengersLeft;
+      $("#coverPassengers, #seat").css("display", "inline");
+      readyToCheckout(0);
+    }
+    passengersLeft -= thisCoachPassengers;
+  } else {
+    //IF REMOVE BUTTON IS PRESSED
+    if (passengersLeft <= 0) {
+      freeSeats -= thisCoachPassengers;
+    }
+    passengersLeft += thisCoachPassengers;
+  }
+  $("#passengersLeft").text(passengersLeft <= 0 ? 0 : passengersLeft);
+  $("#freeSeats").text(freeSeats <= 0 ? 0 : freeSeats);
+  if (passengersLeft > 0) {
+    $("#coverPassengers, #seat").css("display", "none");
+    readyToCheckout(-100);
+    isBookingReady = false;
+  } else {
+    isBookingReady = true;
+  }
+  redirectCheckoutPage();
+}
+//##### END SEARCH SUMMARY #####
+
+//##### PROCEED TO CHECKOUT #####
+function redirectCheckoutPage() {
+  //https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
+  parametersUrl = new URL(document.location).searchParams;
+  departUrl = parametersUrl.get("depart");
+  returnUrl = parametersUrl.get("return");
+  passengersUrl = parametersUrl.get("passengers");
+  $(".checkout_test").on("click", function() {
+    if (isBookingReady) {
+      var i = 0;
+      $(".coach-in-basket[id^=x]").each(function() {
+        coachSelection[i] = $(this)
+          .attr("id")
+          .slice(1);
+        i++;
+      });
+      window.location.href =
+        "../controller/checkout_test_controller.php?depart=" +
+        departUrl +
+        "&return=" +
+        returnUrl +
+        "&passengers=" +
+        passengersUrl +
+        "&basketItems=" +
+        basketItems +
+        "&coachSelection=" +
+        coachSelection;
+    } else {
+      $("#infoBanner").css("bottom", "0");
+      $("#infoBanner p").html("Some passengers need to be accommodated first");
+    }
+  });
+}
+
+//SEARCH FILTER MOVES AS USER SCROLLS
+$(window).scroll(function() {
+  if ($(this).scrollTop() < $(".coach-results").position().top) {
+    $(".search-filter").css({
+      position: "absolute",
+      top: "initial"
+    });
+  } else {
+    $(".search-filter").css({
+      position: "fixed",
+      top: "10px"
+    });
+  }
+});
 
 //MOVE BASKET ON MOBILE
 // window.addEventListener("resize", function(){
@@ -56,12 +142,6 @@ if (window.matchMedia("(max-width: 466px)").matches) {
 $(".coach-div").on("click", function() {
   $(".coach-div-selected").removeClass("coach-div-selected");
   $(this).toggleClass("coach-div-selected");
-  // $(this)
-  //   .find(".coach-addbasket")
-  //   .css("display", "block");
-  // $(this)
-  //   .find(".coach-info")
-  //   .css("display", "none");
 });
 
 //##### FILTER SEARCH #####
