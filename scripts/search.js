@@ -153,3 +153,6 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
+
+
+
