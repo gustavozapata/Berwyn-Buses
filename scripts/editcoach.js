@@ -1,5 +1,5 @@
 //LOAD COACH TO EDIT
-$(".edit-coaches img").on("click", function() {
+$(".edit-coaches img").on("click", function () {
   $("#editBg").css("display", "block");
   var coachId = [
     $(this)
@@ -13,7 +13,7 @@ $(".edit-coaches img").on("click", function() {
     editCoachAjaxResults
   );
 });
-// LA60 FCB	Volvo	White
+
 var editCoach = {};
 function editCoachAjaxResults(results) {
   editCoach = results;
@@ -23,16 +23,16 @@ function editCoachAjaxResults(results) {
   $("input[name='editColour']").attr("value", results[0].colour);
 }
 
-$("#editPopup img").on("click", function() {
+$("#editPopup img").on("click", function () {
   $("#editBg").css("display", "none");
 });
 
-$("#saveEditCoach").on("click", function() {
+$("#saveEditCoach").on("click", function () {
   $("#editBg").css("display", "none");
 });
 
 // SAVE EDIT COACH CHANGES
-$("#saveEditCoach").on("click", function() {
+$("#saveEditCoach").on("click", function () {
   editCoach = {
     id: $("#editPopup h2 span").text(),
     registrationNumber: $("input[name='editReg']").val(),

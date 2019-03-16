@@ -124,6 +124,35 @@ class DataAccess {
         $results = $statement->fetchAll(PDO::FETCH_CLASS, $type);
         return $results;
     }
+
+    function getPromotions(){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Promotion");
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Promotion");
+        return $results;
+    }
+
+    function getEditableFieldsPromo($editPromo){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Promotion WHERE id = :editPromo");
+        $statement->bindValue(":editPromo", $editPromo);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $results[0]->expiry = date('d/m/Y', strtotime($results[0]->expiry));
+        return $results;
+    }
+
+    function updatePromo($updatePromo){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("UPDATE Promotion SET description=:description, amount=:amount, code=:code, expiry=:expiry WHERE id = :id");
+        $statement->bindValue(":description", $updatePromo->description);
+        $statement->bindValue(":amount", $updatePromo->amount);
+        $statement->bindValue(":code", $updatePromo->code);
+        $statement->bindValue(":expiry", $updatePromo->expiry);
+        $statement->bindValue(":id", $updatePromo->id);
+        $statement->execute();
+    }
 }
 
 //MYSQL QUERY VIEW_COACH_TYPE

@@ -23,6 +23,7 @@ $(document).ready(function() {
       .on("change", function() {
         from.datepicker("option", "maxDate", getDate(this));
       });
+
   expiry = $("#expiry").datepicker({
     dateFormat: "dd/mm/yy",
     minDate: 0,

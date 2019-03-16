@@ -2,8 +2,12 @@
 
 session_start();
 
+require_once "../model/DataAccess.php";
+require_once "../model/Promotion.php";
+
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
   $_SESSION["adminLogged"] = true;
+  $promotions = DataAccess::getInstance()->getPromotions();
 } else {
   $_SESSION["adminLogged"] = false;
 }
@@ -17,6 +21,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/editcoach.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/promotion.css" />
     <title>➕Edit Promotion</title>
   </head>
   <body>
@@ -37,15 +42,55 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
                 <th>ID</th>
                 <th>Description</th>
                 <th>Amount</th>
-                <th>Promo Code</th>
+                <th>Code</th>
                 <th>Expiry</th>
               </tr>
+              <?php foreach($promotions as $promotion): ?>
+              <tr id="<?= $promotion->id ?>">
+                <td><?= $promotion->id ?></td>
+                <td data-edit="description"><?= $promotion->description ?></td>
+                <td data-edit="amount"><?= $promotion->amount ?></td>
+                <td data-edit="code"><?= $promotion->code ?></td>
+                <td data-edit="expiry"><?= date('d/m/Y', strtotime($promotion->expiry)) ?></td>
+                <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
+              </tr>
+              <?php endforeach; ?>
               </table>
             </div>
           </div>
           <?php endif ?>
         </article>
       </section>
+
+      <!-- EDIT PROMOTION POPUP -->
+      <div id="editBg">
+        <div id="editPopup">
+          <img src="../content/images/close.png" alt="Close Button">
+          <h2>Promotion &#35;<span></span></h2>
+          <table>
+            <tr>
+              <td>Description:</td>
+              <td><textarea name="editDescription" maxlength="100"></textarea></td>
+            </tr>
+            <tr>
+              <td>Amount:</td>
+              <td><input type="text" name="editAmount"></td>
+            </tr>
+            <tr>
+              <td>Code:</td>
+              <td><input type="text" name="editCode"></td>
+            </tr>
+            <tr>
+              <td>Expiry:</td>
+              <td><input id="expiry" type="text" name="editExpiry"></td>
+            </tr>
+          </table>
+          <div class="save-btn admin-buttons">
+            <a id="saveEditCoach">Save</a>
+          </div>
+        </div>
+      </div>
+      <!-- END EDIT PROMOTION POPUP -->
 
     <?php
       require_once "../includes/footer.php";
@@ -56,5 +101,6 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
     <script src="../scripts/promotions.js"></script>
+    <script src="../scripts/bookingSearch.js"></script>
   </body>
 </html>
