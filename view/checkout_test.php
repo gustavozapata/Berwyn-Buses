@@ -11,6 +11,7 @@ require_once "../controller/checkout_test_controller.php";
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
     <title>Checkout</title>
 </head>
 <body>
@@ -64,8 +65,10 @@ require_once "../controller/checkout_test_controller.php";
     <article class="checkout-payment">
       <h3>Payment Details</h3>
       <p>Choose payment method</p>
-      <input id="visa" name="payment" type="radio"><label for="visa"><img src="../content/images/visa.png"></label>
-      <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label>
+      <input id="visa" name="payment" type="radio" checked><label for="visa"><img src="../content/images/visa.png"></label>
+      <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label><br>
+      <button>Pay</button>
+      <span>*Processed by a third party company</span>
     </article>
     <?php else : ?>
     <article class="checkout-payment">
@@ -106,6 +109,24 @@ require_once "../controller/checkout_test_controller.php";
     </article>
     <?php endif ?> <!-- IF USER IS LOGGED -->
     <?php endif ?> <!-- IF LESS THAN 1 ITEM -->
+
+    <?php if(isset($_SESSION["accountCreated"]) && $_SESSION["accountCreated"]): ?>
+      <div class="coachAddedBg">
+        <div class="coachAddedPopup">
+            <img src="../content/images/tick.png" alt="Tick Image">
+            <p>The account has been created</p>
+            <a href="../controller/checkout_test_controller.php">OK</a>
+        </div>
+      </div>
+    <?php endif; ?>
+
+    <div class="paymentBg">
+        <div class="paymentPopup">
+          <img class="paymentprocess" src="../content/images/process.png" alt="Process Payment Image">
+          <p>We are processing your payment...</p>
+          <!-- <a href="../controller/checkout_test_controller.php">OK</a> -->
+        </div>
+      </div>
     
     </section>
     <?php require_once "../includes/footer.php"; ?>

@@ -3,10 +3,17 @@
   text-align: center;
 }
 .checkout-payment div {
-  margin: 50px auto;
-  width: 450px;
+  margin: 30px auto;
+  width: 420px;
   display: flex;
   justify-content: space-between;
+  border: 1px solid rgb(220, 220, 220);
+  padding: 30px;
+  border-radius: 20px;
+  transition: border 0.5s;
+}
+.checkout-payment div:hover {
+  border-color: #131971;
 }
 .checkout-payment input {
   display: block;
@@ -20,7 +27,7 @@
 .checkout-payment label {
   width: 200px;
   font-weight: bold;
-  color: #7d8a93;
+  color: #476072;
 }
 .checkout-payment input[type="submit"] {
   width: 100px;

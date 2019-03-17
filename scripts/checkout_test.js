@@ -27,6 +27,10 @@ $(function() {
     window.location.href = "../controller/checkout_test_controller.php";
   }
 
+  $(".checkout-payment button").on("click", function() {
+    $(".paymentBg").css("display", "block");
+  });
+
   /* RULES IF DELETE ITEMS */
   /* $(".coach-div").on("click", function() {
     $(".coach-div-selected").removeClass("coach-div-selected");

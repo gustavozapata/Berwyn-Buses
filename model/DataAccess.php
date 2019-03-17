@@ -127,7 +127,7 @@ class DataAccess {
 
     function createUserAccount($user){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("INSERT INTO Customer (givenName, familyName, dateOfBirth, email, password, mobileNumber, houseNumber, streetName, town, postcode, licenceNumber, licenceExpiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $statement = $connection->prepare("INSERT INTO Customer (givenName, familyName, dateOfBirth, username, password, mobileNumber, houseNumber, streetName, town, postcode, licenceNumber, licenceExpiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         $statement->execute([$user->givenName, $user->familyName, $user->dob, $user->email, $user->password, $user->mobileNumber, $user->houseNumber, $user->streetName, $user->town, $user->postcode, $user->licence, $user->licenceExpiry]);
     }
 
