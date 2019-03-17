@@ -1,10 +1,8 @@
 <?php
 class Admin {
     private $id;
-    // private $employeeNumber;
     private $givenName;
     private $familyName;
-    // private $adminType;
     private $username;
     private $password;
     function __get($name) {

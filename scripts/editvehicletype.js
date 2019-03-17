@@ -22,8 +22,8 @@ function editVehicleAjaxResults(results) {
     "selected",
     true
   );
-  $("input[name='editCapacity']").attr("value", results[0].maxCapacity);
-  $("input[name='editDaily']").attr("value", results[0].dailyRate);
+  $("input[name='editCapacity']").val(results[0].maxCapacity);
+  $("input[name='editDaily']").val(results[0].dailyRate);
 }
 
 $("#editPopup img").on("click", function() {

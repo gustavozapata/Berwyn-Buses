@@ -125,6 +125,18 @@ class DataAccess {
         return $results;
     }
 
+    function createUserAccount($user){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("INSERT INTO Customer (givenName, familyName, dateOfBirth, email, password, mobileNumber, houseNumber, streetName, town, postcode, licenceNumber, licenceExpiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+        $statement->execute([$user->givenName, $user->familyName, $user->dob, $user->email, $user->password, $user->mobileNumber, $user->houseNumber, $user->streetName, $user->town, $user->postcode, $user->licence, $user->licenceExpiry]);
+    }
+
+    function addPromo($promo){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("INSERT INTO Promotion (description, amount, code, expiry) VALUES (?,?,?,?)");
+        $statement->execute([$promo->description, $promo->amount, $promo->code, $promo->expiry]);
+    }
+
     function getPromotions(){
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT * FROM Promotion");
@@ -144,12 +156,14 @@ class DataAccess {
     }
 
     function updatePromo($updatePromo){
+        $date = $updatePromo->expiry;
+        $date = str_replace('/', '-', $date);
         $connection = $this->getConnection();
         $statement = $connection->prepare("UPDATE Promotion SET description=:description, amount=:amount, code=:code, expiry=:expiry WHERE id = :id");
         $statement->bindValue(":description", $updatePromo->description);
         $statement->bindValue(":amount", $updatePromo->amount);
         $statement->bindValue(":code", $updatePromo->code);
-        $statement->bindValue(":expiry", $updatePromo->expiry);
+        $statement->bindValue(":expiry", date('Y-m-d', strtotime($date)));
         $statement->bindValue(":id", $updatePromo->id);
         $statement->execute();
     }

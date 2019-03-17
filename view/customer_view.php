@@ -38,6 +38,8 @@ require_once "../controller/customer_controller.php";
               <br />
               <input type="submit" value="Login" />
             </form>
+            <p>Don't have an account?</p>
+            <p><a href="#">Sign-up</a></p>
           </div>
           <?php else: ?>
           <div class="book-coach-header">

@@ -20,21 +20,18 @@ $(function() {
     editPromo = results;
     $("#editPopup h2 span").text(results[0].id);
     $("textarea[name='editDescription']").val(results[0].description);
-    $("input[name='editAmount']").attr("value", results[0].amount);
-    $("input[name='editCode']").attr("value", results[0].code);
-    $("input[name='editExpiry']").attr("value", results[0].expiry);
+    $("input[name='editAmount']").val(results[0].amount);
+    $("input[name='editCode']").val(results[0].code);
+    $("input[name='editExpiry']").val(results[0].expiry);
   }
 
   $("#editPopup img").on("click", function() {
     $("#editBg").css("display", "none");
   });
 
-  $("#saveEditCoach").on("click", function() {
-    $("#editBg").css("display", "none");
-  });
-
   // SAVE EDIT COACH CHANGES
   $("#saveEditCoach").on("click", function() {
+    $("#editBg").css("display", "none");
     editPromo = {
       id: $("#editPopup h2 span").text(),
       description: $("textarea[name='editDescription']").val(),

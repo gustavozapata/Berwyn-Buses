@@ -10,6 +10,7 @@ require_once "../controller/checkout_test_controller.php";
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
     <title>Checkout</title>
 </head>
 <body>
@@ -27,7 +28,7 @@ require_once "../controller/checkout_test_controller.php";
         </article>
         <article class="checkout-coaches">
         <?php if($comesFromSearch) : ?>
-        <p class="backSearch"><a href="#">&lt; Back to search</a></p>
+        <p class="backSearch"><a href="#">&lt; Restart search</a></p>
         <?php endif; ?> <!-- IF COMES FROM SEARCH -->
           <h3>Items</h3>
           <?php if($_SESSION["basket"]->items < 1) : ?>
@@ -58,12 +59,52 @@ require_once "../controller/checkout_test_controller.php";
     </div>
     </article>
     <hr>
+    <!-- IF USER IS LOGGED -->
+    <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
     <article class="checkout-payment">
       <h3>Payment Details</h3>
-      <p>Choose payment option</p>
+      <p>Choose payment method</p>
       <input id="visa" name="payment" type="radio"><label for="visa"><img src="../content/images/visa.png"></label>
       <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label>
     </article>
+    <?php else : ?>
+    <article class="checkout-payment">
+      <h3>Sign up to check-out</h3>
+      <form method="post" action="../controller/checkout_test_controller.php">
+      <div>
+      <span>
+        <label>Given Name</label>
+        <input name="givenName" required>
+        <label>Family Name</label>
+        <input name="familyName" required>
+        <label>Date of Birth</label>
+        <input name="dob" type="date" required>
+        <label>Email</label>
+        <input name="email" type="email" required>
+        <label>Password</label>
+        <input name="password" type="password" required>
+        <label>Mobile Number</label>
+        <input name="mobileNumber" type="number" required>
+      </span>
+      <span>
+        <label>House Number</label>
+        <input name="houseNumber" required>
+        <label>Street Name</label>
+        <input name="streetName" required>
+        <label>Town</label>
+        <input name="town" required>
+        <label>Postcode</label>
+        <input name="postcode" required>
+        <label>Driving Licence</label>
+        <input name="licence">
+        <label>Licence Expiry Date</label>
+        <input name="licenceExpiry" type="date">
+      </span>
+      </div>
+      <input type="submit" value="Sign-up">
+      </form>
+    </article>
+    <?php endif ?> <!-- IF USER IS LOGGED -->
     <?php endif ?> <!-- IF LESS THAN 1 ITEM -->
     
     </section>

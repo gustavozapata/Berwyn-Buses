@@ -1,10 +1,11 @@
 <?php
-class Customer{
+class Customer implements JsonSerializable {
     private $id;
     private $givenName;
     private $familyName;
     private $dateOfBirth;
     private $email;
+    private $password;
     private $mobileNumber;
     private $houseNumber;
     private $streetName;
@@ -17,6 +18,9 @@ class Customer{
     }
     function __set($name, $value){
         $this->$name = $value;
+    }
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }
 ?>

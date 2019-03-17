@@ -17,6 +17,7 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/promotion.css" />
     <title>➕Add Promotion</title>
   </head>
   <body>
@@ -32,8 +33,8 @@ if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
           <div class="book-coach-header">
             <h2>Add Promotion</h2>
             <form action="../controller/promo_controller.php" method="post">
-                <input name="promoDescription" placeholder="Promotion Descripton" required>
-                <input type="number" name="promoAmount" placeholder="Discount Amount" required/>
+                <textarea maxlength="100" name="promoDescription" placeholder="Promotion Descripton" required></textarea>
+                <input type="number" name="promoAmount" placeholder="Discount Amount (%)" required/>
                 <input name="promoCode" placeholder="Promotion Code" required>
                 <input id="expiry" name="promoExpiry" placeholder="Expiry Date" required/>
                 <div class="admin-buttons">

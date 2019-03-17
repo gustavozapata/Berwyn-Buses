@@ -13,7 +13,7 @@ $(function() {
       passengersUrl +
       "&price=" +
       priceUrl +
-      "";
+      "&reset=1";
   });
 
   $("#clearBasket a").on("click", function() {

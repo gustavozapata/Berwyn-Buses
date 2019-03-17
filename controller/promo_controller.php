@@ -13,24 +13,20 @@ if(isset($_REQUEST["saveEditPromo"])){
     $promoJson = json_decode($_REQUEST["saveEditPromo"]);
     $updatePromo = DataAccess::getInstance()->updatePromo($promoJson);
     echo json_encode($updatePromo);
-}  
+} 
 
-// require_once "../view/addpromotion.php";
-
-
-    //  PROMO JSON FILE
-    /* $promo = (object) [
+if(isset($_REQUEST["promoDescription"])){
+    $date = $_REQUEST["promoExpiry"];
+    $date = str_replace('/', '-', $date);
+    $promo = (object) [
         'description' => $_REQUEST["promoDescription"],
         'amount' => $_REQUEST["promoAmount"],
         'code' => $_REQUEST["promoCode"],
-        'expiry' => $_REQUEST["promoExpiry"]
+        'expiry' => date('Y-m-d', strtotime($date))
     ];
-
-    $file = file_get_contents("../model/promotions.json");
-    $fileDecode = json_decode($file);
-    array_push($fileDecode, $promo);
-    $fileEncode = json_encode($fileDecode);
-    file_put_contents("../model/promotions.json", $fileEncode); */
+    $addPromo = DataAccess::getInstance()->addPromo($promo);
+    require_once "../view/addpromotion.php";
+}
 
 ?>
 

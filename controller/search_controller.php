@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once "../model/Coach.php";
 require_once "../model/DataAccess.php";
@@ -11,6 +12,13 @@ if(isset($_REQUEST["passengers"])) {
     $dateTo = htmlentities(date("Y-m-d",strtotime($_REQUEST["return"])));
     $price = htmlentities($_REQUEST["price"]);
     $coaches = DataAccess::getInstance()->searchCoaches($passengers, $dateFrom, $dateTo, $price);
+    unset($_SESSION['basket']);
+}
+
+if(isset($_REQUEST["basketItems"])){
+    $array = json_decode($_REQUEST["coachSelection"]);
+    $_SESSION["basket"]->items = $_REQUEST["basketItems"];
+    array_push($_SESSION["basket"]->coaches, $array);
 }
 
 require_once "../view/search.php"; 

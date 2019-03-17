@@ -1,5 +1,5 @@
 //LOAD COACH TO EDIT
-$(".edit-coaches img").on("click", function () {
+$(".edit-coaches img").on("click", function() {
   $("#editBg").css("display", "block");
   var coachId = [
     $(this)
@@ -18,21 +18,18 @@ var editCoach = {};
 function editCoachAjaxResults(results) {
   editCoach = results;
   $("#editPopup h2 span").text(results[0].id);
-  $("input[name='editReg']").attr("value", results[0].registrationNumber);
-  $("input[name='editMake']").attr("value", results[0].make);
-  $("input[name='editColour']").attr("value", results[0].colour);
+  $("input[name='editReg']").val(results[0].registrationNumber);
+  $("input[name='editMake']").val(results[0].make);
+  $("input[name='editColour']").val(results[0].colour);
 }
 
-$("#editPopup img").on("click", function () {
-  $("#editBg").css("display", "none");
-});
-
-$("#saveEditCoach").on("click", function () {
+$("#editPopup img").on("click", function() {
   $("#editBg").css("display", "none");
 });
 
 // SAVE EDIT COACH CHANGES
-$("#saveEditCoach").on("click", function () {
+$("#saveEditCoach").on("click", function() {
+  $("#editBg").css("display", "none");
   editCoach = {
     id: $("#editPopup h2 span").text(),
     registrationNumber: $("input[name='editReg']").val(),

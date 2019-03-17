@@ -3,7 +3,16 @@
   width: 145px;
   height: 50px;
 }
-
 #editPopup {
   margin-top: -200px;
+}
+.book-coach form textarea {
+  width: 200px;
+  text-align: left;
+  font-size: 1.2em;
+  color: black;
+  padding-left: 10px;
+  resize: none;
+  border-radius: 15px;
+  height: 60px;
 }

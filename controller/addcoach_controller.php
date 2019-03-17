@@ -16,6 +16,7 @@ if(isset($_REQUEST["addType"])){
     // header("Location: " . $_SERVER['REQUEST_URI']);
     // exit;
 }   
-    require_once "../view/addcoach.php";
+
+require_once "../view/addcoach.php";
 
 ?>
