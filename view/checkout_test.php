@@ -68,7 +68,7 @@ require_once "../controller/checkout_test_controller.php";
       <input id="visa" name="payment" type="radio" checked><label for="visa"><img src="../content/images/visa.png"></label>
       <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label><br>
       <button>Pay</button>
-      <span>*Processed by a third party company</span>
+      <span class="payment-msg">*Processed by a third party company</span>
     </article>
     <?php else : ?>
     <article class="checkout-payment">
