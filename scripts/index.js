@@ -77,3 +77,13 @@ var departUrl = parametersUrl.get("depart");
 var returnUrl = parametersUrl.get("return");
 var passengersUrl = parametersUrl.get("passengers");
 var priceUrl = parametersUrl.get("price");
+
+//LOGIN - SIGNUP
+$("#signupBtn").on("click", function() {
+  $(".signupBg").css("display", "block");
+});
+
+$(".account-created").on("click", function() {
+  window.location.href =
+    "../controller/checkout_test_controller.php?fromLogin=true";
+});

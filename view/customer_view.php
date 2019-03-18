@@ -8,7 +8,9 @@ require_once "../controller/customer_controller.php";
 <html lang="en">
   <head>
     <?php require_once "../includes/head.php"; ?>
+    <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
     <title>User Page</title>
   </head>
   <body>
@@ -38,8 +40,10 @@ require_once "../controller/customer_controller.php";
               <br />
               <input type="submit" value="Login" />
             </form>
-            <p>Don't have an account?</p>
-            <p><a href="#">Sign-up</a></p>
+            <div class="no-account">
+              <p>Don't have an account?</p>
+              <p><a href="#" id="signupBtn">Sign-up</a></p>
+            </div>
           </div>
           <?php else: ?>
           <div class="book-coach-header">
@@ -48,6 +52,26 @@ require_once "../controller/customer_controller.php";
           <?php endif ?>
         </article>
       </section>
+
+      <div class="signupBg">
+        <div class="signupPopup checkout-payment">
+          <form method="post" action="../controller/checkout_test_controller.php">
+            <?php require_once "../view/signup.php"; ?>
+            <input type="hidden" name="fromLogin">
+            <input type="submit" value="Sign-up">
+          </form>
+        </div>
+      </div>
+
+      <?php if(isset($_SESSION["accountCreated"]) && $_SESSION["accountCreated"]): ?>
+      <div class="coachAddedBg">
+        <div class="coachAddedPopup">
+            <img src="../content/images/tick.png" alt="Tick Image">
+            <p>The account has been created</p>
+            <a class="account-created" href="#">OK</a>
+        </div>
+      </div>
+      <?php endif; ?>
 
     <?php
       require_once "../includes/footer.php";

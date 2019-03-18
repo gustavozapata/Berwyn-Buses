@@ -57,6 +57,10 @@ function logUser(){
     }
 }
 
+if(isset($_REQUEST["fromLogin"])){
+    header("Location: ../view/customer_view.php");
+}
+
 require_once "../view/checkout_test.php";
 
 ?>

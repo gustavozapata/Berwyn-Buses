@@ -18,3 +18,50 @@
   margin: 50px auto;
   text-align: center;
 }
+.no-account p {
+  font-weight: bold;
+  color: #476072;
+}
+.no-account a {
+  color: #476072;
+}
+.no-account a:hover {
+  color: var(--purple-colour);
+}
+.checkout-payment div {
+  border: none;
+}
+.signupBg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.signupPopup {
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  border: 2px solid #637888;
+  margin-left: -250px;
+  margin-top: -300px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 25px;
+  /* padding: 10px; */
+}
+.checkout-payment input[type="submit"] {
+  width: 100px;
+  height: 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #476072;
+  color: #131971;
+  font-weight: bold;
+  transition: all 0.4s;
+}
