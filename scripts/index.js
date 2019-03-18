@@ -87,3 +87,6 @@ $(".account-created").on("click", function() {
   window.location.href =
     "../controller/checkout_test_controller.php?fromLogin=true";
 });
+$(".signupPopup img").on("click", function() {
+  $(".signupBg").css("display", "none");
+});

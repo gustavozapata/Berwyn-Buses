@@ -54,6 +54,12 @@
   border-radius: 25px;
   /* padding: 10px; */
 }
+.signupPopup img {
+  width: 30px;
+  float: right;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+}
 .checkout-payment input[type="submit"] {
   width: 100px;
   height: 35px;
