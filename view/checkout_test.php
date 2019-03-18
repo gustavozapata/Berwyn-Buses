@@ -73,6 +73,7 @@ require_once "../controller/checkout_test_controller.php";
     <?php else : ?>
     <article class="checkout-payment">
       <h3>Sign up to check-out</h3>
+      <!-- require_once "../view/signup.php"; -->
       <form method="post" action="../controller/checkout_test_controller.php">
       <div>
       <span>
@@ -124,7 +125,7 @@ require_once "../controller/checkout_test_controller.php";
         <div class="paymentPopup">
           <img class="paymentprocess" src="../content/images/process.png" alt="Process Payment Image">
           <p>We are processing your payment...</p>
-          <!-- <a href="../controller/checkout_test_controller.php">OK</a> -->
+          <a href="#">OK</a>
         </div>
       </div>
     

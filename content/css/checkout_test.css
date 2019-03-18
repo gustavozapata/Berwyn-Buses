@@ -121,7 +121,11 @@ hr {
   margin-top: 10px;
 }
 .paymentprocess {
+  margin-top: 30px;
   animation: logo-spin infinite 2s linear;
+}
+.stopPaymentProcess {
+  animation: logo-spin 1 2s linear;
 }
 @keyframes logo-spin {
   from {
@@ -155,4 +159,28 @@ hr {
   font-weight: bold;
   border-radius: 25px;
   padding: 10px;
+}
+.paymentPopup p {
+  margin-top: 30px;
+}
+.paymentPopup a {
+  visibility: hidden;
+  display: inline-block;
+  text-decoration: none;
+  /* margin: 10px 10px 0px 10px; */
+  padding: 5px 0;
+  border: 2px solid #131971;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100px;
+  text-align: center;
+  font-size: 1em;
+  color: #131971;
+  border-radius: 30px;
+  transition: all 0.4s;
+}
+.paymentPopup a:hover {
+  background-color: #131971;
+  color: white;
 }

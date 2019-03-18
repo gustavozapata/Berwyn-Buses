@@ -17,18 +17,32 @@ $(function() {
   });
 
   $("#clearBasket a").on("click", function() {
-    $.get(
-      "../controller/checkout_test_controller.php?clearBasket=0",
-      clearBasket
-    );
+    clearBasket();
   });
 
   function clearBasket() {
-    window.location.href = "../controller/checkout_test_controller.php";
+    $.get(
+      "../controller/checkout_test_controller.php?clearBasket=0",
+      function() {
+        window.location.href = "../controller/checkout_test_controller.php";
+      }
+    );
   }
 
   $(".checkout-payment button").on("click", function() {
     $(".paymentBg").css("display", "block");
+    setTimeout(function() {
+      $(".paymentprocess").toggleClass("stopPaymentProcess");
+      $(".stopPaymentProcess")
+        .attr("src", "../content/images/tick.png")
+        .css("width", "45px");
+      $(".paymentPopup p").text("Thanks. Your payment has been received.");
+      $(".paymentPopup a").css("visibility", "visible");
+    }, 4000);
+  });
+
+  $(".paymentPopup a").on("click", function() {
+    clearBasket();
   });
 
   /* RULES IF DELETE ITEMS */
