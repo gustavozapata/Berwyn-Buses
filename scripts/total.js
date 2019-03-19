@@ -4,14 +4,19 @@
 var price = $('span#rate').html();      // Vehicles hourly rate
 var basket = $('span#total').text();    // Baskets total value
 
-if(price != '0'){
+updateTotal();
+
+function updateTotal(){
     var total = 0;
+    console.log("running");
     $('span#rate').each(function (){
         total += parseInt($(this).html());
         }
     )
-    $('span#total').replaceWith(total);
-}
+    $('span#total').text(total);
+} 
+
+
 
 //ADDING AND REMOVING VEHCLES
 var regNums = []; //variable to store all reg numbers
@@ -51,3 +56,20 @@ $('.coach-div').each(function(){
 
         
 });
+
+//REMOVING ITEMS ON CHECKOUT PAGE
+
+$('.coach-info').each(function(){
+    var $cartInfo = $(this).children('#coachObj').val();
+    var $regNum = $(this).children('#regNum').html();
+
+    $(this).find('.btn-remove-item').on('click', function(){
+        var pos = regNums.indexOf($regNum);     //get the index of the reg number you want to remove
+        regNums.splice(pos,1);                  //remove the reg number
+        localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
+       $.post( "../controller/cart.php", {remove: $cartInfo});
+       $(this).parents('.coach-info').remove();
+        updateTotal(); 
+    });
+});
+

@@ -35,16 +35,18 @@
                             <?php endif; ?>
                             <?php foreach($_SESSION["cart"] as $vehicle):?>
                             <div class="row coach-info">
+                            <input type="hidden" id="coachObj" value='<?php echo json_encode($vehicle);?>'> 
                                 <div class ="col-sm-4 basketInfo" id="image" >
                                     <img src="../content/images/<?= $vehicle->image ?>" class="img-fluid" alt="Image Coach" />
                                 </div>
                                 <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
-                                    <p> Registration Number: <?= $vehicle->registrationNumber ?> </p> 
+                                    <p> Registration Number: <span id="regNum"> <?= $vehicle->registrationNumber ?></span></p> 
                                     <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
                                     <button class="btn-remove-item">Remove</button>
+                                    <hr/>
                                 </div>
                             </div>
-                            <hr/>
+                            
                             <?php endforeach; ?> 
 
                             <div>Total: &#8356;<span id='total'>0</span></div>
