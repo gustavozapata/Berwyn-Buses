@@ -1,26 +1,26 @@
       <div>
       <span>
-        <label>Given Name</label>
+        <label class="required">Given Name</label>
         <input name="givenName" required>
-        <label>Family Name</label>
+        <label class="required">Family Name</label>
         <input name="familyName" required>
-        <label>Date of Birth</label>
+        <label class="required">Date of Birth</label>
         <input name="dob" type="date" required>
-        <label>Email</label>
+        <label class="required">Email</label>
         <input name="email" type="email" required>
-        <label>Password</label>
+        <label class="required">Password</label>
         <input name="password" type="password" required>
-        <label>Mobile Number</label>
+        <label class="required">Mobile Number</label>
         <input name="mobileNumber" type="number" required>
       </span>
       <span>
-        <label>House Number</label>
+        <label class="required">House Number</label>
         <input name="houseNumber" required>
-        <label>Street Name</label>
+        <label class="required">Street Name</label>
         <input name="streetName" required>
-        <label>Town</label>
+        <label class="required">Town</label>
         <input name="town" required>
-        <label>Postcode</label>
+        <label class="required">Postcode</label>
         <input name="postcode" required>
         <label>Driving Licence</label>
         <input name="licence">
@@ -28,4 +28,5 @@
         <input name="licenceExpiry" type="date">
       </span>
       </div>
+      <p id="warningDriver">⚠️You need to hold a PCV licence and a CPC certificate to drive our coaches</p>
       

@@ -1,6 +1,6 @@
 <?php
 
-class Promotion {
+class Promotion implements JsonSerializable {
     private $id;
     private $description;
     private $amount;
@@ -13,6 +13,10 @@ class Promotion {
 
     function __set($name, $value){
         $this->$name = $value;
+    }
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }
 

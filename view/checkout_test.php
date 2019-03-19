@@ -74,9 +74,9 @@ require_once "../controller/checkout_test_controller.php";
     <article class="checkout-payment">
       <h3>Sign up to check-out</h3>
       <form method="post" action="../controller/checkout_test_controller.php">
-          <?php require_once "../view/signup.php"; ?>
-          <input type="hidden" name="fromLogin">
-          <input type="submit" value="Sign-up">
+        <?php require_once "../view/signup.php"; ?>
+        <input type="hidden" name="fromLogin">
+        <input type="submit" value="Sign-up">
       </form>
     </article>
     <?php endif ?> <!-- IF USER IS LOGGED -->

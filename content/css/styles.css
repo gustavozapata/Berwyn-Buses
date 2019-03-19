@@ -271,6 +271,7 @@ footer p a {
 #infoBanner p {
   margin: 10px;
   font-size: 1em;
+  text-align: center;
 }
 #infoBanner p a {
   text-decoration: underline;

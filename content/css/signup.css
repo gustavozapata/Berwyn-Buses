@@ -30,6 +30,10 @@
   font-weight: bold;
   color: #476072;
 }
+.checkout-payment .required::before {
+  content: "*";
+  color: red;
+}
 .checkout-payment input[type="submit"] {
   width: 100px;
   height: 35px;
@@ -47,4 +51,11 @@
 }
 .checkout-payment form span {
   display: block;
+}
+#warningDriver {
+  font-size: 0.85em;
+  font-weight: 500;
+  width: 300px;
+  margin: 0 auto 20px auto;
+  text-align: center;
 }

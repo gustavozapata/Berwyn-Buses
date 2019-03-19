@@ -6,17 +6,16 @@ class DataAccess {
 
     private $database = "db_k1715308";
 
-    private $host = "kunet";
-    private $user = "k1715308";
-    private $password = "webdevdatabase";
+    // private $host = "kunet";
+    // private $user = "k1715308";
+    // private $password = "webdevdatabase";
 
-    // private $host = "localhost";
-    // private $user = "root";
-    // private $password = "";
+    private $host = "localhost";
+    private $user = "root";
+    private $password = "";
     
     private function __construct() {
         $this->connection = new PDO("mysql:host={$this->host}; dbname={$this->database}", $this->user, $this->password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-        //password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
     }
 
     public static function getInstance(){
@@ -46,7 +45,6 @@ class DataAccess {
         // $statement->bindValue(":dateTo", $dateTo);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        // $results = $statement->fetchAll(PDO::FETCH_OBJ);
         return $results;
     }
 
@@ -66,7 +64,7 @@ class DataAccess {
         $statement = $connection->prepare("SELECT id, registrationNumber, make, colour FROM Coach WHERE id = :editCoach");
         $statement->bindValue(":editCoach", $editCoach);
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
         return $results;
     }
 
@@ -75,7 +73,7 @@ class DataAccess {
         $statement = $connection->prepare("SELECT id, type, maxCapacity, dailyRate FROM VehicleType WHERE id = :editVehicle");
         $statement->bindValue(":editVehicle", $editVehicle);
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "VehicleType");
         return $results;
     }
 
@@ -150,7 +148,7 @@ class DataAccess {
         $statement = $connection->prepare("SELECT * FROM Promotion WHERE id = :editPromo");
         $statement->bindValue(":editPromo", $editPromo);
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_OBJ);
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Promotion");
         $results[0]->expiry = date('d/m/Y', strtotime($results[0]->expiry));
         return $results;
     }
@@ -172,8 +170,8 @@ class DataAccess {
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT id FROM Coach ORDER BY id DESC LIMIT 1");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        return $this->getEditableFields($result[0]->id);
+        $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $this->getEditableFields($result[0]);
     }
 }
 

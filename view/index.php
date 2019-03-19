@@ -56,7 +56,6 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
       <div id="infoBanner">
         <img src="../content/images/close.png" alt="Close Button">
         <p>🚌 New coach added! : <?= $lastCoach[0]->registrationNumber . " " . $lastCoach[0]->make . " " . $lastCoach[0]->colour ?></p>
-        <!-- <p>We don't use cookies so relax there's nothing to accept</p> -->
       </div>
 
     <?php
