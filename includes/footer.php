@@ -11,7 +11,8 @@
     </div>
     <div id="infoBanner">
         <img src="../content/images/close.png" alt="Close Button">
-        <p>We don't use cookies so relax there's nothing to accept</p>
+        <p>🚌 New coach added! : <!-- DataAccess::getInstance()->newCoachAdded()--></p>
+        <!-- <p>We don't use cookies so relax there's nothing to accept</p> -->
     </div>
     <!-- <div id="infoBanner">
         <img src="../content/images/close.png" alt="Close Button">

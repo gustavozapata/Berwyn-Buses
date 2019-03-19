@@ -30,6 +30,14 @@
 }
 .checkout-payment div {
   border: none;
+  margin: 0px auto;
+}
+.checkout-payment h3 {
+  font-weight: 700;
+  font-size: var(--h3-size);
+  color: #131971;
+  clear: both;
+  margin: 2px auto;
 }
 .signupBg {
   display: none;

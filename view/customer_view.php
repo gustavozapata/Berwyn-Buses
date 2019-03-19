@@ -56,6 +56,7 @@ require_once "../controller/customer_controller.php";
       <div class="signupBg">
         <div class="signupPopup checkout-payment">
           <img src="../content/images/close.png" alt="Close Button">
+          <h3>Sign up</h3>
           <form method="post" action="../controller/checkout_test_controller.php">
             <?php require_once "../view/signup.php"; ?>
             <input type="hidden" name="fromLogin">
