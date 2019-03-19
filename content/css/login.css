@@ -47,6 +47,7 @@
   bottom: 0;
   right: 0;
   background-color: rgba(255, 255, 255, 0.5);
+  z-index: 100;
 }
 .signupPopup {
   position: absolute;
@@ -78,4 +79,45 @@
   color: #131971;
   font-weight: bold;
   transition: all 0.4s;
+}
+
+@media only screen and (max-width: 540px) {
+  body {
+    overflow: visible;
+  }
+  .signupBg {
+    position: absolute;
+  }
+  .checkout-payment div {
+    display: block;
+    width: 95%;
+    /* margin: 0 auto; */
+    padding: 0;
+  }
+  .checkout-payment h3 {
+    margin-bottom: 30px;
+  }
+  .signupPopup {
+    width: 350px;
+    margin-left: -175px;
+    top: 10px;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 383px) {
+  .book-coach form input {
+    width: 80%;
+  }
+  .signupPopup {
+    position: static;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #warningDriver {
+    width: 90%;
+    font-size: 0.75em;
+  }
 }

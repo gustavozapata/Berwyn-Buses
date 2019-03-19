@@ -82,7 +82,6 @@ var priceUrl = parametersUrl.get("price");
 $("#signupBtn").on("click", function() {
   $(".signupBg").css("display", "block");
 });
-
 $(".account-created").on("click", function() {
   window.location.href =
     "../controller/checkout_test_controller.php?fromLogin=true";
@@ -90,3 +89,8 @@ $(".account-created").on("click", function() {
 $(".signupPopup img").on("click", function() {
   $(".signupBg").css("display", "none");
 });
+
+//MOVING BASKET (RESPONSIVE PURPOSE)
+// if (window.matchMedia("(max-width: 466px)").matches) {
+//   $(".checkout_test").appendTo("movilBasket");
+// }

@@ -12,7 +12,12 @@ if(!isset($_SESSION['basket'])){
 <header>
         <div class="logo">
           <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
+          <span id="movilBasket">
+            <a class="checkout_test" href="../controller/checkout_test_controller.php">
+              <img id="basketImg" src="../content/images/basket.png" />
+              <span class="basketItems"><?= $_SESSION['basket']->items ?></span>
+            </a>
+          </span>
           <div id="line1"></div>
           <div id="line2"></div>
         </div>

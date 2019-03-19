@@ -162,11 +162,11 @@ $("#applySearch").on("click", function() {
 
 //MOVE BASKET ON MOBILE
 // window.addEventListener("resize", function(){
-if (window.matchMedia("(max-width: 466px)").matches) {
-  $("#movilBasket").html($("#liBasket a"));
-} else {
-  $("#movilBasket").html("");
-}
+// if (window.matchMedia("(max-width: 466px)").matches) {
+//   $("#movilBasket").html($("#liBasket a"));
+// } else {
+//   $("#movilBasket").html("");
+// }
 // }, false);
 //##### BASKET END
 

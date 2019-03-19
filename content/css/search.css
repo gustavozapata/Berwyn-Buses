@@ -152,3 +152,124 @@
 #price {
   color: rgb(33, 144, 255);
 }
+
+@media only screen and (max-width: 763px) {
+  .coach-results {
+    flex-basis: 70%;
+  }
+  .search-holder {
+    flex-basis: 27%;
+  }
+  .search-filter {
+    width: 27%;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .coach-results {
+    flex-basis: 55%;
+  }
+  .search-holder {
+    flex-basis: 40%;
+  }
+  .coach-addbasket button {
+    margin: 35px;
+  }
+  .search-filter {
+    width: 40%;
+  }
+  .coach-div {
+    width: 190px;
+  }
+  .coach-status {
+    width: 190px;
+  }
+}
+
+@media only screen and (max-width: 465px) {
+  .search-filter {
+    height: auto;
+  }
+  .search-filter h3 {
+    font-size: 1em;
+  }
+  .search-filter button {
+    margin: 10px auto;
+  }
+  .search-filter div p {
+    margin: 5px auto;
+  }
+  .search-filter div {
+    height: auto;
+    margin: 15px auto;
+  }
+  .filterTitle {
+    margin-top: 20px;
+  }
+  .coach-div {
+    margin: 10px auto;
+    width: 85%;
+    height: 230px;
+  }
+  .coach-div p {
+    font-size: 0.8em;
+  }
+  .coach-addbasket button {
+    width: 95%;
+    margin: 10px;
+  }
+  .coach-img {
+    height: 70px;
+  }
+  .coach-status {
+    width: 90%;
+    position: relative;
+    height: 90px;
+  }
+  .coach-status img {
+    width: 17px;
+  }
+  input[type="range"] {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 409px) {
+  .coach-results {
+    flex-basis: 60%;
+  }
+  .search-holder {
+    flex-basis: 35%;
+  }
+  .search-filter {
+    width: 35%;
+  }
+  .coach-div {
+    width: 70%;
+    padding: 4px;
+  }
+  .coach-div p {
+    font-size: 0.7em;
+  }
+  .search-filter h3 {
+    font-size: 0.8em;
+  }
+  .search-filter p {
+    font-size: 0.75em;
+  }
+  .search-filter button {
+    font-size: 0.8em;
+    padding: 3px 13px;
+  }
+  .coach-addbasket button {
+    width: 95%;
+    padding: 5px 2px;
+    font-size: 0.7em;
+  }
+  .coach-img {
+    height: 60px;
+  }
+  .coach-status img {
+    width: 12px;
+  }
+}
