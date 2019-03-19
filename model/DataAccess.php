@@ -167,6 +167,14 @@ class DataAccess {
         $statement->bindValue(":id", $updatePromo->id);
         $statement->execute();
     }
+
+    function newCoachAdded(){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT id FROM Coach ORDER BY id DESC LIMIT 1");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        return $this->getEditableFields($result[0]->id);
+    }
 }
 
 //MYSQL QUERY VIEW_COACH_TYPE
