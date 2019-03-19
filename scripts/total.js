@@ -1,9 +1,8 @@
-var price = $('span#rate').html();
-//console.log(price);                     // Vehicles hourly rate
 
-var basket = $('span#total').text();
-//console.log(basket);                    // Baskets total value
 
+//BASKET TOTAL CALCULATION
+var price = $('span#rate').html();      // Vehicles hourly rate
+var basket = $('span#total').text();    // Baskets total value
 
 if(price != '0'){
     var total = 0;
@@ -14,13 +13,13 @@ if(price != '0'){
     $('span#total').replaceWith(total);
 }
 
-
+//ADDING AND REMOVING VEHCLES
 var regNums = []; //variable to store all reg numbers
-
+// When page is reloaded checks to see if local storage variable exists and sets it regNums array.
 if (localStorage.getItem("regNums") !== null){
     regNums = JSON.parse(localStorage.getItem("regNums"));
     $(document).ready(function(){
-        $('.coach-div').each(function(index){
+        $('.coach-div').each(function(){
             var $regNum = $(this).children('#regNum').html();
             regNums.forEach(element => {
                 if(element == $regNum){
@@ -31,7 +30,8 @@ if (localStorage.getItem("regNums") !== null){
     });
 }
 
-$('.coach-div').each(function(index){
+//Setting and removing the selected vehicles "regNum" in our regNums arrray
+$('.coach-div').each(function(){
     var $cartInfo = $(this).children('#coachObj').val();
     var $regNum = $(this).children('#regNum').html(); //gets the text of reg number
    
@@ -51,21 +51,3 @@ $('.coach-div').each(function(index){
 
         
 });
-
-
-
-    
-       
-
-
-
-
-
-
-$(".btn-remove-item").click(function() {
-   // $(this).find(".row coach-info").hide();
-    //$(this).remove(".row coach-info");
-  });
-
-  
-
