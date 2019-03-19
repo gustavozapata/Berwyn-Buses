@@ -25,7 +25,7 @@
                             
                             <?php if ($_SESSION["trip"]['depart'] != "" && $_SESSION["trip"]['return'] != "") : ?>
                             <h3>Trip details</h3>
-                            <p><span style="font-weight:bold; text-align:left;">Trip duration: </span><?= $_SESSION["trip"]['depart'] ?> - <?= $_SESSION["trip"]['return'] ?></p>
+                            <p><span style="font-weight:bold; text-align:left;">Trip duration: </span><span id="start"><?= $_SESSION["trip"]['depart'] ?></span> - <span id="end"><?= $_SESSION["trip"]['return'] ?></span></p>
                             <p><span style="font-weight:bold; text-align:left;">Number of passengers: </span><?= $_SESSION["trip"]['passengers'] ?></p>
                             <?php endif; ?>
                             <hr/>

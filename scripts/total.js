@@ -5,6 +5,7 @@ var price = $('span#rate').html();      // Vehicles hourly rate
 var basket = $('span#total').text();    // Baskets total value
 
 updateTotal();
+duration();
 
 function updateTotal(){
     var total = 0;
@@ -13,8 +14,27 @@ function updateTotal(){
         total += parseInt($(this).html());
         }
     )
+    total = total * duration();
     $('span#total').text(total);
 } 
+
+function duration(){
+    var $startDate = $('#start').text();
+    var $endDate = $("#end").text();
+    var day = $startDate.substring(0,2);
+    var month = $startDate.substring(3,5) - 1;
+    var year = $startDate.substring(6,10);
+    $startDate = new Date(year,month,day);
+
+    day = $endDate.substring(0,2);
+    month = $endDate.substring(3,5) - 1;
+    year = $endDate.substring(6,10);
+    $endDate = new Date(year,month,day);
+    
+    var totalDays = (($endDate - $startDate) / 86400000) + 1; 
+    return totalDays; 
+    
+}
 
 
 
