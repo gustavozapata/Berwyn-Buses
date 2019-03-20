@@ -6,7 +6,7 @@ var basket = $('span#total').text();    // Baskets total value
 
 updateTotal();
 duration();
-
+emptyCart();
 function updateTotal(){
     var total = 0;
     console.log("running");
@@ -89,7 +89,17 @@ $('.coach-info').each(function(){
         localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
        $.post( "../controller/cart.php", {remove: $cartInfo});
        $(this).parents('.coach-info').remove();
+        emptyCart();
         updateTotal(); 
     });
 });
+
+//DISPLAYING EMPTY CART MESSAGE
+function emptyCart(){
+    if (localStorage.getItem("regNums") === null || localStorage.getItem("regNums") === '[]'|| localStorage.getItem("regNums") === ''){
+        console.log('working');
+        $('.cart').html('<h3> Your cart is empty </h3>');
+    };
+}
+
 

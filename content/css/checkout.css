@@ -12,7 +12,7 @@
 {
     max-width:80%;
     height:10px;
-    background-color: blue;
+    background-color: rgb(69, 75, 243);
     margin-left:auto;
     margin-right:auto;
 }
@@ -20,14 +20,16 @@
 .cart .title .bottom
 {
     height:10px;
-    background-color: black;
+    background-color: #454545;
     margin-bottom: 20px;
 }
 
 .cart h3
 {
-    text-align: left;
+    text-align: center;
     text-decoration: underline;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cart p
@@ -35,4 +37,49 @@
     text-align: left;
     margin-bottom: 0px;
     line-height: 1.8em;
+}
+
+.coach-info {
+    border-bottom: rgb(200, 200, 200) solid 1px;
+    padding: 20px;
+}
+
+#basketItem img {
+    max-height:30px;
+    width: auto;
+}
+.btn-remove-item {
+    width: 120px;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius: 20px;
+    background-color: rgb(69, 75, 243);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+div.summary{
+    padding:20px;
+}
+
+#details{
+    padding:20px;
+    border-right: black solid 1px;
+}
+
+@media only screen and (max-width:767px ){
+    #details{
+        padding:20px;
+        border-right:none;
+        border-bottom:black solid 1px;
+    }
+}
+
+#total {
+    padding:20px;
+    margin-bottom: auto;
+    margin-top: auto;
 }
