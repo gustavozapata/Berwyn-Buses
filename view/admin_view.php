@@ -14,22 +14,7 @@ require_once "../controller/admin_controller.php";
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1><a href="../view/admin_view.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <?php if($_SESSION["adminLogged"]): ?>
-        <nav>
-          <ul>
-            <li><a href="../controller/logout.php">Logout</a></li>
-            <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
-          </ul>
-        </nav>
-        <?php endif; ?>
-      </header>
+    <?php require_once "../includes/admin_header.php" ?>
       <section class="main-section">
         <article class="book-coach">
           <?php if(!$_SESSION["adminLogged"]): ?>
@@ -58,7 +43,8 @@ require_once "../controller/admin_controller.php";
             <h2>Coaches</h2>
             <div class="admin-buttons">
               <a href="../view/addcoach.php">Add coach</a>
-              <a href="#">Edit coach</a>
+              <a href="../view/editcoach.php">Edit coach</a>
+              <a id="vehicleTypeButton" href="../view/editvehicletype.php">Edit vehicle type</a>
             </div>
 
             <h2>Promotions</h2>

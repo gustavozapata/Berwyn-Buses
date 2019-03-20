@@ -1,8 +1,11 @@
 :root {
   --h1-size: 2.5em;
   --h2-size: 2em;
+  --h3-size: 1.5em;
   --h1-mobile-size: 2.1em;
   --a-nav-size: 1.2em;
+  --blue-colour: rgb(33, 144, 255);
+  --purple-colour: rgb(69, 75, 243);
 }
 html,
 body {
@@ -41,11 +44,13 @@ header {
   color: black;
 }
 #movilBasket {
-  /* display: none; */
+  display: none;
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 20px;
-  /* border: 1px solid red; */
+}
+#movilBasket .basketItems {
+  text-align: center;
 }
 #line1 {
   width: 500px;
@@ -87,14 +92,15 @@ nav ul li a:hover {
   width: 32px;
   vertical-align: bottom;
 }
-#basketItems {
+.basketItems {
   display: inline-block;
   width: 25px;
   height: 25px;
   margin: -10px;
   border-radius: 20px;
   vertical-align: top;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 0.9em;
   color: white;
   background-color: rgb(33, 144, 255);
 }
@@ -123,12 +129,6 @@ nav ul li a:hover {
   font-size: var(--h2-size);
   font-weight: 900;
 }
-.book-coach:hover #line3 {
-  background-color: rgb(33, 144, 255);
-}
-.book-coach:hover #line4 {
-  background-color: rgb(69, 75, 243);
-}
 #line3 {
   width: 250px;
   height: 10px;
@@ -141,6 +141,12 @@ nav ul li a:hover {
   height: 10px;
   margin: 0 auto;
   background-color: rgb(155, 155, 155);
+}
+.book-coach:hover #line3 {
+  background-color: rgb(33, 144, 255);
+}
+.book-coach:hover #line4 {
+  background-color: rgb(69, 75, 243);
 }
 .book-coach {
   text-align: center;
@@ -230,13 +236,12 @@ footer p a {
   font-weight: 500;
   color: black;
   margin: 35px;
-  /* text-decoration: none; */
 }
 
 /* CONTACT */
 .contact {
   position: fixed;
-  width: 180px;
+  width: auto;
   height: auto;
   background-color: white;
   border: 1px solid rgb(112, 112, 112);
@@ -248,12 +253,42 @@ footer p a {
 }
 .contact p {
   display: inline-block;
-  margin: 12px;
+  margin: 10px;
   font-weight: 700;
 }
 .contact img {
   width: 30px;
+  margin: 6px;
   vertical-align: middle;
+}
+/* INFO BANNER */
+#infoBanner {
+  position: fixed;
+  width: 60%;
+  margin-left: -30%;
+  left: 50%;
+  bottom: -100px;
+  background-color: #ffdd00;
+  font-weight: 700;
+  transition: all 0.4s;
+  z-index: 101;
+}
+#infoBanner p {
+  margin: 10px;
+  font-size: 1em;
+  text-align: center;
+}
+#infoBanner p a {
+  text-decoration: underline;
+  color: black;
+  font-size: 1em;
+  cursor: pointer;
+}
+#infoBanner img {
+  width: 25px;
+  float: right;
+  margin: 5px 5px 0 0;
+  cursor: pointer;
 }
 
 
@@ -281,6 +316,24 @@ footer p a {
   .book-coach-header {
     width: 350px;
   }
+  #infoBanner p {
+    font-size: 0.8em;
+  }
+  #infoBanner img {
+    width: 20px;
+  }
+  #warning {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  nav ul li a {
+    font-size: 0.9em;
+  }
+  #liBasket a {
+    font-size: 1.2em;
+  }
 }
 
 @media only screen and (max-width: 466px) {
@@ -299,8 +352,19 @@ footer p a {
   #liBasket {
     display: none;
   }
-  #basketItems {
+  #movilBasket {
+    display: block;
+  }
+  .basketItems {
     font-size: 1.2em;
+  }
+  .contact p {
+    display: none;
+  }
+  #infoBanner {
+    width: 100%;
+    margin: 0;
+    left: 0;
   }
 }
 
@@ -334,10 +398,26 @@ footer p a {
   }
 }
 
-/* Basket */
-.box-outline {
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 20px;
-  text-align: center;
-  padding:20px;
+@media only screen and (max-width: 383px) {
+  nav ul li {
+    margin: 10px;
+  }
+  .book-coach {
+    width: 95%;
+  }
+  .book-coach-header {
+    width: 100%;
+  }
+  .book-coach-header h2 {
+    font-size: 1.6em;
+  }
+  #line3 {
+    width: 80%;
+  }
+  #line4 {
+    width: 90%;
+  }
+  .footer-links a {
+    margin: 15px;
+  }
 }

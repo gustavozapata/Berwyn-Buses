@@ -1,0 +1,70 @@
+#editPopup textarea {
+  resize: none;
+  width: 145px;
+  height: 50px;
+}
+#editPopup {
+  margin-top: -200px;
+}
+.book-coach form textarea {
+  width: 200px;
+  text-align: left;
+  font-size: 1.2em;
+  color: black;
+  padding-left: 10px;
+  resize: none;
+  border-radius: 15px;
+  height: 60px;
+}
+
+@media only screen and (max-width: 880px) {
+  .book-coach {
+    width: 95%;
+  }
+}
+@media only screen and (max-width: 610px) {
+  .book-coach {
+    width: 100%;
+  }
+  .edit-coaches table th {
+    font-size: 1em;
+  }
+  .edit-coaches table td {
+    font-size: 0.9em;
+    padding: 5px 1px;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .book-coach form textarea {
+    width: 80%;
+  }
+  .edit-coaches table th {
+    font-size: 0.9em;
+  }
+  .edit-coaches table td {
+    font-size: 0.8em;
+    padding: 5px 1px;
+  }
+  .edit-coaches table td img {
+    width: 14px;
+  }
+  .edit-coaches table {
+    border-spacing: 1px;
+  }
+}
+@media only screen and (max-width: 415px) {
+  .book-coach {
+    overflow-x: scroll;
+  }
+}
+@media only screen and (max-width: 383px) {
+  .book-coach form textarea {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 342px) {
+  #editPopup textarea {
+    width: 121px;
+  }
+}

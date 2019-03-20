@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+require_once "../model/DataAccess.php";
+require_once "../model/Coach.php";
+
+$lastCoach = DataAccess::getInstance()->newCoachAdded();
 ?>
 
 <!DOCTYPE html>
@@ -25,18 +30,19 @@ session_start();
             <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
-                <input id="from" type="text" name="depart"/>
+                <input id="from" type="text" name="depart" required/>
               </span>
               <span>
                 <p>Return</p>
-                <input id="to" type="text" name="return" />
+                <input id="to" type="text" name="return" required/>
               </span>
               <span>
                 <p>Passengers</p>
-                <input id="passengers" name="passengers" type="number" maxlength="3" required/>
+                <input id="passengers" name="passengers" type="number" min="5" max="500" required/>
               </span>
               <span id="warning">Status</span>
               <br />
+              <input type="hidden" name="price" value="55">
               <input
                 id="requireDriver"
                 type="checkbox"
@@ -47,6 +53,11 @@ session_start();
           </div>
         </article>
       </section>
+
+      <div id="infoBanner">
+        <img src="../content/images/close.png" alt="Close Button">
+        <p>🚌 New coach added! : <?= $lastCoach[0]->registrationNumber . " " . $lastCoach[0]->make . " " . $lastCoach[0]->colour ?></p>
+      </div>
 
     <?php
       require_once "../includes/footer.php";

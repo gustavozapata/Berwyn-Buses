@@ -2,10 +2,11 @@
 
 session_start();
 
-require_once "../model/admin.php";
+require_once "../model/Admin.php";
 require_once "../model/DataAccess.php";
 
 if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
+  unset($_SESSION['userLogged']);
   $_SESSION["adminLogged"] = true;
 } else {
   $_SESSION["adminLogged"] = false;
@@ -19,13 +20,11 @@ if ($_POST) {
     if($admin){
       if($admin[0]->username == $_SESSION["adminname"] && $admin[0]->password == $password){
         $_SESSION["adminLogged"]  = true;
+        header("Location: " . $_SERVER['REQUEST_URI']);
+        exit;
       }
     }
   }
-
-
-  header("Location: " . $_SERVER['REQUEST_URI']);
-  exit;
 }
 
 

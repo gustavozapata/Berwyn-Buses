@@ -2,7 +2,15 @@
 
 session_start();
 
-// require_once "../controller/admin_controller.php";
+require_once "../model/DataAccess.php";
+require_once "../model/Promotion.php";
+
+if(isset($_SESSION["adminLogged"]) && $_SESSION["adminLogged"]){
+  $_SESSION["adminLogged"] = true;
+  $promotions = DataAccess::getInstance()->getPromotions();
+} else {
+  $_SESSION["adminLogged"] = false;
+}
 
 ?>
 
@@ -12,26 +20,13 @@ session_start();
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/admin.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/editcoach.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/promotion.css" />
     <title>➕Edit Promotion</title>
   </head>
   <body>
     <div id="page">
-      <header>
-        <div class="logo">
-          <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
-          <span id="movilBasket"></span>
-          <div id="line1"></div>
-          <div id="line2"></div>
-        </div>
-        <?php if($_SESSION["adminLogged"]): ?>
-        <nav>
-          <ul>
-            <li><a href="../controller/logout.php">Logout</a></li>
-            <li><a href="../view/admin_view.php"><?= $_SESSION["adminname"]?></a></li>
-          </ul>
-        </nav>
-        <?php endif; ?>
-      </header>
+    <?php require_once "../includes/admin_header.php" ?>
       <section class="main-section">
         <article class="book-coach">
           <?php if(!$_SESSION["adminLogged"]): ?>
@@ -41,21 +36,61 @@ session_start();
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Edit Promotion</h2>
-            <form action="">
-                <input type="text" placeholder="Promotion ID">
-                <input type="text" placeholder="Promotion Descripton">
-                <span>
-                <input type="number" placeholder="Discount Amount"/>
-              </span>
-                <div class="admin-buttons">
-              <a href="#">Add</a>
+            <div class="edit-coaches">
+              <table>
+              <tr>
+                <th>ID</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Code</th>
+                <th>Expiry</th>
+              </tr>
+              <?php foreach($promotions as $promotion): ?>
+              <tr id="<?= $promotion->id ?>">
+                <td><?= $promotion->id ?></td>
+                <td data-edit="description"><?= $promotion->description ?></td>
+                <td data-edit="amount"><?= $promotion->amount ?></td>
+                <td data-edit="code"><?= $promotion->code ?></td>
+                <td data-edit="expiry"><?= date('d/m/Y', strtotime($promotion->expiry)) ?></td>
+                <td><img src="../content/images/edit.png" alt="Edit Pencil"></td>
+              </tr>
+              <?php endforeach; ?>
+              </table>
             </div>
-            </form>
-
           </div>
           <?php endif ?>
         </article>
       </section>
+
+      <!-- EDIT PROMOTION POPUP -->
+      <div id="editBg">
+        <div id="editPopup">
+          <img src="../content/images/close.png" alt="Close Button">
+          <h2>Promotion &#35;<span></span></h2>
+          <table>
+            <tr>
+              <td>Description:</td>
+              <td><textarea name="editDescription" maxlength="100"></textarea></td>
+            </tr>
+            <tr>
+              <td>Amount:</td>
+              <td><input type="text" name="editAmount"></td>
+            </tr>
+            <tr>
+              <td>Code:</td>
+              <td><input type="text" name="editCode"></td>
+            </tr>
+            <tr>
+              <td>Expiry:</td>
+              <td><input id="expiry" type="text" name="editExpiry"></td>
+            </tr>
+          </table>
+          <div class="save-btn admin-buttons">
+            <a id="saveEditCoach">Save</a>
+          </div>
+        </div>
+      </div>
+      <!-- END EDIT PROMOTION POPUP -->
 
     <?php
       require_once "../includes/footer.php";
@@ -65,5 +100,7 @@ session_start();
     <!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/admin.js"></script>
+    <script src="../scripts/promotions.js"></script>
+    <script src="../scripts/bookingSearch.js"></script>
   </body>
 </html>

@@ -18,3 +18,110 @@
   margin: 50px auto;
   text-align: center;
 }
+.no-account p {
+  font-weight: bold;
+  color: #476072;
+}
+.no-account a {
+  color: #476072;
+}
+.no-account a:hover {
+  color: var(--purple-colour);
+}
+.checkout-payment div {
+  border: none;
+  margin: 0px auto;
+}
+.checkout-payment h3 {
+  font-weight: 700;
+  font-size: var(--h3-size);
+  color: #131971;
+  clear: both;
+  margin: 2px auto;
+}
+.signupBg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 100;
+}
+.signupPopup {
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  border: 2px solid #637888;
+  margin-left: -250px;
+  margin-top: -300px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 25px;
+  /* padding: 10px; */
+}
+.signupPopup img {
+  width: 30px;
+  float: right;
+  cursor: pointer;
+  margin: 10px 10px 0 0;
+}
+.checkout-payment input[type="submit"] {
+  width: 100px;
+  height: 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #476072;
+  color: #131971;
+  font-weight: bold;
+  transition: all 0.4s;
+}
+
+@media only screen and (max-width: 540px) {
+  body {
+    overflow: visible;
+  }
+  .signupBg {
+    position: absolute;
+  }
+  .checkout-payment div {
+    display: block;
+    width: 95%;
+    /* margin: 0 auto; */
+    padding: 0;
+  }
+  .checkout-payment h3 {
+    margin-bottom: 30px;
+  }
+  .signupPopup {
+    width: 350px;
+    margin-left: -175px;
+    top: 10px;
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 383px) {
+  .book-coach form input {
+    width: 80%;
+    font-size: 0.9em;
+  }
+  form select {
+    width: 82%;
+  }
+  .signupPopup {
+    position: static;
+    width: 88%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #warningDriver {
+    width: 90%;
+    font-size: 0.75em;
+  }
+}
