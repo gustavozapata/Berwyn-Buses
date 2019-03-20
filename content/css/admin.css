@@ -39,3 +39,11 @@
 #vehicleTypeButton {
   width: 200px;
 }
+
+@media only screen and (max-width: 290px) {
+  .admin-buttons a,
+  #vehicleTypeButton {
+    width: 90%;
+    font-size: 0.95em;
+  }
+}

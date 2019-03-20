@@ -1,0 +1,48 @@
+#Gpiece {
+  width: 500px;
+  border-radius: 50%;
+  margin-top: 40px;
+}
+h2 {
+  text-align: center;
+  margin: 50px auto;
+  font-weight: 900;
+  font-size: 2em;
+}
+.borderabout {
+  display: inline-block;
+  width: 400px;
+  /* height: 300px; */
+  margin: 10px 15px;
+  padding: 20px;
+  text-align: left;
+  border: 2px solid rgb(230, 230, 230);
+  border-radius: 20px;
+  position: relative;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.about {
+  text-align: center;
+  padding: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+@media only screen and (max-width: 550px) {
+  #Gpiece {
+    width: 350px;
+  }
+  .borderabout {
+    width: 95%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #Gpiece {
+    width: 250px;
+  }
+}

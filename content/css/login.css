@@ -109,6 +109,10 @@
 @media only screen and (max-width: 383px) {
   .book-coach form input {
     width: 80%;
+    font-size: 0.9em;
+  }
+  form select {
+    width: 82%;
   }
   .signupPopup {
     position: static;

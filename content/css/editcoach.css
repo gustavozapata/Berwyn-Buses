@@ -96,3 +96,63 @@ div.save-btn a:hover {
   padding: initial;
   border: 1px solid red;
 }*/
+
+@media only screen and (max-width: 580px) {
+  .book-coach {
+    width: 95%;
+  }
+  #editPopup {
+    width: 300px;
+    margin-left: -150px;
+  }
+  #editPopup table td {
+    padding: 5px 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .book-coach {
+    width: 100%;
+  }
+  .edit-coaches table th {
+    font-size: 1em;
+  }
+  .edit-coaches table td {
+    font-size: 0.9em;
+  }
+  .edit-coaches table td img {
+    width: 14px;
+  }
+}
+
+@media only screen and (max-width: 342px) {
+  .edit-coaches table {
+    border-spacing: 2px;
+  }
+  .edit-coaches table th {
+    font-size: 0.95em;
+  }
+  .edit-coaches table td {
+    font-size: 0.8em;
+    padding: 5px 2px;
+  }
+  .edit-coaches table td img {
+    width: 12px;
+  }
+  #editPopup {
+    width: 250px;
+    margin-left: -125px;
+  }
+  #editPopup input {
+    width: 125px;
+  }
+  select {
+    width: 125px;
+  }
+}
+
+@media only screen and (max-width: 285px) {
+  .book-coach {
+    overflow-x: scroll;
+  }
+}

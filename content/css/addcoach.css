@@ -37,12 +37,14 @@ select {
   top: 50%;
   left: 50%;
   width: 300px;
-  height: 200px;
+  /* height: 200px; */
+  height: auto;
   margin-left: -150px;
   margin-top: -110px;
   text-align: center;
   font-weight: bold;
   border-radius: 25px;
+  box-sizing: border-box;
   padding: 10px;
 }
 .coachAddedPopup img {
@@ -67,4 +69,15 @@ select {
 .coachAddedPopup a:hover {
   background-color: var(--blue-colour);
   color: white;
+}
+
+@media only screen and (max-width: 300px) {
+  #addCoachBtn,
+  #addPromoBtn {
+    width: 60%;
+  }
+  .coachAddedPopup {
+    width: 250px;
+    margin-left: -125px;
+  }
 }

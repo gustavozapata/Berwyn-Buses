@@ -59,3 +59,20 @@
   margin: 0 auto 20px auto;
   text-align: center;
 }
+@media only screen and (max-width: 520px) {
+  .checkout-payment {
+    width: 95%;
+    margin: 20px auto;
+  }
+  .checkout-payment div {
+    display: block;
+    padding: 15px 0;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  #warningDriver {
+    width: 95%;
+  }
+}

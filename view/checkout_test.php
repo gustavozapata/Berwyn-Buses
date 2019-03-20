@@ -9,9 +9,9 @@ require_once "../controller/checkout_test_controller.php";
 <head>
     <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
     <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
-    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
     <title>Checkout</title>
 </head>
 <body>
