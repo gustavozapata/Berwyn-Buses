@@ -45,6 +45,7 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
               <input
                 id="requireDriver"
                 type="checkbox"
+                value="true"
                 name="requireDriver"
               /><label for="requireDriver">Require a driver</label><br />
               <input type="submit" value="Search" />

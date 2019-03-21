@@ -11,7 +11,8 @@ if(isset($_REQUEST["passengers"])) {
     $dateFrom = htmlentities(date("Y-m-d",strtotime($_REQUEST["depart"])));
     $dateTo = htmlentities(date("Y-m-d",strtotime($_REQUEST["return"])));
     $price = htmlentities($_REQUEST["price"]);
-    $coaches = DataAccess::getInstance()->searchCoaches($passengers, $dateFrom, $dateTo, $price);
+    $isDriver = isset($_REQUEST["requireDriver"]) ? $_REQUEST["requireDriver"] : false;
+    $coaches = DataAccess::getInstance()->searchCoaches2($passengers, $dateFrom, $dateTo, $price, $isDriver);
     unset($_SESSION['basket']);
 }
 

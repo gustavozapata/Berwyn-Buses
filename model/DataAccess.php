@@ -29,20 +29,32 @@ class DataAccess {
         return $this->connection;
     }
 
-    function searchCoaches($passengers, $dateFrom, $dateTo, $price){
+    function searchCoaches($passengers, $dateFrom, $dateTo, $price, $isDriver){
         $connection = $this->getConnection();
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
-            //DATE RANGE
-            // $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom");
         } else {
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
         }
         $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
         $statement->bindValue(":price", $price);
-        //DATE RANGE
-        // $statement->bindValue(":dateFrom", $dateFrom);
-        // $statement->bindValue(":dateTo", $dateTo);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        return $results;
+    }
+
+    //THIS IS A TESTING METHOD (WORKING ON THIS)
+    function searchCoaches2($passengers, $dateFrom, $dateTo, $price, $isDriver){
+        $connection = $this->getConnection();
+        if($isDriver){
+            $statement = $connection->prepare("SELECT * FROM view_coach_type");
+        } else {
+            $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom AND view_booking_info.dateReturned < :dateTo AND dailyRate >= :price");
+        }
+        $statement->bindValue(":passengers", $passengers);
+        $statement->bindValue(":dateFrom", $dateFrom);
+        $statement->bindValue(":dateTo", $dateTo);
+        $statement->bindValue(":price", $price);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
         return $results;
