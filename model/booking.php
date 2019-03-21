@@ -8,6 +8,7 @@ class Booking{
     private $destinationPostcode;
     private $approxJourneyHours;
     private $dateReturned;
+    
     function __get($name) {
         return $this->$name;
     }

@@ -1,0 +1,78 @@
+.checkout-payment {
+  /* border: 1px solid red; */
+  text-align: center;
+}
+.checkout-payment div {
+  margin: 30px auto;
+  width: 420px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(220, 220, 220);
+  padding: 30px;
+  border-radius: 20px;
+  transition: border 0.5s;
+}
+.checkout-payment div:hover {
+  border-color: #131971;
+}
+.checkout-payment input {
+  display: block;
+  height: 25px;
+  width: 180px;
+  margin: 0px auto 20px auto;
+  border-radius: 8px;
+  padding-left: 8px;
+  border: 1px solid rgb(200, 200, 200);
+}
+.checkout-payment label {
+  width: 200px;
+  font-weight: bold;
+  color: #476072;
+}
+.checkout-payment .required::before {
+  content: "*";
+  color: red;
+}
+.checkout-payment input[type="submit"] {
+  width: 100px;
+  height: 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: white;
+  border: 2px solid #f7b700;
+  color: #131971;
+  font-weight: bold;
+  transition: all 0.4s;
+}
+.checkout-payment input[type="submit"]:hover {
+  background-color: #131971;
+  color: white;
+}
+.checkout-payment form span {
+  display: block;
+}
+#warningDriver {
+  font-size: 0.85em;
+  font-weight: 500;
+  width: 300px;
+  margin: 0 auto 20px auto;
+  text-align: center;
+}
+@media only screen and (max-width: 520px) {
+  .checkout-payment {
+    width: 95%;
+    margin: 20px auto;
+  }
+  .checkout-payment div {
+    display: block;
+    padding: 15px 0;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  #warningDriver {
+    width: 95%;
+  }
+}

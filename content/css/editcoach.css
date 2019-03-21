@@ -1,0 +1,158 @@
+.book-coach {
+  width: 65%;
+}
+.edit-coaches {
+  /* border: 1px solid red; */
+}
+.book-coach-header {
+  width: 95%;
+}
+.edit-coaches table {
+  border-bottom: 1px solid #8cb6ce;
+  width: 90%;
+  margin: 70px auto 30px auto;
+  border-spacing: 5px;
+}
+.edit-coaches table td {
+  padding: 10px 5px;
+  /* border: 1px solid red; */
+}
+.edit-coaches table th {
+  font-size: 1.2em;
+}
+.edit-coaches table td img {
+  width: 17px;
+  cursor: pointer;
+}
+#editBg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 101;
+}
+#editPopup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  /* height: 300px; */
+  margin: 20px auto;
+  margin-left: -250px;
+  margin-top: -150px;
+  border: 1px solid rgb(112, 112, 112);
+  border-radius: 25px;
+  text-align: center;
+  background-color: white;
+}
+#editPopup table {
+  margin: 20px auto;
+  text-align: left;
+  font-weight: bold;
+}
+#editPopup table td {
+  padding: 10px 10px;
+}
+#editPopup img {
+  width: 25px;
+  float: right;
+  margin: 10px 10px 0 0;
+  cursor: pointer;
+}
+#editPopup h2 {
+  clear: both;
+}
+#editPopup input {
+  width: 151px;
+  height: 19px;
+  text-align: center;
+  font-size: 1em;
+  /* border-radius: 30px; */
+  border: 1px solid rgb(112, 112, 112);
+}
+div.save-btn a {
+  width: 135px;
+  margin: 5px auto 25px auto;
+  border: 2px solid rgb(33, 144, 255);
+  background-color: white;
+  color: black;
+  transition: all 0.3s;
+}
+div.save-btn a:hover {
+  background-color: var(--blue-colour);
+  color: white;
+}
+/* INPUT EDITABLE */
+/*.edit-coaches table td input {
+  width: initial;
+  background-color: #eef7fc;
+  border: none;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1em;
+  padding: initial;
+  border: 1px solid red;
+}*/
+
+@media only screen and (max-width: 580px) {
+  .book-coach {
+    width: 95%;
+  }
+  #editPopup {
+    width: 300px;
+    margin-left: -150px;
+  }
+  #editPopup table td {
+    padding: 5px 0;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .book-coach {
+    width: 100%;
+  }
+  .edit-coaches table th {
+    font-size: 1em;
+  }
+  .edit-coaches table td {
+    font-size: 0.9em;
+  }
+  .edit-coaches table td img {
+    width: 14px;
+  }
+}
+
+@media only screen and (max-width: 342px) {
+  .edit-coaches table {
+    border-spacing: 2px;
+  }
+  .edit-coaches table th {
+    font-size: 0.95em;
+  }
+  .edit-coaches table td {
+    font-size: 0.8em;
+    padding: 5px 2px;
+  }
+  .edit-coaches table td img {
+    width: 12px;
+  }
+  #editPopup {
+    width: 250px;
+    margin-left: -125px;
+  }
+  #editPopup input {
+    width: 125px;
+  }
+  select {
+    width: 125px;
+  }
+}
+
+@media only screen and (max-width: 285px) {
+  .book-coach {
+    overflow-x: scroll;
+  }
+}

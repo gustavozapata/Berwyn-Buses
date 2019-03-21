@@ -1,0 +1,83 @@
+form input {
+  margin: 6px auto;
+}
+select {
+  height: 40px;
+  width: 210px;
+  border-radius: 20px;
+  margin: 6px;
+}
+.book-coach-header h2 {
+  margin-bottom: 25px;
+}
+#addCoachBtn,
+#addPromoBtn {
+  width: 170px;
+  height: 38px;
+  margin: 35px;
+  color: #687ab4;
+}
+#addCoachBtn:hover,
+#addPromoBtn:hover {
+  color: white;
+}
+.coachAddedBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 101;
+}
+.coachAddedPopup {
+  position: absolute;
+  background-color: white;
+  border: 2px solid #16c60c;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  /* height: 200px; */
+  height: auto;
+  margin-left: -150px;
+  margin-top: -110px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 25px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.coachAddedPopup img {
+  width: 40px;
+}
+.coachAddedPopup a {
+  display: inline-block;
+  text-decoration: none;
+  margin: 10px 10px 0px 10px;
+  padding: 5px 0;
+  border: 2px solid #8cb6ce;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100px;
+  text-align: center;
+  font-size: 1em;
+  color: #687ab4;
+  border-radius: 30px;
+  transition: all 0.4s;
+}
+.coachAddedPopup a:hover {
+  background-color: var(--blue-colour);
+  color: white;
+}
+
+@media only screen and (max-width: 300px) {
+  #addCoachBtn,
+  #addPromoBtn {
+    width: 60%;
+  }
+  .coachAddedPopup {
+    width: 250px;
+    margin-left: -125px;
+  }
+}

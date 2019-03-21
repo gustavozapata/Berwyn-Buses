@@ -1,15 +1,19 @@
 <?php
-class Admin {
+
+class BookingAssignment {
     private $id;
-    private $givenName;
-    private $familyName;
-    private $username;
-    private $password;
+    private $booking;
+    private $driver;
+    private $coach;
+
     function __get($name) {
         return $this->$name;
     }
+    
     function __set($name, $value){
         $this->$name = $value;
     }
 }
+
+
 ?>
