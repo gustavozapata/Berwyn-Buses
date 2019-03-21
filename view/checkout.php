@@ -33,7 +33,7 @@
                                                 <p> Registration Number: <span id="regNum"> <?= $vehicle->registrationNumber ?></span></p> 
                                                 <p>Colour: <?= $vehicle->colour ?></p>
                                                 <p>Max. Passengers: <span class="coachPassengers" id="maxPasseners"><?= $vehicle->maxCapacity ?></span></p>
-                                                <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->hourlyRate ?> </span></p>
+                                                <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->dailyRate ?> </span></p>
                                                 <button class="btn-remove-item">Remove</button>
                                             </div>
                                         </div>                    

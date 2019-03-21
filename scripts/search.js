@@ -83,11 +83,11 @@ function updateSummary(button, action) {
   } else {
     isBookingReady = true;
   }
-  redirectCheckoutPage();
+  //redirectCheckoutPage();
 }
 //##### END SEARCH SUMMARY #####
 
-// //##### PROCEED TO CHECKOUT #####
+//##### PROCEED TO CHECKOUT #####
 // function redirectCheckoutPage() {
 //   $(".checkout_test").on("click", function() {
 //     if (isBookingReady) {
@@ -161,18 +161,23 @@ $(window).scroll(function() {
 // });
 
 //MOVE BASKET ON MOBILE
-// window.addEventListener("resize", function(){
-// if (window.matchMedia("(max-width: 466px)").matches) {
-//   $("#movilBasket").html($("#liBasket a"));
-// } else {
-//   $("#movilBasket").html("");
-// }
-// }, false);
+window.addEventListener("resize", function(){
+if (window.matchMedia("(max-width: 466px)").matches) {
+  $("#movilBasket").html($("#liBasket a"));
+} else {
+  $("#movilBasket").html("");
+}
+}, false);
 //##### BASKET END
 
 //##### BOOKING #####
-$(".coach-div").on("click", function() {
+$(".coach-div").on("mouseover", function() {
   $(".coach-div-selected").removeClass("coach-div-selected");
+  $(this).toggleClass("coach-div-selected");
+});
+
+$(".coach-div").on("mouseout", function() {
+  $(".coach-div-selected").addClass("coach-div-selected");
   $(this).toggleClass("coach-div-selected");
 });
 
