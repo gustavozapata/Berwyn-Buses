@@ -10,6 +10,7 @@
       <?php require_once "../includes/header.php"; ?>
 
     <section class="main-section">
+    <div class="search-holder"></div>
     <div class="search-filter">
 
       <h3>Summary</h3>
