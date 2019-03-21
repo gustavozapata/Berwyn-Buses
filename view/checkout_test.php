@@ -78,6 +78,20 @@ require_once "../controller/checkout_test_controller.php";
         <input type="hidden" name="fromLogin">
         <input type="submit" value="Sign-up">
       </form>
+      <hr>
+      <div class="no-account">
+        <p>Already have an account?</p>
+        <p><a id="loginBtn">Login</a></p>
+      </div>
+      <div class="login-container">
+        <form method="post" action="../controller/checkout_test_controller.php">
+          <label>Email</label>
+          <input type="email" name="emailFromBasket" required>
+          <label>Password</label>
+          <input type="password" name="passwordFromBasket" required>
+          <input type="submit" value="Login">
+        </form>
+      </div>
     </article>
     <?php endif ?> <!-- IF USER IS LOGGED -->
     <?php endif ?> <!-- IF LESS THAN 1 ITEM -->

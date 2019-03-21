@@ -187,3 +187,25 @@ hr {
   background-color: #131971;
   color: white;
 }
+.checkout-payment .no-account {
+  display: block;
+  border: none;
+  padding: 0px;
+}
+#loginBtn {
+  color: #476072;
+  cursor: pointer;
+}
+#loginBtn:hover {
+  color: #131971;
+}
+.checkout-payment .login-container {
+  display: none;
+}
+.login-container input[type="submit"] {
+  margin-bottom: 5px;
+}
+.login-container label::before {
+  content: "*";
+  color: red;
+}

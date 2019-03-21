@@ -48,6 +48,10 @@ $(function() {
     clearBasket();
   });
 
+  $("#loginBtn").on("click", function() {
+    $(".login-container").css("display", "block");
+  });
+
   /* RULES IF DELETE ITEMS */
   /* $(".coach-div").on("click", function() {
     $(".coach-div-selected").removeClass("coach-div-selected");

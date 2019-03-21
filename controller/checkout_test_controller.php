@@ -4,6 +4,7 @@ session_start();
 
 require_once "../model/DataAccess.php";
 require_once "../model/Coach.php";
+require_once "../model/Customer.php";
 
 $comesFromSearch = false;
 $_SESSION["accountCreated"] = false;
@@ -59,6 +60,21 @@ function logUser(){
 
 if(isset($_REQUEST["fromLogin"])){
     header("Location: ../view/customer_view.php");
+}
+
+if ($_POST) {
+    if(isset($_REQUEST["emailFromBasket"])) {
+      $_SESSION["username"] = htmlentities($_REQUEST["emailFromBasket"]);
+      $password = htmlentities($_REQUEST["passwordFromBasket"]);
+      $user = DataAccess::getInstance()->checkLoginDetails($_SESSION["username"], $password, "Customer");
+      if($user){
+        if($user[0]->username == $_SESSION["username"] && $user[0]->password == $password){
+          $_SESSION["userLogged"] = true;
+          header("Location: " . $_SERVER['REQUEST_URI']);
+          exit;
+        }
+      }
+    }
 }
 
 require_once "../view/checkout_test.php";
