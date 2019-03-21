@@ -21,6 +21,7 @@ if ($_POST) {
     if($user){
       if($user[0]->username == $_SESSION["username"] && $user[0]->password == $password){
         $_SESSION["userLogged"] = true;
+        $_SESSION["id"] = $user[0]->id;
         header("Location: " . $_SERVER['REQUEST_URI']);
         exit;
       }

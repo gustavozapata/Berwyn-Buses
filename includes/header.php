@@ -3,7 +3,8 @@
 if(!isset($_SESSION['basket'])){
   $_SESSION["basket"] = (object) [
     'items' => 0,
-    'coaches' => []
+    'coaches' => [],
+    'isDriver' => false
   ];
 }
 

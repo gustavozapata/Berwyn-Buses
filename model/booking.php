@@ -1,12 +1,9 @@
 <?php
-class Booking{
+class Booking implements JsonSerializable {
     private $id;
     private $customerID;
     private $dateRequired;
     private $numOfPassengers;
-    private $destinationCity;
-    private $destinationPostcode;
-    private $approxJourneyHours;
     private $dateReturned;
     
     function __get($name) {
@@ -14,6 +11,10 @@ class Booking{
     }
     function __set($name, $value){
         $this->$name = $value;
+    }
+
+    public function jsonSerialize() {
+        return get_object_vars($this);
     }
 }
 ?>
