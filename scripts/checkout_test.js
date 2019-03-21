@@ -45,16 +45,26 @@ $(function() {
   });
 
   $(".paymentPopup a").on("click", function() {
-    clearBasket();
+    completeBooking();
   });
+
+  function completeBooking() {
+    var booking = {
+      passengers: passengersUrl,
+      datefrom: departUrl,
+      dateto: returnUrl
+    };
+    booking = JSON.stringify(booking);
+    alert(booking);
+    $.get(
+      "../controller/checkout_test_controller.php?completeBooking=" + booking,
+      function() {
+        window.location.href = "../controller/checkout_test_controller.php";
+      }
+    );
+  }
 
   $("#loginBtn").on("click", function() {
     $(".login-container").css("display", "block");
   });
-
-  /* RULES IF DELETE ITEMS */
-  /* $(".coach-div").on("click", function() {
-    $(".coach-div-selected").removeClass("coach-div-selected");
-    $(this).toggleClass("coach-div-selected");
-  }); */
 });

@@ -139,6 +139,7 @@ class DataAccess {
         $connection = $this->getConnection();
         $statement = $connection->prepare("INSERT INTO Customer (givenName, familyName, dateOfBirth, username, password, mobileNumber, houseNumber, streetName, town, postcode, licenceNumber, licenceExpiry) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
         $statement->execute([$user->givenName, $user->familyName, $user->dob, $user->email, $user->password, $user->mobileNumber, $user->houseNumber, $user->streetName, $user->town, $user->postcode, $user->licence, $user->licenceExpiry]);
+        $_SESSION["id"] = $connection->lastInsertId();
     }
 
     function addPromo($promo){
@@ -185,7 +186,35 @@ class DataAccess {
         $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
         return $this->getEditableFields($result[0]);
     }
+
+    function completeBooking($booking){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("INSERT INTO Booking (customerID, dateRequired, numOfPassengers, dateReturned) VALUES (?,?,?,?)");
+        $statement->execute([$_SESSION["id"], $booking->datefrom, $booking->passengers, $booking->dateto]);
+
+        if($_SESSION["basket"]->isDriver){
+            $isDriver =  getDrivers();
+        } else {
+            $isDriver =  null;
+        }
+        $lastid = $connection->lastInsertId();
+        foreach($_SESSION["basket"]->coaches as $coach){
+            $statement = $connection->prepare("INSERT INTO BookingAssignment (booking, driver, coach) VALUES(?,?,?)");
+            $statement->execute([$lastid, $isDriver, $coach]);
+        }
+    }
+
+    function getDrivers(){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT id FROM Driver");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        return $result;
+    }
 }
+
+
+///// DATABASE QUERIES //////
 
 //MYSQL QUERY VIEW_COACH_TYPE
     //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.dailyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id

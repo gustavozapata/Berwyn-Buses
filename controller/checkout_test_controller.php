@@ -5,6 +5,8 @@ session_start();
 require_once "../model/DataAccess.php";
 require_once "../model/Coach.php";
 require_once "../model/Customer.php";
+// require_once "../model/Booking.php";
+// require_once "../model/BookingAssignment.php";
 
 $comesFromSearch = false;
 $_SESSION["accountCreated"] = false;
@@ -21,6 +23,16 @@ if(isset($_REQUEST["coachSelection"])) {
 
 if(isset($_REQUEST["price"])){
     $comesFromSearch = true;
+}
+
+if(isset($_REQUEST["completeBooking"])){
+    $bookingJson = json_decode($_REQUEST["completeBooking"]);
+    $bookingJson->datefrom = str_replace('/', '-', $bookingJson->datefrom);
+    $bookingJson->dateto = str_replace('/', '-', $bookingJson->dateto);
+    $bookingJson->datefrom = date('Y-m-d', strtotime($bookingJson->datefrom));
+    $bookingJson->dateto = date('Y-m-d', strtotime($bookingJson->dateto));
+    $insertBooking = DataAccess::getInstance()->completeBooking($bookingJson);
+    unset($_SESSION['basket']);
 }
 
 if(isset($_REQUEST['clearBasket'])){
