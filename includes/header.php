@@ -14,7 +14,7 @@ if(!isset($_SESSION['basket'])){
         <div class="logo">
           <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
           <span id="movilBasket">
-            <a class="checkout_test" href="../controller/checkout_test_controller.php">
+            <a class="checkout_test" href="../view/checkout.php">
               <img id="basketImg" src="../content/images/basket.png" />
               <span class="basketItems"><?= $_SESSION['basket']->items ?></span>
             </a>
