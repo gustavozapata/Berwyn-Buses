@@ -35,14 +35,12 @@ function duration(){
     return totalDays; 
     
 }
-
-
-
 //ADDING AND REMOVING VEHCLES
 var regNums = []; //variable to store all reg numbers
-// When page is reloaded checks to see if local storage variable exists and sets it regNums array.
+//When page is reloaded checks to see if local storage variable exists and sets it regNums array.
 if (localStorage.getItem("regNums") !== null){
     regNums = JSON.parse(localStorage.getItem("regNums"));
+    $(".basketItems").text(regNums.length);
     $(document).ready(function(){
         $('.coach-div').each(function(){
             var $regNum = $(this).children('#regNum').html();
@@ -55,40 +53,22 @@ if (localStorage.getItem("regNums") !== null){
     });
 }
 
-//Setting and removing the selected vehicles "regNum" in our regNums arrray
-$('.coach-div').each(function(){
-    var $cartInfo = $(this).children('#coachObj').val();
-    var $regNum = $(this).children('#regNum').html(); //gets the text of reg number
-   
-    $(this).find('.btn-add-basket').on('click', function(){
-        regNums.push($regNum);
-        localStorage.setItem("regNums", JSON.stringify(regNums)); //adds the array to the local storage in the form of json
-        $.post( "../controller/cart.php", {cart: $cartInfo});
-
-    });
-
-    $(this).find('.btn-remove-basket').on('click', function(){
-        var pos = regNums.indexOf($regNum);//get the index of the reg number you want to remove
-        regNums.splice(pos,1);//remove the reg number
-        localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
-        $.post( "../controller/cart.php", {remove: $cartInfo});
-    });
-
-        
-});
-
 //REMOVING ITEMS ON CHECKOUT PAGE
 
 $('.coach-info').each(function(){
     var $cartInfo = $(this).children('#coachObj').val();
-    var $regNum = $(this).children('#regNum').html();
-
+    
     $(this).find('.btn-remove-item').on('click', function(){
+        regNums = JSON.parse(localStorage.getItem("regNums"));
+        var $regNum = $(this).find('#coachObj').text();
+        console.log($regNum);
+        console.log(regNums);
         var pos = regNums.indexOf($regNum);     //get the index of the reg number you want to remove
         regNums.splice(pos,1);                  //remove the reg number
         localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
        $.post( "../controller/cart.php", {remove: $cartInfo});
        $(this).parents('.coach-info').remove();
+       $(".basketItems").text(regNums.length);
         emptyCart();
         updateTotal(); 
     });

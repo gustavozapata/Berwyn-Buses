@@ -30,7 +30,7 @@
                                             </div>
                                             <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
                                                 <h5><img src="../content/images/<?= $vehicle->make?>.jpg" /> <?= $vehicle->make . " - " . $vehicle->type ?></h5>
-                                                <p> Registration Number: <span id="regNum"> <?= $vehicle->registrationNumber ?></span></p> 
+                                                <p id="regNum"> Registration Number: <?= $vehicle->registrationNumber ?></p> 
                                                 <p>Colour: <?= $vehicle->colour ?></p>
                                                 <p>Max. Passengers: <span class="coachPassengers" id="maxPasseners"><?= $vehicle->maxCapacity ?></span></p>
                                                 <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->dailyRate ?> </span></p>

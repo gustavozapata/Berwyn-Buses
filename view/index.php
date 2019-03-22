@@ -27,7 +27,7 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
             <div id="line4"></div>
           </div>
           <div>
-            <form action="../controller/search_controller.php">
+            <form id="searchForm" action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
                 <input id="from" type="text" name="depart" required/>

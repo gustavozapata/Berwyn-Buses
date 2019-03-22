@@ -91,6 +91,11 @@ $(".signupPopup img").on("click", function() {
 });
 
 //MOVING BASKET (RESPONSIVE PURPOSE)
-// if (window.matchMedia("(max-width: 466px)").matches) {
-//   $(".checkout_test").appendTo("movilBasket");
-// }
+if (window.matchMedia("(max-width: 466px)").matches) {
+  $(".checkout_test").appendTo("movilBasket");
+}
+
+$('#searchForm').submit(function(){
+  $.post( "../controller/cart.php", {clear: true});
+  localStorage.setItem("regNums", "")
+});

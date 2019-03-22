@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+if (isset($_POST["clear"]))
+{
+    if ($_POST["clear"]==true){
+        unset($_SESSION["cart"]);
+        $_POST["clear"]="false";
+    }
+    
+}
+
 if (!isset($_SESSION["cart"]))
 {
     $_SESSION["cart"] = [];
