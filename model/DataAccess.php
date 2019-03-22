@@ -60,6 +60,21 @@ class DataAccess {
         return $results;
     }
 
+    //TESTING METHOD FOR WITHDRAWING APPROPRIATE COACHES
+    function searchCoaches3($passengers, $dateFrom, $dateTo, $price, $isDriver){
+        $connection = $this->getConnection();
+        if($passengers <= 73){
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
+        } else {
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
+        }
+        $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        $statement->bindValue(":price", $price);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        return $results;
+    }
+
     function getSelectedCoaches($coachSelection){
         $connection = $this->getConnection();
         //https://stackoverflow.com/questions/14767530/php-using-pdo-with-in-clause-array
@@ -222,4 +237,6 @@ class DataAccess {
 // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
+// MYSQL QUERY VIEW_BOOKING_INFO 
+    //SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.numOfPassengers, Driver.id "driverId", Driver.familyName,Coach.id "coachId", Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 ?>
