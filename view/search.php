@@ -29,6 +29,7 @@
       <button id="applySearch">Apply</button>
     </div><!-- search-filter -->
     <div class="coach-results">
+    <p><?= count($coaches) ?></p>
     <?php foreach($coaches as $coach): ?>
     <div class="coach-div"  id="x<?= $coach->id ?>">
     <input type="hidden" id="coachObj" value='<?php echo json_encode($coach);?>'> 
