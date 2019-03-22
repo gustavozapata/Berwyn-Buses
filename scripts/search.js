@@ -1,12 +1,12 @@
-// $(".checkout_test").attr("href", "#");
-// $(".checkout_test").on("click", function() {
-//   if (!isBookingReady) {
-//     $("#infoBanner").css("bottom", "0");
-//     $("#infoBanner p").html(
-//       "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
-//     );
-//   }
-// });
+$(".checkout_test").attr("href", "#");
+$(".checkout_test").on("click", function() {
+  if (!isBookingReady) {
+    $("#infoBanner").css("bottom", "0");
+    $("#infoBanner p").html(
+      "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
+    );
+  }
+});
 
 //##### SEARCH SUMMARY #####
 var freeSeats = 0;
