@@ -29,6 +29,20 @@ class DataAccess {
         return $this->connection;
     }
 
+    function searchCoaches__OLD($passengers, $dateFrom, $dateTo, $price, $isDriver){
+        $connection = $this->getConnection();
+        if($passengers <= 73){
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
+        } else {
+            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
+        }
+        $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        $statement->bindValue(":price", $price);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
+        return $results;
+    }
+
     function searchCoaches($passengers, $dateFrom, $dateTo, $price, $isDriver){
         $connection = $this->getConnection();
         if($passengers <= 73){
@@ -36,43 +50,28 @@ class DataAccess {
         } else {
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
         }
-        $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
+        $statement->bindValue(":passengers", $passengers);
         $statement->bindValue(":price", $price);
         $statement->execute();
         $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        return $results;
+        //LOOKUP BOOKED COACHES
+        $filterResults = $this->checkBookedCoaches($results, $dateFrom, $dateTo);
+        return $filterResults;
     }
 
-    //THIS IS A TESTING METHOD (WORKING ON THIS)
-    function searchCoaches2($passengers, $dateFrom, $dateTo, $price, $isDriver){
+    function checkBookedCoaches($results, $dateFrom, $dateTo){
         $connection = $this->getConnection();
-        if($isDriver){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type");
-        } else {
-            $statement = $connection->prepare("SELECT * FROM view_coach_type, view_booking_info WHERE view_coach_type.maxCapacity >= :passengers AND view_booking_info.dateRequired > :dateFrom AND view_booking_info.dateReturned < :dateTo AND dailyRate >= :price");
-        }
-        $statement->bindValue(":passengers", $passengers);
+        $statement = $connection->prepare("SELECT coach FROM view_booked_coach WHERE dateRequired BETWEEN CAST(':dateFrom' AS DATE) AND CAST(':dateTo' AS DATE)");
+        // $statement = $connection->prepare("SELECT coach FROM view_booked_coach WHERE dateRequired >= ':dateFrom' AND dateReturned <= ':dateTo'");
         $statement->bindValue(":dateFrom", $dateFrom);
         $statement->bindValue(":dateTo", $dateTo);
-        $statement->bindValue(":price", $price);
         $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        return $results;
-    }
-
-    //TESTING METHOD FOR WITHDRAWING APPROPRIATE COACHES
-    function searchCoaches3($passengers, $dateFrom, $dateTo, $price, $isDriver){
-        $connection = $this->getConnection();
-       // $statement = $connection->prepare("SELECT * FROM view_booking_info WHERE dateRequired")
-        if($passengers <= 73){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
-        } else {
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
+        $coachesId = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        foreach($results as $key => $value){
+            if(in_array($value->id, $coachesId)){
+                unset($results[$key]);
+            }
         }
-        $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
-        $statement->bindValue(":price", $price);
-        $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
         return $results;
     }
 
@@ -230,7 +229,7 @@ class DataAccess {
 }
 
 
-///// DATABASE QUERIES //////
+///// DATABASE VIEWS QUERIES //////
 
 //MYSQL QUERY VIEW_COACH_TYPE
     //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.dailyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
@@ -238,6 +237,9 @@ class DataAccess {
 // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
-// MYSQL QUERY VIEW_BOOKING_INFO 
+// MYSQL QUERY VIEW_BOOKING_INFO V2
     //SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.numOfPassengers, Driver.id "driverId", Driver.familyName,Coach.id "coachId", Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
+
+//MYSQL QUERY VIEW_BOOKED_COACH
+    //select Booking.id "booking", Coach.id "coach", Booking.dateRequired, Booking.dateReturned from Booking, Coach, BookingAssignment where Booking.id = BookingAssignment.booking and Coach.id = BookingAssignment.coach
 ?>

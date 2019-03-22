@@ -13,7 +13,6 @@ if(isset($_REQUEST["passengers"])) {
     $price = htmlentities($_REQUEST["price"]);
     $isDriver = isset($_REQUEST["requireDriver"]) ? $_REQUEST["requireDriver"] : false;
     $coaches = DataAccess::getInstance()->searchCoaches($passengers, $dateFrom, $dateTo, $price, $isDriver);
-    unset($_SESSION['basket']);
 }
 
 if(isset($_REQUEST["basketItems"])){

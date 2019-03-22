@@ -161,13 +161,17 @@ $("#applySearch").on("click", function() {
 });
 
 //MOVE BASKET ON MOBILE
-window.addEventListener("resize", function(){
-if (window.matchMedia("(max-width: 466px)").matches) {
-  $("#movilBasket").html($("#liBasket a"));
-} else {
-  $("#movilBasket").html("");
-}
-}, false);
+window.addEventListener(
+  "resize",
+  function() {
+    if (window.matchMedia("(max-width: 466px)").matches) {
+      $("#movilBasket").html($("#liBasket a"));
+    } else {
+      $("#movilBasket").html("");
+    }
+  },
+  false
+);
 //##### BASKET END
 
 //##### BOOKING #####
@@ -190,6 +194,3 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
-
-
-
