@@ -63,6 +63,7 @@ class DataAccess {
     //TESTING METHOD FOR WITHDRAWING APPROPRIATE COACHES
     function searchCoaches3($passengers, $dateFrom, $dateTo, $price, $isDriver){
         $connection = $this->getConnection();
+       // $statement = $connection->prepare("SELECT * FROM view_booking_info WHERE dateRequired")
         if($passengers <= 73){
             $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
         } else {
