@@ -88,46 +88,46 @@ function updateSummary(button, action) {
 //##### END SEARCH SUMMARY #####
 
 //##### PROCEED TO CHECKOUT #####
-// function redirectCheckoutPage() {
-//   $(".checkout_test").on("click", function() {
-//     if (isBookingReady) {
-//       var i = 0;
-//       $(".coach-in-basket[id^=x]").each(function() {
-//         coachSelection[i] = $(this)
-//           .attr("id")
-//           .slice(1);
-//         i++;
-//       });
-//       sendSearch(true);
-//     } else {
-//       $("#infoBanner").css("bottom", "0");
-//       $("#infoBanner p").html(
-//         "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
-//       );
-//     }
-//   });
-// }
+function redirectCheckoutPage() {
+  $(".checkout_test").on("click", function() {
+    if (isBookingReady) {
+      var i = 0;
+      $(".coach-in-basket[id^=x]").each(function() {
+        coachSelection[i] = $(this)
+          .attr("id")
+          .slice(1);
+        i++;
+      });
+      sendSearch(true);
+    } else {
+      $("#infoBanner").css("bottom", "0");
+      $("#infoBanner p").html(
+        "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
+      );
+    }
+  });
+}
 
-// function sendSearch(bookingComplete) {
-//   //https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
-//   parametersUrl = new URL(document.location).searchParams;
-//   departUrl = parametersUrl.get("depart");
-//   returnUrl = parametersUrl.get("return");
-//   passengersUrl = parametersUrl.get("passengers");
-//   var completeBook = bookingComplete
-//     ? "&basketItems=" + basketItems + "&coachSelection=" + coachSelection
-//     : "";
-//   window.location.href =
-//     "../controller/checkout_test_controller.php?depart=" +
-//     departUrl +
-//     "&return=" +
-//     returnUrl +
-//     "&passengers=" +
-//     passengersUrl +
-//     "&price=" +
-//     priceUrl +
-//     completeBook;
-// }
+function sendSearch(bookingComplete) {
+  //https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
+  parametersUrl = new URL(document.location).searchParams;
+  departUrl = parametersUrl.get("depart");
+  returnUrl = parametersUrl.get("return");
+  passengersUrl = parametersUrl.get("passengers");
+  var completeBook = bookingComplete
+    ? "&basketItems=" + basketItems + "&coachSelection=" + coachSelection
+    : "";
+  window.location.href =
+    "../controller/checkout_test_controller.php?depart=" +
+    departUrl +
+    "&return=" +
+    returnUrl +
+    "&passengers=" +
+    passengersUrl +
+    "&price=" +
+    priceUrl +
+    completeBook;
+}
 
 //##### FILTER SEARCH #####
 //SEARCH FILTER MOVES AS USER SCROLLS
@@ -145,20 +145,20 @@ $(window).scroll(function() {
   }
 });
 
-// $("#applySearch").on("click", function() {
-//   var filterPassengers = $("#filterPassengers").val();
-//   var filterPrice = $("#filterPrice").val();
-//   window.location.href =
-//     "../controller/search_controller.php?depart=" +
-//     departUrl +
-//     "&return=" +
-//     returnUrl +
-//     "&passengers=" +
-//     filterPassengers +
-//     "&price=" +
-//     filterPrice +
-//     "";
-// });
+$("#applySearch").on("click", function() {
+  var filterPassengers = $("#filterPassengers").val();
+  var filterPrice = $("#filterPrice").val();
+  window.location.href =
+    "../controller/search_controller.php?depart=" +
+    departUrl +
+    "&return=" +
+    returnUrl +
+    "&passengers=" +
+    filterPassengers +
+    "&price=" +
+    filterPrice +
+    "";
+});
 
 //MOVE BASKET ON MOBILE
 window.addEventListener("resize", function(){
