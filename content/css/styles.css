@@ -210,7 +210,6 @@ input:focus {
   color: white;
 }
 
-
 /* FOOTER */
 footer {
   padding: 1px;
@@ -291,6 +290,15 @@ footer p a {
   cursor: pointer;
 }
 
+/* Basket */
+.box-outline {
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 20px;
+  text-align: center;
+  padding: 20px;
+  display: block;
+  margin: 20px auto;
+}
 
 /* RESPONSIVE */
 @media only screen and (max-width: 1036px) {
@@ -398,15 +406,6 @@ footer p a {
   }
 }
 
-
-/* Basket */
-.box-outline {
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 20px;
-  text-align: center;
-  padding:20px;
-}
-
 @media only screen and (max-width: 383px) {
   nav ul li {
     margin: 10px;
@@ -429,5 +428,4 @@ footer p a {
   .footer-links a {
     margin: 15px;
   }
-
 }

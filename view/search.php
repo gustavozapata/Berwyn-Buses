@@ -12,7 +12,6 @@
     <section class="main-section">
     <div class="search-holder"></div>
     <div class="search-filter">
-
       <h3>Summary</h3>
       <div>
         <p>Passengers<br><span id="actualPassengers"><?= $_REQUEST["passengers"] ?></span></p>
