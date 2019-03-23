@@ -34,6 +34,12 @@
                                                 <p>Colour: <?= $vehicle->colour ?></p>
                                                 <p>Max. Passengers: <span class="coachPassengers" id="maxPasseners"><?= $vehicle->maxCapacity ?></span></p>
                                                 <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->dailyRate ?> </span></p>
+                                                <?php if ($_SESSION["driver"]=="true"): ?>
+                                                <p> A driver has been booked for this vehicle! <p>
+                                                <?php endif; ?>
+                                                <?php if  ($_SESSION["driver"]=="false"): ?>
+                                                <p> No driver required. <p>
+                                                <?php endif ;?>
                                                 <button class="btn-remove-item">Remove</button>
                                             </div>
                                         </div>                    

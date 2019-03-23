@@ -95,7 +95,17 @@ if (window.matchMedia("(max-width: 466px)").matches) {
   $(".checkout_test").appendTo("movilBasket");
 }
 
+// CLEAR THE SESSIONS IF PERFORMING ANOTHER SEARCH AND CHECK IF THE USER
+//REQUIRES A DRIVER
 $('#searchForm').submit(function(){
+  var driver = $('input[type="checkbox"]:checked').val();
+  if (driver == "true"){
+    $.post( "../controller/cart.php", {driver: "true"});
+  }
+  else{
+    $.post( "../controller/cart.php", {driver: "false"});
+  }
   $.post( "../controller/cart.php", {clear: true});
-  localStorage.setItem("regNums", "")
+  localStorage.setItem("regNums", "");
 });
+

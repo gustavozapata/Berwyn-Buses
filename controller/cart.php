@@ -1,19 +1,24 @@
 <?php
 session_start();
 
-if (isset($_POST["clear"]))
-{
-    if ($_POST["clear"]==true){
-        unset($_SESSION["cart"]);
-        $_POST["clear"]="false";
-    }
-    
-}
-
 if (!isset($_SESSION["cart"]))
 {
     $_SESSION["cart"] = [];
 }
+
+if (isset($_POST["driver"])){
+    $_SESSION["driver"] = $_POST["driver"];
+ }
+
+if (isset($_POST["clear"]))
+{
+    if ($_POST["clear"]==true && isset($_SESSION["cart"])){
+        unset($_SESSION["cart"]);
+        $_POST["clear"]="false";
+    }
+    //$_SESSION["driver"] = $_POST["driver"];
+}
+
 if (isset($_POST["cart"])){
     $obj = json_decode($_POST["cart"]);
     $_SESSION["cart"][] = $obj;

@@ -195,9 +195,6 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
-<<<<<<< HEAD
-
-
 
 //Setting and removing the selected vehicles "regNum" in our regNums arrray
 $('.coach-div').each(function(){
@@ -221,5 +218,3 @@ $('.coach-div').each(function(){
         
 });
 
-=======
->>>>>>> 48ef666714a8ae73e4bc8ee2f21721a24a8d7588
