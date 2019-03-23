@@ -11,7 +11,7 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
 <html lang="en">
   <head>
     <?php require_once "../includes/head.php"; ?>
-<title>🚎 Home Page</title>
+<title>Home Page</title>
   </head>
   <body>
     <div id="page">
