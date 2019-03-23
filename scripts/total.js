@@ -14,7 +14,18 @@ function updateTotal(){
         total += parseInt($(this).html());
         }
     )
-    total = total * duration();
+     promo = parseInt($('span#percentOff').text());
+    
+    total = (total * duration()) ;
+    
+    if(promo > 0 ){
+         totalOff = (total/100)*promo;
+         totalOff = Math.floor(totalOff);
+         total -= totalOff; 
+     }
+   
+    
+    
     $('span#total').text(total);
 } 
 

@@ -4,7 +4,10 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="../content/css/checkout.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/checkout.css">
+    <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
+   <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
+   <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <?php require_once "../includes/head.php";?>
     
     <title>Document</title>
@@ -55,14 +58,58 @@
                                             </div>
                                             <div id="total" class="col-sm-12 col-md-6">
                                                 <h2>Total: &#8356;<span id='total'>0</span></h2>
+                                                <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
+                                                <form method="post" action="../controller/promo_controller.php">
+                                                    <input id="promoInput" type="text" name="promoCode">
+                                                    <input id="submitPromo" type="submit" value="Add Code" name="submitPromo">
+                                                 <?php if(isset($_REQUEST["promoCode"]) != null) : ?>
+                                                    <p>Promo code: <?= $correctCode ?></p>
+                                                    <p>Percentage off: <span id="percentOff"><?= $codeValue ?>%</span></p>
+                                                 <?php endif; ?>
+                                                </form>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-4 ">
+                                <!-- <div class="col-sm-12 col-md-4 ">
                                     <div class="box-outline">
                                         <h2>Please sign in to complete booking</h2>
-                                    </div>
+                                    </div> -->
+                                    <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
+    <article class="checkout-payment">
+      <h3>Payment Details</h3>
+      <p>Choose payment method</p>
+      <input id="visa" name="payment" type="radio" checked><label for="visa"><img src="../content/images/visa.png"></label>
+      <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label><br>
+      <button>Pay</button>
+      <span class="payment-msg">*Processed by a third party company</span>
+    </article>
+    <?php else : ?>
+    <article class="checkout-payment">
+      <h3>Sign up to check-out</h3>
+      <form method="post" action="../controller/checkout_test_controller.php">
+        <?php require_once "../view/signup.php"; ?>
+        <input type="hidden" name="fromLogin">
+        <input type="submit" value="Sign-up">
+      </form>
+      <hr>
+      <div class="no-account">
+        <p>Already have an account?</p>
+        <p><a id="loginBtn">Login</a></p>
+      </div>
+      <div class="login-container">
+        <form method="post" action="../controller/checkout_test_controller.php">
+          <label>Email</label>
+          <input type="email" name="emailFromBasket" required>
+          <label>Password</label>
+          <input type="password" name="passwordFromBasket" required>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </article>
+    <?php endif ?> <!-- IF USER IS LOGGED -->
+
                                 </div>
                     </div>
                 </div>
