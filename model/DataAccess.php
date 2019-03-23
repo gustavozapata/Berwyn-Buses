@@ -6,13 +6,13 @@ class DataAccess {
 
     private $database = "db_k1715308";
 
-    // private $host = "kunet";
-    // private $user = "k1715308";
-    // private $password = "webdevdatabase";
+    private $host = "kunet";
+    private $user = "k1715308";
+    private $password = "webdevdatabase";
 
-    private $host = "localhost";
-    private $user = "root";
-    private $password = "";
+    // private $host = "localhost";
+    // private $user = "root";
+    // private $password = "";
     
     private function __construct() {
         $this->connection = new PDO("mysql:host={$this->host}; dbname={$this->database}", $this->user, $this->password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
@@ -27,20 +27,6 @@ class DataAccess {
 
     public function getConnection(){
         return $this->connection;
-    }
-
-    function searchCoaches__OLD($passengers, $dateFrom, $dateTo, $price, $isDriver){
-        $connection = $this->getConnection();
-        if($passengers <= 73){
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity >= :passengers AND dailyRate >= :price");
-        } else {
-            $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE maxCapacity < :passengers AND dailyRate >= :price");
-        }
-        $statement->bindValue(":passengers", $passengers, PDO::PARAM_INT);
-        $statement->bindValue(":price", $price);
-        $statement->execute();
-        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Coach");
-        return $results;
     }
 
     function searchCoaches($passengers, $dateFrom, $dateTo, $price, $isDriver){
@@ -61,8 +47,7 @@ class DataAccess {
 
     function checkBookedCoaches($results, $dateFrom, $dateTo){
         $connection = $this->getConnection();
-        $statement = $connection->prepare("SELECT coach FROM view_booked_coach WHERE dateRequired BETWEEN CAST(':dateFrom' AS DATE) AND CAST(':dateTo' AS DATE)");
-        // $statement = $connection->prepare("SELECT coach FROM view_booked_coach WHERE dateRequired >= ':dateFrom' AND dateReturned <= ':dateTo'");
+        $statement = $connection->prepare("SELECT coach FROM view_booked_coach WHERE dateRequired >= :dateFrom AND dateRequired <= :dateTo OR dateReturned >= :dateFrom AND dateReturned <= :dateTo");
         $statement->bindValue(":dateFrom", $dateFrom);
         $statement->bindValue(":dateTo", $dateTo);
         $statement->execute();
