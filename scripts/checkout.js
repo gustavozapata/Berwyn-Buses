@@ -23,11 +23,10 @@ $(function() {
       dateto: returnUrl
     };
     booking = JSON.stringify(booking);
-    alert(booking);
     $.get(
-      "../controller/checkout_test_controller.php?completeBooking=" + booking,
+      "../controller/checkout_controller.php?completeBooking=" + booking,
       function() {
-        window.location.href = "../controller/checkout_test_controller.php";
+        window.location.href = "../controller/checkout_controller.php";
       }
     );
   }

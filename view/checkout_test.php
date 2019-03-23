@@ -112,7 +112,7 @@ require_once "../controller/checkout_test_controller.php";
           <p>We are processing your payment...</p>
           <a href="#">OK</a>
         </div>
-      </div>
+    </div>
     
     </section>
     <?php require_once "../includes/footer.php"; ?>

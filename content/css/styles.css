@@ -301,7 +301,7 @@ footer p a {
 }
 
 /* RESPONSIVE */
-@media only screen and (max-width: 1036px) {
+@media only screen and (max-width: 1060px) {
   header {
     display: block;
   }
@@ -344,7 +344,7 @@ footer p a {
   }
 }
 
-@media only screen and (max-width: 466px) {
+@media only screen and (max-width: 480px) {
   :root {
     --a-nav-size: 1em;
   }

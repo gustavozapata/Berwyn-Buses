@@ -69,9 +69,28 @@ div.summary {
   padding: 20px;
 }
 
+.coach-info {
+  margin: 30px;
+}
+
 #details {
   padding: 20px;
   border-right: black solid 1px;
+}
+
+#total {
+  padding: 20px;
+  margin: 10px auto 50px auto;
+}
+
+#submitPromo {
+  width: 130px;
+}
+
+#promoInput {
+  width: 200px;
+  height: 35px;
+  margin: 10px 5px 10px auto;
 }
 
 @media only screen and (max-width: 767px) {
@@ -82,8 +101,65 @@ div.summary {
   }
 }
 
-#total {
-  padding: 20px;
-  margin-bottom: auto;
-  margin-top: auto;
+@media only screen and (max-width: 2100px) and (min-width: 575px) {
+  header {
+    margin-top: 10px;
+  }
+  .col-sm-12 {
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1078px) {
+  header {
+    display: block;
+    margin-top: 20px;
+  }
+  nav {
+    margin: 40px 0 5px 0;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .col-sm-12 {
+    display: block;
+    margin: 20px auto;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  #image {
+    margin: 30px;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 485px) {
+  #line4 {
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 412px) {
+  #line3 {
+    width: 180px;
+  }
+  #line4 {
+    width: 200px;
+  }
+}
+
+@media only screen and (max-width: 342px) {
+  #line3 {
+    width: 150px;
+    margin-left: -30px;
+  }
+  #line4 {
+    width: 170px;
+    margin-left: -40px;
+  }
 }
