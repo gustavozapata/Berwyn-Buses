@@ -24,8 +24,6 @@ function updateTotal(){
          total -= totalOff; 
      }
    
-    
-    
     $('span#total').text(total);
 } 
 
