@@ -24,7 +24,8 @@
                                 </div>
                                         <?php foreach($_SESSION["cart"] as $vehicle):?>
                                         <div class="row coach-info">
-                                            <input type="hidden" id="coachObj" value='<?php echo json_encode($vehicle);?>'> 
+                                            <input type="hidden" id="coachObj" value='<?php echo json_encode($vehicle);?>'>
+                                            <input type="hidden" id=registration value='<?= $vehicle->registrationNumber ?>'> 
                                             <div class ="col-sm-4 basketInfo" id="image" >
                                                 <img src="../content/images/<?= $vehicle->image ?>" class="img-fluid" alt="Image Coach" />
                                             </div>

@@ -109,3 +109,12 @@ $('#searchForm').submit(function(){
   localStorage.setItem("regNums", "");
 });
 
+//DISPLAY CART TOTAL
+var regNums = [];
+if (localStorage.getItem("regNums") !== null){
+  regNums = JSON.parse(localStorage.getItem("regNums"));
+  console.log(regNums.length);
+  $(".basketItems").attr('style','visibility:visible;');
+  $(".basketItems").text(regNums.length);
+}
+

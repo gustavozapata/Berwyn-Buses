@@ -57,12 +57,9 @@ if (localStorage.getItem("regNums") !== null){
 
 $('.coach-info').each(function(){
     var $cartInfo = $(this).children('#coachObj').val();
-    
+    var $regNum = $(this).children('#registration').val();
     $(this).find('.btn-remove-item').on('click', function(){
         regNums = JSON.parse(localStorage.getItem("regNums"));
-        var $regNum = $(this).find('#coachObj').text();
-        console.log($regNum);
-        console.log(regNums);
         var pos = regNums.indexOf($regNum);     //get the index of the reg number you want to remove
         regNums.splice(pos,1);                  //remove the reg number
         localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
@@ -77,7 +74,7 @@ $('.coach-info').each(function(){
 //DISPLAYING EMPTY CART MESSAGE
 function emptyCart(){
     if (localStorage.getItem("regNums") === null || localStorage.getItem("regNums") === '[]'|| localStorage.getItem("regNums") === ''){
-        console.log('working');
+        $(".basketItems").attr('style','visibility:hidden;');
         $('.cart').html('<h3> Your cart is empty </h3>');
     };
 }
