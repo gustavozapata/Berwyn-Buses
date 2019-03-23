@@ -149,6 +149,16 @@
   vertical-align: middle;
 }
 
+.no-coaches {
+  margin-top: 50px;
+}
+.no-coaches p {
+  font-weight: bold;
+}
+.no-coaches a {
+  color: var(--blue-colour);
+}
+
 #price {
   color: rgb(33, 144, 255);
 }

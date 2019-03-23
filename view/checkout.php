@@ -9,8 +9,9 @@
    <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
    <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <?php require_once "../includes/head.php";?>
-    
-    <title>Document</title>
+    <link rel="stylesheet" href="../content/css/checkout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Check-out</title>
 </head>
 <body>
     <div id="page">
@@ -22,8 +23,10 @@
                             <div class="box-outline cart">
                                 <div class="title">
                                     <h1>Your cart</h1>
-                                    <div class="top"></div>
-                                    <div class="bottom"></div>
+                                    <div id="line3"></div>
+                                <div id="line4"></div>
+                                <!-- <div class="top"></div>
+                                <div class="bottom"></div> -->
                                 </div>
                                         <?php foreach($_SESSION["cart"] as $vehicle):?>
                                         <div class="row coach-info">
@@ -111,6 +114,16 @@
     <?php endif ?> <!-- IF USER IS LOGGED -->
 
                                 </div>
+                                <div id="total" class="col-sm-12 col-md-6">
+                                    <!-- <h2>Total: &#8356;<span id='total'>0</span></h2> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 ">
+                        <!-- <div class="box-outline">
+                            <h2>Please sign in to complete booking</h2>
+                        </div> -->
                     </div>
                 </div>
             </div>
