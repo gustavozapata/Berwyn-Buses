@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link rel="stylesheet" href="../content/css/checkout.css">
     <?php require_once "../includes/head.php";?>
-    
+    <link rel="stylesheet" href="../content/css/checkout.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>Check-out</title>
 </head>
 <body>
@@ -19,8 +18,10 @@
                         <div class="box-outline cart">
                             <div class="title">
                                 <h1>Your cart</h1>
-                                <div class="top"></div>
-                                <div class="bottom"></div>
+                                <div id="line3"></div>
+                                <div id="line4"></div>
+                                <!-- <div class="top"></div>
+                                <div class="bottom"></div> -->
                             </div>
                             <?php foreach($_SESSION["cart"] as $vehicle):?>
                                 <div class="row coach-info">

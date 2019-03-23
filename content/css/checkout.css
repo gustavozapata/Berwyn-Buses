@@ -1,88 +1,89 @@
-.cart .title
-{
-    max-width:50%;
-    margin-left: auto;
-    margin-right: auto;
+.cart .title {
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 h1 {
-    margin-top: 21.440px !important;
+  margin-top: 21.44px !important;
 }
-.cart .title h1
-{
-    margin-bottom:0px;
+.cart .title h1 {
+  margin-bottom: 0px;
 }
-.cart .title .top
-{
-    max-width:80%;
-    height:10px;
-    background-color: rgb(69, 75, 243);
-    margin-left:auto;
-    margin-right:auto;
+.cart .title .top {
+  max-width: 80%;
+  height: 10px;
+  background-color: rgb(69, 75, 243);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.cart .title .bottom
-{
-    height:10px;
-    background-color: #454545;
-    margin-bottom: 20px;
+.cart .title .bottom {
+  height: 10px;
+  background-color: #454545;
+  margin-bottom: 20px;
 }
 
-.cart h3
-{
-    text-align: center;
-    text-decoration: underline;
-    margin-left: auto;
-    margin-right: auto;
+#line3 {
+  background-color: #131971;
+}
+#line4 {
+  background-color: #f7b700;
 }
 
-.cart p
-{
-    text-align: left;
-    margin-bottom: 0px;
-    line-height: 1.8em;
+.cart h3 {
+  text-align: center;
+  text-decoration: underline;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cart p {
+  text-align: left;
+  margin-bottom: 0px;
+  line-height: 1.8em;
 }
 
 .coach-info {
-    border-bottom: rgb(200, 200, 200) solid 1px;
-    padding: 20px;
+  border-bottom: rgb(200, 200, 200) solid 1px;
+  padding: 20px;
 }
 
 #basketItem img {
-    max-height:30px;
-    width: auto;
+  max-height: 30px;
+  width: auto;
 }
 .btn-remove-item {
-    width: 120px;
-    margin-top:10px;
-    margin-left:auto;
-    margin-right:auto;
-    border-radius: 20px;
-    background-color: rgb(69, 75, 243);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s;
+  width: 120px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  background-color: rgb(69, 75, 243);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-div.summary{
-    padding:20px;
+div.summary {
+  padding: 20px;
 }
 
-#details{
-    padding:20px;
-    border-right: black solid 1px;
+#details {
+  padding: 20px;
+  border-right: black solid 1px;
 }
 
-@media only screen and (max-width:767px ){
-    #details{
-        padding:20px;
-        border-right:none;
-        border-bottom:black solid 1px;
-    }
+@media only screen and (max-width: 767px) {
+  #details {
+    padding: 20px;
+    border-right: none;
+    border-bottom: black solid 1px;
+  }
 }
 
 #total {
-    padding:20px;
-    margin-bottom: auto;
-    margin-top: auto;
+  padding: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
 }
