@@ -63,7 +63,6 @@ if (localStorage.getItem("regNums") !== null){
 }
 
 //REMOVING ITEMS ON CHECKOUT PAGE
-
 $('.coach-info').each(function(){
     var $cartInfo = $(this).children('#coachObj').val();
     var $regNum = $(this).children('#registration').val();
@@ -72,7 +71,7 @@ $('.coach-info').each(function(){
         var pos = regNums.indexOf($regNum);     //get the index of the reg number you want to remove
         regNums.splice(pos,1);                  //remove the reg number
         localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
-       $.post( "../controller/cart.php", {remove: $cartInfo});
+       $.post( "../controller/checkout_controller.php", {remove: $cartInfo});
        $(this).parents('.coach-info').remove();
        $(".basketItems").text(regNums.length);
         emptyCart();

@@ -98,15 +98,16 @@ if (window.matchMedia("(max-width: 466px)").matches) {
 // CLEAR THE SESSIONS IF PERFORMING ANOTHER SEARCH AND CHECK IF THE USER
 //REQUIRES A DRIVER
 $('#searchForm').submit(function(){
+  $.post( "../controller/checkout_controller.php", {clear: true});
+  localStorage.setItem("regNums", "");
   var driver = $('input[type="checkbox"]:checked').val();
   if (driver == "true"){
-    $.post( "../controller/cart.php", {driver: "true"});
+    $.post( "../controller/checkout_controller.php", {driver: "true"});
   }
   else{
-    $.post( "../controller/cart.php", {driver: "false"});
+    $.post( "../controller/checkout_controller.php", {driver: "false"});
   }
-  $.post( "../controller/cart.php", {clear: true});
-  localStorage.setItem("regNums", "");
+
 });
 
 //DISPLAY CART TOTAL

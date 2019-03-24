@@ -1,7 +1,5 @@
 <?php
-
 require_once "../controller/checkout_controller.php";
-require_once "../controller/cart.php";
 
 ?>
 
@@ -12,7 +10,7 @@ require_once "../controller/cart.php";
     <?php require_once "../includes/head.php";?>
     <link rel="stylesheet" type="text/css" href="../content/css/checkout.css">
     <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
-    <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css"/>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
     <title>Check-out
     </title>
@@ -30,12 +28,6 @@ require_once "../controller/cart.php";
                   <div id="line3"></div>
                   <div id="line4"></div>
                 </div>
-                <?php if(empty($_SESSION["cart"])): ?>
-                <div id="noItems">
-                  <p>You don't have any items to check-out 😔</p>
-                  <p class="backSearch"><a href="../view/index.php">Search</a>🔍</p>
-                </div>
-                <?php endif ?>
                 <?php foreach($_SESSION["cart"] as $vehicle):?>
                 <div class="row coach-info">
                   <input type="hidden" id="coachObj" value='<?php echo json_encode($vehicle);?>'>
