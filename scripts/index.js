@@ -50,16 +50,16 @@ $("input[name='passengers']").on("keyup", function() {
   }
 });
 
-// CONTACT US
-// $(".contact").on("click", function(){
-//   $(".faded-background").fadeIn();
-//   $(".modal").fadeIn();
-// });
+//CONTACT US
+$(".contact").on("click", function(){
+  $(".faded-background").fadeIn();
+  $(".modal").fadeIn();
+});
 
-// $(".faded-background").on("click", function(){
-//   $(".faded-background").fadeOut();
-//   $(".modal").fadeOut();
-// });
+$(".faded-background").on("click", function(){
+  $(".faded-background").fadeOut();
+  $(".modal").fadeOut();
+});
 
 // NO COOKIES BANNER
 $(document).ready(function() {
