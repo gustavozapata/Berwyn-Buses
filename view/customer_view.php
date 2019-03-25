@@ -48,8 +48,6 @@ require_once "../controller/customer_controller.php";
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Welcome <?= $_SESSION["givenName"] ?></h2>
-
-
             <h3 id="your-bookings">Your Bookings</h3>
             <div class="bookings-table">
               <?php if(count($booking) <= 0) : ?>
@@ -74,9 +72,7 @@ require_once "../controller/customer_controller.php";
               <?php endif; ?>
               <p>Are you planning to go somewhere this coming weekend?</p>
               <p>🔍 <a href="../view/index.php">Search for coaches</a> 🚍</p>
-
           </div>
-          
           <?php endif ?>
         </article>
       </section>
