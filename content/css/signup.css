@@ -4,7 +4,7 @@
 }
 .checkout-payment div {
   margin: 30px auto;
-  /* width: 420px; */
+  width: 420px;
   background-color: white;
   display: flex;
   justify-content: space-between;

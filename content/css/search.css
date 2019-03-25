@@ -148,14 +148,7 @@
   width: 20px;
   vertical-align: middle;
 }
-
-.no-coaches {
-  margin-top: 50px;
-}
-.no-coaches p {
-  font-weight: bold;
-}
-.no-coaches a {
+#infoBanner p a {
   color: var(--blue-colour);
 }
 

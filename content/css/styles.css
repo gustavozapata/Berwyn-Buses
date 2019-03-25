@@ -236,7 +236,6 @@ footer p a {
   color: black;
   margin: 35px;
 }
-
 /* CONTACT */
 .contact {
   position: fixed;
@@ -290,18 +289,8 @@ footer p a {
   cursor: pointer;
 }
 
-/* Basket */
-.box-outline {
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 20px;
-  text-align: center;
-  padding: 20px;
-  display: block;
-  margin: 20px auto;
-}
-
 /* RESPONSIVE */
-@media only screen and (max-width: 1060px) {
+@media only screen and (max-width: 1036px) {
   header {
     display: block;
   }
@@ -342,9 +331,14 @@ footer p a {
   #liBasket a {
     font-size: 1.2em;
   }
+  #infoBanner {
+    width: 100%;
+    margin: 0;
+    left: 0;
+  }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 466px) {
   :root {
     --a-nav-size: 1em;
   }
@@ -352,10 +346,10 @@ footer p a {
     width: 250px;
   }
   #line1 {
-    width: 380px;
+    width: 280px;
   }
   #line2 {
-    width: 400px;
+    width: 300px;
   }
   #liBasket {
     display: none;
@@ -368,11 +362,6 @@ footer p a {
   }
   .contact p {
     display: none;
-  }
-  #infoBanner {
-    width: 100%;
-    margin: 0;
-    left: 0;
   }
 }
 

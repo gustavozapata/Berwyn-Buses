@@ -8,18 +8,77 @@ require_once "../model/Customer.php";
 require_once "../model/Promotion.php";
 require_once "../model/Driver.php";
 
+$comesFromSearch = false;
 $_SESSION["accountCreated"] = false;
 
+if(isset($_REQUEST["coachSelection"])) {
+    $_SESSION["basket"]->coaches = [];
+    $temp = explode(",", $_REQUEST['coachSelection']);
+    $_SESSION["basket"]->coaches = array_merge($_SESSION["basket"]->coaches, $temp);
+    if(empty($_SESSION["basket"]->coaches)){
+        $_SESSION["basket"]->items = 0;
+    } else {
+        $_SESSION["basket"]->items = count($_SESSION["basket"]->coaches);
+    }
+    $_SESSION["basket"]->passengers = $_REQUEST["passengers"];
+    $_SESSION["basket"]->from = $_REQUEST["depart"];
+    $_SESSION["basket"]->to = $_REQUEST["return"];
+    $coaches = DataAccess::getInstance()->getSelectedCoaches($_SESSION["basket"]->coaches);
+    $comesFromSearch = true;
+} else if(isset($_SESSION["basket"]) && $_SESSION["basket"]->items > 0){
+    $coaches = DataAccess::getInstance()->getSelectedCoaches($_SESSION["basket"]->coaches);
+}
 
-// if(isset($_REQUEST["completeBooking"])){
-//     $bookingJson = json_decode($_REQUEST["completeBooking"]);
-//     $bookingJson->datefrom = str_replace('/', '-', $bookingJson->datefrom);
-//     $bookingJson->dateto = str_replace('/', '-', $bookingJson->dateto);
-//     $bookingJson->datefrom = date('Y-m-d', strtotime($bookingJson->datefrom));
-//     $bookingJson->dateto = date('Y-m-d', strtotime($bookingJson->dateto));
-//     $insertBooking = DataAccess::getInstance()->completeBooking($bookingJson);
-//     unset($_SESSION['basket']);
-// }
+function calculateTripDays(){
+    $dateFormatFrom = str_replace('/', '-', $_SESSION["basket"]->from);
+    $dateFormatto = str_replace('/', '-', $_SESSION["basket"]->to);
+    $dateFormatFrom = date('Y-m-d', strtotime($dateFormatFrom));
+    $dateFormatto = date('Y-m-d', strtotime($dateFormatto));
+    $timeFrom = new DateTime($dateFormatFrom);
+    $timeTo = new DateTime($dateFormatto);
+    //https://stackoverflow.com/questions/2040560/finding-the-number-of-days-between-two-dates
+    $diff = $timeTo->diff($timeFrom)->format("%a");
+    return $diff;
+}
+
+function getPromoCodes(){
+    $codes = DataAccess::getInstance()->getPromotions();
+    return $codes;
+}
+
+if($_SESSION["basket"]->isDriver){
+    $dateFormatFrom = str_replace('/', '-', $_SESSION["basket"]->from);
+    $dateFormatto = str_replace('/', '-', $_SESSION["basket"]->to);
+    $dateFormatFrom = date('Y-m-d', strtotime($dateFormatFrom));
+    $dateFormatto = date('Y-m-d', strtotime($dateFormatto));
+    $drivers = DataAccess::getInstance()->getDrivers($dateFormatFrom, $dateFormatto);
+}
+
+if(isset($_REQUEST["price"])){
+    $comesFromSearch = true;
+}
+
+if(isset($_REQUEST["applyPromo"])){
+    header('Content-Type: application/json');
+    $promoJson = json_decode($_REQUEST["applyPromo"]);
+    $promoJson = htmlentities($promoJson);
+    $codes = DataAccess::getInstance()->checkPromotion($promoJson);
+    echo json_encode($codes);
+    exit();
+}
+
+if(isset($_REQUEST["completeBooking"])){
+    $_SESSION["basket"]->from = str_replace('/', '-', $_SESSION["basket"]->from);
+    $_SESSION["basket"]->to = str_replace('/', '-', $_SESSION["basket"]->to);
+    $_SESSION["basket"]->from = date('Y-m-d', strtotime($_SESSION["basket"]->from));
+    $_SESSION["basket"]->to = date('Y-m-d', strtotime($_SESSION["basket"]->to));
+    $insertBooking = DataAccess::getInstance()->completeBooking();
+    unset($_SESSION['basket']);
+}
+
+if(isset($_REQUEST['clearBasket'])){
+    unset($_SESSION['basket']);
+}
 
 if(isset($_REQUEST["givenName"])){
     $user = (object) [
@@ -62,6 +121,8 @@ if ($_POST) {
       if($user){
         if($user[0]->username == $_SESSION["username"] && $user[0]->password == $password){
           $_SESSION["userLogged"] = true;
+          $_SESSION["id"] = $user[0]->id;
+          $_SESSION["givenName"] = $user[0]->givenName;
           header("Location: " . $_SERVER['REQUEST_URI']);
           exit;
         }
@@ -69,93 +130,6 @@ if ($_POST) {
     }
 }
 
-//CONTROLLER MERGED FROM OLD CART CONTROLLER
-if (!isset($_SESSION["cart"])){
-    $_SESSION["cart"] = [];
-}
-if (!isset($_SESSION["drivers"])){
-    $_SESSION["drivers"] = [];
-}
-
-if(!isset($_SESSION["coaches"])){
-    $_SESSION["coaches"] = [];
-}
-if (isset($_POST["driver"])){
-    $_SESSION["driver"] = $_POST["driver"];
-    if ($_SESSION["driver"] == "true"){
-        $dateFormatFrom = str_replace('/', '-', $_SESSION["trip"]['depart']);
-        $dateFormatto["trip"]['return'] = str_replace('/', '-', $_SESSION["trip"]['return']);
-        $dateFormatFrom["trip"]['depart'] = date('Y-m-d', strtotime($_SESSION["trip"]['depart']));
-        $dateFormatto["trip"]['return'] = date('Y-m-d', strtotime($_SESSION["trip"]['return']));
-        $drivers = DataAccess::getInstance()->getDrivers($dateFormatFrom, $dateFormatto);  
-        $_SESSION["drivers"] = $drivers;
-    }
- }
-
-if (isset($_POST["clear"])){
-    if ($_POST["clear"]==true && isset($_SESSION["cart"])){
-        unset($_SESSION["cart"]);
-        $_POST["clear"]="false";
-    }
-    //$_SESSION["driver"] = $_POST["driver"];
-}
-
-if (isset($_POST["cart"])){
-    $obj = json_decode($_POST["cart"]);
-    $_SESSION["cart"][] = $obj;
-    if(empty($_SESSION["cart"])){
-        $items=0;
-    } else{
-        $items = count($_SESSION["cart"]);
-    }
-    $coaches = DataAccess::getInstance()->getSelectedCoaches($_SESSION["cart"]);
-    $_SESSION["coaches"] = $coaches;
-}
-
-//the following if statement waits for the remove POST which is triggered by the remove button on the search page and the cart page.
-//Once triggered, it searches for the coach to remove and then removes it from the session variable
-if (isset($_POST["remove"])){
-    $obj = json_decode($_POST["remove"]);
-    $index = array_search($obj, $_SESSION["cart"]); //finds the index of the object
-    unset($_SESSION["cart"][$index]); //removes the object
-}
-
-//Setting the session variables for the trip details
-//If we make the dates and number of passengers required, we set all variables in one if statement
-
-if (!isset($_SESSION["trip"]))
-{
-    $_SESSION["trip"]=[
-        'depart' => '',
-        'return' => '',
-        'passengers' => 0
-    ];
-}
-
-if (isset($_POST["depart"])){
-    $_SESSION["trip"]['depart'] = $_POST["depart"];
-}
-
-if (isset($_POST["return"])){
-    $_SESSION["trip"]['return'] = $_POST["return"];
-    
-}
-
-if (isset($_POST["passengers"])){
-    $_SESSION["trip"]['passengers'] = $_POST["passengers"];
-}
-
-
-if(isset($_POST["completeBooking"])){
-    $_SESSION["trip"]['depart'] = str_replace('/', '-', $_SESSION["trip"]['depart']);
-    $_SESSION["trip"]['return'] = str_replace('/', '-', $_SESSION["trip"]['return']);
-    $_SESSION["trip"]['depart'] = date('Y-m-d', strtotime($_SESSION["trip"]['depart']));
-    $_SESSION["trip"]['return'] = date('Y-m-d', strtotime($_SESSION["trip"]['return']));
-    $insertBooking = DataAccess::getInstance()->completeBooking();
-    unset($_SESSION["cart"]);
-    unset($_SESSION["trip"]);
-}
-
-
 require_once "../view/checkout.php";
+
 ?>

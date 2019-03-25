@@ -47,7 +47,9 @@ require_once "../controller/customer_controller.php";
           </div>
           <?php else: ?>
           <div class="book-coach-header">
-            <h2>Welcome <?= $_SESSION["username"] ?></h2>
+            <h2>Welcome <?= $_SESSION["givenName"] ?></h2>
+            <p>Are you planning to go somewhere this coming weekend?</p>
+            <p>🔍 <a href="../view/index.php">Search for coaches</a> 🚍</p>
           </div>
           <?php endif ?>
         </article>
@@ -57,7 +59,7 @@ require_once "../controller/customer_controller.php";
         <div class="signupPopup checkout-payment">
           <img src="../content/images/close.png" alt="Close Button">
           <h3>Sign up</h3>
-          <form method="post" action="../controller/checkout_test_controller.php">
+          <form method="post" action="../controller/checkout_controller.php">
             <?php require_once "../view/signup.php"; ?>
             <input type="hidden" name="fromLogin">
             <input type="submit" value="Sign-up">

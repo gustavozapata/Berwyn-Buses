@@ -80,6 +80,12 @@
   font-weight: bold;
   transition: all 0.4s;
 }
+.book-coach-header p {
+  font-weight: 700;
+}
+.book-coach-header p a {
+  color: var(--blue-colour);
+}
 
 @media only screen and (max-width: 540px) {
   body {

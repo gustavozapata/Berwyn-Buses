@@ -2,8 +2,12 @@
 
 if(!isset($_SESSION['basket'])){
   $_SESSION["basket"] = (object) [
-    // 'items' => 0,
-    // 'coaches' => [],
+    'items' => 0,
+    'coaches' => [],
+    'driver' => [],
+    'passengers' => 0,
+    'from' => "",
+    'to' => "",
     'isDriver' => false
   ];
 }
@@ -14,9 +18,9 @@ if(!isset($_SESSION['basket'])){
         <div class="logo">
           <h1><a href="../view/index.php">Berwyn Buses Hire</a></h1>
           <span id="movilBasket">
-            <a class="checkout_test" href="../view/checkout.php">
+            <a class="checkout_test" href="../controller/checkout_controller.php">
               <img id="basketImg" src="../content/images/basket.png" />
-              <span class="basketItems"></span>
+              <span class="basketItems"><?= $_SESSION['basket']->items ?></span>
             </a>
           </span>
           <div id="line1"></div>
@@ -27,16 +31,16 @@ if(!isset($_SESSION['basket'])){
             <li><a href="../view/index.php">Home</a></li>
             <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]): ?>
             <li><a href="../view/customer_view.php">My Account</a></li>
-            <li id="logout"><a href="../controller/logout.php">Logout</a></li>
+            <li><a href="../controller/logout.php">Logout</a></li>
             <?php else : ?>
             <!-- <li><a href="../view/about.php">About Us</a></li> -->
             <li><a href="../view/customer_view.php">Login</a></li>
             <?php endif; ?>
             <li id="liBasket">
-              <a href="../view/checkout.php"
+              <a class="checkout_test" href="../controller/checkout_controller.php"
                 ><img id="basketImg" src="../content/images/basket.png" /><span
                   class="basketItems"
-                  ></span
+                  ><?= $_SESSION['basket']->items ?></span
                 ></a
               >
             </li>

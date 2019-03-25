@@ -11,13 +11,12 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
 <html lang="en">
   <head>
     <?php require_once "../includes/head.php"; ?>
-    <title>Home Page</title>
+    <title>🚎 Home Page</title>
   </head>
   <body>
     <div id="page">
       <?php
       require_once "../includes/header.php";
-
       ?>
       <section class="main-section">
         <article class="book-coach">
@@ -27,7 +26,7 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
             <div id="line4"></div>
           </div>
           <div>
-            <form id="searchForm" action="../controller/search_controller.php">
+            <form action="../controller/search_controller.php">
               <span>
                 <p>Depart</p>
                 <input id="from" type="text" name="depart" required/>
@@ -57,7 +56,7 @@ $lastCoach = DataAccess::getInstance()->newCoachAdded();
 
       <div id="infoBanner">
         <img src="../content/images/close.png" alt="Close Button">
-        <p>🚌 New coach added! : <?= $lastCoach[0]->registrationNumber . " " . $lastCoach[0]->make . " " . $lastCoach[0]->colour ?></p>
+        <p>🚌 Most recent coach added! : <?= $lastCoach[0]->registrationNumber . " " . $lastCoach[0]->make . " " . $lastCoach[0]->colour ?></p>
       </div>
 
     <?php

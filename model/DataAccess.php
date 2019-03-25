@@ -62,12 +62,8 @@ class DataAccess {
 
     function getSelectedCoaches($coachSelection){
         $connection = $this->getConnection();
-        $in = "";
         //https://stackoverflow.com/questions/14767530/php-using-pdo-with-in-clause-array
-        foreach($coachSelection as $coach){
-            $in .= $coach->id.", ";
-        }
-        $in = rtrim($in, ", ");
+        $in = str_repeat('?,', count($coachSelection) - 1) . '?';
         $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE id IN ($in)");
         //end of reference
         $statement->execute($coachSelection);
@@ -160,6 +156,15 @@ class DataAccess {
         return $results;
     }
 
+    function checkPromotion($code){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT * FROM Promotion WHERE code = :code");
+        $statement->bindValue(":code", $code);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Promotion");
+        return $results;
+    }
+
     function getEditableFieldsPromo($editPromo){
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT * FROM Promotion WHERE id = :editPromo");
@@ -194,13 +199,15 @@ class DataAccess {
     function completeBooking(){
         $connection = $this->getConnection();
         $statement = $connection->prepare("INSERT INTO Booking (customerID, dateRequired, numOfPassengers, dateReturned) VALUES (?,?,?,?)");
-        $statement->execute([$_SESSION["id"], $_SESSION["trip"]['depart'], $_SESSION["trip"]['passengers'], $_SESSION["trip"]['return']]);
-        $isDriver = count($_SESSION["drivers"]);
+        $statement->execute([$_SESSION["id"], $_SESSION["basket"]->from, $_SESSION["basket"]->passengers, $_SESSION["basket"]->to]);
+
         $lastid = $connection->lastInsertId();
-        foreach($_SESSION["cart"] as $coach){
+        if($_SESSION["basket"]->isDriver){
+
+        }
+        foreach($_SESSION["basket"]->coaches as $coach){
             $statement = $connection->prepare("INSERT INTO BookingAssignment (booking, driver, coach) VALUES(?,?,?)");
-            $statement->execute([$lastid, $isDriver, $coach->id]);
-            //$statement->execute([$lastid, $isDriver, $coach->id]);
+            $statement->execute([$lastid, $driver, $coach]);
         }
     }
 
@@ -231,7 +238,7 @@ class DataAccess {
 }
 
 
-///// DATABASE VIEWS QUERIES //////
+///// DATABASE QUERIES //////
 
 //MYSQL QUERY VIEW_COACH_TYPE
     //select Coach.id, Coach.registrationNumber, VehicleType.type, Coach.make, Coach.colour, VehicleType.maxCapacity, VehicleType.dailyRate, VehicleType.image from Coach, VehicleType where Coach.vehicleType = VehicleType.id order by Coach.id
@@ -239,9 +246,9 @@ class DataAccess {
 // MYSQL QUERY VIEW_BOOKING_INFO
     // SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.destinationCity, Booking.numOfPassengers, Driver.id "driverId", Driver.familyName, Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
 
-// MYSQL QUERY VIEW_BOOKING_INFO V2
-    //SELECT BookingAssignment.id "assignmentId", Booking.id "bookingId", Booking.numOfPassengers, Driver.id "driverId", Driver.familyName,Coach.id "coachId", Booking.dateRequired, Booking.dateReturned, (Booking.dateReturned - Booking.dateRequired) "days", Coach.registrationNumber, VehicleType.maxCapacity from BookingAssignment, Booking, VehicleType, Coach, Driver where BookingAssignment.booking = Booking.id and BookingAssignment.driver = Driver.id and BookingAssignment.coach = Coach.id and VehicleType.id = Coach.vehicleType
-
 //MYSQL QUERY VIEW_BOOKED_COACH
     //select Booking.id "booking", Coach.id "coach", Booking.dateRequired, Booking.dateReturned from Booking, Coach, BookingAssignment where Booking.id = BookingAssignment.booking and Coach.id = BookingAssignment.coach
+
+//MYSQL QUERY VIEW_BOOKED_DRIVER
+    //select Booking.id "booking", Driver.id "driver", Booking.dateRequired, Booking.dateReturned from Booking, Driver, BookingAssignment where Booking.id = BookingAssignment.booking and Driver.id = BookingAssignment.driver
 ?>

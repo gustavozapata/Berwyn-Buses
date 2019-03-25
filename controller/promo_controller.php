@@ -28,23 +28,6 @@ if(isset($_REQUEST["promoDescription"])){
     require_once "../view/addpromotion.php";
 }
 
-    if (isset($_REQUEST["promoCode"])){
-        $enteredCode = $_REQUEST["promoCode"];
-        $promotions = DataAccess::getInstance()->getPromotions();
-        $correctCode = "'".$enteredCode."'" . " is an incorrect code";
-        $codeValue = "0";
-          
-        foreach($promotions as $i){   
-            if($enteredCode == $i->code){
-              $correctCode = $i->code;
-              $codeValue = $i->amount;  
-            }
-            
-            
-        }
-        require_once "../view/checkout.php";
-}
-
 ?>
 
 

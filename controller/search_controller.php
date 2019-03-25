@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-//require_once "../controller/cart.php";
 require_once "../model/Coach.php";
 require_once "../model/DataAccess.php";
 
@@ -13,13 +13,14 @@ if(isset($_REQUEST["passengers"])) {
     $dateFrom = htmlentities(date("Y-m-d",strtotime($dateFrom)));
     $dateTo = htmlentities(date("Y-m-d",strtotime($dateTo)));
     $price = htmlentities($_REQUEST["price"]);
-    $isDriver = isset($_REQUEST["requireDriver"]) ? $_REQUEST["requireDriver"] : false;
+    $_SESSION["basket"]->isDriver = isset($_REQUEST["requireDriver"]);
     $coaches = DataAccess::getInstance()->searchCoaches($passengers, $dateFrom, $dateTo, $price);
 }
 
-if(isset($_REQUEST["basketItems"])){
+if(isset($_REQUEST["coachSelection"])){
     $array = json_decode($_REQUEST["coachSelection"]);
-    $_SESSION["basket"]->items = $_REQUEST["basketItems"];
+    // $_SESSION["basket"]->items = $_REQUEST["basketItems"];
+    $_SESSION["basket"]->items = count($_SESSION["basket"]->coaches);
     array_push($_SESSION["basket"]->coaches, $array);
 }
 

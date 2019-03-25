@@ -7,6 +7,7 @@ class Coach extends VehicleType implements JsonSerializable {
     private $make;
     private $colour;
     private $image;
+    private $dailyRate;
     function __get($name) {
         return $this->$name;
     }

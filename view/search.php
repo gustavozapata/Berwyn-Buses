@@ -1,3 +1,8 @@
+<?php
+
+require_once "../controller/search_controller.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +13,7 @@
 <body>
     <div id="page">
       <?php require_once "../includes/header.php"; ?>
+
 
     <section class="main-section">
     <div class="search-holder"></div>
@@ -28,18 +34,11 @@
       <button id="applySearch">Apply</button>
     </div><!-- search-filter -->
     <div class="coach-results">
-    <?php if(empty($coaches)): ?>
-    <div class="no-coaches">
-      <p>Sorry 😑 no available coaches within those dates</p>
-      <p>Try a new <a href="../view/index.php">search</a>🔍</p>
-    </div>
-    <?php else : ?>
     <?php foreach($coaches as $coach): ?>
-    <div class="coach-div"  id="x<?= $coach->id ?>">
-    <input type="hidden" id="coachObj" value='<?php echo json_encode($coach);?>'> 
-        <img class="coach-img" id="coachIMG" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
-        <p id="regNum"><?= $coach->registrationNumber ?></p>
-        <p id="type"><?= $coach->type ?></p>
+    <div class="coach-div" id="x<?= $coach->id ?>">
+        <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
+        <p><?= $coach->registrationNumber ?></p>
+        <p><?= $coach->type ?></p>
         <div class="coach-status">
             <div class="coach-addbasket">
               <button class="btn-add-basket">Add to basket</button>
@@ -50,21 +49,15 @@
               <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
               <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->dailyRate ?></span></p>
             </div>
-            <div class="coach-addbasket">
-            </div>
         </div>
-        <?php // "coach-addbasket" - for every instance of coach, store it's parameters in hidden form fields to be passed into SESSION variable. ?>
     </div>
     <?php endforeach ?>
-    <?php endif ?>
     </div>
-    
     </section>
-
     <?php require_once "../includes/footer.php"; ?>
+
     </div><!-- PAGE -->
     <script src="../scripts/index.js"></script>
     <script src="../scripts/search.js"></script>
-    <script src="../scripts/total.js"></script>
 </body>
 </html>

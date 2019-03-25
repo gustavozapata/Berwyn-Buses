@@ -1,18 +1,13 @@
 $(".checkout_test").attr("href", "#");
-$(".checkout_test").on("click", function() {
-  if (!isBookingReady) {
-    $("#infoBanner").css("bottom", "0");
-    $("#infoBanner p").html(
-      "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
-    );
-  }
+$(".checkout_test").on("click", function(e) {
+  e.preventDefault();
+  checkBookIsReady();
 });
 
 //##### SEARCH SUMMARY #####
 var freeSeats = 0;
 var passengersLeft = parseInt($("#passengersLeft").text(), 10);
 var isBookingReady = false;
-var coachSelection = [];
 
 //ADD TO BASKET BUTTON
 $(".btn-add-basket").on("click", function() {
@@ -25,10 +20,19 @@ $(".btn-remove-basket").on("click", function() {
 
 function updateBasket(button, action) {
   if (action === "add") {
-    $(".basketItems").text(basketItems <= 0 ? 0 : --basketItems);
+    // $(".basketItems").html(basketItems <= 0 ? 0 : --basketItems);
+    if (backSearch) {
+      var ele = button
+        .parent()
+        .parent()
+        .parent()
+        .attr("id");
+      ele = ele.substring(1, ele.length);
+      var index = coachSelection.indexOf(ele);
+      coachSelection.splice(index, 1);
+    }
   } else {
-    $(".basketItems").text(++basketItems);
-
+    // $(".basketItems").html(++basketItems);
   }
   isBasketEmpty();
   updateSummary(button, action);
@@ -43,7 +47,7 @@ function updateBasket(button, action) {
 function readyToCheckout(value) {
   $("#infoBanner").css("bottom", value);
   $("#infoBanner p").html(
-    "Perfecto. Now you can proceed to the <a class='checkout_test'>check-out</a> page"
+    "Perfecto. Now you can proceed to the <a onclick='goCheckoutAnyway()' class='checkout_test'>check-out</a> page"
   );
 }
 
@@ -84,42 +88,70 @@ function updateSummary(button, action) {
   } else {
     isBookingReady = true;
   }
-  //redirectCheckoutPage();
 }
 //##### END SEARCH SUMMARY #####
 
-//##### PROCEED TO CHECKOUT #####
-function redirectCheckoutPage() {
-  $(".checkout_test").on("click", function() {
-    if (isBookingReady) {
-      var i = 0;
-      $(".coach-in-basket[id^=x]").each(function() {
-        coachSelection[i] = $(this)
-          .attr("id")
-          .slice(1);
-        i++;
-      });
-      sendSearch(true);
-    } else {
-      $("#infoBanner").css("bottom", "0");
-      $("#infoBanner p").html(
-        "Some passengers need to be accommodated first. Go to the <a onclick='sendSearch(false)' class='checkout'>check-out</a> page anyway"
-      );
-    }
-  });
+function checkBookIsReady() {
+  if (isBookingReady) {
+    redirectCheckoutPage();
+  } else {
+    $("#infoBanner").css("bottom", "0");
+    $("#infoBanner p").html(
+      "Some passengers need to be accommodated first. Go to the <a onclick='goCheckoutAnyway()' class='checkout'>check-out</a> page anyway"
+    );
+  }
 }
 
-function sendSearch(bookingComplete) {
+var backSearch = parametersUrl.get("backSearch");
+if (backSearch) {
+  autoSelectPrevious();
+  // $(".basketItems").text(parametersUrl.get("coachSelection").length);
+}
+
+function autoSelectPrevious() {
+  var str = parametersUrl.get("coachSelection");
+  coachSelection = str.split(",");
+  if (coachSelection.length > 0) {
+    var j = 0;
+    $(coachSelection).each(function() {
+      updateBasket(
+        $("#x" + coachSelection[j]).find(".btn-add-basket"),
+        "remove"
+      );
+      j++;
+    });
+  }
+}
+
+//##### PROCEED TO CHECKOUT #####
+function redirectCheckoutPage() {
+  var i = 0;
+  $(".coach-in-basket[id^=x]").each(function() {
+    var coach = $(this)
+      .attr("id")
+      .slice(1);
+    if (!coachSelection.includes(coach)) coachSelection[i] = coach;
+    i++;
+  });
+  sendSearch();
+}
+
+function goCheckoutAnyway() {
+  isBookingReady = true;
+  checkBookIsReady();
+}
+
+function sendSearch() {
   //https://stackoverflow.com/questions/9870512/how-to-obtain-the-query-string-from-the-current-url-with-javascript
   parametersUrl = new URL(document.location).searchParams;
   departUrl = parametersUrl.get("depart");
   returnUrl = parametersUrl.get("return");
   passengersUrl = parametersUrl.get("passengers");
-  var completeBook = bookingComplete
-    ? "&basketItems=" + basketItems + "&coachSelection=" + coachSelection
-    : "";
+  // completeBook =
+  //   "&basketItems=" + basketItems + "&coachSelection=" + coachSelection;
+  completeBook = "&coachSelection=" + coachSelection;
   window.location.href =
-    "../controller/checkout_test_controller.php?depart=" +
+    "../controller/checkout_controller.php?depart=" +
     departUrl +
     "&return=" +
     returnUrl +
@@ -161,28 +193,9 @@ $("#applySearch").on("click", function() {
     "";
 });
 
-//MOVE BASKET ON MOBILE
-window.addEventListener(
-  "resize",
-  function() {
-    if (window.matchMedia("(max-width: 466px)").matches) {
-      $("#movilBasket").html($("#liBasket a"));
-    } else {
-      $("#movilBasket").html("");
-    }
-  },
-  false
-);
-//##### BASKET END
-
 //##### BOOKING #####
-$(".coach-div").on("mouseover", function() {
+$(".coach-div").on("click", function() {
   $(".coach-div-selected").removeClass("coach-div-selected");
-  $(this).toggleClass("coach-div-selected");
-});
-
-$(".coach-div").on("mouseout", function() {
-  $(".coach-div-selected").addClass("coach-div-selected");
   $(this).toggleClass("coach-div-selected");
 });
 
@@ -195,26 +208,3 @@ $("#filterPrice").on("input", function() {
   $(this).attr("value", $(this).val());
   $("#outputPrice").text($(this).val());
 });
-
-//Setting and removing the selected vehicles "regNum" in our regNums arrray
-$('.coach-div').each(function(){
-    var $cartInfo = $(this).children('#coachObj').val();
-    var $regNum = $(this).children('#regNum').html(); //gets the text of reg number
-   
-    $(this).find('.btn-add-basket').on('click', function(){
-        regNums.push($regNum);
-        localStorage.setItem("regNums", JSON.stringify(regNums)); //adds the array to the local storage in the form of json
-        $.post( "../controller/checkout_controller.php", {cart: $cartInfo});
-
-    });
-
-    $(this).find('.btn-remove-basket').on('click', function(){
-        var pos = regNums.indexOf($regNum);//get the index of the reg number you want to remove
-        regNums.splice(pos,1);//remove the reg number
-        localStorage.setItem("regNums", JSON.stringify(regNums)); //update the current variable
-        $.post( "../controller/checkout_controller.php", {remove: $cartInfo});
-    });
-
-        
-});
-

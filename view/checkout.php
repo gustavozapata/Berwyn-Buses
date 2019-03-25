@@ -1,122 +1,129 @@
 <?php
+
 require_once "../controller/checkout_controller.php";
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <?php require_once "../includes/head.php";?>
-    <link rel="stylesheet" type="text/css" href="../content/css/checkout.css">
-    <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
-    <link rel="stylesheet" type="text/css" href="../content/css/checkout_test.css"/>
+<head>
+    <?php require_once "../includes/head.php"; ?>
     <link rel="stylesheet" type="text/css" href="../content/css/search.css" />
-    <title>Check-out
-    </title>
-  </head>
-  <body>
+    <link rel="stylesheet" type="text/css" href="../content/css/addcoach.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/checkout.css" />
+    <link rel="stylesheet" type="text/css" href="../content/css/signup.css" />
+    <title>Checkout</title>
+</head>
+<body>
     <div id="page">
-      <?php require_once "../includes/header.php";?>
-      <section class="main-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-8">
-              <div class="box-outline cart">
-                <div class="title">
-                  <h1>Your cart</h1>
-                  <div id="line3"></div>
-                  <div id="line4"></div>
-                </div>
-                <?php foreach($_SESSION["cart"] as $vehicle):?>
-                <div class="row coach-info">
-                  <input type="hidden" id="coachObj" value='<?php echo json_encode($vehicle);?>'>
-                  <input type="hidden" id=registration value='<?= $vehicle->registrationNumber ?>'> 
-                  <div class ="col-sm-4 basketInfo" id="image" >
-                    <img src="../content/images/<?= $vehicle->image ?>" class="img-fluid" alt="Image Coach" />
-                  </div>
-                  <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
-                    <h5><img src="../content/images/<?= $vehicle->make?>.jpg" /><?= $vehicle->make . " - " . $vehicle->type ?></h5>
-                    <p>id: <?= $vehicle->id ?></p>
-                    <p id="regNum"> Registration Number: <?= $vehicle->registrationNumber ?></p> 
-                    <p>Colour: <?= $vehicle->colour ?></p>
-                    <p>Max. Passengers: 
-                      <span class="coachPassengers" id="maxPasseners">
-                        <?= $vehicle->maxCapacity ?>
-                      </span>
-                    </p>
-                    <p>Daily rate: &#8356;<span id='rate'><?= $vehicle->dailyRate ?></span></p>
-                    <?php if ($_SESSION["driver"]=="true"): ?>
-                    <p>A driver has been booked for this vehicle! 
-                    <p>
-                      <?php endif; ?>
-                      <?php if  ($_SESSION["driver"]=="false"): ?>
-                    <p> No driver required. 
-                    <p>
-                      <?php endif ;?>
-                      <button class="btn-remove-item">Remove</button>
-                  </div>
-                </div>                    
-                <?php endforeach; ?> 
+      <?php require_once "../includes/header.php"; ?>
 
-                <?php if(isset($_SESSION["driver"]) && $_SESSION["driver"]=="true"): ?>
-                <div class="drivers">
-                <h4>Drivers</h4>
-                  <?php if(count($_SESSION["drivers"]) >= count($_SESSION["coaches"])): ?>
-                    <p>✅Good news: there are drivers available for these dates.</p>
-                  <?php else: ?>
-                    <p><?= count($_SESSION["coaches"]) - count($_SESSION["drivers"]) ?> coache(s) won't have a driver this time.</p>
-                    <p>Someone else will have to drive it, provided they have the required licence.</p>
-                    <p>Sorry for the inconvenience 😐</p>
-                  <?php endif; ?>
-                </div>
-                <?php endif; ?>
-
-                <div class="row summary">
-                  <div id="details" class="col-sm-12 col-md-6">
-                    <?php if ($_SESSION["trip"]['depart'] != "" && $_SESSION["trip"]['return'] != "") : ?>
-                    <h3>Trip details
-                    </h3>
-                    <p>
-                      <span style="font-weight:bold; text-align:left;">Trip duration: 
-                      </span>
-                      <span id="start"><?= $_SESSION["trip"]['depart'] ?></span> - 
-                      <span id="end"><?= $_SESSION["trip"]['return'] ?></span>
-                    </p>
-                    <p>
-                      <span style="font-weight:bold; text-align:left;">Number of passengers: </span>
-                      <?= $_SESSION["trip"]['passengers'] ?>
-                    </p>
-                    <?php endif; ?>
-                  </div>
-
-                </div>
-              </div>
+    <section class="main-section">
+        <article class="book-coach">
+          <div class="book-coach-header">
+            <h2>Check-out<span class="basketItems"><?= $_SESSION["basket"]->items ?></span></h2>
+            <div id="line3"></div>
+            <div id="line4"></div>
+          </div>
+          <div>
+        </article>
+        <article class="checkout-coaches">
+        <?php if($comesFromSearch) : ?>
+        <p class="backSearch"><a href="#">&lt; Back to search</a></p>
+        <?php endif; ?> <!-- IF COMES FROM SEARCH -->
+          <h3>Items</h3>
+          <?php if($_SESSION["basket"]->items <= 0 || count($_SESSION["basket"]->coaches) <= 0) : ?>
+          <div id="noItems">
+            <p>You don't have any items to check-out 😔</p>
+            <p class="backSearch"><a href="../view/index.php">Search</a>🔍</p>
+          </div>
+          <?php else : ?>
+          <?php foreach($coaches as $coach): ?>
+          <div class="coach-div coach-check" id="coach_<?= $coach->id ?>">
+          <img class="coach-img" src="../content/images/<?= $coach->image ?>" alt="Image Coach"/>
+          <p><?= $coach->registrationNumber ?></p>
+          <p><?= $coach->type ?></p>
+          <div class="coach-status">
+            <div class="coach-addbasket">
+              <button class="btn-remove-basket">Remove</button>
             </div>
-            <?php if(!empty($_SESSION["cart"])) : ?>
-            <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
-
-    <article class="checkout-payment">
-      
-      
-          <div id="total">
-          <h2>Total: &#8356;<span id='total'>0</span></h2>
-            <form method="post" action="../controller/promo_controller.php">
-              <input id="promoInput" type="text" name="promoCode">
-              <input id="submitPromo" type="submit" value="Apply Code" name="submitPromo">
-              <?php if(isset($_REQUEST["promoCode"]) != null) : ?>
-                <p>Promo code: <?= $correctCode ?></p>
-                <p>Percentage off: <span id="percentOff"><?= $codeValue ?>%</span></p>
-              <?php endif; ?>
-            </form>
+            <div class="coach-info">
+              <p><img src="../content/images/<?= $coach->make?>.jpg" /> <?= $coach->make . " - " . $coach->colour ?></p>
+              <p><img src="../content/images/passengers.png" /> Max. Passengers: <span class="coachPassengers"><?= $coach->maxCapacity ?></span></p>
+              <p><img src="../content/images/hourly.png" /> Daily Rate:   <span id="price">£<?= $coach->dailyRate ?></span></p>
+            </div>
         </div>
+    </div>
+    <?php endforeach ?>
+    <?php if($_SESSION["basket"]->isDriver): ?>
+      <div class="drivers">
+      <h4>Drivers</h4>
+      <?php if(count($drivers) >= count($coaches)): ?>
+        <p>✅Good news: there are drivers available for these dates.</p>
+      <?php else: ?>
+        <p><?= count($coaches) - count($drivers) ?> coache(s) won't have a driver this time.</p>
+        <p>Someone else will have to drive it, provided they have the required licence.</p>
+        <p>Sorry for the inconvenience 😐</p>
+      <?php endif; ?>
+      </div>
+    <?php endif; ?>
+    <div id="clearBasket">
+      <a href="#">Clear basket🗑️</a>
+    </div>
+    </article>
+    <hr>
+    <!-- IF USER IS LOGGED -->
+    <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
+    <article class="checkout-payment">
+      <h3>Checkout Details</h3>
+      <div id="checkoutDetails">
+      <div class="total">
+        <h4>Trip</h4>
+        <p>From: <span id="fromspan"><?= $_SESSION["basket"]->from ?></span></p>
+        <p>To: <span id="tospan"><?= $_SESSION["basket"]->to ?></span></p>
+        <p>Passengers: <span id="passengersspan"><?= $_SESSION["basket"]->passengers ?></span></p>
+        <p>Driver required: <span id="driverspan"><?= $_SESSION["basket"]->isDriver ? "Yes" : "No" ?></span></p>
+        <p>Extra fee: <span id="extraspan">£<?= $_SESSION["basket"]->isDriver ? 100 : 0 ?></span></p>
+
+      </div>
       
+      <div class="total">
+        <h4 class="total-title">Total</h4>
+        <p>Coaches: <span id="coachesspan"><?= count($_SESSION["basket"]->coaches) ?></span></p>
+        <p>Days: <span id="daysspan"><?= $difference = calculateTripDays() ?></span></p>
+        <?php 
+        $total = 0;
+        foreach($coaches as $coach) {
+          $total += $coach->dailyRate;
+        }
+        $days = $difference <= 0 ? 1 : $difference;
+        $total += $_SESSION["basket"]->isDriver ? 100 : 0;
+        ?>
+        <p>Total: <span id="totalspan">£<?= $total *= $days ?></span></p>
+        <p>VAT: <span>20%</span></p>
+        <p>Grand Total: £<span id="grandtotalspan"><?= $total + ($total / 100) * 20 ?></span></p>
+      </div>
+      </div>
+      <div id="promo">
+        <p>Do you have a promo code?</p>
+        <input name="promoCode">
+        <p id="promoMessage"></p>
+        <p id="promoPrice"></p>
+        <button id="applyCodeButton">Apply</button>
+      </div>
       <p>Choose payment method</p>
       <input id="visa" name="payment" type="radio" checked><label for="visa"><img src="../content/images/visa.png"></label>
       <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label><br>
       <button id="payButton">Pay</button>
       <span class="payment-msg">*Processed by a third party company</span>
     </article>
+    <div class="promoBanner">
+      <span></span>
+      <h3>Promo Codes</h3>
+      <?php $getCodes = getPromoCodes(); ?>
+      <?php foreach($getCodes as $code): ?>
+        <p><?= $code->code ?></p>
+      <?php endforeach; ?>
+    </div>
     <?php else : ?>
     <article class="checkout-payment">
       <h3>Sign up to check-out</h3>
@@ -162,15 +169,13 @@ require_once "../controller/checkout_controller.php";
           <p>We are processing your payment...</p>
           <a href="#">OK</a>
         </div>
-      </div> 
-</section>
-<?php require_once "../includes/footer.php"; ?>
-</div>
-<!-- BOOTSTRAP SCRIPT -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
-</script>
-<script src="../scripts/index.js"></script>
-<script src="../scripts/total.js"></script>
-<script src="../scripts/checkout.js"></script>
+      </div>
+    
+    </section>
+    <?php require_once "../includes/footer.php"; ?>
+
+    </div><!-- PAGE -->
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/checkout.js"></script>
 </body>
 </html>
