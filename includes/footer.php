@@ -30,8 +30,8 @@
         position: absolute;
         top: calc(45vh - 200px);
         left: calc(50% - 125px);
-        height: (min-content+20);
-        width: 250px;
+        height: min-content;
+        width: 400px;
         border-radius: 8px;
     }
 
@@ -74,7 +74,10 @@
             <label for="Email">Email:</label>
             <input type="text" name="Email" id="Email" />
             <br>
-            <label for="Message">Message:</label><br />
+            <label for="contactNumber">Contact Number:</label>
+            <input type="text" name="contactNumber" id="contactNumber" />
+            <br>
+            <label for="Message">Message:</label><br>
             <textarea name="Message" rows="10" cols="25" id="Message"></textarea>
         </form>
     </div>
