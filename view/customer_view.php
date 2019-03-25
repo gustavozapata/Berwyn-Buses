@@ -58,7 +58,7 @@ require_once "../controller/customer_controller.php";
                 <th>Booking ID</th>
                 <th>Pickup Date</th>
                 <th>Return Date</th>
-                <th>Number Of Passengers</th>
+                <th>Passengers</th>
               </tr>
               <?php foreach($booking as $booking): ?>
               <tr id="<?= $booking->id ?>">

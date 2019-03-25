@@ -99,6 +99,16 @@
   font-style: italic;
 }
 
+@media only screen and (max-width: 610px) {
+  .bookings-table table {
+    border-spacing: 1px 10px;
+    /* padding: 10px 0; */
+  }
+  .book-coach {
+    width: 420px;
+  }
+}
+
 @media only screen and (max-width: 540px) {
   body {
     overflow: visible;
@@ -124,6 +134,18 @@
   }
 }
 
+@media only screen and (max-width: 466px) {
+  .book-coach {
+    width: 99%;
+  }
+}
+
+@media only screen and (max-width: 405px) {
+  .bookings-table table {
+    font-size: 0.8em;
+  }
+}
+
 @media only screen and (max-width: 383px) {
   .book-coach form input {
     width: 80%;
@@ -141,5 +163,11 @@
   #warningDriver {
     width: 90%;
     font-size: 0.75em;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .bookings-table {
+    overflow-x: scroll;
   }
 }
