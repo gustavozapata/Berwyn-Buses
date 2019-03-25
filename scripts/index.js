@@ -13,7 +13,7 @@ var viewport = Math.max(
 //   });
 
 //##### BASKET #####
-var basketItems = parseInt($(".basketItems").text(), 10);
+var basketItems = $(".basketItems").text();
 isBasketEmpty();
 function isBasketEmpty() {
   if (!basketItems || basketItems < 1) {
@@ -50,17 +50,6 @@ $("input[name='passengers']").on("keyup", function() {
   }
 });
 
-//CONTACT US
-$(".contact").on("click", function(){
-  $(".faded-background").fadeIn();
-  $(".modal").fadeIn();
-});
-
-$(".faded-background").on("click", function(){
-  $(".faded-background").fadeOut();
-  $(".modal").fadeOut();
-});
-
 // NO COOKIES BANNER
 $(document).ready(function() {
   if (window.location.pathname.includes("index.php")) {
@@ -77,21 +66,49 @@ var departUrl = parametersUrl.get("depart");
 var returnUrl = parametersUrl.get("return");
 var passengersUrl = parametersUrl.get("passengers");
 var priceUrl = parametersUrl.get("price");
-var completeBook = {};
-var coachSelection = [];
 
 //LOGIN - SIGNUP
 $("#signupBtn").on("click", function() {
   $(".signupBg").css("display", "block");
 });
 $(".account-created").on("click", function() {
-  window.location.href = "../controller/checkout_controller.php?fromLogin=true";
+  window.location.href =
+    "../controller/checkout_test_controller.php?fromLogin=true";
 });
 $(".signupPopup img").on("click", function() {
   $(".signupBg").css("display", "none");
 });
 
 //MOVING BASKET (RESPONSIVE PURPOSE)
-// if (window.matchMedia("(max-width: 466px)").matches) {
-//   $(".checkout_test").appendTo("movilBasket");
-// }
+if (window.matchMedia("(max-width: 466px)").matches) {
+  $(".checkout_test").appendTo("movilBasket");
+}
+
+// CLEAR THE SESSIONS IF PERFORMING ANOTHER SEARCH AND CHECK IF THE USER
+//REQUIRES A DRIVER
+$("#searchForm").submit(function() {
+  var $depart = $("#from").val();
+  var $return = $("#to").val();
+  var $passengers = $("#passengers").val();
+
+  $.post("../controller/checkout_controller.php", { clear: true });
+  $.post("../controller/checkout_controller.php", { depart: $depart });
+  $.post("../controller/checkout_controller.php", { return: $return });
+  $.post("../controller/checkout_controller.php", { passengers: $passengers });
+  localStorage.setItem("regNums", "");
+  var driver = $('input[type="checkbox"]:checked').val();
+  if (driver == "true") {
+    $.post("../controller/checkout_controller.php", { driver: "true" });
+  } else {
+    $.post("../controller/checkout_controller.php", { driver: "false" });
+  }
+});
+
+//DISPLAY CART TOTAL
+var regNums = [];
+if (localStorage.getItem("regNums") !== null) {
+  regNums = JSON.parse(localStorage.getItem("regNums"));
+  console.log(regNums.length);
+  $(".basketItems").attr("style", "visibility:visible;");
+  $(".basketItems").text(regNums.length);
+}

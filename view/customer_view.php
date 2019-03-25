@@ -48,11 +48,14 @@ require_once "../controller/customer_controller.php";
           <?php else: ?>
           <div class="book-coach-header">
             <h2>Welcome <?= $_SESSION["givenName"] ?></h2>
-            <p>Are you planning to go somewhere this coming weekend?</p>
-            <p>🔍 <a href="../view/index.php">Search for coaches</a> 🚍</p>
-            <h2>Your Bookings</h2>
-            <div class="edit-coaches">
-              <table cellspacing="10">
+
+
+            <h3 id="your-bookings">Your Bookings</h3>
+            <div class="bookings-table">
+              <?php if(count($booking) <= 0) : ?>
+                <h4 id="no-bookings">No bookings made yet</h4>
+              <?php else: ?>
+              <table>
               <tr>
                 <th>Booking ID</th>
                 <th>Pickup Date</th>
@@ -68,6 +71,10 @@ require_once "../controller/customer_controller.php";
               </tr>
               <?php endforeach; ?>
               </table>
+              <?php endif; ?>
+              <p>Are you planning to go somewhere this coming weekend?</p>
+              <p>🔍 <a href="../view/index.php">Search for coaches</a> 🚍</p>
+
           </div>
           
           <?php endif ?>
