@@ -203,11 +203,17 @@ class DataAccess {
 
         $lastid = $connection->lastInsertId();
         if($_SESSION["basket"]->isDriver){
-
+            if(count($_SESSION["basket"]->coaches) > count($_SESSION["basket"]->driver)){
+                $_SESSION["basket"]->driver = array_fill(count($_SESSION["basket"]->driver), count($_SESSION["basket"]->coaches), null);
+            }
+        } else {
+            $_SESSION["basket"]->driver = array_fill(0, count($_SESSION["basket"]->coaches), null);
         }
+        $i = 0;
         foreach($_SESSION["basket"]->coaches as $coach){
             $statement = $connection->prepare("INSERT INTO BookingAssignment (booking, driver, coach) VALUES(?,?,?)");
-            $statement->execute([$lastid, $driver, $coach]);
+            $statement->execute([$lastid, $_SESSION["basket"]->driver[$i], $coach]);
+            $i++;
         }
     }
 

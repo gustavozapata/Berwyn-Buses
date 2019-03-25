@@ -87,21 +87,36 @@ $(function() {
 
   function checkPromo(results) {
     if (results[0]) {
-      $("#promoMessage").text(results[0].description);
-      $("#promoMessage")
-        .append("<p>Applied</p>")
-        .css("color", "green");
-      $("#promoPrice").show();
-      var discount =
-        $("#grandtotalspan").text() * ((100 - results[0].amount) / 100);
-      // discount += $("#grandtotalspan").text();
-      $("#promoPrice").text("Grand Total: £" + discount.toFixed(2));
+      if (results[0].expiry < getTodaysDate()) {
+        $("#promoMessage")
+          .text("Sorry this promo expired")
+          .css("color", "orangered");
+        $("#promoPrice").hide();
+      } else {
+        $("#promoMessage").text(results[0].description);
+        $("#promoMessage")
+          .append("<p>Applied</p>")
+          .css("color", "green");
+        $("#promoPrice").show();
+        var discount =
+          $("#grandtotalspan").text() * ((100 - results[0].amount) / 100);
+        $("#promoPrice").text("Grand Total: £" + discount.toFixed(2));
+      }
     } else {
       $("#promoMessage")
         .text("Promo Code incorrect")
         .css("color", "orangered");
       $("#promoPrice").hide();
     }
+  }
+
+  function getTodaysDate() {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+    today = yyyy + "-" + mm + "-" + dd;
+    return today;
   }
 
   $("#loginBtn").on("click", function() {

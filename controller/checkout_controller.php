@@ -52,6 +52,11 @@ if($_SESSION["basket"]->isDriver){
     $dateFormatFrom = date('Y-m-d', strtotime($dateFormatFrom));
     $dateFormatto = date('Y-m-d', strtotime($dateFormatto));
     $drivers = DataAccess::getInstance()->getDrivers($dateFormatFrom, $dateFormatto);
+    $i = 0;
+    foreach($drivers as $driver){
+        $_SESSION["basket"]->driver[$i] = $driver->id;
+        $i++;
+    }
 }
 
 if(isset($_REQUEST["price"])){
