@@ -50,7 +50,26 @@ require_once "../controller/customer_controller.php";
             <h2>Welcome <?= $_SESSION["givenName"] ?></h2>
             <p>Are you planning to go somewhere this coming weekend?</p>
             <p>🔍 <a href="../view/index.php">Search for coaches</a> 🚍</p>
+            <h2>Your Bookings</h2>
+            <div class="edit-coaches">
+              <table cellspacing="10">
+              <tr>
+                <th>Booking ID</th>
+                <th>Pickup Date</th>
+                <th>Return Date</th>
+                <th>Number Of Passengers</th>
+              </tr>
+              <?php foreach($booking as $booking): ?>
+              <tr id="<?= $booking->id ?>">
+                <td data="bookingID"><?= $booking->id ?></td>
+                <td data="dateRequired"><?= date('d/m/Y', strtotime($booking->dateRequired)) ?></td>
+                <td data="dateReturned"><?= date('d/m/Y', strtotime($booking->dateReturned)) ?></td>
+                <td data="numOfPassengers"><?= $booking->numOfPassengers ?></td>
+              </tr>
+              <?php endforeach; ?>
+              </table>
           </div>
+          
           <?php endif ?>
         </article>
       </section>

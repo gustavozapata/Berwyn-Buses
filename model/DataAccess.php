@@ -29,6 +29,16 @@ class DataAccess {
         return $this->connection;
     }
 
+    function getBookings($cid){
+        $connection = $this->getConnection();
+        $statement  = $connection->prepare("SELECT *  FROM Booking WHERE customerID = :cid");
+
+        $statement->bindValue(":cid", $cid);
+        $statement->execute();
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Booking");
+        return $results;
+    }
+
     function searchCoaches($passengers, $dateFrom, $dateTo, $price){
         $connection = $this->getConnection();
         if($passengers <= 73){
