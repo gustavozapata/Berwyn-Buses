@@ -37,6 +37,7 @@ require_once "../controller/checkout_controller.php";
                   </div>
                   <div id="basketItem" class ="col-sm-8 basketInfo" style="text-align:left;" >
                     <h5><img src="../content/images/<?= $vehicle->make?>.jpg" /><?= $vehicle->make . " - " . $vehicle->type ?></h5>
+                    <p>id: <?= $vehicle->id ?></p>
                     <p id="regNum"> Registration Number: <?= $vehicle->registrationNumber ?></p> 
                     <p>Colour: <?= $vehicle->colour ?></p>
                     <p>Max. Passengers: 
@@ -57,6 +58,20 @@ require_once "../controller/checkout_controller.php";
                   </div>
                 </div>                    
                 <?php endforeach; ?> 
+
+                <?php if(isset($_SESSION["driver"]) && $_SESSION["driver"]=="true"): ?>
+                <div class="drivers">
+                <h4>Drivers</h4>
+                  <?php if(count($_SESSION["drivers"]) >= count($_SESSION["coaches"])): ?>
+                    <p>✅Good news: there are drivers available for these dates.</p>
+                  <?php else: ?>
+                    <p><?= count($_SESSION["coaches"]) - count($_SESSION["drivers"]) ?> coache(s) won't have a driver this time.</p>
+                    <p>Someone else will have to drive it, provided they have the required licence.</p>
+                    <p>Sorry for the inconvenience 😐</p>
+                  <?php endif; ?>
+                </div>
+                <?php endif; ?>
+
                 <div class="row summary">
                   <div id="details" class="col-sm-12 col-md-6">
                     <?php if ($_SESSION["trip"]['depart'] != "" && $_SESSION["trip"]['return'] != "") : ?>
@@ -74,93 +89,80 @@ require_once "../controller/checkout_controller.php";
                     </p>
                     <?php endif; ?>
                   </div>
-                  
+
                 </div>
               </div>
             </div>
             <?php if(!empty($_SESSION["cart"])) : ?>
-            <article class="checkout-payment">
-              <div id="total">
-                <h2>Total: &#8356;<span id='total'>0</span></h2>
-                  <form method="post" action="../controller/promo_controller.php">
-                    <input id="promoInput" type="text" name="promoCode">
-                    <input id="submitPromo" type="submit" value="Apply Code" name="submitPromo">
-                    <?php if(isset($_REQUEST["promoCode"]) != null) : ?>
-                      <p>Promo code: <?= $correctCode ?></p>
-                      <p>Percentage off: <span id="percentOff"><?= $codeValue ?>%</span></p>
-                    <?php endif; ?>
-                  </form>
-              </div>
-              <h3>Payment Details</h3>
-              <p>Choose payment method</p>
-              <input id="visa" name="payment" type="radio" checked>
-              <label for="visa">
-                <img src="../content/images/visa.png">
-              </label>
-              <input id="mastercard" name="payment" type="radio">
-              <label for="mastercard">
-                <img src="../content/images/master.png">
-              </label>
-              <br>
-              <button>Pay</button>
-              <span class="payment-msg">*Processed by a third party company</span>
-            </article>
-            
             <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]) : ?>
-            <article class="checkout-payment">
-              <h3>Sign up to check-out</h3>
-              <form method="post" action="../controller/checkout_controller.php">
-                <?php require_once "../view/signup.php"; ?>
-                <input type="hidden" name="fromLogin">
-                <input type="submit" value="Sign-up">
-              </form>
-              <hr>
-              <div class="no-account">
-                <p>Already have an account?</p>
-                <p><a id="loginBtn">Login</a></p>
-              </div>
-              <div class="login-container">
-                <form method="post" action="../controller/checkout_controller.php">
-                  <label>Email
-                  </label>
-                  <input type="email" name="emailFromBasket" required>
-                  <label>Password
-                  </label>
-                  <input type="password" name="passwordFromBasket" required>
-                  <input type="submit" value="Login">
-                </form>
-              </div>
-            </article>
-            <?php endif ?> 
-            <?php endif; ?>
-            <!-- IF USER IS LOGGED -->
-            <div class="paymentBg">
-              <div class="paymentPopup">
-                <img class="paymentprocess" src="../content/images/process.png" alt="Process Payment Image">
-                <p>We are processing your payment...</p>
-                <a href="#">OK</a>
-              </div>
-            </div>
-          </div>
+
+    <article class="checkout-payment">
+      
+      
+          <div id="total">
+          <h2>Total: &#8356;<span id='total'>0</span></h2>
+            <form method="post" action="../controller/promo_controller.php">
+              <input id="promoInput" type="text" name="promoCode">
+              <input id="submitPromo" type="submit" value="Apply Code" name="submitPromo">
+              <?php if(isset($_REQUEST["promoCode"]) != null) : ?>
+                <p>Promo code: <?= $correctCode ?></p>
+                <p>Percentage off: <span id="percentOff"><?= $codeValue ?>%</span></p>
+              <?php endif; ?>
+            </form>
         </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-4 ">
-      <!-- <div class="box-outline">
-<h2>Please sign in to complete booking</h2>
-</div> -->
-    </div>
-    </div>
+      
+      <p>Choose payment method</p>
+      <input id="visa" name="payment" type="radio" checked><label for="visa"><img src="../content/images/visa.png"></label>
+      <input id="mastercard" name="payment" type="radio"><label for="mastercard"><img src="../content/images/master.png"></label><br>
+      <button id="payButton">Pay</button>
+      <span class="payment-msg">*Processed by a third party company</span>
+    </article>
+    <?php else : ?>
+    <article class="checkout-payment">
+      <h3>Sign up to check-out</h3>
+      <form method="post" action="../controller/checkout_controller.php">
+        <?php require_once "../view/signup.php"; ?>
+        <input type="hidden" name="fromLogin">
+        <input type="submit" value="Sign-up">
+      </form>
+      <hr>
+      <div class="no-account">
+        <p>Already have an account?</p>
+        <h3 id="loginBtn">Login</h3>
+      </div>
+      <div class="login-container">
+        <form method="post" action="../controller/checkout_controller.php">
+          <?php if(isset($_REQUEST["emailFromBasket"])): ?>
+            <p id="loginStatus">Username or password incorrect</p>
+          <?php endif; ?>
+          <label>Email</label>
+          <input type="email" name="emailFromBasket" required>
+          <label>Password</label>
+          <input type="password" name="passwordFromBasket" required>
+          <input type="submit" value="Login">
+        </form>
+      </div>
+    </article>
+    <?php endif ?> <!-- IF USER IS LOGGED -->
+    <?php endif ?> <!-- IF LESS THAN 1 ITEM -->
+
     <?php if(isset($_SESSION["accountCreated"]) && $_SESSION["accountCreated"]): ?>
       <div class="coachAddedBg">
         <div class="coachAddedPopup">
             <img src="../content/images/tick.png" alt="Tick Image">
             <p>The account has been created</p>
-            <a class="account-created" href="#">OK</a>
+            <a href="../controller/checkout_controller.php">OK</a>
         </div>
       </div>
-      <?php endif; ?>
-  </div>
+    <?php endif; ?>
+
+    <div class="paymentBg">
+        <div class="paymentPopup">
+          <img class="paymentprocess" src="../content/images/process.png" alt="Process Payment Image">
+          <p>We are processing your payment...</p>
+          <a href="#">OK</a>
+        </div>
+      </div> 
 </section>
 <?php require_once "../includes/footer.php"; ?>
 </div>

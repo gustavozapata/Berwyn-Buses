@@ -5,19 +5,21 @@ session_start();
 require_once "../model/DataAccess.php";
 require_once "../model/Coach.php";
 require_once "../model/Customer.php";
+require_once "../model/Promotion.php";
+require_once "../model/Driver.php";
 
 $_SESSION["accountCreated"] = false;
 
 
-if(isset($_REQUEST["completeBooking"])){
-    $bookingJson = json_decode($_REQUEST["completeBooking"]);
-    $bookingJson->datefrom = str_replace('/', '-', $bookingJson->datefrom);
-    $bookingJson->dateto = str_replace('/', '-', $bookingJson->dateto);
-    $bookingJson->datefrom = date('Y-m-d', strtotime($bookingJson->datefrom));
-    $bookingJson->dateto = date('Y-m-d', strtotime($bookingJson->dateto));
-    $insertBooking = DataAccess::getInstance()->completeBooking($bookingJson);
-    unset($_SESSION['basket']);
-}
+// if(isset($_REQUEST["completeBooking"])){
+//     $bookingJson = json_decode($_REQUEST["completeBooking"]);
+//     $bookingJson->datefrom = str_replace('/', '-', $bookingJson->datefrom);
+//     $bookingJson->dateto = str_replace('/', '-', $bookingJson->dateto);
+//     $bookingJson->datefrom = date('Y-m-d', strtotime($bookingJson->datefrom));
+//     $bookingJson->dateto = date('Y-m-d', strtotime($bookingJson->dateto));
+//     $insertBooking = DataAccess::getInstance()->completeBooking($bookingJson);
+//     unset($_SESSION['basket']);
+// }
 
 if(isset($_REQUEST["givenName"])){
     $user = (object) [
@@ -71,9 +73,23 @@ if ($_POST) {
 if (!isset($_SESSION["cart"])){
     $_SESSION["cart"] = [];
 }
+if (!isset($_SESSION["drivers"])){
+    $_SESSION["drivers"] = [];
+}
 
+if(!isset($_SESSION["coaches"])){
+    $_SESSION["coaches"] = [];
+}
 if (isset($_POST["driver"])){
     $_SESSION["driver"] = $_POST["driver"];
+    if ($_SESSION["driver"] == "true"){
+        $dateFormatFrom = str_replace('/', '-', $_SESSION["trip"]['depart']);
+        $dateFormatto["trip"]['return'] = str_replace('/', '-', $_SESSION["trip"]['return']);
+        $dateFormatFrom["trip"]['depart'] = date('Y-m-d', strtotime($_SESSION["trip"]['depart']));
+        $dateFormatto["trip"]['return'] = date('Y-m-d', strtotime($_SESSION["trip"]['return']));
+        $drivers = DataAccess::getInstance()->getDrivers($dateFormatFrom, $dateFormatto);  
+        $_SESSION["drivers"] = $drivers;
+    }
  }
 
 if (isset($_POST["clear"])){
@@ -87,6 +103,13 @@ if (isset($_POST["clear"])){
 if (isset($_POST["cart"])){
     $obj = json_decode($_POST["cart"]);
     $_SESSION["cart"][] = $obj;
+    if(empty($_SESSION["cart"])){
+        $items=0;
+    } else{
+        $items = count($_SESSION["cart"]);
+    }
+    $coaches = DataAccess::getInstance()->getSelectedCoaches($_SESSION["cart"]);
+    $_SESSION["coaches"] = $coaches;
 }
 
 //the following if statement waits for the remove POST which is triggered by the remove button on the search page and the cart page.
@@ -109,18 +132,30 @@ if (!isset($_SESSION["trip"]))
     ];
 }
 
-if (isset($_GET["depart"])){
-    $_SESSION["trip"] ['depart'] = $_GET["depart"];
+if (isset($_POST["depart"])){
+    $_SESSION["trip"]['depart'] = $_POST["depart"];
 }
 
-if (isset($_GET["return"])){
-    $_SESSION["trip"] ['return'] = $_GET["return"];
+if (isset($_POST["return"])){
+    $_SESSION["trip"]['return'] = $_POST["return"];
     
 }
 
-if (isset($_GET["passengers"])){
-    $_SESSION["trip"] ['passengers'] = $_GET["passengers"];
+if (isset($_POST["passengers"])){
+    $_SESSION["trip"]['passengers'] = $_POST["passengers"];
 }
+
+
+if(isset($_POST["completeBooking"])){
+    $_SESSION["trip"]['depart'] = str_replace('/', '-', $_SESSION["trip"]['depart']);
+    $_SESSION["trip"]['return'] = str_replace('/', '-', $_SESSION["trip"]['return']);
+    $_SESSION["trip"]['depart'] = date('Y-m-d', strtotime($_SESSION["trip"]['depart']));
+    $_SESSION["trip"]['return'] = date('Y-m-d', strtotime($_SESSION["trip"]['return']));
+    $insertBooking = DataAccess::getInstance()->completeBooking();
+    unset($_SESSION["cart"]);
+    unset($_SESSION["trip"]);
+}
+
 
 require_once "../view/checkout.php";
 ?>

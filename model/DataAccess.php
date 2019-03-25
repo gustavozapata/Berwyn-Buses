@@ -62,8 +62,12 @@ class DataAccess {
 
     function getSelectedCoaches($coachSelection){
         $connection = $this->getConnection();
+        $in = "";
         //https://stackoverflow.com/questions/14767530/php-using-pdo-with-in-clause-array
-        $in = str_repeat('?,', count($coachSelection) - 1) . '?';
+        foreach($coachSelection as $coach){
+            $in .= $coach->id.", ";
+        }
+        $in = rtrim($in, ", ");
         $statement = $connection->prepare("SELECT * FROM view_coach_type WHERE id IN ($in)");
         //end of reference
         $statement->execute($coachSelection);
@@ -187,29 +191,42 @@ class DataAccess {
         return $this->getEditableFields($result[0]);
     }
 
-    function completeBooking($booking){
+    function completeBooking(){
         $connection = $this->getConnection();
         $statement = $connection->prepare("INSERT INTO Booking (customerID, dateRequired, numOfPassengers, dateReturned) VALUES (?,?,?,?)");
-        $statement->execute([$_SESSION["id"], $booking->datefrom, $booking->passengers, $booking->dateto]);
-
-        if($_SESSION["basket"]->isDriver){
-            $isDriver =  getDrivers();
-        } else {
-            $isDriver =  null;
-        }
+        $statement->execute([$_SESSION["id"], $_SESSION["trip"]['depart'], $_SESSION["trip"]['passengers'], $_SESSION["trip"]['return']]);
+        $isDriver = count($_SESSION["drivers"]);
         $lastid = $connection->lastInsertId();
-        foreach($_SESSION["basket"]->coaches as $coach){
+        foreach($_SESSION["cart"] as $coach){
             $statement = $connection->prepare("INSERT INTO BookingAssignment (booking, driver, coach) VALUES(?,?,?)");
-            $statement->execute([$lastid, $isDriver, $coach]);
+            $statement->execute([$lastid, $isDriver, $coach->id]);
+            //$statement->execute([$lastid, $isDriver, $coach->id]);
         }
     }
 
-    function getDrivers(){
+    function getDrivers($dateFrom, $dateTo){
         $connection = $this->getConnection();
         $statement = $connection->prepare("SELECT id FROM Driver");
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
-        return $result;
+        $results = $statement->fetchAll(PDO::FETCH_CLASS, "Driver");
+        //LOOKUP BOOKED DRIVERS
+        $filterResults = $this->checkBookedDrivers($results, $dateFrom, $dateTo);
+        return $filterResults;
+    }
+
+    function checkBookedDrivers($results, $dateFrom, $dateTo){
+        $connection = $this->getConnection();
+        $statement = $connection->prepare("SELECT driver FROM view_booked_driver WHERE dateRequired >= :dateFrom AND dateRequired <= :dateTo OR dateReturned >= :dateFrom AND dateReturned <= :dateTo");
+        $statement->bindValue(":dateFrom", $dateFrom);
+        $statement->bindValue(":dateTo", $dateTo);
+        $statement->execute();
+        $driverId = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+        foreach($results as $key => $value){
+            if(in_array($value->id, $driverId)){
+                unset($results[$key]);
+            }
+        }
+        return $results;
     }
 }
 

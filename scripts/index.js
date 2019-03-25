@@ -98,7 +98,14 @@ if (window.matchMedia("(max-width: 466px)").matches) {
 // CLEAR THE SESSIONS IF PERFORMING ANOTHER SEARCH AND CHECK IF THE USER
 //REQUIRES A DRIVER
 $('#searchForm').submit(function(){
+  var $depart = $("#from").val();
+  var $return = $("#to").val();
+  var $passengers = $("#passengers").val();
+
   $.post( "../controller/checkout_controller.php", {clear: true});
+  $.post( "../controller/checkout_controller.php", {depart: $depart});
+  $.post( "../controller/checkout_controller.php", {return: $return});
+  $.post( "../controller/checkout_controller.php", {passengers: $passengers});
   localStorage.setItem("regNums", "");
   var driver = $('input[type="checkbox"]:checked').val();
   if (driver == "true"){

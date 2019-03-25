@@ -27,7 +27,7 @@ if(!isset($_SESSION['basket'])){
             <li><a href="../view/index.php">Home</a></li>
             <?php if(isset($_SESSION["userLogged"]) && $_SESSION["userLogged"]): ?>
             <li><a href="../view/customer_view.php">My Account</a></li>
-            <li><a href="../controller/logout.php">Logout</a></li>
+            <li id="logout"><a href="../controller/logout.php">Logout</a></li>
             <?php else : ?>
             <!-- <li><a href="../view/about.php">About Us</a></li> -->
             <li><a href="../view/customer_view.php">Login</a></li>

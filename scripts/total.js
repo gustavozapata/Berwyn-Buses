@@ -87,4 +87,8 @@ function emptyCart(){
     };
 }
 
-
+//COMPLETE BOOKING
+$('button#payButton').on('click',function(){
+    $.post("../controller/checkout_controller.php", {completeBooking: true});
+    localStorage.setItem("regNums", "");
+});
