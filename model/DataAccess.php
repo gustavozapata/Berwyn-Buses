@@ -4,15 +4,11 @@ class DataAccess {
     private static $instance = null;
     private $connection;
 
-    private $database = "db_k1715308";
+    private $database = "";
 
-    private $host = "kunet";
-    private $user = "k1715308";
-    private $password = "webdevdatabase";
-
-    // private $host = "localhost";
-    // private $user = "root";
-    // private $password = "";
+    private $host = "";
+    private $user = "";
+    private $password = "";
     
     private function __construct() {
         $this->connection = new PDO("mysql:host={$this->host}; dbname={$this->database}", $this->user, $this->password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
